@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/finish_line.gd" id="1_finish"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_finish"]
+size = Vector2(36, 180)
+
+[node name="FinishLine" type="Area2D"]
+collision_mask = 1
+script = ExtResource("1_finish")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(1, 0.92, 0.18, 0.85)
+polygon = PackedVector2Array(-18, -90, 18, -90, 18, 90, -18, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_finish")

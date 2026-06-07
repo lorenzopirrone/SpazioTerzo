@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
+[ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
+[ext_resource type="Script" path="res://scripts/level_root.gd" id="5_level"]
+[ext_resource type="Script" path="res://scripts/runner_camera.gd" id="6_camera"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1500, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_a"]
+size = Vector2(240, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_b"]
+size = Vector2(180, 24)
+
+[node name="Level01" type="Node2D" groups=["level_root"]]
+script = ExtResource("5_level")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(90, 420)
+
+[node name="RunnerCamera" type="Camera2D" parent="."]
+position = Vector2(410, 360)
+zoom = Vector2(1, 1)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+script = ExtResource("6_camera")
+target_path = NodePath("../Player")
+horizontal_lookahead = 340.0
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(620, 510)
+
+[node name="Visual" type="Polygon2D" parent="Ground"]
+color = Color(0.19, 0.22, 0.25, 1)
+polygon = PackedVector2Array(-750, -32, 750, -32, 750, 32, -750, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="StepPlatform" type="StaticBody2D" parent="."]
+position = Vector2(530, 390)
+
+[node name="Visual" type="Polygon2D" parent="StepPlatform"]
+color = Color(0.25, 0.55, 0.74, 1)
+polygon = PackedVector2Array(-120, -12, 120, -12, 112, 12, -112, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StepPlatform"]
+shape = SubResource("RectangleShape2D_platform_a")
+
+[node name="UpperPlatform" type="StaticBody2D" parent="."]
+position = Vector2(980, 335)
+
+[node name="Visual" type="Polygon2D" parent="UpperPlatform"]
+color = Color(0.25, 0.55, 0.74, 1)
+polygon = PackedVector2Array(-90, -12, 90, -12, 82, 12, -82, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
+shape = SubResource("RectangleShape2D_platform_b")
+
+[node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
+position = Vector2(780, 300)
+travel = Vector2(0, -70)
+cycle_time = 2.1
+
+[node name="FlyingPlatformB" parent="." instance=ExtResource("3_platform")]
+position = Vector2(1210, 360)
+travel = Vector2(0, -100)
+cycle_time = 2.8
+
+[node name="ObstacleA" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(360, 450)
+
+[node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(705, 450)
+
+[node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(1070, 275)
+
+[node name="FinishLine" parent="." instance=ExtResource("4_finish")]
+position = Vector2(1385, 420)

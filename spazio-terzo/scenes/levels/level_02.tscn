@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
+[ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
+[ext_resource type="Script" path="res://scripts/level_root.gd" id="5_level"]
+[ext_resource type="Script" path="res://scripts/runner_camera.gd" id="6_camera"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
+size = Vector2(620, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_b"]
+size = Vector2(520, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_c"]
+size = Vector2(620, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(170, 24)
+
+[node name="Level02" type="Node2D" groups=["level_root"]]
+script = ExtResource("5_level")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(90, 420)
+run_speed = 285.0
+jump_velocity = -590.0
+
+[node name="RunnerCamera" type="Camera2D" parent="."]
+position = Vector2(410, 360)
+zoom = Vector2(1, 1)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+script = ExtResource("6_camera")
+target_path = NodePath("../Player")
+horizontal_lookahead = 360.0
+
+[node name="GroundA" type="StaticBody2D" parent="."]
+position = Vector2(270, 510)
+
+[node name="Visual" type="Polygon2D" parent="GroundA"]
+color = Color(0.18, 0.2, 0.23, 1)
+polygon = PackedVector2Array(-310, -32, 310, -32, 310, 32, -310, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA"]
+shape = SubResource("RectangleShape2D_ground_a")
+
+[node name="GroundB" type="StaticBody2D" parent="."]
+position = Vector2(910, 510)
+
+[node name="Visual" type="Polygon2D" parent="GroundB"]
+color = Color(0.18, 0.2, 0.23, 1)
+polygon = PackedVector2Array(-260, -32, 260, -32, 260, 32, -260, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundB"]
+shape = SubResource("RectangleShape2D_ground_b")
+
+[node name="GroundC" type="StaticBody2D" parent="."]
+position = Vector2(1530, 510)
+
+[node name="Visual" type="Polygon2D" parent="GroundC"]
+color = Color(0.18, 0.2, 0.23, 1)
+polygon = PackedVector2Array(-310, -32, 310, -32, 310, 32, -310, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundC"]
+shape = SubResource("RectangleShape2D_ground_c")
+
+[node name="FloatingStep" type="StaticBody2D" parent="."]
+position = Vector2(650, 375)
+
+[node name="Visual" type="Polygon2D" parent="FloatingStep"]
+color = Color(0.25, 0.55, 0.74, 1)
+polygon = PackedVector2Array(-85, -12, 85, -12, 77, 12, -77, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingStep"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
+position = Vector2(1180, 330)
+travel = Vector2(0, -120)
+cycle_time = 2.6
+
+[node name="FlyingPlatformB" parent="." instance=ExtResource("3_platform")]
+position = Vector2(1420, 285)
+travel = Vector2(80, 0)
+cycle_time = 2.2
+
+[node name="ObstacleA" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(430, 450)
+
+[node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(870, 450)
+
+[node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(1300, 450)
+
+[node name="ObstacleD" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(1510, 450)
+
+[node name="FinishLine" parent="." instance=ExtResource("4_finish")]
+position = Vector2(1785, 420)
