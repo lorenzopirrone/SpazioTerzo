@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/player_runner.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/jump_trajectory_preview.gd" id="2_trajectory"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(36, 58)
@@ -8,7 +9,7 @@ size = Vector2(36, 58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_punch"]
 size = Vector2(64, 22)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_player")
 
 [node name="Body" type="Polygon2D" parent="."]
@@ -41,3 +42,6 @@ polygon = PackedVector2Array(-20, -48, 20, -48, 20, -42, -20, -42)
 color = Color(1, 0.78, 0.22, 1)
 polygon = PackedVector2Array(0, -48, 40, -48, 40, -42, 0, -42)
 position = Vector2(-20, 0)
+
+[node name="JumpTrajectoryPreview" type="Node2D" parent="."]
+script = ExtResource("2_trajectory")

@@ -95,6 +95,16 @@ func take_hit() -> void:
 	died.emit()
 
 
+func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
+	if _dead:
+		return
+
+	velocity.y = vertical_velocity
+	velocity.x = maxf(velocity.x, run_speed + horizontal_boost)
+	_coyote_timer = 0.0
+	_jump_buffer_timer = 0.0
+
+
 func _handle_screen_touch(event: InputEventScreenTouch) -> void:
 	if event.pressed:
 		if event.position.x < get_viewport_rect().size.x * punch_screen_split:

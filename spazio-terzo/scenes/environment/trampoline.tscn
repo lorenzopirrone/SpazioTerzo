@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/trampoline.gd" id="1_trampoline"]
+[ext_resource type="Script" path="res://scripts/trampoline_trajectory_preview.gd" id="2_preview"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(86, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(92, 18)
+
+[node name="Trampoline" type="Area2D"]
+collision_mask = 1
+script = ExtResource("1_trampoline")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.08, 0.82, 0.44, 1)
+polygon = PackedVector2Array(-46, 5, -36, -9, 36, -9, 46, 5, 32, 9, -32, 9)
+
+[node name="Pad" type="Polygon2D" parent="."]
+color = Color(1, 0.95, 0.2, 1)
+polygon = PackedVector2Array(-34, -12, 34, -12, 28, -4, -28, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="SolidBase" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBase"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_body")
+one_way_collision = true
+one_way_collision_margin = 10.0
+
+[node name="TrampolineTrajectoryPreview" type="Node2D" parent="."]
+position = Vector2(0, -18)
+script = ExtResource("2_preview")

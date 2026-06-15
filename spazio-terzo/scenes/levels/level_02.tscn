@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
-[ext_resource type="Script" path="res://scripts/level_root.gd" id="5_level"]
-[ext_resource type="Script" path="res://scripts/runner_camera.gd" id="6_camera"]
+[ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
+[ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
+[ext_resource type="PackedScene" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
+[ext_resource type="PackedScene" path="res://scenes/environment/audio_peak_marker.tscn" id="8_peak_marker"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -21,15 +23,18 @@ size = Vector2(170, 24)
 
 [node name="Level02" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
+manual_track_duration_seconds = 6.0
+peak_times = Array[float]([1.0, 2.2, 3.65, 4.75])
+peak_marker_scene = ExtResource("8_peak_marker")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(90, 420)
+position = Vector2(51, 422)
 run_speed = 285.0
 jump_velocity = -590.0
+gravity = 1200.0
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(410, 360)
-zoom = Vector2(1, 1)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 script = ExtResource("6_camera")
@@ -75,6 +80,8 @@ polygon = PackedVector2Array(-85, -12, 85, -12, 77, 12, -77, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingStep"]
 shape = SubResource("RectangleShape2D_platform")
+one_way_collision = true
+one_way_collision_margin = 10.0
 
 [node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
 position = Vector2(1180, 330)
@@ -98,5 +105,22 @@ position = Vector2(1300, 450)
 [node name="ObstacleD" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(1510, 450)
 
+[node name="IncomingObstacleA" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(680, 405)
+
+[node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(1160, 330)
+speed = 620.0
+warning_time = 0.85
+
+[node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(1540, 405)
+speed = 680.0
+warning_time = 0.65
+
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
 position = Vector2(1785, 420)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioPeakMarkers" type="Node2D" parent="."]

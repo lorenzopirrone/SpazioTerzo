@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" path="res://scripts/runner_camera.gd" id="6_camera"]
+[ext_resource type="PackedScene" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
+[ext_resource type="PackedScene" path="res://scenes/environment/audio_peak_marker.tscn" id="8_peak_marker"]
+[ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="9_trampoline"]
+[ext_resource type="AudioStreamWAV" path="res://Audio/guaglio_demo_16bit.wav" id="10_audio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
-size = Vector2(1500, 64)
+size = Vector2(43000, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_a"]
 size = Vector2(240, 24)
@@ -18,6 +22,10 @@ size = Vector2(180, 24)
 
 [node name="Level01" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
+audio_stream = ExtResource("10_audio")
+manual_track_duration_seconds = 160.82
+peak_times = Array[float]([2.04, 4.02, 5.94, 7.92, 9.9, 11.88, 13.8, 15.78, 17.28, 19.26, 21.24, 25.2, 27.6, 29.52, 31.02, 34.68, 37.44, 40.92, 43.32, 45.3, 46.74, 48.78, 50.46, 52.08, 53.52, 56.28, 58.62, 63.0, 64.98, 66.96, 68.94, 70.86, 72.84, 74.82, 76.8, 79.08, 81.96, 84.66, 87.36, 90.9, 92.52, 93.96, 97.62, 100.38, 103.86, 109.74, 111.72, 113.4, 115.02, 116.52, 119.28, 121.56, 125.94, 127.92, 129.9, 131.88, 133.86, 135.78, 137.76, 139.74, 141.72, 143.7, 145.62, 147.6, 151.56, 153.0, 155.46, 157.32])
+peak_marker_scene = ExtResource("8_peak_marker")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(90, 420)
@@ -32,11 +40,11 @@ target_path = NodePath("../Player")
 horizontal_lookahead = 340.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(620, 510)
+position = Vector2(21500, 510)
 
 [node name="Visual" type="Polygon2D" parent="Ground"]
 color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-750, -32, 750, -32, 750, 32, -750, 32)
+polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 32, -21500, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -50,6 +58,8 @@ polygon = PackedVector2Array(-120, -12, 120, -12, 112, 12, -112, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StepPlatform"]
 shape = SubResource("RectangleShape2D_platform_a")
+one_way_collision = true
+one_way_collision_margin = 10.0
 
 [node name="UpperPlatform" type="StaticBody2D" parent="."]
 position = Vector2(980, 335)
@@ -60,6 +70,8 @@ polygon = PackedVector2Array(-90, -12, 90, -12, 82, 12, -82, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
 shape = SubResource("RectangleShape2D_platform_b")
+one_way_collision = true
+one_way_collision_margin = 10.0
 
 [node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
 position = Vector2(780, 300)
@@ -80,5 +92,24 @@ position = Vector2(705, 450)
 [node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(1070, 275)
 
+[node name="IncomingObstacleA" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(825, 405)
+
+[node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(1190, 285)
+warning_time = 0.9
+speed = 620.0
+
+[node name="TrampolineA" parent="." instance=ExtResource("9_trampoline")]
+position = Vector2(1480, 490)
+
+[node name="TrampolineB" parent="." instance=ExtResource("9_trampoline")]
+position = Vector2(2640, 490)
+launch_velocity = -1040.0
+
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
 position = Vector2(1385, 420)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioPeakMarkers" type="Node2D" parent="."]
