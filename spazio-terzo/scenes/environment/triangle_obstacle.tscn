@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl7n7xy4bprl6"]
+
+[ext_resource type="Script" uid="uid://djwj1hvg15sm0" path="res://scripts/triangle_obstacle.gd" id="1_triangle"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_kut6n"]
+points = PackedVector2Array(27, 26, -27, 26, 0, -26)
+
+[node name="TriangleObstacle" type="Area2D"]
+script = ExtResource("1_triangle")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.92, 0.13, 0.16, 1)
+polygon = PackedVector2Array(-27, 26, 0, -26, 27, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_kut6n")

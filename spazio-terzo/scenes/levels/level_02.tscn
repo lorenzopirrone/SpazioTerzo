@@ -1,48 +1,46 @@
 [gd_scene load_steps=13 format=3 uid="uid://co8cx6u2i0ivx"]
 
-[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
 [ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
-[ext_resource type="PackedScene" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
-[ext_resource type="PackedScene" path="res://scenes/environment/audio_peak_marker.tscn" id="8_peak_marker"]
+[ext_resource type="PackedScene" uid="uid://baipmrhrbncmd" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
+[ext_resource type="PackedScene" path="res://scenes/environment/coin.tscn" id="8_coin"]
+[ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="9_triangle"]
+[ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="11_o4ql5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_b"]
-size = Vector2(520, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_c"]
-size = Vector2(620, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
-size = Vector2(170, 24)
-
 [node name="Level02" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
-manual_track_duration_seconds = 6.0
-peak_times = Array[float]([1.0, 2.2, 3.65, 4.75])
-peak_marker_scene = ExtResource("8_peak_marker")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+scale = Vector2(1.0666667, 1.0666667)
+texture = ExtResource("3_c6rld")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(51, 422)
-run_speed = 285.0
-jump_velocity = -590.0
-gravity = 1200.0
+position = Vector2(60.99997, 414)
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
-position = Vector2(410, 360)
+position = Vector2(960, 540)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 script = ExtResource("6_camera")
 target_path = NodePath("../Player")
-horizontal_lookahead = 360.0
+horizontal_lookahead = 800.0
+vertical_offset = -84.0
 
 [node name="GroundA" type="StaticBody2D" parent="."]
-position = Vector2(270, 510)
+position = Vector2(1651.9999, 510)
+scale = Vector2(5.4, 1)
 
 [node name="Visual" type="Polygon2D" parent="GroundA"]
 color = Color(0.18, 0.2, 0.23, 1)
@@ -51,76 +49,52 @@ polygon = PackedVector2Array(-310, -32, 310, -32, 310, 32, -310, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA"]
 shape = SubResource("RectangleShape2D_ground_a")
 
-[node name="GroundB" type="StaticBody2D" parent="."]
-position = Vector2(910, 510)
-
-[node name="Visual" type="Polygon2D" parent="GroundB"]
-color = Color(0.18, 0.2, 0.23, 1)
-polygon = PackedVector2Array(-260, -32, 260, -32, 260, 32, -260, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundB"]
-shape = SubResource("RectangleShape2D_ground_b")
-
-[node name="GroundC" type="StaticBody2D" parent="."]
-position = Vector2(1530, 510)
-
-[node name="Visual" type="Polygon2D" parent="GroundC"]
-color = Color(0.18, 0.2, 0.23, 1)
-polygon = PackedVector2Array(-310, -32, 310, -32, 310, 32, -310, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundC"]
-shape = SubResource("RectangleShape2D_ground_c")
-
-[node name="FloatingStep" type="StaticBody2D" parent="."]
-position = Vector2(650, 375)
-
-[node name="Visual" type="Polygon2D" parent="FloatingStep"]
-color = Color(0.25, 0.55, 0.74, 1)
-polygon = PackedVector2Array(-85, -12, 85, -12, 77, 12, -77, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingStep"]
-shape = SubResource("RectangleShape2D_platform")
-one_way_collision = true
-one_way_collision_margin = 10.0
-
-[node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
-position = Vector2(1180, 330)
-travel = Vector2(0, -120)
-cycle_time = 2.6
-
 [node name="FlyingPlatformB" parent="." instance=ExtResource("3_platform")]
-position = Vector2(1420, 285)
+position = Vector2(1753, 310)
 travel = Vector2(80, 0)
 cycle_time = 2.2
 
 [node name="ObstacleA" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(430, 450)
+position = Vector2(429, 417)
 
 [node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(870, 450)
+position = Vector2(961, 415)
 
 [node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(1300, 450)
+position = Vector2(1299, 417)
 
 [node name="ObstacleD" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(1510, 450)
+position = Vector2(1509, 417)
 
-[node name="IncomingObstacleA" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(680, 405)
+[node name="CoinA" parent="." instance=ExtResource("8_coin")]
+position = Vector2(425, 269)
+
+[node name="CoinB" parent="." instance=ExtResource("8_coin")]
+position = Vector2(980, 280)
+
+[node name="TriangleObstacleA" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(1999, 452)
+
+[node name="TriangleObstacleB" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(2045, 450)
+
+[node name="TriangleObstacleB2" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(3108, 260)
+rotation = 3.1415927
 
 [node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(1160, 330)
+position = Vector2(4844, 33)
 speed = 620.0
 warning_time = 0.85
 
 [node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(1540, 405)
+position = Vector2(3101, 402)
 speed = 680.0
 warning_time = 0.65
 
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
-position = Vector2(1785, 420)
+position = Vector2(3292, 392)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioPeakMarkers" type="Node2D" parent="."]
+stream = ExtResource("11_o4ql5")
+autoplay = true

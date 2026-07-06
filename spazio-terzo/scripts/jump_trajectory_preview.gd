@@ -41,13 +41,18 @@ func _draw() -> void:
 	var run_speed := float(player.get("run_speed"))
 	var jump_velocity := float(player.get("jump_velocity"))
 	var gravity := float(player.get("gravity"))
+	var max_fall_speed := float(player.get("max_fall_speed"))
 	var points: PackedVector2Array = []
 	var t := 0.0
+	var position := Vector2.ZERO
+	var velocity := Vector2(0.0, jump_velocity)
 
 	while t <= preview_time:
-		var x := run_speed * t
-		var y := jump_velocity * t + 0.5 * gravity * t * t
-		points.append(Vector2(x, y))
+		points.append(position)
+		var delta := maxf(step_time, 0.01)
+		velocity.x = run_speed
+		velocity.y = minf(velocity.y + gravity * delta, max_fall_speed)
+		position += velocity * delta
 		t += maxf(step_time, 0.01)
 
 	if points.size() < 2:
