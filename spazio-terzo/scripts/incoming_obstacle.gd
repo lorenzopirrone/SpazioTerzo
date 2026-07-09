@@ -1,13 +1,22 @@
 extends Node2D
 
+## Velocità con cui l'ostacolo entra da destra verso sinistra.
 @export var speed: float = 560.0
+## Distanza dalla camera a cui il trigger attiva il warning.
 @export var trigger_distance: float = 760.0
+## Tempo di preavviso visivo prima che l'ostacolo arrivi.
 @export var warning_time: float = 0.75
+## Tempo stimato tra warning e impatto effettivo.
 @export var travel_time_to_impact: float = 0.95
+## Distanza laterale iniziale dello spawn rispetto alla camera.
 @export var spawn_offset_from_camera: float = 90.0
+## Margine oltre il quale l'ostacolo viene rimosso a sinistra.
 @export var despawn_left_margin: float = 260.0
+## Consente o meno di colpire l'ostacolo con il cazzotto.
 @export var can_be_punched: bool = true
+## Distanza dal bordo destro in cui compare il punto esclamativo rosso.
 @export var warning_right_margin: float = 56.0
+## Offset verticale del warning rispetto alla posizione dell'ostacolo.
 @export var warning_vertical_offset: float = -86.0
 
 @onready var trigger_box: Area2D = $TriggerBox

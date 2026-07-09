@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://beaw1qje87xnr" path="res://Images/Trash.png" id="3_ancv8"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_r1dr6"]
+points = PackedVector2Array(-18.656387, -17.260612, 0.84361506, -18.260612, 20.843616, 2.7393894, 20.843616, 18.239391, -19.156387, 17.739391)
 
 [node name="Obstacle" type="Area2D"]
 scale = Vector2(2, 2)

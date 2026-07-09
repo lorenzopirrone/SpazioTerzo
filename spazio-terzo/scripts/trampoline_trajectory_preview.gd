@@ -1,26 +1,32 @@
 @tool
 extends Node2D
 
+## Velocità orizzontale assunta per calcolare la traiettoria.
 @export var run_speed: float = 260.0:
 	set(value):
 		run_speed = value
 		queue_redraw()
+## Spinta verticale usata nella previsione del trampolino.
 @export var launch_velocity: float = -920.0:
 	set(value):
 		launch_velocity = value
 		queue_redraw()
+## Gravità usata nella previsione del trampolino.
 @export var gravity: float = 1500.0:
 	set(value):
 		gravity = value
 		queue_redraw()
+## Durata totale della previsione del salto.
 @export var preview_time: float = 1.25:
 	set(value):
 		preview_time = value
 		queue_redraw()
+## Intervallo tra i punti della previsione.
 @export var step_time: float = 0.06:
 	set(value):
 		step_time = value
 		queue_redraw()
+## Colore della linea di previsione del trampolino.
 @export var line_color: Color = Color(0.15, 0.95, 0.55, 0.88):
 	set(value):
 		line_color = value

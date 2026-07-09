@@ -4,21 +4,31 @@ extends Node2D
 signal level_completed
 signal player_died
 
+## Percorso del nodo player dentro la scena livello.
 @export var player_path: NodePath = ^"Player"
+## Quota verticale sotto la quale il player viene considerato morto.
 @export var death_y: float = 760.0
 
 @export_group("Audio Sync")
+## Traccia audio associata al livello corrente.
 @export var audio_stream: AudioStream
+## Durata manuale da usare se la traccia non è disponibile o non viene letta.
 @export var manual_track_duration_seconds: float = 0.0
+## Se attivo, la finish line viene piazzata automaticamente in base alla durata audio.
 @export var auto_place_finish_line: bool = true
+## Nodo della finish line da posizionare automaticamente.
 @export var finish_line_path: NodePath = ^"FinishLine"
+## Spazio extra aggiunto alla fine del livello rispetto alla traccia audio.
 @export var finish_padding: float = 0.0
+## Nodo AudioStreamPlayer che riproduce la traccia del livello.
 @export var audio_player_path: NodePath = ^"AudioStreamPlayer"
 
 var player: Node2D
 var _game_over_layer: CanvasLayer
 var _game_over_screen: Control
 var _restart_button: Button
+var _hud_layer: CanvasLayer
+var _coin_label: Label
 
 
 func _ready() -> void:
@@ -26,7 +36,10 @@ func _ready() -> void:
 	player = get_node_or_null(player_path) as Node2D
 	if player:
 		player.connect("died", _on_player_died)
+		if player.has_signal("coin_collected"):
+			player.connect("coin_collected", _on_coin_collected)
 	_build_game_over_ui()
+	_build_hud_ui()
 	_setup_audio_sync()
 
 
@@ -48,6 +61,11 @@ func _on_player_died() -> void:
 	player_died.emit()
 	get_tree().paused = true
 	_game_over_screen.show()
+
+
+func _on_coin_collected(total_coins: int) -> void:
+	if _coin_label:
+		_coin_label.text = str(total_coins)
 
 
 func _build_game_over_ui() -> void:
@@ -111,6 +129,54 @@ func _build_game_over_ui() -> void:
 
 	if has_node("UI"):
 		_game_over_layer.raise()
+
+
+func _build_hud_ui() -> void:
+	_hud_layer = CanvasLayer.new()
+	_hud_layer.name = "HudLayer"
+	_hud_layer.layer = 10
+	_hud_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_hud_layer)
+
+	var margin := MarginContainer.new()
+	margin.name = "CoinHudMargin"
+	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 24)
+	margin.add_theme_constant_override("margin_top", 18)
+	margin.add_theme_constant_override("margin_right", 24)
+	margin.add_theme_constant_override("margin_bottom", 18)
+	_hud_layer.add_child(margin)
+
+	var hbox := HBoxContainer.new()
+	hbox.name = "CoinHudBox"
+	hbox.alignment = BoxContainer.ALIGNMENT_END
+	margin.add_child(hbox)
+
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.add_child(spacer)
+
+	var label_box := PanelContainer.new()
+	label_box.name = "CoinHudPanel"
+	label_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hbox.add_child(label_box)
+
+	var label_margin := MarginContainer.new()
+	label_margin.add_theme_constant_override("margin_left", 12)
+	label_margin.add_theme_constant_override("margin_top", 8)
+	label_margin.add_theme_constant_override("margin_right", 12)
+	label_margin.add_theme_constant_override("margin_bottom", 8)
+	label_box.add_child(label_margin)
+
+	_coin_label = Label.new()
+	_coin_label.name = "CoinCount"
+	_coin_label.text = "0"
+	_coin_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_coin_label.add_theme_font_size_override("font_size", 28)
+	label_margin.add_child(_coin_label)
+
+	if player and player.has_method("collect_coin"):
+		_on_coin_collected(int(player.get("start_coins")))
 
 
 func _on_restart_button_pressed() -> void:

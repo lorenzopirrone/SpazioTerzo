@@ -1,18 +1,22 @@
 @tool
 extends Node2D
 
+## Durata totale della traiettoria mostrata in editor.
 @export var preview_time: float = 0.95:
 	set(value):
 		preview_time = value
 		queue_redraw()
+## Intervallo tra un punto e l'altro della previsione.
 @export var step_time: float = 0.06:
 	set(value):
 		step_time = value
 		queue_redraw()
+## Colore della linea di previsione del salto.
 @export var line_color: Color = Color(1.0, 0.85, 0.2, 0.85):
 	set(value):
 		line_color = value
 		queue_redraw()
+## Raggio dei punti disegnati sulla traiettoria.
 @export var point_radius: float = 4.0:
 	set(value):
 		point_radius = value

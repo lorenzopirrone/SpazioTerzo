@@ -1,5 +1,6 @@
 extends Area2D
 
+## Indica se l'ostacolo può essere distrutto dal cazzotto del player.
 @export var can_be_punched: bool = true
 
 

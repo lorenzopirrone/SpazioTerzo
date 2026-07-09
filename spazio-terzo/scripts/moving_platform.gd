@@ -1,6 +1,8 @@
 extends AnimatableBody2D
 
+## Spostamento totale della piattaforma durante il suo ciclo.
 @export var travel: Vector2 = Vector2(0.0, -96.0)
+## Durata completa del ciclo di andata e ritorno.
 @export var cycle_time: float = 2.4
 
 var _origin: Vector2

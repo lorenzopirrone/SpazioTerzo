@@ -1,4 +1,4 @@
-class_name PlayerRunner
+﻿class_name PlayerRunner
 extends CharacterBody2D
 
 signal died
@@ -6,24 +6,59 @@ signal punch_started(power: float)
 signal punch_finished
 signal coin_collected(total_coins: int)
 
+const COIN_SCENE := preload("res://scenes/environment/coin.tscn")
+
 @export_group("Movement")
+## Velocità orizzontale costante con cui il player avanza.
 @export var run_speed: float = 260.0
+## Spinta verticale del salto base: più è negativa, più il salto è alto.
 @export var jump_velocity: float = -560.0
+## Accelerazione di gravità applicata quando il player è in aria.
 @export var gravity: float = 1500.0
+## Limite massimo della velocità di caduta.
 @export var max_fall_speed: float = 1100.0
 
 @export_group("Punch")
+## Tempo minimo necessario per iniziare a caricare il cazzotto.
 @export var min_charge_time: float = 0.18
+## Tempo massimo di carica prima che il colpo raggiunga il suo pieno potere.
 @export var max_charge_time: float = 1.0
+## Durata dell'animazione/stato del cazzotto una volta rilasciato.
 @export var punch_duration: float = 0.18
+## Distanza orizzontale del cazzotto rispetto al player.
 @export var punch_reach: float = 86.0
+## Potenza minima accettata del cazzotto caricato.
 @export var punch_min_power: float = 0.35
 
 @export_group("Runner Feel")
+## Finestra di tolleranza dopo aver lasciato una piattaforma per poter ancora saltare.
 @export var coyote_time: float = 0.08
+## Tempo entro cui un salto premuto poco prima di toccare terra viene eseguito.
 @export var jump_buffer_time: float = 0.12
+## Percentuale di schermo usata per separare tap salto e hold cazzotto.
 @export var punch_screen_split: float = 0.5
+## Numero di monete iniziali del player.
 @export var start_coins: int = 0
+
+@export_group("Damage")
+## Sotto questo numero di monete il colpo uccide il player.
+@export var minimum_coins_to_survive: int = 10
+## Numero di monete perse quando il player subisce danno.
+@export var coins_lost_on_hit: int = 10
+## Durata dell'immortalità dopo aver ricevuto danno.
+@export var invulnerability_time: float = 2.0
+## Frequenza con cui il player lampeggia durante l'immortalità.
+@export var invulnerability_flash_interval: float = 0.085
+## Velocità iniziale del rimbalzo all'indietro e verso l'alto.
+@export var knockback_velocity: Vector2 = Vector2(-340.0, -460.0)
+## Durata del rimbalzo dopo il danno.
+@export var knockback_duration: float = 0.32
+## Tempo di vita delle monete droppate dopo il danno.
+@export var dropped_coin_lifetime: float = 0.65
+## Ampiezza laterale della dispersione delle monete perse.
+@export var dropped_coin_spread: float = 220.0
+## Spinta verticale iniziale delle monete perse.
+@export var dropped_coin_upward_boost: float = 360.0
 
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
@@ -38,19 +73,34 @@ var _jump_buffer_timer: float = 0.0
 var _punch_touch_index: int = -1
 var _dead: bool = false
 var _coins: int = 0
+var _invulnerability_timer: float = 0.0
+var _knockback_timer: float = 0.0
+var _flash_timer: float = 0.0
+var _rng := RandomNumberGenerator.new()
+var _base_modulate: Color = Color.WHITE
 
 
 func _ready() -> void:
+	_rng.randomize()
+	_base_modulate = modulate
 	_coins = start_coins
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
+	_update_damage_flash(0.0)
 
 
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
 
-	velocity.x = run_speed
+	if _invulnerability_timer > 0.0:
+		_invulnerability_timer = maxf(_invulnerability_timer - delta, 0.0)
+
+	if _knockback_timer > 0.0:
+		_knockback_timer = maxf(_knockback_timer - delta, 0.0)
+		velocity.x = knockback_velocity.x
+	else:
+		velocity.x = run_speed
 
 	if is_on_floor():
 		_coyote_timer = coyote_time
@@ -73,6 +123,7 @@ func _physics_process(delta: float) -> void:
 			_set_punch_active(false)
 			punch_finished.emit()
 
+	_update_damage_flash(delta)
 	move_and_slide()
 
 
@@ -90,12 +141,23 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func take_hit() -> void:
-	if _dead:
+	if _dead or _invulnerability_timer > 0.0:
 		return
 
-	_dead = true
-	velocity = Vector2.ZERO
-	died.emit()
+	if _coins < minimum_coins_to_survive:
+		_dead = true
+		velocity = Vector2.ZERO
+		died.emit()
+		return
+
+	var coins_to_drop: int = min(_coins, coins_lost_on_hit)
+	_coins = max(_coins - coins_to_drop, 0)
+	coin_collected.emit(_coins)
+	_spawn_dropped_coins(coins_to_drop)
+	_invulnerability_timer = invulnerability_time
+	_knockback_timer = knockback_duration
+	_flash_timer = 0.0
+	velocity = knockback_velocity
 
 
 func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
@@ -114,6 +176,44 @@ func collect_coin(value: int = 1) -> void:
 
 	_coins += max(value, 0)
 	coin_collected.emit(_coins)
+
+
+func is_knockback_active() -> bool:
+	return _knockback_timer > 0.0
+
+
+func _spawn_dropped_coins(amount: int) -> void:
+	if amount <= 0:
+		return
+
+	var parent := get_parent()
+	if parent == null:
+		return
+
+	for i in range(amount):
+		var dropped_coin := COIN_SCENE.instantiate() as Area2D
+		parent.add_child(dropped_coin)
+		dropped_coin.global_position = global_position + Vector2(
+			_rng.randf_range(-18.0, 18.0),
+			_rng.randf_range(-22.0, 6.0)
+		)
+		if dropped_coin.has_method("begin_drop"):
+			var direction: float = -1.0 if i < amount / 2 else 1.0
+			var launch_velocity := Vector2(
+				_rng.randf_range(70.0, dropped_coin_spread) * direction,
+				-_rng.randf_range(dropped_coin_upward_boost * 0.65, dropped_coin_upward_boost)
+			)
+			dropped_coin.begin_drop(launch_velocity, dropped_coin_lifetime)
+
+
+func _update_damage_flash(delta: float) -> void:
+	if _invulnerability_timer > 0.0:
+		_flash_timer += delta
+		var blink_phase := fmod(_flash_timer, invulnerability_flash_interval)
+		var alpha := 1.0 if blink_phase < invulnerability_flash_interval * 0.5 else 0.2
+		modulate = Color(_base_modulate.r, _base_modulate.g, _base_modulate.b, alpha)
+	else:
+		modulate = _base_modulate
 
 
 func _handle_screen_touch(event: InputEventScreenTouch) -> void:
@@ -192,3 +292,4 @@ func _set_punch_active(active: bool) -> void:
 
 func _update_charge_bar(amount: float) -> void:
 	charge_bar.scale.x = clampf(amount, 0.0, 1.0)
+

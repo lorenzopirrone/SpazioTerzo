@@ -28,6 +28,7 @@ texture = ExtResource("3_c6rld")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(60.99997, 414)
+minimum_coins_to_survive = 1
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)

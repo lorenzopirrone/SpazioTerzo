@@ -1,6 +1,8 @@
 extends Area2D
 
+## Spinta verticale applicata quando il player tocca il trampolino.
 @export var launch_velocity: float = -920.0
+## Spinta orizzontale extra aggiunta al salto del trampolino.
 @export var horizontal_boost: float = 0.0
 
 
