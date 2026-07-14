@@ -29,6 +29,10 @@ texture = ExtResource("3_c6rld")
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(60.99997, 414)
 minimum_coins_to_survive = 1
+invulnerability_flash_interval = 0.2
+knockback_distance = 150.0
+knockback_duration = 2.0
+dropped_coin_lifetime = 1.0
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -68,7 +72,37 @@ position = Vector2(1299, 417)
 position = Vector2(1509, 417)
 
 [node name="CoinA" parent="." instance=ExtResource("8_coin")]
-position = Vector2(425, 269)
+position = Vector2(231, 401)
+
+[node name="CoinA2" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA3" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA4" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA5" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA6" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA7" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA8" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA9" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA10" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
+
+[node name="CoinA11" parent="." instance=ExtResource("8_coin")]
+position = Vector2(231, 401)
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
 position = Vector2(980, 280)

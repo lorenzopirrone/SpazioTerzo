@@ -7,6 +7,7 @@ signal punch_finished
 signal coin_collected(total_coins: int)
 
 const COIN_SCENE := preload("res://scenes/environment/coin.tscn")
+const RECOVERABLE_COIN_SCENE := preload("res://scenes/environment/recoverable_coin.tscn")
 
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
@@ -50,8 +51,11 @@ const COIN_SCENE := preload("res://scenes/environment/coin.tscn")
 ## Frequenza con cui il player lampeggia durante l'immortalità.
 @export var invulnerability_flash_interval: float = 0.085
 ## Velocità iniziale del rimbalzo all'indietro e verso l'alto.
-@export var knockback_velocity: Vector2 = Vector2(-340.0, -460.0)
-## Durata del rimbalzo dopo il danno.
+## Distanza orizzontale che il player arretra quando subisce danno.
+@export var knockback_distance: float = 96.0
+## Spinta verticale iniziale del rimbalzo dopo il danno.
+@export var knockback_lift_velocity: float = -460.0
+## Tempo entro cui il player raggiunge la posizione di knockback.
 @export var knockback_duration: float = 0.32
 ## Tempo di vita delle monete droppate dopo il danno.
 @export var dropped_coin_lifetime: float = 0.65
@@ -59,6 +63,8 @@ const COIN_SCENE := preload("res://scenes/environment/coin.tscn")
 @export var dropped_coin_spread: float = 220.0
 ## Spinta verticale iniziale delle monete perse.
 @export var dropped_coin_upward_boost: float = 360.0
+## Percentuale delle monete perse che resta sul pavimento e può essere ripresa.
+@export var recoverable_drop_ratio: float = 0.5
 
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
@@ -75,6 +81,8 @@ var _dead: bool = false
 var _coins: int = 0
 var _invulnerability_timer: float = 0.0
 var _knockback_timer: float = 0.0
+var _knockback_start_x: float = 0.0
+var _knockback_target_x: float = 0.0
 var _flash_timer: float = 0.0
 var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
@@ -98,7 +106,15 @@ func _physics_process(delta: float) -> void:
 
 	if _knockback_timer > 0.0:
 		_knockback_timer = maxf(_knockback_timer - delta, 0.0)
-		velocity.x = knockback_velocity.x
+		if knockback_duration > 0.0:
+			var knockback_progress: float = 1.0 - (_knockback_timer / knockback_duration)
+			knockback_progress = clampf(knockback_progress, 0.0, 1.0)
+			var eased_progress: float = 1.0 - pow(1.0 - knockback_progress, 2.0)
+			var desired_x: float = lerpf(_knockback_start_x, _knockback_target_x, eased_progress)
+			velocity.x = (desired_x - global_position.x) / maxf(delta, 0.0001)
+		else:
+			global_position.x = _knockback_target_x
+			velocity.x = 0.0
 	else:
 		velocity.x = run_speed
 
@@ -156,8 +172,11 @@ func take_hit() -> void:
 	_spawn_dropped_coins(coins_to_drop)
 	_invulnerability_timer = invulnerability_time
 	_knockback_timer = knockback_duration
+	_knockback_start_x = global_position.x
+	_knockback_target_x = _knockback_start_x - knockback_distance
 	_flash_timer = 0.0
-	velocity = knockback_velocity
+	velocity.x = 0.0
+	velocity.y = knockback_lift_velocity
 
 
 func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
@@ -190,20 +209,27 @@ func _spawn_dropped_coins(amount: int) -> void:
 	if parent == null:
 		return
 
+	var recoverable_amount: int = int(floor(amount * recoverable_drop_ratio))
+	recoverable_amount = clampi(recoverable_amount, 0, amount)
+
 	for i in range(amount):
-		var dropped_coin := COIN_SCENE.instantiate() as Area2D
-		parent.add_child(dropped_coin)
-		dropped_coin.global_position = global_position + Vector2(
+		var is_recoverable: bool = i < recoverable_amount
+		var coin_instance := (RECOVERABLE_COIN_SCENE if is_recoverable else COIN_SCENE).instantiate()
+		parent.add_child(coin_instance)
+		coin_instance.global_position = global_position + Vector2(
 			_rng.randf_range(-18.0, 18.0),
 			_rng.randf_range(-22.0, 6.0)
 		)
-		if dropped_coin.has_method("begin_drop"):
+		if coin_instance.has_method("begin_drop"):
 			var direction: float = -1.0 if i < amount / 2 else 1.0
 			var launch_velocity := Vector2(
 				_rng.randf_range(70.0, dropped_coin_spread) * direction,
 				-_rng.randf_range(dropped_coin_upward_boost * 0.65, dropped_coin_upward_boost)
 			)
-			dropped_coin.begin_drop(launch_velocity, dropped_coin_lifetime)
+			if is_recoverable:
+				coin_instance.begin_drop(launch_velocity, self, dropped_coin_lifetime * 1.75)
+			else:
+				coin_instance.begin_drop(launch_velocity, dropped_coin_lifetime)
 
 
 func _update_damage_flash(delta: float) -> void:
