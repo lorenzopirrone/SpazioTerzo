@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=14 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
-[ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
@@ -11,6 +10,8 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/coin.tscn" id="8_coin"]
 [ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="9_triangle"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="11_o4ql5"]
+[ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="12_4hx2o"]
+[ext_resource type="PackedScene" uid="uid://bw0hd5tw0ocy" path="res://scenes/environment/turn_black.tscn" id="12_km0xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -28,6 +29,7 @@ texture = ExtResource("3_c6rld")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(60.99997, 414)
+gravity = 1500.0
 minimum_coins_to_survive = 1
 invulnerability_flash_interval = 0.2
 knockback_distance = 150.0
@@ -48,64 +50,72 @@ position = Vector2(1651.9999, 510)
 scale = Vector2(5.4, 1)
 
 [node name="Visual" type="Polygon2D" parent="GroundA"]
+position = Vector2(1903.9813, 0)
+scale = Vector2(7.1418757, 1)
 color = Color(0.18, 0.2, 0.23, 1)
 polygon = PackedVector2Array(-310, -32, 310, -32, 310, 32, -310, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA"]
+position = Vector2(2154.8147, 0)
+scale = Vector2(7.977777, 1)
 shape = SubResource("RectangleShape2D_ground_a")
 
-[node name="FlyingPlatformB" parent="." instance=ExtResource("3_platform")]
-position = Vector2(1753, 310)
-travel = Vector2(80, 0)
-cycle_time = 2.2
-
 [node name="ObstacleA" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(429, 417)
+position = Vector2(1450, 420)
 
 [node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(961, 415)
+position = Vector2(2401, 413)
 
 [node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(1299, 417)
+position = Vector2(3893, 415)
+
+[node name="ObstacleC2" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(4466, 418)
+
+[node name="ObstacleC3" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(6349, 423)
+
+[node name="ObstacleC4" parent="." instance=ExtResource("2_obstacle")]
+position = Vector2(7350, 417)
 
 [node name="ObstacleD" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(1509, 417)
+position = Vector2(3348, 415)
 
 [node name="CoinA" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA2" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA3" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA4" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA5" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA6" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA7" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA8" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA9" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA10" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinA11" parent="." instance=ExtResource("8_coin")]
-position = Vector2(231, 401)
+position = Vector2(658, 403)
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
-position = Vector2(980, 280)
+position = Vector2(3259, 124)
 
 [node name="TriangleObstacleA" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(1999, 452)
@@ -114,22 +124,69 @@ position = Vector2(1999, 452)
 position = Vector2(2045, 450)
 
 [node name="TriangleObstacleB2" parent="." instance=ExtResource("9_triangle")]
-position = Vector2(3108, 260)
+position = Vector2(3360, 620)
 rotation = 3.1415927
 
 [node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(4844, 33)
+position = Vector2(6142, -290)
 speed = 620.0
 warning_time = 0.85
 
 [node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(3101, 402)
-speed = 680.0
-warning_time = 0.65
+position = Vector2(7101, -628)
+
+[node name="IncomingObstacleC" parent="IncomingObstacleC" instance=ExtResource("7_incoming")]
+position = Vector2(6041, -173)
+
+[node name="IncomingObstacleC2" parent="." instance=ExtResource("7_incoming")]
+position = Vector2(5561, 408)
+
+[node name="IncomingObstacleC" parent="IncomingObstacleC2" instance=ExtResource("7_incoming")]
+position = Vector2(6041, -173)
 
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
-position = Vector2(3292, 392)
+position = Vector2(20961, 380)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_o4ql5")
 autoplay = true
+
+[node name="AirPlatform2" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(3681, 206)
+
+[node name="AirPlatform5" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(4765, -199)
+
+[node name="AirPlatform6" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(5168, -199)
+
+[node name="AirPlatform7" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(5730, -199)
+scale = Vector2(2.76, 1)
+
+[node name="AirPlatform3" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(4055, 131)
+
+[node name="AirPlatform2" parent="AirPlatform3" instance=ExtResource("12_4hx2o")]
+position = Vector2(344, -159.00002)
+rotation = -0.58943963
+scale = Vector2(2.5290368, 1.3628211)
+
+[node name="AirPlatform" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(3262, 256)
+
+[node name="AirPlatform4" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(2888, 331)
+
+[node name="TurnBlack" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_km0xc")]
+position = Vector2(2880, 408)
+player = NodePath("../Player")
+sprite_name = "VesproTest"
+smooth_restore = false
+
+[node name="TurnBlack2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_km0xc")]
+position = Vector2(4756, 408)
+player = NodePath("../Player")
+sprite_name = "VesproTest"
+action = "Torna Normale"
+restore_time = 1.5

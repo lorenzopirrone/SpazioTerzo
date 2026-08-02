@@ -14,9 +14,9 @@ size = Vector2(64, 22)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
-run_speed = 311.0
-jump_velocity = -619.0
-gravity = 1443.0
+run_speed = 300.0
+jump_velocity = -700.0
+gravity = 2000.0
 max_fall_speed = 961.0
 
 [node name="Body" type="Polygon2D" parent="."]

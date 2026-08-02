@@ -1,22 +1,20 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cq12o0u6vf2eu"]
 
-[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
-[ext_resource type="Script" path="res://scripts/level_root.gd" id="5_level"]
-[ext_resource type="Script" path="res://scripts/runner_camera.gd" id="6_camera"]
-[ext_resource type="PackedScene" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
+[ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="5_jmes4"]
+[ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
+[ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
+[ext_resource type="PackedScene" uid="uid://baipmrhrbncmd" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="8_trampoline"]
-[ext_resource type="AudioStreamWAV" path="res://Audio/guaglio_demo_16bit.wav" id="9_audio"]
+[ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="9_audio"]
 [ext_resource type="PackedScene" path="res://scenes/environment/coin.tscn" id="10_coin"]
-[ext_resource type="PackedScene" path="res://scenes/environment/triangle_obstacle.tscn" id="11_triangle"]
+[ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="11_triangle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_a"]
-size = Vector2(240, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_b"]
 size = Vector2(180, 24)
@@ -31,7 +29,6 @@ position = Vector2(90, 420)
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
-zoom = Vector2(1, 1)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 script = ExtResource("6_camera")
@@ -49,17 +46,8 @@ polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 32, -21500, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_ground")
 
-[node name="StepPlatform" type="StaticBody2D" parent="."]
+[node name="AirPlatform" parent="." instance=ExtResource("5_jmes4")]
 position = Vector2(530, 390)
-
-[node name="Visual" type="Polygon2D" parent="StepPlatform"]
-color = Color(0.25, 0.55, 0.74, 1)
-polygon = PackedVector2Array(-120, -12, 120, -12, 112, 12, -112, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StepPlatform"]
-shape = SubResource("RectangleShape2D_platform_a")
-one_way_collision = true
-one_way_collision_margin = 10.0
 
 [node name="UpperPlatform" type="StaticBody2D" parent="."]
 position = Vector2(980, 335)
@@ -101,10 +89,10 @@ position = Vector2(1140, 290)
 [node name="IncomingObstacleA" parent="." instance=ExtResource("7_incoming")]
 position = Vector2(825, 405)
 
-[node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
+[node name="IncomingObstacle" parent="." instance=ExtResource("7_incoming")]
 position = Vector2(1190, 285)
-warning_time = 0.9
 speed = 620.0
+warning_time = 0.9
 
 [node name="TrampolineA" parent="." instance=ExtResource("8_trampoline")]
 position = Vector2(1480, 490)
@@ -120,3 +108,6 @@ position = Vector2(1980, 450)
 position = Vector2(1385, 420)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AirPlatform2" parent="." instance=ExtResource("5_jmes4")]
+position = Vector2(2973, 214)

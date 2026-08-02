@@ -1,4 +1,4 @@
-﻿class_name PlayerRunner
+class_name PlayerRunner
 extends CharacterBody2D
 
 signal died
@@ -318,4 +318,3 @@ func _set_punch_active(active: bool) -> void:
 
 func _update_charge_bar(amount: float) -> void:
 	charge_bar.scale.x = clampf(amount, 0.0, 1.0)
-

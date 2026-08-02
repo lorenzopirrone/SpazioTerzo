@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw0hd5tw0ocy"]
+
+[ext_resource type="Script" uid="uid://y5a2jxqi17hb" path="res://turn_black.gd" id="1_4nggk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(160, 150)
+
+[node name="TurnBlack" type="Area2D"]
+script = ExtResource("1_4nggk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_trigger")
