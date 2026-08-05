@@ -91,8 +91,8 @@ position = Vector2(825, 405)
 
 [node name="IncomingObstacle" parent="." instance=ExtResource("7_incoming")]
 position = Vector2(1190, 285)
-speed = 620.0
-warning_time = 0.9
+obstacle_speed = 620.0
+alert_duration = 0.9
 
 [node name="TrampolineA" parent="." instance=ExtResource("8_trampoline")]
 position = Vector2(1480, 490)

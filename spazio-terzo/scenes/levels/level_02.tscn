@@ -129,8 +129,6 @@ rotation = 3.1415927
 
 [node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
 position = Vector2(6142, -290)
-speed = 620.0
-warning_time = 0.85
 
 [node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
 position = Vector2(7101, -628)
@@ -161,8 +159,8 @@ position = Vector2(4765, -199)
 position = Vector2(5168, -199)
 
 [node name="AirPlatform7" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(5730, -199)
-scale = Vector2(2.76, 1)
+position = Vector2(6224, -199)
+scale = Vector2(6.173986, 1)
 
 [node name="AirPlatform3" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(4055, 131)
