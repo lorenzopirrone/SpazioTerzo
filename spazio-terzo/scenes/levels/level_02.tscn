@@ -131,7 +131,7 @@ rotation = 3.1415927
 position = Vector2(6142, -290)
 
 [node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(7101, -628)
+position = Vector2(7057, -280)
 
 [node name="IncomingObstacleC" parent="IncomingObstacleC" instance=ExtResource("7_incoming")]
 position = Vector2(6041, -173)
