@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=16 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
-[ext_resource type="PackedScene" uid="uid://baipmrhrbncmd" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
 [ext_resource type="PackedScene" path="res://scenes/environment/coin.tscn" id="8_coin"]
 [ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="9_triangle"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="11_o4ql5"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="12_4hx2o"]
 [ext_resource type="PackedScene" uid="uid://bw0hd5tw0ocy" path="res://scenes/environment/turn_black.tscn" id="12_km0xc"]
+[ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="13_km0xc"]
+[ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="14_m2jhg"]
+[ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -66,14 +68,11 @@ position = Vector2(1450, 420)
 [node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(2401, 413)
 
-[node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(3893, 415)
-
 [node name="ObstacleC2" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(4466, 418)
 
 [node name="ObstacleC3" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(6349, 423)
+position = Vector2(6335, 417)
 
 [node name="ObstacleC4" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(7350, 417)
@@ -115,7 +114,7 @@ position = Vector2(658, 403)
 position = Vector2(658, 403)
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
-position = Vector2(3259, 124)
+position = Vector2(3267, 154)
 
 [node name="TriangleObstacleA" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(1999, 452)
@@ -126,21 +125,6 @@ position = Vector2(2045, 450)
 [node name="TriangleObstacleB2" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(3360, 620)
 rotation = 3.1415927
-
-[node name="IncomingObstacleB" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(6142, -290)
-
-[node name="IncomingObstacleC" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(7057, -280)
-
-[node name="IncomingObstacleC" parent="IncomingObstacleC" instance=ExtResource("7_incoming")]
-position = Vector2(6041, -173)
-
-[node name="IncomingObstacleC2" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(5561, 408)
-
-[node name="IncomingObstacleC" parent="IncomingObstacleC2" instance=ExtResource("7_incoming")]
-position = Vector2(6041, -173)
 
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
 position = Vector2(20961, 380)
@@ -153,22 +137,35 @@ autoplay = true
 position = Vector2(3681, 206)
 
 [node name="AirPlatform5" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(4765, -199)
+position = Vector2(5303, -337)
 
 [node name="AirPlatform6" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(5168, -199)
+position = Vector2(5706, -337)
+
+[node name="AirPlatform12" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(7879, -397)
+
+[node name="AirPlatform13" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(8285, -526)
 
 [node name="AirPlatform7" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(6224, -199)
+position = Vector2(6762, -337)
 scale = Vector2(6.173986, 1)
 
 [node name="AirPlatform3" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(4055, 131)
+position = Vector2(4063, 77)
 
-[node name="AirPlatform2" parent="AirPlatform3" instance=ExtResource("12_4hx2o")]
-position = Vector2(344, -159.00002)
-rotation = -0.58943963
-scale = Vector2(2.5290368, 1.3628211)
+[node name="AirPlatform8" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(4477, -54)
+
+[node name="AirPlatform9" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(4903, -183)
+
+[node name="AirPlatform10" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(5301, 6)
+
+[node name="AirPlatform11" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(5708, 4)
 
 [node name="AirPlatform" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(3262, 256)
@@ -188,3 +185,21 @@ player = NodePath("../Player")
 sprite_name = "VesproTest"
 action = "Torna Normale"
 restore_time = 1.5
+
+[node name="Trampoline" parent="." instance=ExtResource("13_km0xc")]
+position = Vector2(5782, -10)
+rotation = 0.06431911
+launch_velocity = -1159.0
+horizontal_boost = 10.0
+
+[node name="Trampoline2" parent="." instance=ExtResource("13_km0xc")]
+position = Vector2(8358, -537.99994)
+rotation = 0.06431911
+launch_velocity = -1159.0
+horizontal_boost = 10.0
+
+[node name="IncomingObstacle" parent="." instance=ExtResource("14_n536o")]
+position = Vector2(5702, 402)
+
+[node name="IncomingObstacle2" parent="." instance=ExtResource("14_m2jhg")]
+position = Vector2(6932, -413)

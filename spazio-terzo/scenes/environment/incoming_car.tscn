@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ey307hc48k6"]
+
+[ext_resource type="Script" uid="uid://dpm3f1kwdubms" path="res://scripts/incoming_obstacle.gd" id="1_mmw3t"]
+[ext_resource type="Texture2D" uid="uid://hrfe3ayryhoq" path="res://Images/Car.png" id="2_c775m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(160, 150)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_hfk4b"]
+points = PackedVector2Array(-49.999832, 46.00018, -51.00038, -104.99982, 87.99952, -133.00032, 90.00049, 134.99968, 9.000518, 142.99997, 0.0002932192, 81)
+
+[node name="IncomingObstacle" type="Node2D"]
+script = ExtResource("1_mmw3t")
+alert_duration = 1.0
+obstacle_speed = 1800.0
+
+[node name="TriggerBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBox"]
+position = Vector2(-431, -2)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Warning" type="Label" parent="."]
+offset_left = -12.0
+offset_top = -44.0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Obstacle" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Visual" type="Polygon2D" parent="Obstacle"]
+color = Color(0.9, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-34, -12, 16, -12, 34, 0, 16, 12, -34, 12, -24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+rotation = 1.5708
+shape = SubResource("ConvexPolygonShape2D_hfk4b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+texture = ExtResource("2_c775m")
