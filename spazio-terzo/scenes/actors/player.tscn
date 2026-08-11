@@ -16,8 +16,8 @@ scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 run_speed = 300.0
 jump_velocity = -700.0
-gravity = 2000.0
 max_fall_speed = 961.0
+start_coins = 30
 
 [node name="Body" type="Polygon2D" parent="."]
 visible = false

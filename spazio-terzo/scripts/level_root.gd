@@ -35,6 +35,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	player = get_node_or_null(player_path) as Node2D
 	if player:
+		_apply_player_spawn_point()
 		player.connect("died", _on_player_died)
 		if player.has_signal("coin_collected"):
 			player.connect("coin_collected", _on_coin_collected)
@@ -204,6 +205,19 @@ func _setup_audio_sync() -> void:
 	if audio_player and audio_stream:
 		audio_player.stream = audio_stream
 		audio_player.play()
+
+
+func _apply_player_spawn_point() -> void:
+	var spawn_points := get_tree().get_nodes_in_group("player_spawn_point")
+	if spawn_points.is_empty():
+		return
+
+	var spawn_point := spawn_points[0] as Node2D
+	if spawn_point:
+		player.global_position = spawn_point.global_position
+		var camera := get_node_or_null(^"RunnerCamera") as Camera2D
+		if camera and camera.has_method("snap_to_target"):
+			camera.snap_to_target()
 
 
 func _get_track_duration() -> float:

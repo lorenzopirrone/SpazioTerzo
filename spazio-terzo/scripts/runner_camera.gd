@@ -23,6 +23,7 @@ var _target: Node2D
 func _ready() -> void:
 	_target = get_node_or_null(target_path) as Node2D
 	make_current()
+	snap_to_target()
 
 
 func _process(delta: float) -> void:
@@ -39,4 +40,19 @@ func _process(delta: float) -> void:
 
 	var smoothing := damage_follow_smoothing if knockback_active else follow_smoothing
 	global_position = global_position.lerp(desired, 1.0 - exp(-smoothing * delta))
+
+
+func snap_to_target() -> void:
+	if _target == null:
+		return
+
+	var knockback_active: bool = _target.has_method("is_knockback_active") and _target.is_knockback_active()
+	var lookahead := damage_horizontal_lookahead if knockback_active else horizontal_lookahead
+	var offset_y := damage_vertical_offset if knockback_active else vertical_offset
+	var desired := _target.global_position + Vector2(lookahead, offset_y)
+
+	if lock_left_edge and not knockback_active:
+		desired.x = maxf(desired.x, global_position.x)
+
+	global_position = desired
 

@@ -86,6 +86,7 @@ var _knockback_target_x: float = 0.0
 var _flash_timer: float = 0.0
 var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
+var _grind_active: bool = false
 
 
 func _ready() -> void:
@@ -103,6 +104,11 @@ func _physics_process(delta: float) -> void:
 
 	if _invulnerability_timer > 0.0:
 		_invulnerability_timer = maxf(_invulnerability_timer - delta, 0.0)
+
+	if _grind_active:
+		velocity = Vector2.ZERO
+		_update_damage_flash(delta)
+		return
 
 	if _knockback_timer > 0.0:
 		_knockback_timer = maxf(_knockback_timer - delta, 0.0)
@@ -144,6 +150,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _grind_active:
+		return
 	if event is InputEventScreenTouch:
 		_handle_screen_touch(event)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -159,6 +167,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func take_hit() -> void:
 	if _dead or _invulnerability_timer > 0.0:
 		return
+
+	_end_grind()
 
 	if _coins < minimum_coins_to_survive:
 		_dead = true
@@ -183,6 +193,7 @@ func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0)
 	if _dead:
 		return
 
+	_end_grind()
 	velocity.y = vertical_velocity
 	velocity.x = maxf(velocity.x, run_speed + horizontal_boost)
 	_coyote_timer = 0.0
@@ -199,6 +210,35 @@ func collect_coin(value: int = 1) -> void:
 
 func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
+
+
+func begin_grind() -> void:
+	if _dead:
+		return
+
+	_grind_active = true
+	_is_charging = false
+	_charge_time = 0.0
+	_punch_timer = 0.0
+	_punch_touch_index = -1
+	_coyote_timer = 0.0
+	_jump_buffer_timer = 0.0
+	_set_punch_active(false)
+	_update_charge_bar(0.0)
+	velocity = Vector2.ZERO
+
+
+func end_grind() -> void:
+	_grind_active = false
+
+
+func is_grinding() -> bool:
+	return _grind_active
+
+
+func launch_from_grind(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
+	_end_grind()
+	apply_jump_impulse(vertical_velocity, horizontal_boost)
 
 
 func _spawn_dropped_coins(amount: int) -> void:
@@ -318,3 +358,8 @@ func _set_punch_active(active: bool) -> void:
 
 func _update_charge_bar(amount: float) -> void:
 	charge_bar.scale.x = clampf(amount, 0.0, 1.0)
+
+
+func _end_grind() -> void:
+	if _grind_active:
+		_grind_active = false

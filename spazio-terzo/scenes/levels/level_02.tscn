@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=17 format=3 uid="uid://co8cx6u2i0ivx"]
 
-[ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
@@ -14,6 +13,8 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="13_km0xc"]
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="14_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
+[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="14_q6ljp"]
+[ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -28,15 +29,6 @@ layer = -10
 position = Vector2(960, 540)
 scale = Vector2(1.0666667, 1.0666667)
 texture = ExtResource("3_c6rld")
-
-[node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(60.99997, 414)
-gravity = 1500.0
-minimum_coins_to_survive = 1
-invulnerability_flash_interval = 0.2
-knockback_distance = 150.0
-knockback_duration = 2.0
-dropped_coin_lifetime = 1.0
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -75,7 +67,7 @@ position = Vector2(4466, 418)
 position = Vector2(6335, 417)
 
 [node name="ObstacleC4" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(7350, 417)
+position = Vector2(7881, 426)
 
 [node name="ObstacleD" parent="." instance=ExtResource("2_obstacle")]
 position = Vector2(3348, 415)
@@ -122,6 +114,54 @@ position = Vector2(1999, 452)
 [node name="TriangleObstacleB" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(2045, 450)
 
+[node name="TriangleObstacleA2" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(6769, 452)
+
+[node name="TriangleObstacleB3" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(6815, 450)
+
+[node name="TriangleObstacleA3" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(6872, 452)
+
+[node name="TriangleObstacleB4" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(6918, 450)
+
+[node name="TriangleObstacleA4" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(6969, 449)
+
+[node name="TriangleObstacleB5" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7015, 447)
+
+[node name="TriangleObstacleA5" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7072, 449)
+
+[node name="TriangleObstacleB6" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7118, 447)
+
+[node name="TriangleObstacleA6" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7117, 449)
+
+[node name="TriangleObstacleB7" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7163, 447)
+
+[node name="TriangleObstacleA7" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7220, 449)
+
+[node name="TriangleObstacleB8" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7266, 447)
+
+[node name="TriangleObstacleA8" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7317, 446)
+
+[node name="TriangleObstacleB9" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7363, 444)
+
+[node name="TriangleObstacleA9" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7420, 446)
+
+[node name="TriangleObstacleB10" parent="." instance=ExtResource("9_triangle")]
+position = Vector2(7466, 444)
+
 [node name="TriangleObstacleB2" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(3360, 620)
 rotation = 3.1415927
@@ -152,6 +192,10 @@ position = Vector2(8285, -526)
 position = Vector2(6762, -337)
 scale = Vector2(6.173986, 1)
 
+[node name="AirPlatform14" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(7100, 345.00003)
+scale = Vector2(3.3986397, 1.4592623)
+
 [node name="AirPlatform3" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(4063, 77)
 
@@ -173,15 +217,13 @@ position = Vector2(3262, 256)
 [node name="AirPlatform4" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(2888, 331)
 
-[node name="TurnBlack" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_km0xc")]
+[node name="TurnBlack" parent="." instance=ExtResource("12_km0xc")]
 position = Vector2(2880, 408)
-player = NodePath("../Player")
 sprite_name = "VesproTest"
 smooth_restore = false
 
-[node name="TurnBlack2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_km0xc")]
+[node name="TurnBlack2" parent="." instance=ExtResource("12_km0xc")]
 position = Vector2(4756, 408)
-player = NodePath("../Player")
 sprite_name = "VesproTest"
 action = "Torna Normale"
 restore_time = 1.5
@@ -198,8 +240,26 @@ rotation = 0.06431911
 launch_velocity = -1159.0
 horizontal_boost = 10.0
 
+[node name="AirPlatform15" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(7805, 189.99994)
+
+[node name="Trampoline3" parent="." instance=ExtResource("13_km0xc")]
+position = Vector2(7889, 188.99988)
+rotation = 0.2706939
+launch_velocity = -1583.0
+horizontal_boost = 10.0
+
 [node name="IncomingObstacle" parent="." instance=ExtResource("14_n536o")]
 position = Vector2(5702, 402)
 
+[node name="IncomingObstacle3" parent="." instance=ExtResource("14_n536o")]
+position = Vector2(9172, 414)
+
 [node name="IncomingObstacle2" parent="." instance=ExtResource("14_m2jhg")]
 position = Vector2(6932, -413)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("14_q6ljp")]
+position = Vector2(6744, 271)
+
+[node name="Player" parent="." instance=ExtResource("15_m2jhg")]
+position = Vector2(84, 422)
