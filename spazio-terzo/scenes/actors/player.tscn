@@ -59,3 +59,11 @@ script = ExtResource("2_trajectory")
 position = Vector2(3.0000002, -7.450581e-09)
 scale = Vector2(0.11196912, 0.111969136)
 texture = ExtResource("3_ktjr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Grind Hook Up" type="Marker2D" parent="." groups=["hook_top"]]
+position = Vector2(0, -30.309185)
+
+[node name="Grind Hook Down" type="Marker2D" parent="." groups=["hook_bottom"]]
+position = Vector2(0, 27.467697)

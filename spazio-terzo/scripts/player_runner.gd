@@ -87,6 +87,8 @@ var _flash_timer: float = 0.0
 var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
+var _stored_collision_layer: int = 0
+var _stored_collision_mask: int = 0
 
 
 func _ready() -> void:
@@ -212,11 +214,19 @@ func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
 
 
+func get_grind_hook(hook_group: StringName) -> Node2D:
+	return _find_node_in_group_recursive(self, hook_group) as Node2D
+
+
 func begin_grind() -> void:
 	if _dead:
 		return
 
 	_grind_active = true
+	_stored_collision_layer = collision_layer
+	_stored_collision_mask = collision_mask
+	collision_layer = 0
+	collision_mask = 0
 	_is_charging = false
 	_charge_time = 0.0
 	_punch_timer = 0.0
@@ -230,6 +240,8 @@ func begin_grind() -> void:
 
 func end_grind() -> void:
 	_grind_active = false
+	collision_layer = _stored_collision_layer
+	collision_mask = _stored_collision_mask
 
 
 func is_grinding() -> bool:
@@ -363,3 +375,17 @@ func _update_charge_bar(amount: float) -> void:
 func _end_grind() -> void:
 	if _grind_active:
 		_grind_active = false
+		collision_layer = _stored_collision_layer
+		collision_mask = _stored_collision_mask
+
+
+func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
+	if root.is_in_group(group_name):
+		return root
+
+	for child in root.get_children():
+		var found := _find_node_in_group_recursive(child, group_name)
+		if found != null:
+			return found
+
+	return null

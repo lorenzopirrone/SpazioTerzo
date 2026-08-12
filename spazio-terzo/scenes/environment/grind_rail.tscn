@@ -10,8 +10,10 @@ script = ExtResource("1_grind")
 path_path = NodePath("Path")
 path_follow_path = NodePath("Path/PathFollow")
 trigger_path = NodePath("TriggerArea")
+hook_side = 0
+grind_direction = 0
 auto_generate_demo_curve = true
-demo_curve_end = Vector2(360, 0)
+demo_curve_points = [Vector2(0, 0), Vector2(120, 0), Vector2(240, -36), Vector2(360, 0)]
 
 [node name="Path" type="Path2D" parent="."]
 
