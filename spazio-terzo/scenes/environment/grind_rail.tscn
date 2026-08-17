@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://t1q3aok2dr2g"]
 
-[ext_resource type="Script" path="res://scripts/grind_rail.gd" id="1_grind"]
+[ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="1_grind"]
+
+[sub_resource type="Curve2D" id="Curve2D_f4ir7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, -4, 0, 0, 0, 0, 171, -14, 0, 0, 0, 0, 221, -7)
+}
+point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(72, 48)
@@ -10,21 +16,17 @@ script = ExtResource("1_grind")
 path_path = NodePath("Path")
 path_follow_path = NodePath("Path/PathFollow")
 trigger_path = NodePath("TriggerArea")
-hook_side = 0
-grind_direction = 0
-auto_generate_demo_curve = true
-demo_curve_points = [Vector2(0, 0), Vector2(120, 0), Vector2(240, -36), Vector2(360, 0)]
 
 [node name="Path" type="Path2D" parent="."]
+scale = Vector2(3.9819005, 6)
+curve = SubResource("Curve2D_f4ir7")
 
 [node name="PathFollow" type="PathFollow2D" parent="Path"]
+rotation = -0.057080783
 loop = false
-rotates = true
 
 [node name="TriggerArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
-position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_trigger")

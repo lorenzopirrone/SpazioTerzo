@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=20 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
@@ -15,10 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
 [ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="14_q6ljp"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
-[ext_resource type="PackedScene" uid="uid://dmsw41ttidwgq" path="res://scenes/environment/grind_rail_example.tscn" id="16_q6ljp"]
+[ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="16_q6ljp"]
+[ext_resource type="PackedScene" uid="uid://88bsqbinlbox" path="res://scenes/environment/grind_rail_example.tscn" id="17_4dr30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6ljp"]
+size = Vector2(72, 48)
 
 [node name="Level02" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
@@ -265,6 +269,27 @@ position = Vector2(5701, 395)
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 position = Vector2(84, 422)
 
-[node name="GrindRailExample" parent="." instance=ExtResource("16_q6ljp")]
-position = Vector2(6988, 148)
-hook_side = 1
+[node name="GrindRail" parent="." instance=ExtResource("16_q6ljp")]
+visible = false
+position = Vector2(6951, 126)
+
+[node name="VisualLine" type="Line2D" parent="GrindRail"]
+visible = false
+position = Vector2(200, 21)
+points = PackedVector2Array(0, 0, 140, 0, 240, -34, 286.2354, -18.279907, 340, 0, 440, 28, 560, 0)
+default_color = Color(0.97, 0.79, 0.23, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TriggerArea2" type="Area2D" parent="GrindRail"]
+visible = false
+position = Vector2(-599, 0)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrindRail/TriggerArea2"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_q6ljp")
+
+[node name="GrindRailExample" parent="." instance=ExtResource("17_4dr30")]
+position = Vector2(6783, 165)

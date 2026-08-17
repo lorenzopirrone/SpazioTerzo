@@ -1,33 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmsw41ttidwgq"]
+[gd_scene load_steps=3 format=3 uid="uid://88bsqbinlbox"]
 
-[ext_resource type="Script" uid="uid://cnk2k4j8dpacj" path="res://scripts/grind_rail.gd" id="1_grind"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
-size = Vector2(72, 48)
+[ext_resource type="Script" uid="uid://drrvhj0eoskc1" path="res://scripts/grind_rail_example.gd" id="1_example"]
+[ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="3_rail"]
 
 [node name="GrindRailExample" type="Node2D"]
-script = ExtResource("1_grind")
-path_path = NodePath("Path")
-path_follow_path = NodePath("Path/PathFollow")
-trigger_path = NodePath("TriggerArea")
-follow_rotates_with_path = false
-demo_curve_points = Array[Vector2]([Vector2(0, 0), Vector2(120, 0), Vector2(220, -44), Vector2(320, 0), Vector2(380, 28), Vector2(460, 0)])
+script = ExtResource("1_example")
 
-[node name="Path" type="Path2D" parent="."]
+[node name="GrindRail" parent="." instance=ExtResource("3_rail")]
+grind_speed = 10.0
 
-[node name="PathFollow" type="PathFollow2D" parent="Path"]
-rotates = false
-loop = false
-
-[node name="VisualLine" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 120, 0, 398, -50, 551, -101)
+[node name="VisualLine" type="Line2D" parent="GrindRail"]
+points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 default_color = Color(0.97, 0.79, 0.23, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-
-[node name="TriggerArea" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
-shape = SubResource("RectangleShape2D_trigger")

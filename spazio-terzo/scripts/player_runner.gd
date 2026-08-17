@@ -87,8 +87,6 @@ var _flash_timer: float = 0.0
 var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
-var _stored_collision_layer: int = 0
-var _stored_collision_mask: int = 0
 
 
 func _ready() -> void:
@@ -110,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	if _grind_active:
 		velocity = Vector2.ZERO
 		_update_damage_flash(delta)
+		move_and_slide()
 		return
 
 	if _knockback_timer > 0.0:
@@ -223,34 +222,17 @@ func begin_grind() -> void:
 		return
 
 	_grind_active = true
-	_stored_collision_layer = collision_layer
-	_stored_collision_mask = collision_mask
-	collision_layer = 0
-	collision_mask = 0
-	_is_charging = false
-	_charge_time = 0.0
-	_punch_timer = 0.0
-	_punch_touch_index = -1
+	velocity = Vector2.ZERO
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
-	_set_punch_active(false)
-	_update_charge_bar(0.0)
-	velocity = Vector2.ZERO
 
 
 func end_grind() -> void:
 	_grind_active = false
-	collision_layer = _stored_collision_layer
-	collision_mask = _stored_collision_mask
 
 
 func is_grinding() -> bool:
 	return _grind_active
-
-
-func launch_from_grind(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
-	_end_grind()
-	apply_jump_impulse(vertical_velocity, horizontal_boost)
 
 
 func _spawn_dropped_coins(amount: int) -> void:
@@ -375,8 +357,6 @@ func _update_charge_bar(amount: float) -> void:
 func _end_grind() -> void:
 	if _grind_active:
 		_grind_active = false
-		collision_layer = _stored_collision_layer
-		collision_mask = _stored_collision_mask
 
 
 func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
