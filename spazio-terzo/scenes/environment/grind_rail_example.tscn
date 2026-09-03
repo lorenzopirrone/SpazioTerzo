@@ -7,7 +7,6 @@
 script = ExtResource("1_example")
 
 [node name="GrindRail" parent="." instance=ExtResource("3_rail")]
-grind_speed = 10.0
 
 [node name="VisualLine" type="Line2D" parent="GrindRail"]
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)

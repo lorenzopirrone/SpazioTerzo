@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=19 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
-[ext_resource type="PackedScene" path="res://scenes/environment/coin.tscn" id="8_coin"]
+[ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="8_coin"]
 [ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="9_triangle"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="11_o4ql5"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="12_4hx2o"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="13_km0xc"]
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="14_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
-[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="14_q6ljp"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="16_q6ljp"]
 [ext_resource type="PackedScene" uid="uid://88bsqbinlbox" path="res://scenes/environment/grind_rail_example.tscn" id="17_4dr30"]
@@ -111,7 +110,7 @@ position = Vector2(658, 403)
 position = Vector2(658, 403)
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
-position = Vector2(3267, 154)
+position = Vector2(3276, 182)
 
 [node name="TriangleObstacleA" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(1999, 452)
@@ -182,10 +181,10 @@ autoplay = true
 position = Vector2(3681, 206)
 
 [node name="AirPlatform5" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(5303, -337)
+position = Vector2(5301, -308)
 
 [node name="AirPlatform6" parent="." instance=ExtResource("12_4hx2o")]
-position = Vector2(5706, -337)
+position = Vector2(5704, -308)
 
 [node name="AirPlatform12" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(7879, -397)
@@ -197,6 +196,10 @@ position = Vector2(8285, -526)
 position = Vector2(6762, -337)
 scale = Vector2(6.173986, 1)
 
+[node name="AirPlatform16" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(9332, 0)
+scale = Vector2(6.173986, 1)
+
 [node name="AirPlatform14" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(7100, 345.00003)
 scale = Vector2(3.3986397, 1.4592623)
@@ -206,6 +209,11 @@ position = Vector2(4063, 77)
 
 [node name="AirPlatform8" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(4477, -54)
+
+[node name="Misuratore salti" parent="." instance=ExtResource("12_4hx2o")]
+position = Vector2(8219, -67)
+rotation = -0.59206307
+scale = Vector2(0.9180634, 1.0502119)
 
 [node name="AirPlatform9" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(4903, -183)
@@ -251,7 +259,7 @@ position = Vector2(7805, 189.99994)
 [node name="Trampoline3" parent="." instance=ExtResource("13_km0xc")]
 position = Vector2(7889, 188.99988)
 rotation = 0.2706939
-launch_velocity = -1583.0
+launch_velocity = -1600.0
 horizontal_boost = 10.0
 
 [node name="IncomingObstacle" parent="." instance=ExtResource("14_n536o")]
@@ -262,9 +270,6 @@ position = Vector2(9172, 414)
 
 [node name="IncomingObstacle2" parent="." instance=ExtResource("14_m2jhg")]
 position = Vector2(6932, -413)
-
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("14_q6ljp")]
-position = Vector2(5701, 395)
 
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 position = Vector2(84, 422)
