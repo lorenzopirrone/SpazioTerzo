@@ -6,8 +6,6 @@ extends CharacterBody2D
 @export var gravity: float = 1350.0
 ## Limite massimo della velocità di caduta.
 @export var max_fall_speed: float = 980.0
-## Velocità di rotazione della moneta mentre si muove.
-@export var spin_speed: float = 10.0
 ## Tempo massimo prima che la moneta scompaia se non viene raccolta.
 @export var lifetime: float = 8.0
 
@@ -41,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	if not _settled:
 		velocity.y = minf(velocity.y + gravity * delta, max_fall_speed)
 		move_and_slide()
-		rotation += spin_speed * delta
 
 		if is_on_floor():
 			_settled = true
@@ -49,7 +46,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			_try_collect_overlaps()
 	else:
-		rotation += spin_speed * 0.25 * delta
 		velocity = Vector2.ZERO
 
 

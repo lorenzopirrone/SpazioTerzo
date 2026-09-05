@@ -11,7 +11,7 @@ const RECOVERABLE_COIN_SCENE := preload("res://scenes/environment/recoverable_co
 
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
-@export var run_speed: float = 260.0
+@export var run_speed: float = 300.0
 ## Spinta verticale del salto base: più è negativa, più il salto è alto.
 @export var jump_velocity: float = -560.0
 ## Accelerazione di gravità applicata quando il player è in aria.
@@ -96,7 +96,12 @@ func _ready() -> void:
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
+	
+	$AnimationPlayer.play("Vespro_Run")
 
+
+func _process(delta: float) -> void:
+	$AnimationPlayer.speed_scale = run_speed / 300.0
 
 func _physics_process(delta: float) -> void:
 	if _dead:

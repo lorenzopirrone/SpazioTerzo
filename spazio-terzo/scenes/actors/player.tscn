@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=18 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://bqj5rgmotj377" path="res://scripts/jump_trajectory_preview.gd" id="2_trajectory"]
 [ext_resource type="Texture2D" uid="uid://cuu5k8keunkkt" path="res://Images/Vespro test.png" id="3_ktjr4"]
+[ext_resource type="Texture2D" uid="uid://cp6yxjwj5t3bc" path="res://Vespro Run/Vespro Run_0001.png" id="4_c4rn8"]
+[ext_resource type="Texture2D" uid="uid://bwcknefy8srxj" path="res://Vespro Run/Vespro Run_0002.png" id="5_ypltb"]
+[ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
+[ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
+[ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Vespro Run/Vespro Run_0005.png" id="8_0878f"]
+[ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Vespro Run/Vespro Run_0006.png" id="9_dferu"]
+[ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
+[ext_resource type="Texture2D" uid="uid://dqs1dnqkjygbm" path="res://Vespro Run/Vespro Run_0008.png" id="11_uqfkb"]
+[ext_resource type="Texture2D" uid="uid://ddog6ahiytm4p" path="res://Vespro Run/Vespro Run_0009.png" id="12_642so"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -11,10 +20,46 @@ height = 59.02
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_punch"]
 size = Vector2(64, 22)
 
+[sub_resource type="Animation" id="Animation_afsss"]
+resource_name = "Vespro_Run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5, 0.6, 0.7, 0.7999999, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
+}
+
+[sub_resource type="Animation" id="Animation_6a6mx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ktjr4")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3wsw"]
+_data = {
+&"RESET": SubResource("Animation_6a6mx"),
+&"Vespro_Run": SubResource("Animation_afsss")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
-run_speed = 300.0
 jump_velocity = -700.0
 max_fall_speed = 961.0
 start_coins = 30
@@ -55,15 +100,18 @@ polygon = PackedVector2Array(0, -48, 40, -48, 40, -42, 0, -42)
 [node name="JumpTrajectoryPreview" type="Node2D" parent="."]
 script = ExtResource("2_trajectory")
 
-[node name="VesproTest" type="Sprite2D" parent="."]
-position = Vector2(3.0000002, -7.450581e-09)
-scale = Vector2(0.11196912, 0.111969136)
+[node name="Vespro" type="Sprite2D" parent="."]
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(0.9619614, 0.9619615)
 texture = ExtResource("3_ktjr4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Grind Hook Up" type="Marker2D" parent="." groups=["hook_top"]]
 position = Vector2(0, -30.309185)
 
 [node name="Grind Hook Down" type="Marker2D" parent="." groups=["hook_bottom"]]
 position = Vector2(0, 27.467697)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j3wsw")
+}

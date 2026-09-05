@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=19 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="16_q6ljp"]
 [ext_resource type="PackedScene" uid="uid://88bsqbinlbox" path="res://scenes/environment/grind_rail_example.tscn" id="17_4dr30"]
-[ext_resource type="PackedScene" uid="uid://dtlpgbyhwoeux" path="res://scenes/environment/SpeedTrigger.tscn" id="17_dscar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -79,39 +78,99 @@ position = Vector2(3348, 415)
 
 [node name="CoinA" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA2" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA3" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA4" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA5" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA6" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA7" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA8" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA9" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA10" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinA11" parent="." instance=ExtResource("8_coin")]
 position = Vector2(658, 403)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
 position = Vector2(3276, 182)
+value = 1
+bob_amount = 4.0
+bob_speed = 4.0
+drop_gravity = 1350.0
+drop_lifetime = 0.65
 
 [node name="TriangleObstacleA" parent="." instance=ExtResource("9_triangle")]
 position = Vector2(1999, 452)
@@ -299,6 +358,3 @@ shape = SubResource("RectangleShape2D_q6ljp")
 
 [node name="GrindRailExample" parent="." instance=ExtResource("17_4dr30")]
 position = Vector2(6783, 165)
-
-[node name="SpeedTrigger" parent="." instance=ExtResource("17_dscar")]
-position = Vector2(2607, 404)
