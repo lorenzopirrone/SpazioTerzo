@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://bqj5rgmotj377" path="res://scripts/jump_trajectory_preview.gd" id="2_trajectory"]
 [ext_resource type="Texture2D" uid="uid://cuu5k8keunkkt" path="res://Images/Vespro test.png" id="3_ktjr4"]
-[ext_resource type="Texture2D" uid="uid://cp6yxjwj5t3bc" path="res://Vespro Run/Vespro Run_0001.png" id="4_c4rn8"]
-[ext_resource type="Texture2D" uid="uid://bwcknefy8srxj" path="res://Vespro Run/Vespro Run_0002.png" id="5_ypltb"]
-[ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
-[ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
-[ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Vespro Run/Vespro Run_0005.png" id="8_0878f"]
-[ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Vespro Run/Vespro Run_0006.png" id="9_dferu"]
-[ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
-[ext_resource type="Texture2D" uid="uid://dqs1dnqkjygbm" path="res://Vespro Run/Vespro Run_0008.png" id="11_uqfkb"]
-[ext_resource type="Texture2D" uid="uid://ddog6ahiytm4p" path="res://Vespro Run/Vespro Run_0009.png" id="12_642so"]
+[ext_resource type="Texture2D" uid="uid://cp6yxjwj5t3bc" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0001.png" id="4_c4rn8"]
+[ext_resource type="Texture2D" uid="uid://bwcknefy8srxj" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0002.png" id="5_ypltb"]
+[ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
+[ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
+[ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png" id="8_0878f"]
+[ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0006.png" id="9_dferu"]
+[ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
+[ext_resource type="Texture2D" uid="uid://dqs1dnqkjygbm" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0008.png" id="11_uqfkb"]
+[ext_resource type="Texture2D" uid="uid://ddog6ahiytm4p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0009.png" id="12_642so"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -19,6 +19,21 @@ height = 59.02
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_punch"]
 size = Vector2(64, 22)
+
+[sub_resource type="Animation" id="Animation_6a6mx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ktjr4")]
+}
 
 [sub_resource type="Animation" id="Animation_afsss"]
 resource_name = "Vespro_Run"
@@ -34,21 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
-}
-
-[sub_resource type="Animation" id="Animation_6a6mx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vespro:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_ktjr4")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3wsw"]

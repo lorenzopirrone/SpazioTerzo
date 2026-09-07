@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqs1dnqkjygbm"
-path="res://.godot/imported/Vespro Run_0008.png-e7b9fa3fe74c78c4ea93b13215ff87a2.ctex"
+uid="uid://cmvkmeoh156ei"
+path="res://.godot/imported/Vespro Run_0005.png-f8eaf059bed3d72da71ab9b72f862430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vespro Run/Vespro Run_0008.png"
-dest_files=["res://.godot/imported/Vespro Run_0008.png-e7b9fa3fe74c78c4ea93b13215ff87a2.ctex"]
+source_file="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png"
+dest_files=["res://.godot/imported/Vespro Run_0005.png-f8eaf059bed3d72da71ab9b72f862430.ctex"]
 
 [params]
 

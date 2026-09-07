@@ -45,6 +45,10 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if body.has_method("collect_coin"):
 		body.collect_coin(value)
+		$Sprite2D.hide()
+		$CollisionShape2D.set_deferred("disabled", true)
+		$AudioStreamPlayer.play()
+		await $AudioStreamPlayer.finished
 		queue_free()
 
 

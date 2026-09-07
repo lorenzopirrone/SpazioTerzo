@@ -4,28 +4,38 @@
 
 [sub_resource type="Curve2D" id="Curve2D_f4ir7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, -4, 0, 0, 0, 0, 171, -14, 0, 0, 0, 0, 221, -7)
+"points": PackedVector2Array(0, 0, 0, 0, -909, -851, 0, 0, 0, 0, -854, -594, 0, 0, 0, 0, -808, -447, 0, 0, 0, 0, -721, -300, 0, 0, 0, 0, -593, -159, 0, 0, 0, 0, -417, -35, 0, 0, 0, 0, -127, 73, 0, 0, 0, 0, 309, 150, 0, 0, 0, 0, 724, 94, 0, 0, 0, 0, 1081, -52, 0, 0, 0, 0, 1236, -165, 0, 0, 0, 0, 1356, -304, 0, 0, 0, 0, 1461, -452, 0, 0, 0, 0, 1526, -603, 0, 0, 0, 0, 1572, -870)
 }
-point_count = 4
+point_count = 15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
-size = Vector2(72, 48)
+size = Vector2(139.5, 137.5)
 
 [node name="GrindRail" type="Node2D"]
 script = ExtResource("1_grind")
 path_path = NodePath("Path")
 path_follow_path = NodePath("Path/PathFollow")
 trigger_path = NodePath("TriggerArea")
+visual_line_path = NodePath("VisualLine")
 
 [node name="Path" type="Path2D" parent="."]
-scale = Vector2(3.9819005, 6)
 curve = SubResource("Curve2D_f4ir7")
 
 [node name="PathFollow" type="PathFollow2D" parent="Path"]
-rotation = -0.057080783
+position = Vector2(-909, -851)
+rotation = 1.3599688
 loop = false
 
+[node name="VisualLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
+width = 12.0
+default_color = Color(0.97, 0.79, 0.23, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="TriggerArea" type="Area2D" parent="."]
+position = Vector2(440.5, -43)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]

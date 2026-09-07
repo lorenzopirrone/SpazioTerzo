@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6mn6lxk4o2aj"]
+[gd_scene load_steps=12 format=3 uid="uid://c6mn6lxk4o2aj"]
 
 [ext_resource type="Script" uid="uid://8uctrn6enbxh" path="res://scripts/coin.gd" id="1_coin"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_okmr3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3dddliyhjv0u" path="res://Images/Monete/Moneta 3.png" id="4_4mjay"]
 [ext_resource type="Texture2D" uid="uid://csi6jeukpaihc" path="res://Images/Monete/Moneta 4.png" id="5_8whmu"]
 [ext_resource type="Texture2D" uid="uid://djxj6yyen5d43" path="res://Images/Monete/Moneta 5.png" id="6_7wpal"]
+[ext_resource type="AudioStream" uid="uid://coxo74oll0o2d" path="res://Audio/Coin Audio.wav" id="7_pewx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_coin"]
 radius = 16.0
@@ -67,3 +68,6 @@ texture = ExtResource("2_okmr3")
 libraries = {
 &"": SubResource("AnimationLibrary_qdgj8")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pewx8")
