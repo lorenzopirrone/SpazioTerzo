@@ -1,29 +1,74 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://bkq22u0d07jrk"]
 
-[ext_resource type="Script" path="res://scripts/recoverable_coin.gd" id="1_coin"]
+[ext_resource type="Script" uid="uid://b5ontds5b821h" path="res://scripts/recoverable_coin.gd" id="1_coin"]
+[ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_ebupf"]
+[ext_resource type="Texture2D" uid="uid://dgxnrrc5iq4u2" path="res://Images/Monete/Moneta 2.png" id="3_h2372"]
+[ext_resource type="Texture2D" uid="uid://3dddliyhjv0u" path="res://Images/Monete/Moneta 3.png" id="4_na1qm"]
+[ext_resource type="Texture2D" uid="uid://csi6jeukpaihc" path="res://Images/Monete/Moneta 4.png" id="5_0hxum"]
+[ext_resource type="Texture2D" uid="uid://djxj6yyen5d43" path="res://Images/Monete/Moneta 5.png" id="6_sx8bc"]
+[ext_resource type="AudioStream" uid="uid://coxo74oll0o2d" path="res://Audio/Coin Audio.wav" id="7_4jhnv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_coin"]
 radius = 16.0
 
+[sub_resource type="Animation" id="Animation_evhdd"]
+resource_name = "Coin_Animation"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ebupf"), ExtResource("3_h2372"), ExtResource("4_na1qm"), ExtResource("5_0hxum"), ExtResource("6_sx8bc")]
+}
+
+[sub_resource type="Animation" id="Animation_238bo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ebupf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdgj8"]
+_data = {
+&"Coin_Animation": SubResource("Animation_evhdd"),
+&"RESET": SubResource("Animation_238bo")
+}
+
 [node name="RecoverableCoin" type="CharacterBody2D"]
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("1_coin")
-
-[node name="Visual" type="Polygon2D" parent="."]
-color = Color(1, 0.82, 0.15, 1)
-polygon = PackedVector2Array(0, -18, 12, -10, 18, 0, 12, 10, 0, 18, -12, 10, -18, 0, -12, -10)
-
-[node name="Shine" type="Polygon2D" parent="."]
-color = Color(1, 0.96, 0.65, 0.9)
-polygon = PackedVector2Array(0, -9, 5, -5, 9, 0, 5, 5, 0, 9, -5, 5, -9, 0, -5, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_coin")
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_coin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.375, 2.375)
+texture = ExtResource("2_ebupf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qdgj8")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4jhnv")

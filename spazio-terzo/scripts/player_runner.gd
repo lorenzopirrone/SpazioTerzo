@@ -11,6 +11,7 @@ const RECOVERABLE_COIN_SCENE := preload("res://scenes/environment/recoverable_co
 const ANIMATION_RUN: StringName = &"Vespro_Run"
 const ANIMATION_JUMP: StringName = &"Vespro Jump"
 const ANIMATION_FALL: StringName = &"Vespro_Fall"
+const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
@@ -92,6 +93,7 @@ var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
 var _current_animation: StringName = &""
+var _damage_animation_timer: float = 0.0
 
 
 func _ready() -> void:
@@ -114,15 +116,19 @@ func play_animation(animation_name: StringName) -> void:
 
 	_current_animation = animation_name
 	animation_player.play(animation_name)
+	_update_animation_speed()
 
 
 func _process(_delta: float) -> void:
-	animation_player.speed_scale = run_speed / 300.0
+	_update_animation_speed()
 
 
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
+
+	if _damage_animation_timer > 0.0:
+		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
 
 	if _invulnerability_timer > 0.0:
 		_invulnerability_timer = maxf(_invulnerability_timer - delta, 0.0)
@@ -206,11 +212,13 @@ func take_hit() -> void:
 	_spawn_dropped_coins(coins_to_drop)
 	_invulnerability_timer = invulnerability_time
 	_knockback_timer = knockback_duration
+	_damage_animation_timer = knockback_duration
 	_knockback_start_x = global_position.x
 	_knockback_target_x = _knockback_start_x - knockback_distance
 	_flash_timer = 0.0
 	velocity.x = 0.0
 	velocity.y = knockback_lift_velocity
+	play_animation(ANIMATION_DAMAGE)
 
 
 func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
@@ -379,12 +387,28 @@ func _update_charge_bar(amount: float) -> void:
 
 
 func _update_movement_animation() -> void:
+	if _damage_animation_timer > 0.0:
+		return
+
 	if is_on_floor():
 		play_animation(ANIMATION_RUN)
 	elif velocity.y < 0.0:
 		play_animation(ANIMATION_JUMP)
 	else:
 		play_animation(ANIMATION_FALL)
+
+
+func _update_animation_speed() -> void:
+	if _current_animation == ANIMATION_RUN:
+		animation_player.speed_scale = run_speed / 300.0
+	else:
+		animation_player.speed_scale = 1.0
+
+
+func _get_animation_length(animation_name: StringName) -> float:
+	if not animation_player.has_animation(animation_name):
+		return 0.0
+	return animation_player.get_animation(animation_name).length
 
 
 func _end_grind() -> void:

@@ -247,15 +247,15 @@ position = Vector2(3262, 256)
 [node name="AirPlatform4" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(2888, 331)
 
-[node name="TurnBlack" parent="." instance=ExtResource("12_km0xc")]
-position = Vector2(2880, 408)
-sprite_name = "Vespro"
-smooth_restore = false
-
 [node name="TurnBlack2" parent="." instance=ExtResource("12_km0xc")]
-position = Vector2(4756, 408)
-sprite_name = "VesproTest"
-action = "Torna Normale"
+position = Vector2(2835, 407)
+sprite_name = "Vespro"
+restore_time = 1.5
+
+[node name="TurnBlack3" parent="." instance=ExtResource("12_km0xc")]
+position = Vector2(3632, 413)
+sprite_name = "Vespro"
+black_color = Color(1, 1, 1, 1)
 restore_time = 1.5
 
 [node name="Trampoline" parent="." instance=ExtResource("13_km0xc")]
@@ -299,6 +299,9 @@ position = Vector2(6932, -413)
 
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 position = Vector2(84, 422)
+knockback_distance = 196.0
+knockback_lift_velocity = -260.0
+knockback_duration = 1.0
 
 [node name="Coin" parent="." instance=ExtResource("8_coin")]
 position = Vector2(12278, -492)

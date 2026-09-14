@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=32 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://bqj5rgmotj377" path="res://scripts/jump_trajectory_preview.gd" id="2_trajectory"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://cb67nvlnm7doi" path="res://Vespro jump/Vespro fall_0007.png" id="16_dferu"]
 [ext_resource type="Texture2D" uid="uid://cnoxicvnvbhny" path="res://Vespro jump/Vespro fall_0006.png" id="17_t62v4"]
 [ext_resource type="Texture2D" uid="uid://dl1kgojiy7n4o" path="res://Vespro jump/Vespro fall_0008.png" id="18_t62v4"]
+[ext_resource type="Texture2D" uid="uid://c6r0hq8wvr32k" path="res://Vespro damage/Vespro damage_0001.png" id="19_6a6mx"]
+[ext_resource type="Texture2D" uid="uid://cke20jxg0mapu" path="res://Vespro damage/Vespro damage_0002.png" id="20_j3wsw"]
+[ext_resource type="Texture2D" uid="uid://273nv7qykmij" path="res://Vespro damage/Vespro damage_0003.png" id="21_ds2sr"]
+[ext_resource type="Texture2D" uid="uid://bq0h182vha2fo" path="res://Vespro damage/Vespro damage_0004.png" id="22_6xqls"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -41,9 +45,9 @@ tracks/0/keys = {
 "values": [ExtResource("3_ktjr4")]
 }
 
-[sub_resource type="Animation" id="Animation_afsss"]
-resource_name = "Vespro_Run"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_642so"]
+resource_name = "Vespro Ground"
+length = 0.14
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,10 +55,10 @@ tracks/0/path = NodePath("Vespro:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5, 0.6, 0.7, 0.7999999, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
+"values": [ExtResource("16_dferu"), ExtResource("18_t62v4")]
 }
 
 [sub_resource type="Animation" id="Animation_t62v4"]
@@ -89,9 +93,9 @@ tracks/0/keys = {
 "values": [ExtResource("16_dferu"), ExtResource("17_t62v4")]
 }
 
-[sub_resource type="Animation" id="Animation_642so"]
-resource_name = "Vespro Ground"
-length = 0.14
+[sub_resource type="Animation" id="Animation_afsss"]
+resource_name = "Vespro_Run"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,10 +103,26 @@ tracks/0/path = NodePath("Vespro:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5, 0.6, 0.7, 0.7999999, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("16_dferu"), ExtResource("18_t62v4")]
+"values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
+}
+
+[sub_resource type="Animation" id="Animation_3hvrq"]
+resource_name = "Vespro_Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.2, 0.33333334, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("19_6a6mx"), ExtResource("20_j3wsw"), ExtResource("21_ds2sr"), ExtResource("22_6xqls")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3wsw"]
@@ -110,6 +130,7 @@ _data = {
 &"RESET": SubResource("Animation_6a6mx"),
 &"Vespro Ground": SubResource("Animation_642so"),
 &"Vespro Jump": SubResource("Animation_t62v4"),
+&"Vespro_Damage": SubResource("Animation_3hvrq"),
 &"Vespro_Fall": SubResource("Animation_uqfkb"),
 &"Vespro_Run": SubResource("Animation_afsss")
 }
