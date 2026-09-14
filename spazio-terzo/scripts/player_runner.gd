@@ -8,6 +8,9 @@ signal coin_collected(total_coins: int)
 
 const COIN_SCENE := preload("res://scenes/environment/coin.tscn")
 const RECOVERABLE_COIN_SCENE := preload("res://scenes/environment/recoverable_coin.tscn")
+const ANIMATION_RUN: StringName = &"Vespro_Run"
+const ANIMATION_JUMP: StringName = &"Vespro Jump"
+const ANIMATION_FALL: StringName = &"Vespro_Fall"
 
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
@@ -70,6 +73,7 @@ const RECOVERABLE_COIN_SCENE := preload("res://scenes/environment/recoverable_co
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
 @onready var punch_shape: RectangleShape2D = punch_collision.shape as RectangleShape2D
 @onready var charge_bar: Node2D = $ChargeBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var _charge_time: float = 0.0
 var _is_charging: bool = false
@@ -87,6 +91,7 @@ var _flash_timer: float = 0.0
 var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
+var _current_animation: StringName = &""
 
 
 func _ready() -> void:
@@ -97,11 +102,23 @@ func _ready() -> void:
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
 	
-	$AnimationPlayer.play("Vespro_Run")
+	play_animation(ANIMATION_RUN)
 
 
-func _process(delta: float) -> void:
-	$AnimationPlayer.speed_scale = run_speed / 300.0
+func play_animation(animation_name: StringName) -> void:
+	if _current_animation == animation_name:
+		return
+
+	if not animation_player.has_animation(animation_name):
+		return
+
+	_current_animation = animation_name
+	animation_player.play(animation_name)
+
+
+func _process(_delta: float) -> void:
+	animation_player.speed_scale = run_speed / 300.0
+
 
 func _physics_process(delta: float) -> void:
 	if _dead:
@@ -153,6 +170,7 @@ func _physics_process(delta: float) -> void:
 
 	_update_damage_flash(delta)
 	move_and_slide()
+	_update_movement_animation()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -337,6 +355,7 @@ func _release_punch() -> void:
 
 func _jump() -> void:
 	velocity.y = jump_velocity
+	play_animation(ANIMATION_JUMP)
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
 
@@ -357,6 +376,15 @@ func _set_punch_active(active: bool) -> void:
 
 func _update_charge_bar(amount: float) -> void:
 	charge_bar.scale.x = clampf(amount, 0.0, 1.0)
+
+
+func _update_movement_animation() -> void:
+	if is_on_floor():
+		play_animation(ANIMATION_RUN)
+	elif velocity.y < 0.0:
+		play_animation(ANIMATION_JUMP)
+	else:
+		play_animation(ANIMATION_FALL)
 
 
 func _end_grind() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=19 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="Texture2D" uid="uid://bg3n1t4e6naat" path="res://Fondali/Test sfondo rosso.png" id="3_c6rld"]
@@ -14,11 +14,19 @@
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="14_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
-[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="16_4dr30"]
-[ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="16_q6ljp"]
+[ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="17_4dr30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_f4ir7"]
+_data = {
+"points": PackedVector2Array(-0.6154175, -539.0932, 0.6154175, 539.0932, -909, -851, -909.1886, -1.5394897, 909.1886, 1.5394897, 274, 199, 0.96617126, 521.10657, -0.96617126, -521.10657, 1456, -849)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(139.5, 137.5)
 
 [node name="Level02" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
@@ -292,21 +300,6 @@ position = Vector2(6932, -413)
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 position = Vector2(84, 422)
 
-[node name="GrindRail" parent="." instance=ExtResource("16_q6ljp")]
-position = Vector2(6726, 132)
-
-[node name="Grind Ponte" parent="." instance=ExtResource("16_q6ljp")]
-position = Vector2(13102, 185)
-hook_side = 1
-speed_mode = 1
-grind_speed = 800.0
-
-[node name="VisualLine" parent="Grind Ponte" index="1"]
-points = PackedVector2Array(-908, -852, -857, -614, -808, -445, -726, -306, -611, -180, -420, -39, -140, 72, 310, 154, 714, 97, 1080, -51, 1244, -172, 1462, -449, 1526, -599, 1565, -862)
-
-[node name="CollisionShape2D" parent="Grind Ponte/TriggerArea" index="0"]
-position = Vector2(-1342.5, -802)
-
 [node name="Coin" parent="." instance=ExtResource("8_coin")]
 position = Vector2(12278, -492)
 
@@ -397,7 +390,36 @@ position = Vector2(14608, -541)
 [node name="Coin30" parent="." instance=ExtResource("8_coin")]
 position = Vector2(14602, -440)
 
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("16_4dr30")]
-position = Vector2(9441, 383)
+[node name="GrindRail2" type="Node2D" parent="."]
+position = Vector2(13147, 127)
+script = ExtResource("17_4dr30")
+path_path = NodePath("Path")
+path_follow_path = NodePath("Path/PathFollow")
+trigger_path = NodePath("TriggerArea")
+visual_line_path = NodePath("VisualLine")
+hook_side = 1
 
-[editable path="Grind Ponte"]
+[node name="Path" type="Path2D" parent="GrindRail2"]
+curve = SubResource("Curve2D_f4ir7")
+
+[node name="PathFollow" type="PathFollow2D" parent="GrindRail2/Path"]
+position = Vector2(-909, -851)
+rotation = 1.5696547
+loop = false
+
+[node name="VisualLine" type="Line2D" parent="GrindRail2"]
+position = Vector2(-910, -829)
+points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
+width = 12.0
+default_color = Color(0.97, 0.79, 0.23, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TriggerArea" type="Area2D" parent="GrindRail2"]
+position = Vector2(440.5, -43)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrindRail2/TriggerArea"]
+position = Vector2(-1345.5, -714)
+shape = SubResource("RectangleShape2D_trigger")

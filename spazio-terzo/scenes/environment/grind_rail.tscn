@@ -4,9 +4,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_f4ir7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -909, -851, 0, 0, 0, 0, -854, -594, 0, 0, 0, 0, -808, -447, 0, 0, 0, 0, -721, -300, 0, 0, 0, 0, -593, -159, 0, 0, 0, 0, -417, -35, 0, 0, 0, 0, -127, 73, 0, 0, 0, 0, 309, 150, 0, 0, 0, 0, 724, 94, 0, 0, 0, 0, 1081, -52, 0, 0, 0, 0, 1236, -165, 0, 0, 0, 0, 1356, -304, 0, 0, 0, 0, 1461, -452, 0, 0, 0, 0, 1526, -603, 0, 0, 0, 0, 1572, -870)
+"points": PackedVector2Array(-0.6154175, -539.0932, 0.6154175, 539.0932, -909, -851, -909.1886, -1.5394897, 909.1886, 1.5394897, 274, 199, 0.96617126, 521.10657, -0.96617126, -521.10657, 1456, -849)
 }
-point_count = 15
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(139.5, 137.5)
@@ -23,10 +23,11 @@ curve = SubResource("Curve2D_f4ir7")
 
 [node name="PathFollow" type="PathFollow2D" parent="Path"]
 position = Vector2(-909, -851)
-rotation = 1.3599688
+rotation = 1.5696547
 loop = false
 
 [node name="VisualLine" type="Line2D" parent="."]
+position = Vector2(-910, -829)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
 default_color = Color(0.97, 0.79, 0.23, 1)
