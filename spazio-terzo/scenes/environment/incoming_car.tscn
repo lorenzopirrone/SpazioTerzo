@@ -9,8 +9,9 @@ size = Vector2(160, 150)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_hfk4b"]
 points = PackedVector2Array(-49.999832, 46.00018, -51.00038, -104.99982, 87.99952, -133.00032, 90.00049, 134.99968, 9.000518, 142.99997, 0.0002932192, 81)
 
-[node name="IncomingObstacle" type="Node2D"]
+[node name="IncomingObstacle" type="Node2D" node_paths=PackedStringArray("parts")]
 script = ExtResource("1_mmw3t")
+parts = [NodePath("Obstacle/Sprite2D")]
 alert_duration = 1.0
 obstacle_speed = 1800.0
 

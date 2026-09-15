@@ -34,6 +34,8 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 @export var punch_reach: float = 86.0
 ## Potenza minima accettata del cazzotto caricato.
 @export var punch_min_power: float = 0.35
+## Numero minimo di monete necessarie per poter tirare il pugno.
+@export var punch_required_coins: int = 10
 
 @export_group("Runner Feel")
 ## Finestra di tolleranza dopo aver lasciato una piattaforma per poter ancora saltare.
@@ -357,6 +359,9 @@ func _buffer_jump() -> void:
 
 func _begin_punch_charge() -> void:
 	if _dead:
+		return
+
+	if _coins < punch_required_coins:
 		return
 
 	_is_charging = true
