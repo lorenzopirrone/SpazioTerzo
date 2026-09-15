@@ -7,11 +7,16 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_r1dr6"]
 points = PackedVector2Array(-18.656387, -17.260612, 0.84361506, -18.260612, 20.843616, 2.7393894, 20.843616, 18.239391, -19.156387, 17.739391)
 
-[node name="Obstacle" type="Area2D"]
+[node name="Obstacle" type="Area2D" node_paths=PackedStringArray("parts")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_obstacle")
+parts = [NodePath("TrashCan"), NodePath("Trash")]
+effect_duration = 2.0
+effect_scale = 6.0
+effect_distance = 1800.0
+effect_rotation = 480.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.84361494, 10.260612)
