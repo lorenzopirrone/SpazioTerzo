@@ -70,11 +70,16 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 ## Percentuale delle monete perse che resta sul pavimento e può essere ripresa.
 @export var recoverable_drop_ratio: float = 0.5
 
+@export_group("Damage Audio")
+@export var damage_sounds: Array[AudioStream] = []
+
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
 @onready var punch_shape: RectangleShape2D = punch_collision.shape as RectangleShape2D
 @onready var charge_bar: Node2D = $ChargeBar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var damage_audio: AudioStreamPlayer = $DamageAudio
+@onready var music_player: AudioStreamPlayer = $"../Guaglio_Theme"
 
 var _charge_time: float = 0.0
 var _is_charging: bool = false
@@ -118,7 +123,14 @@ func play_animation(animation_name: StringName) -> void:
 	animation_player.play(animation_name)
 	_update_animation_speed()
 
+func play_damage_sound() -> void:
+	if damage_sounds.is_empty():
+		return
 
+	damage_audio.stream = damage_sounds.pick_random()
+	damage_audio.play()
+	
+	
 func _process(_delta: float) -> void:
 	_update_animation_speed()
 
@@ -218,6 +230,9 @@ func take_hit() -> void:
 	_flash_timer = 0.0
 	velocity.x = 0.0
 	velocity.y = knockback_lift_velocity
+	
+	music_player.stream_paused = true
+	play_damage_sound()
 	play_animation(ANIMATION_DAMAGE)
 
 
@@ -426,3 +441,8 @@ func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
 			return found
 
 	return null
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == ANIMATION_DAMAGE:
+		music_player.stream_paused = false

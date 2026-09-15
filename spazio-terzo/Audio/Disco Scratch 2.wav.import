@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k4q005jbt41a"
+path="res://.godot/imported/Disco Scratch 2.wav-ad62188b110339012ff0d9e04fc1a7ad.sample"
+
+[deps]
+
+source_file="res://Audio/Disco Scratch 2.wav"
+dest_files=["res://.godot/imported/Disco Scratch 2.wav-ad62188b110339012ff0d9e04fc1a7ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

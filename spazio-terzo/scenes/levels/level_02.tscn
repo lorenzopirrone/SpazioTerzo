@@ -30,6 +30,7 @@ size = Vector2(139.5, 137.5)
 
 [node name="Level02" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
+audio_player_path = NodePath("Guaglio_Theme")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -178,7 +179,7 @@ rotation = 3.1415927
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
 position = Vector2(20961, 380)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Guaglio_Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_o4ql5")
 autoplay = true
 
