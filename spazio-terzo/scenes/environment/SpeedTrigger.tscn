@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtlpgbyhwoeux"]
 
-[ext_resource type="Script" uid="uid://c3ggw5mfng0u8" path="res://SpeedTrigger.gd" id="1_n80po"]
+[ext_resource type="Script" uid="uid://c3ggw5mfng0u8" path="res://scripts/SpeedTrigger.gd" id="1_n80po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(160, 150)

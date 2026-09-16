@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
-[ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://coin_charge_bar.gd" id="3_s88fb"]
+[ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
 
 [node name="LevelUI" type="CanvasLayer"]
 
@@ -44,7 +44,7 @@ offset_bottom = 152.0
 grow_horizontal = 0
 texture = ExtResource("2_fdlk4")
 
-[node name="Button" type="Button" parent="UI"]
+[node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -58,46 +58,98 @@ theme_override_fonts/font = ExtResource("1_uu4ov")
 theme_override_font_sizes/font_size = 24
 text = "II"
 
-[node name="PausePanel" type="Panel" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="UI/PausePanel"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button2" type="Button" parent="UI/PausePanel"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button3" type="Button" parent="UI/PausePanel"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="CoinChargeBar" type="Control" parent="UI" node_paths=PackedStringArray("fill")]
+[node name="CoinChargeBar" type="Control" parent="UI/PauseButton" node_paths=PackedStringArray("fill")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
-offset_bottom = 40.0
+offset_left = -1007.0
+offset_top = -19.0
+offset_right = -807.0
+offset_bottom = 21.0
 grow_horizontal = 2
 script = ExtResource("3_s88fb")
 fill = NodePath("Fill")
 
-[node name="Background" type="ColorRect" parent="UI/CoinChargeBar"]
+[node name="Background" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 20.0
 color = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
-[node name="Fill" type="ColorRect" parent="UI/CoinChargeBar"]
+[node name="Fill" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 20.0
 color = Color(1, 0.62352943, 0, 1)
+
+[node name="PausePanel" type="Panel" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -309.0
+offset_right = 309.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -254.0
+offset_right = 262.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -44.0
+offset_right = 262.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = 191.0
+offset_right = 262.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "EXIT"
