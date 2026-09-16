@@ -140,7 +140,9 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
-
+		
+	print("PLAYER PHYSICS")
+	
 	if _damage_animation_timer > 0.0:
 		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
 

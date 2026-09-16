@@ -31,10 +31,12 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(139.5, 137.5)
 
-[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel") groups=["level_root"]]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme") groups=["level_root"]]
 script = ExtResource("5_level")
 audio_player_path = NodePath("Guaglio_Theme")
 pause_panel = NodePath("Background/LevelUI/UI/PausePanel")
+guaglio_theme = NodePath("Guaglio_Theme")
+main_menu_scene = "uid://cq12o0u6vf2eu"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -52,6 +54,9 @@ script = ExtResource("4_01hg1")
 [node name="PauseButton" parent="Background/LevelUI/UI" index="1"]
 action_mode = 0
 
+[node name="QuitButton" parent="Background/LevelUI/UI/PausePanel" index="2"]
+text = "QUIT"
+
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)
 scale = Vector2(1.0666667, 1.0666667)
@@ -66,7 +71,12 @@ target_path = NodePath("../Player")
 horizontal_lookahead = 800.0
 vertical_offset = -84.0
 
+[node name="Guaglio_Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o4ql5")
+autoplay = true
+
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
+process_mode = 1
 position = Vector2(84, 422)
 knockback_distance = 196.0
 knockback_lift_velocity = -260.0
@@ -201,10 +211,6 @@ rotation = 3.1415927
 
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
 position = Vector2(20961, 380)
-
-[node name="Guaglio_Theme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_o4ql5")
-autoplay = true
 
 [node name="AirPlatform2" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(3681, 206)
@@ -448,5 +454,6 @@ shape = SubResource("RectangleShape2D_trigger")
 [connection signal="pressed" from="Background/LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Background/LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Background/LevelUI/UI/PausePanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background/LevelUI/UI/PausePanel/QuitButton" to="." method="_on_quit_button_pressed"]
 
 [editable path="Background/LevelUI"]

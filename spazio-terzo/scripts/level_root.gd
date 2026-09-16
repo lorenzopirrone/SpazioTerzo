@@ -25,6 +25,9 @@ signal player_died
 
 @export_group("UI References")
 @export var pause_panel: Panel
+@export var guaglio_theme: AudioStreamPlayer
+@export_file("*.tscn") var main_menu_scene: String
+
 
 var player: Node2D
 var _game_over_layer: CanvasLayer
@@ -57,8 +60,12 @@ func complete_level() -> void:
 
 func toggle_pause() -> void:
 	get_tree().paused = not get_tree().paused
-	print("PAUSA:", get_tree().paused)
-	print("LEVEL ROOT PROCESS MODE:", process_mode)
+
+	if get_tree().paused:
+		guaglio_theme.stream_paused = true
+	else:
+		guaglio_theme.stream_paused = false
+
 	_update_pause_menu()
 
 
@@ -186,4 +193,11 @@ func _on_pause_button_pressed() -> void:
 
 
 func _on_resume_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().paused = false
+	guaglio_theme.stream_paused = false
+	_update_pause_menu()
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(main_menu_scene)

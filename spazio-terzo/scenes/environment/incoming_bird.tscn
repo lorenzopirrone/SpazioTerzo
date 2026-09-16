@@ -60,6 +60,7 @@ _data = {
 }
 
 [node name="IncomingObstacle" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_dibi5")
 alert_duration = 1.0
 obstacle_speed = 1800.0
@@ -96,7 +97,8 @@ shape = SubResource("CapsuleShape2D_ohkdk")
 texture = ExtResource("2_ui0jo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle"]
-autoplay = "Bird animation"
+process_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_gjjq3")
 }
+autoplay = "Bird animation"
