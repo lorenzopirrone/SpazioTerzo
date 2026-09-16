@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cke20jxg0mapu"
-path="res://.godot/imported/Vespro damage_0002.png-0e92701c6b136f9119b8f48782b8afb5.ctex"
+path="res://.godot/imported/Vespro damage_0002.png-deaf630e5acf018e3862e7b190aa137a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vespro damage/Vespro damage_0002.png"
-dest_files=["res://.godot/imported/Vespro damage_0002.png-0e92701c6b136f9119b8f48782b8afb5.ctex"]
+source_file="res://Sprites/Vespro/Vespro damage/Vespro damage_0002.png"
+dest_files=["res://.godot/imported/Vespro damage_0002.png-deaf630e5acf018e3862e7b190aa137a.ctex"]
 
 [params]
 

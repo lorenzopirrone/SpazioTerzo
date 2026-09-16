@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6r0hq8wvr32k"
-path="res://.godot/imported/Vespro damage_0001.png-923c06e011db7b27136e163e96615620.ctex"
+uid="uid://bvgkyvy85l64c"
+path="res://.godot/imported/Vespro punch_0001.png-5238b45342c9af3cc53a45f0a1bdc859.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vespro damage/Vespro damage_0001.png"
-dest_files=["res://.godot/imported/Vespro damage_0001.png-923c06e011db7b27136e163e96615620.ctex"]
+source_file="res://Sprites/Vespro/Vespro punch/Vespro punch_0001.png"
+dest_files=["res://.godot/imported/Vespro punch_0001.png-5238b45342c9af3cc53a45f0a1bdc859.ctex"]
 
 [params]
 
