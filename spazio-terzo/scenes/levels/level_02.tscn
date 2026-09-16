@@ -31,12 +31,13 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(139.5, 137.5)
 
-[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme") groups=["level_root"]]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation") groups=["level_root"]]
 script = ExtResource("5_level")
 audio_player_path = NodePath("Guaglio_Theme")
 pause_panel = NodePath("Background/LevelUI/UI/PausePanel")
 guaglio_theme = NodePath("Guaglio_Theme")
 main_menu_scene = "uid://cq12o0u6vf2eu"
+pause_animation = NodePath("Background/LevelUI/UI/PausePanel/AnimatedSprite2D")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -56,6 +57,10 @@ action_mode = 0
 
 [node name="QuitButton" parent="Background/LevelUI/UI/PausePanel" index="2"]
 text = "QUIT"
+
+[node name="AnimatedSprite2D" parent="Background/LevelUI/UI/PausePanel" index="3"]
+frame = 5
+frame_progress = 0.0
 
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)

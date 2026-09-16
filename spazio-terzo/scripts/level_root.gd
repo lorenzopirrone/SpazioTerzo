@@ -27,7 +27,7 @@ signal player_died
 @export var pause_panel: Panel
 @export var guaglio_theme: AudioStreamPlayer
 @export_file("*.tscn") var main_menu_scene: String
-
+@export var pause_animation: AnimatedSprite2D
 
 var player: Node2D
 var _game_over_layer: CanvasLayer
@@ -71,6 +71,11 @@ func toggle_pause() -> void:
 
 func _update_pause_menu() -> void:
 	pause_panel.visible = get_tree().paused
+	
+	if get_tree().paused:
+		pause_animation.play()
+	else:
+		pause_animation.stop()
 
 func _on_player_died() -> void:
 	player_died.emit()

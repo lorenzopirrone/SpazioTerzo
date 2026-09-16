@@ -1,8 +1,168 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=43 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
 [ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
+[ext_resource type="Texture2D" uid="uid://b1mhbnf7g04xo" path="res://scenes/UI/Clock Gif/frame_00_delay-0.25s.png" id="4_813rm"]
+[ext_resource type="Texture2D" uid="uid://bckv7f5h1sxlr" path="res://scenes/UI/Clock Gif/frame_01_delay-0.25s.png" id="5_6s4o3"]
+[ext_resource type="Texture2D" uid="uid://bsj5qllc6x2oo" path="res://scenes/UI/Clock Gif/frame_02_delay-0.25s.png" id="6_cvdff"]
+[ext_resource type="Texture2D" uid="uid://mjohm4e8elf4" path="res://scenes/UI/Clock Gif/frame_03_delay-0.25s.png" id="7_01sg8"]
+[ext_resource type="Texture2D" uid="uid://btu31fdx8uha1" path="res://scenes/UI/Clock Gif/frame_04_delay-0.25s.png" id="8_1ybtq"]
+[ext_resource type="Texture2D" uid="uid://m510i47r62fr" path="res://scenes/UI/Clock Gif/frame_05_delay-0.25s.png" id="9_4qqu0"]
+[ext_resource type="Texture2D" uid="uid://bwcdkt2688jor" path="res://scenes/UI/Clock Gif/frame_06_delay-0.25s.png" id="10_qf0i8"]
+[ext_resource type="Texture2D" uid="uid://c801rg4u4bnui" path="res://scenes/UI/Clock Gif/frame_07_delay-0.25s.png" id="11_4hsr6"]
+[ext_resource type="Texture2D" uid="uid://i8yplvcnfe87" path="res://scenes/UI/Clock Gif/frame_08_delay-0.25s.png" id="12_xbgee"]
+[ext_resource type="Texture2D" uid="uid://cnqqka1okp6jh" path="res://scenes/UI/Clock Gif/frame_09_delay-0.25s.png" id="13_k02l2"]
+[ext_resource type="Texture2D" uid="uid://dsy0dagujxybv" path="res://scenes/UI/Clock Gif/frame_10_delay-0.25s.png" id="14_fkwso"]
+[ext_resource type="Texture2D" uid="uid://cl4lqejwxc8k4" path="res://scenes/UI/Clock Gif/frame_11_delay-0.25s.png" id="15_nwn7c"]
+[ext_resource type="Texture2D" uid="uid://dxicxd3o8kaf8" path="res://scenes/UI/Clock Gif/frame_12_delay-0.25s.png" id="16_v2p2b"]
+[ext_resource type="Texture2D" uid="uid://ocruu8fhd6yn" path="res://scenes/UI/Clock Gif/frame_13_delay-0.25s.png" id="17_pn5rm"]
+[ext_resource type="Texture2D" uid="uid://r461i5c8injh" path="res://scenes/UI/Clock Gif/frame_14_delay-0.25s.png" id="18_jd6kr"]
+[ext_resource type="Texture2D" uid="uid://ct7s7xpknu6f2" path="res://scenes/UI/Clock Gif/frame_15_delay-0.25s.png" id="19_k0c2n"]
+[ext_resource type="Texture2D" uid="uid://ddfm7kaym1hex" path="res://scenes/UI/Clock Gif/frame_16_delay-0.25s.png" id="20_rinii"]
+[ext_resource type="Texture2D" uid="uid://6ns82kep5ec8" path="res://scenes/UI/Clock Gif/frame_17_delay-0.25s.png" id="21_6y8kx"]
+[ext_resource type="Texture2D" uid="uid://c8qcpy4ty2yip" path="res://scenes/UI/Clock Gif/frame_18_delay-0.25s.png" id="22_lert1"]
+[ext_resource type="Texture2D" uid="uid://cvpfmr8bqfhis" path="res://scenes/UI/Clock Gif/frame_19_delay-0.25s.png" id="23_mgc3p"]
+[ext_resource type="Texture2D" uid="uid://d031k01a0ro55" path="res://scenes/UI/Clock Gif/frame_20_delay-0.25s.png" id="24_l3le5"]
+[ext_resource type="Texture2D" uid="uid://ou45366uixcy" path="res://scenes/UI/Clock Gif/frame_21_delay-0.25s.png" id="25_dwhdk"]
+[ext_resource type="Texture2D" uid="uid://4jwyothlpfxk" path="res://scenes/UI/Clock Gif/frame_22_delay-0.25s.png" id="26_sfmn4"]
+[ext_resource type="Texture2D" uid="uid://crilnhnx82von" path="res://scenes/UI/Clock Gif/frame_23_delay-0.25s.png" id="27_cfq0j"]
+[ext_resource type="Texture2D" uid="uid://ds3y7oedamj0k" path="res://scenes/UI/Clock Gif/frame_24_delay-0.25s.png" id="28_pyquf"]
+[ext_resource type="Texture2D" uid="uid://dmdiv7381yx08" path="res://scenes/UI/Clock Gif/frame_25_delay-0.25s.png" id="29_k5edn"]
+[ext_resource type="Texture2D" uid="uid://cwit4mqxkcnc2" path="res://scenes/UI/Clock Gif/frame_26_delay-0.25s.png" id="30_ic8gt"]
+[ext_resource type="Texture2D" uid="uid://bqiw0i8wv6wis" path="res://scenes/UI/Clock Gif/frame_27_delay-0.25s.png" id="31_6xkiy"]
+[ext_resource type="Texture2D" uid="uid://rlovvu1r4iy5" path="res://scenes/UI/Clock Gif/frame_28_delay-0.25s.png" id="32_vqed0"]
+[ext_resource type="Texture2D" uid="uid://sl0bkx3nc80j" path="res://scenes/UI/Clock Gif/frame_29_delay-0.25s.png" id="33_iljn8"]
+[ext_resource type="Texture2D" uid="uid://bjkft8w5oaopu" path="res://scenes/UI/Clock Gif/frame_30_delay-0.25s.png" id="34_lb4wv"]
+[ext_resource type="Texture2D" uid="uid://cxfhj5hn2dn8b" path="res://scenes/UI/Clock Gif/frame_31_delay-0.25s.png" id="35_nkxke"]
+[ext_resource type="Texture2D" uid="uid://y06efkyh5akt" path="res://scenes/UI/Clock Gif/frame_32_delay-0.25s.png" id="36_quij0"]
+[ext_resource type="Texture2D" uid="uid://bhjpftlykecq" path="res://scenes/UI/Clock Gif/frame_33_delay-0.25s.png" id="37_v8vhw"]
+[ext_resource type="Texture2D" uid="uid://bbpplx2u33d54" path="res://scenes/UI/Clock Gif/frame_34_delay-0.25s.png" id="38_geck8"]
+[ext_resource type="Texture2D" uid="uid://dacpn6xedsdw8" path="res://scenes/UI/Clock Gif/frame_35_delay-0.25s.png" id="39_6ec1n"]
+[ext_resource type="Texture2D" uid="uid://cm8d3c3dntlyp" path="res://scenes/UI/Clock Gif/frame_36_delay-0.25s.png" id="40_mt6lw"]
+[ext_resource type="Texture2D" uid="uid://n6fdfmono5sn" path="res://scenes/UI/Clock Gif/frame_37_delay-0.25s.png" id="41_ucg4i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_813rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_813rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6s4o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cvdff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_01sg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1ybtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4qqu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qf0i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4hsr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xbgee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k02l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fkwso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_nwn7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v2p2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pn5rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jd6kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_k0c2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rinii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6y8kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lert1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_mgc3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_l3le5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_dwhdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_sfmn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_cfq0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_pyquf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_k5edn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ic8gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_6xkiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_vqed0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_iljn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_lb4wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_nkxke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_quij0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_v8vhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_geck8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6ec1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_mt6lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ucg4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LevelUI" type="CanvasLayer"]
 
@@ -153,3 +313,11 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_uu4ov")
 theme_override_font_sizes/font_size = 43
 text = "EXIT"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/PausePanel"]
+process_mode = 3
+position = Vector2(305, -116.00003)
+scale = Vector2(0.32386363, 0.32386363)
+sprite_frames = SubResource("SpriteFrames_813rm")
+frame_progress = 0.9673055
+speed_scale = 0.7
