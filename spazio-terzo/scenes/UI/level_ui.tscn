@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=51 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
@@ -10,8 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bckv7f5h1sxlr" path="res://scenes/UI/Clock Gif/frame_01_delay-0.25s.png" id="5_6s4o3"]
 [ext_resource type="Texture2D" uid="uid://bsj5qllc6x2oo" path="res://scenes/UI/Clock Gif/frame_02_delay-0.25s.png" id="6_cvdff"]
 [ext_resource type="Texture2D" uid="uid://mjohm4e8elf4" path="res://scenes/UI/Clock Gif/frame_03_delay-0.25s.png" id="7_01sg8"]
+[ext_resource type="Texture2D" uid="uid://b5b1p4cvi44gt" path="res://Images/Flames/Flames 1.png" id="7_4hsr6"]
 [ext_resource type="Texture2D" uid="uid://btu31fdx8uha1" path="res://scenes/UI/Clock Gif/frame_04_delay-0.25s.png" id="8_1ybtq"]
+[ext_resource type="Texture2D" uid="uid://41r74hn2cux2" path="res://Images/Flames/Flames 2.png" id="8_xbgee"]
 [ext_resource type="Texture2D" uid="uid://m510i47r62fr" path="res://scenes/UI/Clock Gif/frame_05_delay-0.25s.png" id="9_4qqu0"]
+[ext_resource type="Texture2D" uid="uid://dj07e4ku1imo0" path="res://Images/Flames/Flames 3.png" id="9_k02l2"]
+[ext_resource type="Texture2D" uid="uid://d0owq1jxwk4lo" path="res://Images/Flames/Flames 4.png" id="10_fkwso"]
 [ext_resource type="Texture2D" uid="uid://bwcdkt2688jor" path="res://scenes/UI/Clock Gif/frame_06_delay-0.25s.png" id="10_qf0i8"]
 [ext_resource type="Texture2D" uid="uid://c801rg4u4bnui" path="res://scenes/UI/Clock Gif/frame_07_delay-0.25s.png" id="11_4hsr6"]
 [ext_resource type="Texture2D" uid="uid://i8yplvcnfe87" path="res://scenes/UI/Clock Gif/frame_08_delay-0.25s.png" id="12_xbgee"]
@@ -44,6 +48,31 @@
 [ext_resource type="Texture2D" uid="uid://dacpn6xedsdw8" path="res://scenes/UI/Clock Gif/frame_35_delay-0.25s.png" id="39_6ec1n"]
 [ext_resource type="Texture2D" uid="uid://cm8d3c3dntlyp" path="res://scenes/UI/Clock Gif/frame_36_delay-0.25s.png" id="40_mt6lw"]
 [ext_resource type="Texture2D" uid="uid://n6fdfmono5sn" path="res://scenes/UI/Clock Gif/frame_37_delay-0.25s.png" id="41_ucg4i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwn7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4hsr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xbgee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k02l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fkwso")
+}],
+"loop": true,
+"name": &"Fire Animation",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_813rm"]
 animations = [{
@@ -311,6 +340,13 @@ offset_right = 238.0
 offset_bottom = 102.0
 texture = ExtResource("4_6s4o3")
 expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(195, 50)
+scale = Vector2(0.57000023, 0.57000023)
+sprite_frames = SubResource("SpriteFrames_nwn7c")
+animation = &"Fire Animation"
+frame_progress = 0.70394826
 
 [node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 1
