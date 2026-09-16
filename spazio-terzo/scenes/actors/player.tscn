@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=41 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -14,16 +14,22 @@
 [ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
 [ext_resource type="Texture2D" uid="uid://dqs1dnqkjygbm" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0008.png" id="11_uqfkb"]
 [ext_resource type="Texture2D" uid="uid://ddog6ahiytm4p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0009.png" id="12_642so"]
-[ext_resource type="Texture2D" uid="uid://5jcdh6k03v02" path="res://Vespro jump/Vespro jump_0002.png" id="13_h5w3c"]
-[ext_resource type="Texture2D" uid="uid://cvqtl2hjphq84" path="res://Vespro jump/Vespro jump_0003.png" id="14_0878f"]
-[ext_resource type="Texture2D" uid="uid://detyokite0gy2" path="res://Vespro jump/Vespro jump_0005.png" id="15_dferu"]
-[ext_resource type="Texture2D" uid="uid://cb67nvlnm7doi" path="res://Vespro jump/Vespro fall_0007.png" id="16_dferu"]
-[ext_resource type="Texture2D" uid="uid://cnoxicvnvbhny" path="res://Vespro jump/Vespro fall_0006.png" id="17_t62v4"]
-[ext_resource type="Texture2D" uid="uid://dl1kgojiy7n4o" path="res://Vespro jump/Vespro fall_0008.png" id="18_t62v4"]
-[ext_resource type="Texture2D" uid="uid://c6r0hq8wvr32k" path="res://Vespro damage/Vespro damage_0001.png" id="19_6a6mx"]
-[ext_resource type="Texture2D" uid="uid://cke20jxg0mapu" path="res://Vespro damage/Vespro damage_0002.png" id="20_j3wsw"]
-[ext_resource type="Texture2D" uid="uid://273nv7qykmij" path="res://Vespro damage/Vespro damage_0003.png" id="21_ds2sr"]
-[ext_resource type="Texture2D" uid="uid://bq0h182vha2fo" path="res://Vespro damage/Vespro damage_0004.png" id="22_6xqls"]
+[ext_resource type="Texture2D" uid="uid://5jcdh6k03v02" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0002.png" id="13_h5w3c"]
+[ext_resource type="Texture2D" uid="uid://cvqtl2hjphq84" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0003.png" id="14_0878f"]
+[ext_resource type="Texture2D" uid="uid://detyokite0gy2" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0005.png" id="15_dferu"]
+[ext_resource type="Texture2D" uid="uid://cb67nvlnm7doi" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0007.png" id="16_dferu"]
+[ext_resource type="Texture2D" uid="uid://cnoxicvnvbhny" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0006.png" id="17_t62v4"]
+[ext_resource type="Texture2D" uid="uid://dl1kgojiy7n4o" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0008.png" id="18_t62v4"]
+[ext_resource type="Texture2D" uid="uid://c6r0hq8wvr32k" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0001.png" id="19_6a6mx"]
+[ext_resource type="Texture2D" uid="uid://cke20jxg0mapu" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0002.png" id="20_j3wsw"]
+[ext_resource type="Texture2D" uid="uid://273nv7qykmij" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0003.png" id="21_ds2sr"]
+[ext_resource type="Texture2D" uid="uid://bq0h182vha2fo" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0004.png" id="22_6xqls"]
+[ext_resource type="Texture2D" uid="uid://bvgkyvy85l64c" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0001.png" id="25_k7i36"]
+[ext_resource type="Texture2D" uid="uid://c8bou82l1gypg" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0002.png" id="26_366ld"]
+[ext_resource type="Texture2D" uid="uid://b4tnklif0d7lg" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0003.png" id="27_8pjo5"]
+[ext_resource type="Texture2D" uid="uid://c3rihkeygtgea" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0004.png" id="28_tiqit"]
+[ext_resource type="Texture2D" uid="uid://di5g38f5qfh4h" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0005.png" id="29_8uqew"]
+[ext_resource type="Texture2D" uid="uid://cpjfgya4uaojm" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0006.png" id="30_w2xlt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -127,11 +133,29 @@ tracks/0/keys = {
 "values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
 }
 
+[sub_resource type="Animation" id="Animation_5d16k"]
+resource_name = "Vespro Punch Charge"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.0333333, 1.4666667, 1.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("25_k7i36"), ExtResource("26_366ld"), ExtResource("27_8pjo5"), ExtResource("28_tiqit"), ExtResource("29_8uqew"), ExtResource("30_w2xlt")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3wsw"]
 _data = {
 &"RESET": SubResource("Animation_6a6mx"),
 &"Vespro Ground": SubResource("Animation_642so"),
 &"Vespro Jump": SubResource("Animation_t62v4"),
+&"Vespro Punch Charge": SubResource("Animation_5d16k"),
 &"Vespro_Damage": SubResource("Animation_3hvrq"),
 &"Vespro_Fall": SubResource("Animation_uqfkb"),
 &"Vespro_Run": SubResource("Animation_afsss")

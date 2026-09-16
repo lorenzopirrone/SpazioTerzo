@@ -168,9 +168,11 @@ animations = [{
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.0020001
-offset_bottom = -0.16015625
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CoinsPanel" type="Panel" parent="UI"]
 layout_mode = 1
@@ -204,6 +206,32 @@ offset_bottom = 152.0
 grow_horizontal = 0
 texture = ExtResource("2_fdlk4")
 
+[node name="CoinChargeBar" type="Control" parent="UI" node_paths=PackedStringArray("fill")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_top = 18.0
+offset_right = 210.0
+offset_bottom = 38.0
+grow_horizontal = 2
+script = ExtResource("3_s88fb")
+fill = NodePath("Fill")
+bar_width = 420.0
+
+[node name="Background" type="ColorRect" parent="UI/CoinChargeBar"]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 20.0
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="Fill" type="ColorRect" parent="UI/CoinChargeBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(1, 0.62352943, 0, 1)
+
 [node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = 1
@@ -217,31 +245,6 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_uu4ov")
 theme_override_font_sizes/font_size = 24
 text = "II"
-
-[node name="CoinChargeBar" type="Control" parent="UI/PauseButton" node_paths=PackedStringArray("fill")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -1007.0
-offset_top = -19.0
-offset_right = -807.0
-offset_bottom = 21.0
-grow_horizontal = 2
-script = ExtResource("3_s88fb")
-fill = NodePath("Fill")
-
-[node name="Background" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.096204735, 0.09620475, 0.096204735, 1)
-
-[node name="Fill" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(1, 0.62352943, 0, 1)
 
 [node name="PausePanel" type="Panel" parent="UI"]
 process_mode = 3
