@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl1kgojiy7n4o"
-path="res://.godot/imported/Vespro fall_0008.png-55a04fb8bc835f2f1bf87ebc3a81c82e.ctex"
+uid="uid://di5g38f5qfh4h"
+path="res://.godot/imported/Vespro punch_0005.png-06b2a25bbb72cce54cf290b7a25a4843.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vespro jump/Vespro fall_0008.png"
-dest_files=["res://.godot/imported/Vespro fall_0008.png-55a04fb8bc835f2f1bf87ebc3a81c82e.ctex"]
+source_file="res://Sprites/Vespro/Vespro punch/Vespro punch_0005.png"
+dest_files=["res://.godot/imported/Vespro punch_0005.png-06b2a25bbb72cce54cf290b7a25a4843.ctex"]
 
 [params]
 
