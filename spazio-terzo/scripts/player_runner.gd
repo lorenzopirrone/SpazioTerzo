@@ -37,6 +37,18 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 ## Numero minimo di monete necessarie per poter tirare il pugno.
 @export var punch_required_coins: int = 10
 
+@export_group("Punch Visuals")
+@export var punch_sprite: Sprite2D
+@export var punch_texture_small: Texture2D
+@export var punch_texture_medium: Texture2D
+@export var punch_texture_large: Texture2D
+
+@export_group("Punch Rotation")
+@export var punch_animation_player: AnimationPlayer
+@export var punch_rotation_animation: String = "Punch Rotation"
+@export var punch_rotation_min_speed: float = 1.0
+@export var punch_rotation_max_speed: float = 5.0
+
 @export_group("Runner Feel")
 ## Finestra di tolleranza dopo aver lasciato una piattaforma per poter ancora saltare.
 @export var coyote_time: float = 0.08
@@ -74,6 +86,7 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 
 @export_group("Damage Audio")
 @export var damage_sounds: Array[AudioStream] = []
+
 
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
@@ -179,10 +192,8 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer_timer -= delta
 		if _coyote_timer > 0.0:
 			_jump()
+			
 
-	if _is_charging:
-		_charge_time = minf(_charge_time + delta, max_charge_time)
-		_update_charge_bar(_charge_time / max_charge_time)
 
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
@@ -456,3 +467,12 @@ func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == ANIMATION_DAMAGE:
 		music_player.stream_paused = false
+
+func _update_punch_rotation() -> void:
+	var charge_ratio := clampf(_charge_time / max_charge_time, 0.0, 1.0)
+
+	punch_animation_player.speed_scale = lerpf(
+		punch_rotation_min_speed,
+		punch_rotation_max_speed,
+		charge_ratio
+	)
