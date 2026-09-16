@@ -1,0 +1,155 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7hny0fa21jaq"]
+
+[ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
+[ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
+[ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
+
+[node name="LevelUI" type="CanvasLayer"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0020001
+offset_bottom = -0.16015625
+
+[node name="CoinsPanel" type="Panel" parent="UI"]
+layout_mode = 1
+offset_right = 530.0
+offset_bottom = 179.0
+
+[node name="Coin Count" type="Label" parent="UI/CoinsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -366.0
+offset_top = 35.0
+offset_right = -28.0
+offset_bottom = 138.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.62352943, 0, 1)
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 52
+text = "10"
+
+[node name="Coin Icon" type="TextureRect" parent="UI/CoinsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -507.0
+offset_top = 22.0
+offset_right = -377.0
+offset_bottom = 152.0
+grow_horizontal = 0
+texture = ExtResource("2_fdlk4")
+
+[node name="PauseButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 19.0
+offset_right = -26.0
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 24
+text = "II"
+
+[node name="CoinChargeBar" type="Control" parent="UI/PauseButton" node_paths=PackedStringArray("fill")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1007.0
+offset_top = -19.0
+offset_right = -807.0
+offset_bottom = 21.0
+grow_horizontal = 2
+script = ExtResource("3_s88fb")
+fill = NodePath("Fill")
+
+[node name="Background" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="Fill" type="ColorRect" parent="UI/PauseButton/CoinChargeBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(1, 0.62352943, 0, 1)
+
+[node name="PausePanel" type="Panel" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -309.0
+offset_right = 309.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -254.0
+offset_right = 262.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -44.0
+offset_right = 262.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="UI/PausePanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = 191.0
+offset_right = 262.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 43
+text = "EXIT"
