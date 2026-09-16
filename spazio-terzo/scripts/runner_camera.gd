@@ -1,4 +1,4 @@
-﻿extends Camera2D
+extends Camera2D
 
 ## Nodo target che la camera deve seguire.
 @export var target_path: NodePath
@@ -55,4 +55,3 @@ func snap_to_target() -> void:
 		desired.x = maxf(desired.x, global_position.x)
 
 	global_position = desired
-

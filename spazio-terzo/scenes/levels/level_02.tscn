@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bbmy3fwy07rrk" path="res://Fondali/Sfondo 1.png" id="2_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://scenes/UI/level_ui.tscn" id="3_4dr30"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
@@ -14,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="14_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
-[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="16_q6ljp"]
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="17_4dr30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
@@ -35,6 +35,12 @@ audio_player_path = NodePath("Guaglio_Theme")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
+
+[node name="LevelUI" parent="Background" instance=ExtResource("3_4dr30")]
+
+[node name="CoinChargeBar" parent="Background/LevelUI/UI" index="3" node_paths=PackedStringArray("player")]
+required_coins = 60
+player = NodePath("../../../../Player")
 
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)
@@ -294,7 +300,7 @@ position = Vector2(5702, 402)
 position = Vector2(9172, 414)
 
 [node name="IncomingObstacle4" parent="." instance=ExtResource("14_n536o")]
-position = Vector2(13542, 402)
+position = Vector2(11671, 399)
 
 [node name="IncomingObstacle2" parent="." instance=ExtResource("14_m2jhg")]
 position = Vector2(6932, -413)
@@ -426,8 +432,7 @@ position = Vector2(440.5, -43)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrindRail2/TriggerArea"]
-position = Vector2(-1345.5, -714)
+position = Vector2(-1345.5, -797)
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("16_q6ljp")]
-position = Vector2(9450, 385)
+[editable path="Background/LevelUI"]

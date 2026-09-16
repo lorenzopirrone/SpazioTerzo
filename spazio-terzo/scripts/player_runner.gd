@@ -256,6 +256,9 @@ func collect_coin(value: int = 1) -> void:
 	_coins += max(value, 0)
 	coin_collected.emit(_coins)
 
+func get_coins() -> int:
+	return _coins
+
 
 func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
