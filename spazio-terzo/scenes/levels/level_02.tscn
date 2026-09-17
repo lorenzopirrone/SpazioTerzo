@@ -85,7 +85,7 @@ autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 process_mode = 1
-position = Vector2(84, 422)
+position = Vector2(79.99999, 395)
 knockback_distance = 196.0
 knockback_lift_velocity = -260.0
 knockback_duration = 1.0

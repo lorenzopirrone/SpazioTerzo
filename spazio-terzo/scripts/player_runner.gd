@@ -39,6 +39,8 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_min_power: float = 0.35
 ## Numero minimo di monete necessarie per poter tirare il pugno.
 @export var punch_required_coins: int = 10
+@export var punch_extension_distance: float = 80.0
+
 
 @export_group("Punch Visuals")
 @export var punch_sprite: Sprite2D
@@ -126,6 +128,8 @@ var _grind_active: bool = false
 var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
 var _is_punch_releasing: bool = false
+var _punch_sprite_start_position: Vector2
+var _punch_extension: float = 0.0
 
 
 func _ready() -> void:
@@ -135,6 +139,7 @@ func _ready() -> void:
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
+	_punch_sprite_start_position = punch_sprite.position
 
 	if punch_speed_effect:
 		punch_speed_effect.visible = false
@@ -208,7 +213,6 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer_timer -= delta
 		if _coyote_timer > 0.0:
 			_jump()
-
 	if _is_charging:
 		_charge_time = minf(_charge_time + delta, max_charge_time)
 		_update_charge_bar(_charge_time / max_charge_time)
@@ -216,7 +220,31 @@ func _physics_process(delta: float) -> void:
 
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
+
+		var punch_progress := 1.0 - (_punch_timer / punch_duration)
+		punch_progress = clampf(punch_progress, 0.0, 1.0)
+
+		# Scatto rapido in avanti e ritorno
+		var extension_progress: float
+
+		if punch_progress < 0.25:
+			# Estensione rapidissima
+			extension_progress = punch_progress / 0.25
+		elif punch_progress < 0.75:
+			# Rimane completamente esteso
+			extension_progress = 1.0
+		else:
+			# Ritorna alla posizione iniziale
+			extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
+
+		punch_sprite.position = _punch_sprite_start_position + Vector2(
+			_punch_extension * extension_progress,
+			0.0
+		)
+
 		if _punch_timer <= 0.0:
+			_punch_timer = 0.0
+			punch_sprite.position = _punch_sprite_start_position
 			_set_punch_active(false)
 			punch_finished.emit()
 
@@ -445,8 +473,17 @@ func _jump() -> void:
 
 
 func _start_punch(power: float) -> void:
+	# Portata del pugno proporzionale alla carica
 	punch_shape.size.x = punch_reach * power
 	punch_collision.position.x = 24.0 + (punch_shape.size.x * 0.5)
+
+	# Estensione visiva proporzionale alla carica
+	_punch_extension = punch_extension_distance * power
+
+	# Il pugno parte dalla posizione normale
+	punch_sprite.position = _punch_sprite_start_position
+	punch_sprite.visible = true
+
 	_punch_timer = punch_duration
 	_set_punch_active(true)
 	punch_started.emit(power)
