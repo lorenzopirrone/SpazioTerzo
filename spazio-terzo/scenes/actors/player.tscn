@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=54 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://k4q005jbt41a" path="res://Audio/Disco Scratch 2.wav" id="3_6xqls"]
 [ext_resource type="Texture2D" uid="uid://c0ce5vyvpm56n" path="res://Sprites/Vespro/Vespro punch/Punch 4.png" id="3_366ld"]
 [ext_resource type="Texture2D" uid="uid://xrpf73jp3pvg" path="res://Sprites/Vespro/Vespro punch/Punch 2.png" id="4_366ld"]
-[ext_resource type="Texture2D" uid="uid://cp6yxjwj5t3bc" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0001.png" id="4_c4rn8"]
 [ext_resource type="Texture2D" uid="uid://bwcknefy8srxj" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0002.png" id="5_ypltb"]
 [ext_resource type="Texture2D" uid="uid://cjr72fsmtllhm" path="res://Sprites/Vespro/Vespro punch/Punch 1.png" id="6_18oyn"]
 [ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
@@ -15,8 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png" id="8_0878f"]
 [ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0006.png" id="9_dferu"]
 [ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
+[ext_resource type="Texture2D" uid="uid://cgttqaupp85vq" path="res://Sprites/Vespro/Vespro punch/White Circle 2.png" id="10_w2xlt"]
+[ext_resource type="Texture2D" uid="uid://c55yl7utiugib" path="res://Sprites/Vespro/Vespro punch/White Circle 3.png" id="11_5d16k"]
 [ext_resource type="Texture2D" uid="uid://dqs1dnqkjygbm" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0008.png" id="11_uqfkb"]
 [ext_resource type="Texture2D" uid="uid://ddog6ahiytm4p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0009.png" id="12_642so"]
+[ext_resource type="Texture2D" uid="uid://dmteoytwoi53p" path="res://Sprites/Vespro/Vespro punch/White Circle 4.png" id="12_cmlg3"]
+[ext_resource type="Texture2D" uid="uid://cb0btka5h682j" path="res://Sprites/Vespro/Vespro punch/White Circle.png" id="13_gm3fn"]
 [ext_resource type="Texture2D" uid="uid://5jcdh6k03v02" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0002.png" id="13_h5w3c"]
 [ext_resource type="Texture2D" uid="uid://cvqtl2hjphq84" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0003.png" id="14_0878f"]
 [ext_resource type="Texture2D" uid="uid://detyokite0gy2" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0005.png" id="15_dferu"]
@@ -31,6 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://c8bou82l1gypg" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0002.png" id="26_366ld"]
 [ext_resource type="Texture2D" uid="uid://b4tnklif0d7lg" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0003.png" id="27_8pjo5"]
 [ext_resource type="Texture2D" uid="uid://c3rihkeygtgea" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0004.png" id="28_tiqit"]
+[ext_resource type="Texture2D" uid="uid://di5g38f5qfh4h" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0005.png" id="35_cmlg3"]
+[ext_resource type="Texture2D" uid="uid://cp6y0l41f02vj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0007.png" id="36_gm3fn"]
+[ext_resource type="Texture2D" uid="uid://jjtbcpj2qykj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0008.png" id="37_amsee"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -39,7 +45,48 @@ height = 59.02
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_punch"]
 size = Vector2(64, 22)
 
+[sub_resource type="Animation" id="Animation_366ld"]
+resource_name = "Punch Rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8pjo5"]
+_data = {
+&"Punch Rotation": SubResource("Animation_366ld")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18oyn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amsee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_w2xlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5d16k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cmlg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gm3fn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_6a6mx"]
 length = 0.001
@@ -79,6 +126,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-10.8307705, 7.3846154)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Vespro:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_642so"]
 resource_name = "Vespro Ground"
@@ -110,22 +169,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("13_h5w3c"), ExtResource("14_0878f"), ExtResource("15_dferu")]
-}
-
-[sub_resource type="Animation" id="Animation_5d16k"]
-resource_name = "Vespro Punch Charge"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vespro:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.3, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("25_k7i36"), ExtResource("26_366ld"), ExtResource("27_8pjo5"), ExtResource("28_tiqit")]
 }
 
 [sub_resource type="Animation" id="Animation_3hvrq"]
@@ -170,90 +213,124 @@ tracks/0/path = NodePath("Vespro:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5, 0.6, 0.7, 0.7999999, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.06666667, 0.2, 0.33333334, 0.46666667, 0.56666666, 0.6666667, 0.76666665, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_c4rn8"), ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
-}
-
-[sub_resource type="Animation" id="Animation_f6erl"]
-resource_name = "Punch Rotation"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vespro/PunchSprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -6.283185307179586]
-}
-
-[sub_resource type="Animation" id="Animation_k7i36"]
-resource_name = "Punch Release"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vespro/PunchSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
+"values": [ExtResource("5_ypltb"), ExtResource("6_nmlhc"), ExtResource("7_h5w3c"), ExtResource("8_0878f"), ExtResource("9_dferu"), ExtResource("10_t62v4"), ExtResource("11_uqfkb"), ExtResource("12_642so")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Vespro/PunchSprite:position")
+tracks/1/path = NodePath("Vespro:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-10.8307705, 7.3846154)]
+"values": [0.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Vespro/PunchSprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+
+[sub_resource type="Animation" id="Animation_vn1li"]
+resource_name = "Punch_Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("25_k7i36"), ExtResource("26_366ld"), ExtResource("27_8pjo5"), ExtResource("28_tiqit"), ExtResource("35_cmlg3"), ExtResource("26_366ld"), ExtResource("36_gm3fn")]
+}
+
+[sub_resource type="Animation" id="Animation_3g275"]
+resource_name = "Punch_Charge"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.56666666, 0.7, 0.8666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("37_amsee"), ExtResource("36_gm3fn"), ExtResource("26_366ld"), ExtResource("35_cmlg3"), ExtResource("28_tiqit"), ExtResource("27_8pjo5"), ExtResource("26_366ld"), ExtResource("36_gm3fn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vespro:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gn53q"]
+resource_name = "Punch_Release"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vespro:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999999, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("25_k7i36"), ExtResource("26_366ld"), ExtResource("27_8pjo5"), ExtResource("28_tiqit"), ExtResource("35_cmlg3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vespro:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13333334, 0.6666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.30717794835100237, 0.30717794835100237, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3wsw"]
 _data = {
-&"Punch Release": SubResource("Animation_k7i36"),
-&"Punch Rotation": SubResource("Animation_f6erl"),
+&"Punch_Charge": SubResource("Animation_3g275"),
+&"Punch_Release": SubResource("Animation_gn53q"),
+&"Punch_Start": SubResource("Animation_vn1li"),
 &"RESET": SubResource("Animation_6a6mx"),
 &"Vespro Ground": SubResource("Animation_642so"),
 &"Vespro Jump": SubResource("Animation_t62v4"),
-&"Vespro Punch Charge": SubResource("Animation_5d16k"),
 &"Vespro_Damage": SubResource("Animation_3hvrq"),
 &"Vespro_Fall": SubResource("Animation_uqfkb"),
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_animation_player") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
 max_fall_speed = 961.0
+max_charge_time = 2.5
+punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
 punch_texture_small = ExtResource("4_366ld")
 punch_texture_medium = ExtResource("3_366ld")
 punch_texture_large = ExtResource("6_tiqit")
 punch_animation_player = NodePath("Vespro/PunchSprite/Punch AnimationPlayer")
+punch_rotation_max_speed = 20.0
+punch_speed_effect = NodePath("Vespro/punch_speed_effect")
+effect_max_opacity = 0.9
+effect_max_speed = 6.0
 start_coins = 30
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
 
@@ -299,16 +376,33 @@ scale = Vector2(0.9619614, 0.9619615)
 texture = ExtResource("17_t62v4")
 
 [node name="PunchSprite" type="Sprite2D" parent="Vespro"]
+visible = false
 position = Vector2(-10.8307705, 7.3846154)
 rotation = -0.6661903
 scale = Vector2(0.80288476, 0.80288476)
 texture = ExtResource("6_18oyn")
 offset = Vector2(20, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vespro/PunchSprite"]
+[node name="Punch AnimationPlayer" type="AnimationPlayer" parent="Vespro/PunchSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_8pjo5")
+}
+
+[node name="PunchArea" type="Area2D" parent="Vespro"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vespro/PunchArea"]
+position = Vector2(-10.8307705, 7.3846154)
+rotation = -0.66619027
+scale = Vector2(0.8028848, 0.8028848)
 shape = SubResource("CapsuleShape2D_18oyn")
 
-[node name="Punch AnimationPlayer" type="AnimationPlayer" parent="Vespro/PunchSprite"]
+[node name="punch_speed_effect" type="AnimatedSprite2D" parent="Vespro"]
+visible = false
+position = Vector2(-10.8307705, 7.3846154)
+scale = Vector2(0.28006846, 0.28006843)
+sprite_frames = SubResource("SpriteFrames_amsee")
+frame_progress = 0.6390503
 
 [node name="Grind Hook Up" type="Marker2D" parent="." groups=["hook_top"]]
 position = Vector2(0, -172.38348)
@@ -320,7 +414,6 @@ position = Vector2(1.420743, 96.13695)
 libraries = {
 &"": SubResource("AnimationLibrary_j3wsw")
 }
-speed_scale = 1.032
 
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
 

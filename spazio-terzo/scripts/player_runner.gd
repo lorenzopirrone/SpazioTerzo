@@ -12,6 +12,9 @@ const ANIMATION_RUN: StringName = &"Vespro_Run"
 const ANIMATION_JUMP: StringName = &"Vespro Jump"
 const ANIMATION_FALL: StringName = &"Vespro_Fall"
 const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
+const ANIMATION_PUNCH_START: StringName = &"Punch_Start"
+const ANIMATION_PUNCH_CHARGE: StringName = &"Punch_Charge"
+const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
@@ -48,6 +51,13 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 @export var punch_rotation_animation: String = "Punch Rotation"
 @export var punch_rotation_min_speed: float = 1.0
 @export var punch_rotation_max_speed: float = 5.0
+
+@export var punch_speed_effect: AnimatedSprite2D
+
+@export var effect_min_opacity := 0.0
+@export var effect_max_opacity := 1.0
+@export var effect_min_speed := 0.5
+@export var effect_max_speed := 3.0
 
 @export_group("Runner Feel")
 ## Finestra di tolleranza dopo aver lasciato una piattaforma per poter ancora saltare.
@@ -88,6 +98,7 @@ const ANIMATION_DAMAGE: StringName = &"Vespro_Damage"
 @export var damage_sounds: Array[AudioStream] = []
 
 
+
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
 @onready var punch_shape: RectangleShape2D = punch_collision.shape as RectangleShape2D
@@ -114,6 +125,7 @@ var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
 var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
+var _is_punch_releasing: bool = false
 
 
 func _ready() -> void:
@@ -123,9 +135,13 @@ func _ready() -> void:
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
+
+	if punch_speed_effect:
+		punch_speed_effect.visible = false
+		punch_speed_effect.stop()
+		punch_speed_effect.modulate.a = 0.0
 	
 	play_animation(ANIMATION_RUN)
-
 
 func play_animation(animation_name: StringName) -> void:
 	if _current_animation == animation_name:
@@ -192,8 +208,11 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer_timer -= delta
 		if _coyote_timer > 0.0:
 			_jump()
-			
 
+	if _is_charging:
+		_charge_time = minf(_charge_time + delta, max_charge_time)
+		_update_charge_bar(_charge_time / max_charge_time)
+		_update_punch_rotation()
 
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
@@ -204,7 +223,6 @@ func _physics_process(delta: float) -> void:
 	_update_damage_flash(delta)
 	move_and_slide()
 	_update_movement_animation()
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _grind_active:
@@ -381,15 +399,37 @@ func _begin_punch_charge() -> void:
 		return
 
 	_is_charging = true
+	_is_punch_releasing = false
 	_charge_time = 0.0
 	_update_charge_bar(0.0)
 
+	play_animation(ANIMATION_PUNCH_START)
+
+	punch_sprite.visible = true
+	punch_animation_player.play(punch_rotation_animation)
+
+	if punch_speed_effect:
+		punch_speed_effect.visible = true
+		punch_speed_effect.play()
 
 func _release_punch() -> void:
 	if not _is_charging or _dead:
 		return
 
 	_is_charging = false
+	_is_punch_releasing = true
+	punch_sprite.visible = false
+
+	punch_animation_player.stop()
+	punch_sprite.visible = false
+	
+	play_animation(ANIMATION_PUNCH_RELEASE)
+
+	if punch_speed_effect:
+		punch_speed_effect.stop()
+		punch_speed_effect.visible = false
+		punch_speed_effect.modulate.a = 0.0
+
 	var power := clampf(_charge_time / max_charge_time, punch_min_power, 1.0)
 	_update_charge_bar(0.0)
 
@@ -426,13 +466,24 @@ func _update_movement_animation() -> void:
 	if _damage_animation_timer > 0.0:
 		return
 
+	if _is_punch_releasing:
+		return
+
+	if _is_charging:
+		if is_on_floor():
+			play_animation(ANIMATION_PUNCH_CHARGE)
+		elif velocity.y < 0.0:
+			play_animation(ANIMATION_JUMP)
+		else:
+			play_animation(ANIMATION_FALL)
+		return
+
 	if is_on_floor():
 		play_animation(ANIMATION_RUN)
 	elif velocity.y < 0.0:
 		play_animation(ANIMATION_JUMP)
 	else:
 		play_animation(ANIMATION_FALL)
-
 
 func _update_animation_speed() -> void:
 	if _current_animation == ANIMATION_RUN:
@@ -468,11 +519,22 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == ANIMATION_DAMAGE:
 		music_player.stream_paused = false
 
-func _update_punch_rotation() -> void:
-	var charge_ratio := clampf(_charge_time / max_charge_time, 0.0, 1.0)
+	elif anim_name == ANIMATION_PUNCH_START and _is_charging:
+		play_animation(ANIMATION_PUNCH_CHARGE)
+	elif anim_name == ANIMATION_PUNCH_RELEASE:
+		_is_punch_releasing = false
 
-	punch_animation_player.speed_scale = lerpf(
-		punch_rotation_min_speed,
-		punch_rotation_max_speed,
-		charge_ratio
-	)
+func _update_punch_rotation():
+	var charge_ratio := _charge_time / max_charge_time
+	charge_ratio = clamp(charge_ratio, 0.0, 1.0)
+
+	# Velocità rotazione del pugno
+	var current_speed = lerp(punch_rotation_min_speed, punch_rotation_max_speed, charge_ratio)
+	punch_animation_player.speed_scale = current_speed
+
+	# Effetto velocità
+	if punch_speed_effect:
+		punch_speed_effect.speed_scale = lerp(effect_min_speed, effect_max_speed, charge_ratio)
+
+		var alpha = lerp(effect_min_opacity, effect_max_opacity, charge_ratio)
+		punch_speed_effect.modulate.a = alpha
