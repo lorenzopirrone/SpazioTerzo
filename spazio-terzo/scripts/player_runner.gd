@@ -237,14 +237,11 @@ func _physics_process(delta: float) -> void:
 			# Ritorna alla posizione iniziale
 			extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
 
-		punch_sprite.position = _punch_sprite_start_position + Vector2(
-			_punch_extension * extension_progress,
-			0.0
-		)
+		punch_sprite.position.x = _punch_sprite_start_position.x + (_punch_extension * extension_progress)
 
 		if _punch_timer <= 0.0:
 			_punch_timer = 0.0
-			punch_sprite.position = _punch_sprite_start_position
+			punch_sprite.position.x = _punch_sprite_start_position.x
 			_set_punch_active(false)
 			punch_finished.emit()
 
