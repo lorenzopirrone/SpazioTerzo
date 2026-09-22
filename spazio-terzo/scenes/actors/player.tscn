@@ -162,7 +162,7 @@ tracks/3/path = NodePath("Vespro/PunchSprite:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.1333, 0.6666667, 0.7),
+"times": PackedFloat32Array(0, 0.1, 0.1333, 0.56666666, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [9.846152, 9.846152, -12.0, -12.0, 9.846152]

@@ -217,6 +217,7 @@ func _physics_process(delta: float) -> void:
 		_charge_time = minf(_charge_time + delta, max_charge_time)
 		_update_charge_bar(_charge_time / max_charge_time)
 		_update_punch_rotation()
+		_update_punch_texture()
 
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
@@ -244,6 +245,7 @@ func _physics_process(delta: float) -> void:
 			punch_sprite.position.x = _punch_sprite_start_position.x
 			_set_punch_active(false)
 			punch_finished.emit()
+			punch_sprite.visible = false
 
 	_update_damage_flash(delta)
 	move_and_slide()
@@ -572,3 +574,17 @@ func _update_punch_rotation():
 
 		var alpha = lerp(effect_min_opacity, effect_max_opacity, charge_ratio)
 		punch_speed_effect.modulate.a = alpha
+
+func _update_punch_texture() -> void:
+	if not punch_sprite:
+		return
+
+	var charge_ratio := _charge_time / max_charge_time
+	charge_ratio = clampf(charge_ratio, 0.0, 1.0)
+
+	if charge_ratio < 0.33:
+		punch_sprite.texture = punch_texture_small
+	elif charge_ratio < 0.66:
+		punch_sprite.texture = punch_texture_medium
+	else:
+		punch_sprite.texture = punch_texture_large
