@@ -39,11 +39,11 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_min_power: float = 0.35
 ## Numero minimo di monete necessarie per poter tirare il pugno.
 @export var punch_required_coins: int = 10
-@export var punch_extension_distance: float = 80.0
 
 
 @export_group("Punch Visuals")
 @export var punch_sprite: Sprite2D
+@export var punch_reference: Node2D
 @export var punch_texture_small: Texture2D
 @export var punch_texture_medium: Texture2D
 @export var punch_texture_large: Texture2D
@@ -128,9 +128,7 @@ var _grind_active: bool = false
 var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
 var _is_punch_releasing: bool = false
-var _punch_sprite_start_position: Vector2
-var _punch_extension: float = 0.0
-
+var _punch_start_position: Vector2
 
 func _ready() -> void:
 	_rng.randomize()
@@ -139,7 +137,6 @@ func _ready() -> void:
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
-	_punch_sprite_start_position = punch_sprite.position
 
 	if punch_speed_effect:
 		punch_speed_effect.visible = false
@@ -238,11 +235,12 @@ func _physics_process(delta: float) -> void:
 			# Ritorna alla posizione iniziale
 			extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
 
-		punch_sprite.position.x = _punch_sprite_start_position.x + (_punch_extension * extension_progress)
+		# Spostamento del pugno verso il PunchReference
+	if punch_reference:
+		punch_sprite.global_position = punch_reference.global_position
 
 		if _punch_timer <= 0.0:
 			_punch_timer = 0.0
-			punch_sprite.position.x = _punch_sprite_start_position.x
 			_set_punch_active(false)
 			punch_finished.emit()
 			punch_sprite.visible = false
@@ -472,21 +470,17 @@ func _jump() -> void:
 
 
 func _start_punch(power: float) -> void:
-	# Portata del pugno proporzionale alla carica
+	# Portata della hitbox proporzionale alla carica
 	punch_shape.size.x = punch_reach * power
 	punch_collision.position.x = 24.0 + (punch_shape.size.x * 0.5)
 
-	# Estensione visiva proporzionale alla carica
-	_punch_extension = punch_extension_distance * power
-
 	# Il pugno parte dalla posizione normale
-	punch_sprite.position = _punch_sprite_start_position
+	_punch_start_position = punch_sprite.position
 	punch_sprite.visible = true
 
 	_punch_timer = punch_duration
 	_set_punch_active(true)
 	punch_started.emit(power)
-
 
 func _set_punch_active(active: bool) -> void:
 	punch_area.monitoring = active
