@@ -65,6 +65,11 @@ text = "QUIT"
 frame = 5
 frame_progress = 0.0
 
+[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="5" node_paths=PackedStringArray("player", "animation_player", "flames")]
+player = NodePath("../../../../Player")
+animation_player = NodePath("../AnimationPlayer")
+flames = NodePath("Flames")
+
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)
 scale = Vector2(1.0666667, 1.0666667)
@@ -136,6 +141,18 @@ position = Vector2(689, 424)
 position = Vector2(2217, 432)
 
 [node name="CoinA5" parent="." instance=ExtResource("8_coin")]
+position = Vector2(528, 426)
+
+[node name="CoinA12" parent="." instance=ExtResource("8_coin")]
+position = Vector2(528, 426)
+
+[node name="CoinA13" parent="." instance=ExtResource("8_coin")]
+position = Vector2(528, 426)
+
+[node name="CoinA14" parent="." instance=ExtResource("8_coin")]
+position = Vector2(528, 426)
+
+[node name="CoinA15" parent="." instance=ExtResource("8_coin")]
 position = Vector2(528, 426)
 
 [node name="CoinA6" parent="." instance=ExtResource("8_coin")]
