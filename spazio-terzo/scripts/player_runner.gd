@@ -5,6 +5,7 @@ signal died
 signal punch_started(power: float)
 signal punch_finished
 signal petal_collected(total_petals: int)
+signal score_changed(new_score: int)
 
 
 const ANIMATION_RUN: StringName = &"Vespro_Run"
@@ -45,6 +46,9 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_texture_small: Texture2D
 @export var punch_texture_medium: Texture2D
 @export var punch_texture_large: Texture2D
+@export var punch_release_max_scale: float = 1.5
+@export var punch_charge_scale: float = 0.862
+var _punch_base_scale: Vector2
 
 
 @export_group("Punch Rotation")
@@ -95,6 +99,10 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var damage_sounds: Array[AudioStream] = []
 
 
+@export_group("Score")
+@export var distance_score_multiplier: float = 1.0
+@export var petal_score_value: int = 100
+
 
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
@@ -124,6 +132,9 @@ var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
 var _is_punch_releasing: bool = false
 var _punch_start_position: Vector2
+var _score: int = 0
+var _score_distance: float = 0.0
+var _last_score_x: float = 0.0
 
 func _ready() -> void:
 	_rng.randomize()
@@ -132,6 +143,8 @@ func _ready() -> void:
 	_set_punch_active(false)
 	_update_charge_bar(0.0)
 	_update_damage_flash(0.0)
+	_punch_base_scale = punch_sprite.scale
+	_last_score_x = global_position.x
 
 	if punch_speed_effect:
 		punch_speed_effect.visible = false
@@ -166,8 +179,6 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
-		
-	print("PLAYER PHYSICS")
 	
 	if _damage_animation_timer > 0.0:
 		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
@@ -214,34 +225,31 @@ func _physics_process(delta: float) -> void:
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
 
-		var punch_progress := 1.0 - (_punch_timer / punch_duration)
-		punch_progress = clampf(punch_progress, 0.0, 1.0)
+	var punch_progress := 1.0 - (_punch_timer / punch_duration)
+	punch_progress = clampf(punch_progress, 0.0, 1.0)
 
-		# Scatto rapido in avanti e ritorno
-		var extension_progress: float
+	# Scatto rapido in avanti e ritorno
+	var extension_progress: float
 
-		if punch_progress < 0.25:
-			# Estensione rapidissima
-			extension_progress = punch_progress / 0.25
-		elif punch_progress < 0.75:
-			# Rimane completamente esteso
-			extension_progress = 1.0
-		else:
-			# Ritorna alla posizione iniziale
-			extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
+	if punch_progress < 0.25:
+		extension_progress = punch_progress / 0.25
+	elif punch_progress < 0.75:
+		extension_progress = 1.0
+	else:
+		extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
 
-		# Spostamento del pugno verso il PunchReference
+	if _punch_timer <= 0.0:
+		_punch_timer = 0.0
+		_set_punch_active(false)
+		punch_finished.emit()
+		punch_sprite.visible = false
+
 	if punch_reference:
 		punch_sprite.global_position = punch_reference.global_position
 
-		if _punch_timer <= 0.0:
-			_punch_timer = 0.0
-			_set_punch_active(false)
-			punch_finished.emit()
-			punch_sprite.visible = false
-
 	_update_damage_flash(delta)
 	move_and_slide()
+	_update_distance_score()
 	_update_movement_animation()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -397,11 +405,15 @@ func _begin_punch_charge() -> void:
 	play_animation(ANIMATION_PUNCH_START)
 
 	punch_sprite.visible = true
+	punch_sprite.scale = Vector2.ONE * punch_charge_scale
 	punch_animation_player.play(punch_rotation_animation)
+
+
 
 	if punch_speed_effect:
 		punch_speed_effect.visible = true
 		punch_speed_effect.play()
+
 
 func _release_punch() -> void:
 	if not _is_charging or _dead:
@@ -409,10 +421,10 @@ func _release_punch() -> void:
 
 	_is_charging = false
 	_is_punch_releasing = true
-	punch_sprite.visible = false
+
 
 	punch_animation_player.stop()
-	punch_sprite.visible = false
+
 	
 	play_animation(ANIMATION_PUNCH_RELEASE)
 
@@ -426,7 +438,9 @@ func _release_punch() -> void:
 
 	if _charge_time >= min_charge_time:
 		_start_punch(power)
-
+	
+	var charge_progress := _charge_time / max_charge_time
+	punch_sprite.scale = _punch_base_scale * lerpf(1.0, punch_release_max_scale, charge_progress)
 
 func _jump() -> void:
 	velocity.y = jump_velocity
@@ -548,3 +562,15 @@ func _update_punch_texture() -> void:
 		punch_sprite.texture = punch_texture_medium
 	else:
 		punch_sprite.texture = punch_texture_large
+
+func _update_distance_score() -> void:
+	var distance_moved := global_position.x - _last_score_x
+
+	if distance_moved > 0.0:
+		_score_distance += distance_moved
+		_score += int(distance_moved * distance_score_multiplier)
+
+	_last_score_x = global_position.x
+	
+func get_score() -> int:
+	return _score

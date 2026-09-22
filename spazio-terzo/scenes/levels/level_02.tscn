@@ -44,10 +44,10 @@ layer = -10
 
 [node name="LevelUI" parent="Background" instance=ExtResource("3_4dr30")]
 
-[node name="CoinsPanel" parent="Background/LevelUI/UI" index="0" node_paths=PackedStringArray("player", "petal_count")]
+[node name="CoinsPanel" parent="Background/LevelUI/UI" index="0" node_paths=PackedStringArray("player", "score_count")]
 script = ExtResource("3_dscar")
 player = NodePath("../../../../Player")
-petal_count = NodePath("Coin Count")
+score_count = NodePath("Coin Count")
 
 [node name="Coin Count" parent="Background/LevelUI/UI/CoinsPanel" index="0"]
 script = ExtResource("4_01hg1")

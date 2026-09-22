@@ -3,17 +3,17 @@ extends Control
 
 @export_group("References")
 @export var player: PlayerRunner
-@export var petal_count: Label
+@export var score_count: Label
 
 
 func _ready() -> void:
 	if player != null:
-		player.petal_collected.connect(_update_petal_count)
-		_update_petal_count(player.get_petals())
+		player.score_changed.connect(_update_score)
+		_update_score(player.get_score())
 
 
-func _update_petal_count(amount: int) -> void:
-	petal_count.text = str(amount)
+func _update_score(amount: int) -> void:
+	score_count.text = str(amount)
 
 
 func _on_button_pressed() -> void:

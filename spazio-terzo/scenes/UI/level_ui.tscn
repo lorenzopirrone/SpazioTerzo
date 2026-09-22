@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=65 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pmutdnjr4xo" path="res://scenes/UI/Plant.png" id="5_1ybtq"]
 [ext_resource type="Texture2D" uid="uid://bckv7f5h1sxlr" path="res://scenes/UI/Clock Gif/frame_01_delay-0.25s.png" id="5_6s4o3"]
 [ext_resource type="Texture2D" uid="uid://bsj5qllc6x2oo" path="res://scenes/UI/Clock Gif/frame_02_delay-0.25s.png" id="6_cvdff"]
+[ext_resource type="Texture2D" uid="uid://bqt8kifxdcph" path="res://scenes/UI/pixel-art-flower-8-bit-flower-icon-flower-pixel-art-style-png.png" id="6_lert1"]
 [ext_resource type="Texture2D" uid="uid://mjohm4e8elf4" path="res://scenes/UI/Clock Gif/frame_03_delay-0.25s.png" id="7_01sg8"]
 [ext_resource type="Texture2D" uid="uid://b5b1p4cvi44gt" path="res://Images/Flames/Flames 1.png" id="7_4hsr6"]
 [ext_resource type="Script" uid="uid://bjqoakvhv1bte" path="res://scenes/UI/heart.gd" id="7_6y8kx"]
@@ -448,6 +449,43 @@ rotation = -4.701723
 texture = ExtResource("5_1ybtq")
 expand_mode = 1
 
+[node name="Mini Flower" type="Sprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(50, 90.99999)
+rotation = 0.48713738
+scale = Vector2(0.04571428, 0.04571428)
+texture = ExtResource("6_lert1")
+
+[node name="Mini Flower2" type="Sprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(368, 92.99999)
+rotation = 0.48713738
+scale = Vector2(0.04571428, 0.04571428)
+texture = ExtResource("6_lert1")
+flip_h = true
+flip_v = true
+
+[node name="Mini Flower3" type="Sprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(195.4533, -5.7542114)
+rotation = 0.030320793
+scale = Vector2(0.050899614, 0.050899614)
+texture = ExtResource("6_lert1")
+flip_h = true
+flip_v = true
+
+[node name="Mini Flower4" type="Sprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(-22.999939, 24.999998)
+rotation = 0.8105351
+scale = Vector2(0.050899614, 0.050899614)
+texture = ExtResource("6_lert1")
+flip_h = true
+flip_v = true
+
+[node name="Mini Flower5" type="Sprite2D" parent="UI/CoinChargeBar"]
+position = Vector2(441, 24.999998)
+rotation = 0.8105351
+scale = Vector2(0.050899614, 0.050899614)
+texture = ExtResource("6_lert1")
+flip_h = true
+
 [node name="Heart" type="TextureRect" parent="UI/CoinChargeBar"]
 layout_mode = 0
 offset_left = 146.0
@@ -470,7 +508,7 @@ texture = ExtResource("4_6s4o3")
 expand_mode = 1
 
 [node name="Flower" type="Sprite2D" parent="UI/CoinChargeBar/Heart"]
-position = Vector2(52, 52.00006)
+position = Vector2(51, 52.00006)
 scale = Vector2(0.094594836, 0.094594836)
 texture = ExtResource("49_xbgee")
 
