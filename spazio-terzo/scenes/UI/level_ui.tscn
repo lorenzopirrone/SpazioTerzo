@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=62 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
@@ -48,6 +48,14 @@
 [ext_resource type="Texture2D" uid="uid://dacpn6xedsdw8" path="res://scenes/UI/Clock Gif/frame_35_delay-0.25s.png" id="39_6ec1n"]
 [ext_resource type="Texture2D" uid="uid://cm8d3c3dntlyp" path="res://scenes/UI/Clock Gif/frame_36_delay-0.25s.png" id="40_mt6lw"]
 [ext_resource type="Texture2D" uid="uid://n6fdfmono5sn" path="res://scenes/UI/Clock Gif/frame_37_delay-0.25s.png" id="41_ucg4i"]
+[ext_resource type="Texture2D" uid="uid://d3oqslh5txjoq" path="res://scenes/UI/Lil Explosion Animation/explosion-01.png" id="49_jd6kr"]
+[ext_resource type="Texture2D" uid="uid://d3yvgo3hl106i" path="res://scenes/UI/Flower.png" id="49_xbgee"]
+[ext_resource type="Texture2D" uid="uid://du0oxgsgtu88f" path="res://scenes/UI/Lil Explosion Animation/explosion-02.png" id="50_k0c2n"]
+[ext_resource type="Texture2D" uid="uid://cx8ig74tmwwoo" path="res://scenes/UI/Lil Explosion Animation/explosion-03.png" id="51_rinii"]
+[ext_resource type="Texture2D" uid="uid://nlqyvsjbxppd" path="res://scenes/UI/Lil Explosion Animation/explosion-04.png" id="52_6y8kx"]
+[ext_resource type="Texture2D" uid="uid://dh776sdbvlncu" path="res://scenes/UI/Lil Explosion Animation/explosion-05.png" id="53_lert1"]
+[ext_resource type="Texture2D" uid="uid://ugl30wwgdush" path="res://scenes/UI/Lil Explosion Animation/explosion-06.png" id="54_mgc3p"]
+[ext_resource type="Texture2D" uid="uid://do8s7yjmoq1sy" path="res://scenes/UI/Front Punch.png" id="56_k0c2n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nwn7c"]
 animations = [{
@@ -196,6 +204,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_l3le5"]
+resource_name = "Explosion animation"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333, 0.36666667, 0.5, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("49_jd6kr"), ExtResource("50_k0c2n"), ExtResource("51_rinii"), ExtResource("52_6y8kx"), ExtResource("53_lert1"), ExtResource("54_mgc3p")]
+}
+
+[sub_resource type="Animation" id="Animation_dwhdk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("49_jd6kr")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfmn4"]
+_data = {
+&"Explosion animation": SubResource("Animation_l3le5"),
+&"RESET": SubResource("Animation_dwhdk")
+}
+
 [node name="LevelUI" type="CanvasLayer"]
 
 [node name="UI" type="Control" parent="."]
@@ -333,11 +379,12 @@ offset_bottom = 20.0
 color = Color(0.9764706, 0.5803922, 0.75686276, 1)
 
 [node name="TextureRect" type="TextureRect" parent="UI/CoinChargeBar"]
+modulate = Color(0.95686275, 0.3647059, 0.40392157, 1)
 layout_mode = 0
-offset_left = 156.0
-offset_top = 20.0
-offset_right = 238.0
-offset_bottom = 102.0
+offset_left = 146.0
+offset_top = 10.0
+offset_right = 248.0
+offset_bottom = 112.0
 texture = ExtResource("4_6s4o3")
 expand_mode = 1
 
@@ -346,7 +393,7 @@ position = Vector2(195, 50)
 scale = Vector2(0.57000023, 0.57000023)
 sprite_frames = SubResource("SpriteFrames_nwn7c")
 animation = &"Fire Animation"
-frame_progress = 0.70394826
+frame_progress = 0.23677091
 
 [node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 1
@@ -440,3 +487,24 @@ scale = Vector2(0.32386363, 0.32386363)
 sprite_frames = SubResource("SpriteFrames_813rm")
 frame_progress = 0.9673055
 speed_scale = 0.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_sfmn4")
+}
+
+[node name="PixelArtFlower8BitFlowerIconFlowerPixelArtStylePng" type="Sprite2D" parent="UI"]
+position = Vector2(939.99994, 117)
+scale = Vector2(0.1162164, 0.1162164)
+texture = ExtResource("49_xbgee")
+
+[node name="Explosion" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(939, 110)
+scale = Vector2(0.6125, 0.6125)
+texture = ExtResource("49_jd6kr")
+
+[node name="FrontPunch" type="Sprite2D" parent="."]
+position = Vector2(983, 114)
+scale = Vector2(0.10857137, 0.10857137)
+texture = ExtResource("56_k0c2n")
