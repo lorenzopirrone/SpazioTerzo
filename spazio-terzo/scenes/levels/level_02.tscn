@@ -58,17 +58,17 @@ player = NodePath("../../../../Player")
 [node name="PauseButton" parent="Background/LevelUI/UI" index="2"]
 action_mode = 0
 
+[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="3" node_paths=PackedStringArray("player", "animation_player", "flames")]
+player = NodePath("../../../../Player")
+animation_player = NodePath("../AnimationPlayer")
+flames = NodePath("Flames")
+
 [node name="QuitButton" parent="Background/LevelUI/UI/PausePanel" index="2"]
 text = "QUIT"
 
 [node name="AnimatedSprite2D" parent="Background/LevelUI/UI/PausePanel" index="3"]
 frame = 5
 frame_progress = 0.0
-
-[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="5" node_paths=PackedStringArray("player", "animation_player", "flames")]
-player = NodePath("../../../../Player")
-animation_player = NodePath("../AnimationPlayer")
-flames = NodePath("Flames")
 
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)

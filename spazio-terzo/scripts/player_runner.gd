@@ -42,6 +42,7 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 
 @export_group("Punch Visuals")
 @export var punch_sprite: Sprite2D
+@export var punch_charge_sparkle: AnimatedSprite2D
 @export var punch_reference: Node2D
 @export var punch_texture_small: Texture2D
 @export var punch_texture_medium: Texture2D
@@ -49,6 +50,7 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_release_max_scale: float = 1.5
 @export var punch_charge_scale: float = 0.862
 var _punch_base_scale: Vector2
+
 
 
 @export_group("Punch Rotation")
@@ -63,6 +65,9 @@ var _punch_base_scale: Vector2
 @export var effect_max_opacity := 1.0
 @export var effect_min_speed := 0.5
 @export var effect_max_speed := 3.0
+@export var effect_color_small: Color = Color.WHITE
+@export var effect_color_medium: Color = Color.YELLOW
+@export var effect_color_large: Color = Color.RED
 
 
 @export_group("Runner Feel")
@@ -135,6 +140,7 @@ var _punch_start_position: Vector2
 var _score: int = 0
 var _score_distance: float = 0.0
 var _last_score_x: float = 0.0
+var _last_punch_charge_stage: int = -1
 
 func _ready() -> void:
 	_rng.randomize()
@@ -272,6 +278,20 @@ func take_hit() -> void:
 		return
 
 	_end_grind()
+	
+	_is_charging = false
+	_charge_time = 0.
+	punch_sprite.visible = false
+	
+	if punch_charge_sparkle:
+		punch_charge_sparkle.visible = false
+		punch_charge_sparkle.stop()
+
+	if punch_speed_effect:
+		punch_speed_effect.visible = false
+		punch_speed_effect.stop()
+		punch_speed_effect.modulate.a = 0.0
+
 
 	# Perdiamo i petali in base al danno ricevuto.
 	_petals = max(_petals - damage_petals, 0)
@@ -402,6 +422,13 @@ func _begin_punch_charge() -> void:
 	_is_charging = true
 	_is_punch_releasing = false
 	_charge_time = 0.0
+	_last_punch_charge_stage = -1
+
+	if punch_charge_sparkle:
+		punch_charge_sparkle.visible = false
+		punch_charge_sparkle.stop()
+		punch_charge_sparkle.frame = 0
+
 	_update_charge_bar(0.0)
 
 	play_animation(ANIMATION_PUNCH_START)
@@ -558,9 +585,34 @@ func _update_punch_texture() -> void:
 	var charge_ratio := _charge_time / max_charge_time
 	charge_ratio = clampf(charge_ratio, 0.0, 1.0)
 
+	var current_stage: int
+
 	if charge_ratio < 0.33:
-		punch_sprite.texture = punch_texture_small
+		current_stage = 0
 	elif charge_ratio < 0.66:
+		current_stage = 1
+	else:
+		current_stage = 2
+
+	if current_stage != _last_punch_charge_stage:
+		_last_punch_charge_stage = current_stage
+
+		if punch_charge_sparkle and current_stage > 0:
+			punch_charge_sparkle.visible = true
+			punch_charge_sparkle.frame = 0
+			punch_charge_sparkle.play()
+
+	if punch_speed_effect:
+		if current_stage == 0:
+			punch_speed_effect.modulate = effect_color_small
+		elif current_stage == 1:
+			punch_speed_effect.modulate = effect_color_medium
+		else:
+			punch_speed_effect.modulate = effect_color_large
+
+	if current_stage == 0:
+		punch_sprite.texture = punch_texture_small
+	elif current_stage == 1:
 		punch_sprite.texture = punch_texture_medium
 	else:
 		punch_sprite.texture = punch_texture_large
@@ -577,3 +629,7 @@ func _update_distance_score() -> void:
 	
 func get_score() -> int:
 	return _score
+
+
+func _on_punch_charge_sparkle_animation_finished() -> void:
+	punch_charge_sparkle.visible = false

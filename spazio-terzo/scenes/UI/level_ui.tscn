@@ -65,6 +65,31 @@ border_width_left = 12
 border_width_right = 12
 border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwn7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4hsr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xbgee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k02l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fkwso")
+}],
+"loop": true,
+"name": &"Fire Animation",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_813rm"]
 animations = [{
 "frames": [{
@@ -272,31 +297,6 @@ _data = {
 &"RESET": SubResource("Animation_dwhdk")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nwn7c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_4hsr6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_xbgee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_k02l2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_fkwso")
-}],
-"loop": true,
-"name": &"Fire Animation",
-"speed": 10.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="LevelUI" type="CanvasLayer"]
 
 [node name="UI" type="Control" parent="."]
@@ -327,19 +327,21 @@ theme_override_font_sizes/font_size = 36
 text = "10"
 horizontal_alignment = 1
 
-[node name="CoinChargeBar" type="Control" parent="UI" node_paths=PackedStringArray("fill")]
+[node name="CoinChargeBar" type="Control" parent="UI" node_paths=PackedStringArray("fill", "ghost_fill")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -218.0
-offset_top = 77.0
+offset_top = 35.0
 offset_right = 202.0
-offset_bottom = 97.0
+offset_bottom = 55.0
 grow_horizontal = 2
 script = ExtResource("3_s88fb")
 fill = NodePath("Fill")
+ghost_fill = NodePath("GhostFill")
 bar_width = 420.0
+ghost_speed = 80.0
 
 [node name="Brush" type="TextureRect" parent="UI/CoinChargeBar"]
 layout_mode = 0
@@ -411,6 +413,11 @@ offset_right = 420.0
 offset_bottom = 20.0
 color = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
+[node name="GhostFill" type="ColorRect" parent="UI/CoinChargeBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+
 [node name="Fill" type="ColorRect" parent="UI/CoinChargeBar"]
 layout_mode = 0
 offset_right = 200.0
@@ -476,11 +483,15 @@ texture = ExtResource("6_lert1")
 flip_h = true
 
 [node name="Heart" type="TextureRect" parent="UI/CoinChargeBar"]
-layout_mode = 0
-offset_left = 146.0
-offset_top = 10.0
-offset_right = 248.0
-offset_bottom = 112.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.00006
+offset_right = 38.99994
+offset_bottom = 102.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(52, 47)
 texture = ExtResource("4_6s4o3")
 expand_mode = 1
@@ -514,6 +525,36 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_uu4ov")
 theme_override_font_sizes/font_size = 24
 text = "II"
+
+[node name="PunchUnlocked" type="Node2D" parent="UI"]
+visible = false
+position = Vector2(0, -46)
+script = ExtResource("52_rinii")
+
+[node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
+position = Vector2(937, 115)
+scale = Vector2(0.596, 0.596)
+sprite_frames = SubResource("SpriteFrames_nwn7c")
+animation = &"Fire Animation"
+frame_progress = 0.91924316
+
+[node name="Explosion" type="Sprite2D" parent="UI/PunchUnlocked"]
+position = Vector2(939, 160)
+scale = Vector2(0.6125, 0.6125)
+
+[node name="Front Punch" type="Node2D" parent="UI/PunchUnlocked"]
+position = Vector2(943, 150)
+
+[node name="FrontPunch" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1.666748, 12.333313)
+scale = Vector2(0.10857137, 0.10857137)
+texture = ExtResource("56_k0c2n")
+
+[node name="FrontPunch2" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
+position = Vector2(-1.666748, 12.333313)
+scale = Vector2(0.09428563, 0.09428563)
+texture = ExtResource("56_k0c2n")
 
 [node name="PausePanel" type="Panel" parent="UI"]
 process_mode = 3
@@ -599,33 +640,3 @@ reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_sfmn4")
 }
-
-[node name="PunchUnlocked" type="Node2D" parent="UI"]
-visible = false
-position = Vector2(0, -6)
-script = ExtResource("52_rinii")
-
-[node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
-position = Vector2(937, 115)
-scale = Vector2(0.596, 0.596)
-sprite_frames = SubResource("SpriteFrames_nwn7c")
-animation = &"Fire Animation"
-frame_progress = 0.91924316
-
-[node name="Explosion" type="Sprite2D" parent="UI/PunchUnlocked"]
-position = Vector2(939, 160)
-scale = Vector2(0.6125, 0.6125)
-
-[node name="Front Punch" type="Node2D" parent="UI/PunchUnlocked"]
-position = Vector2(943, 150)
-
-[node name="FrontPunch" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(-1.666748, 12.333313)
-scale = Vector2(0.10857137, 0.10857137)
-texture = ExtResource("56_k0c2n")
-
-[node name="FrontPunch2" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
-position = Vector2(-1.666748, 12.333313)
-scale = Vector2(0.09428563, 0.09428563)
-texture = ExtResource("56_k0c2n")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=58 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -22,8 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://cb0btka5h682j" path="res://Sprites/Vespro/Vespro punch/White Circle.png" id="13_gm3fn"]
 [ext_resource type="Texture2D" uid="uid://5jcdh6k03v02" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0002.png" id="13_h5w3c"]
 [ext_resource type="Texture2D" uid="uid://cvqtl2hjphq84" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0003.png" id="14_0878f"]
+[ext_resource type="Texture2D" uid="uid://dh776sdbvlncu" path="res://scenes/UI/Lil Explosion Animation/explosion-05.png" id="14_vn1li"]
+[ext_resource type="Texture2D" uid="uid://du0oxgsgtu88f" path="res://scenes/UI/Lil Explosion Animation/explosion-02.png" id="15_3g275"]
 [ext_resource type="Texture2D" uid="uid://detyokite0gy2" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0005.png" id="15_dferu"]
 [ext_resource type="Texture2D" uid="uid://cb67nvlnm7doi" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0007.png" id="16_dferu"]
+[ext_resource type="Texture2D" uid="uid://d3oqslh5txjoq" path="res://scenes/UI/Lil Explosion Animation/explosion-01.png" id="16_gn53q"]
 [ext_resource type="Texture2D" uid="uid://cnoxicvnvbhny" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0006.png" id="17_t62v4"]
 [ext_resource type="Texture2D" uid="uid://dl1kgojiy7n4o" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0008.png" id="18_t62v4"]
 [ext_resource type="Texture2D" uid="uid://c6r0hq8wvr32k" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0001.png" id="19_6a6mx"]
@@ -84,6 +87,26 @@ animations = [{
 "texture": ExtResource("13_gm3fn")
 }],
 "loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvvss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_vn1li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3g275")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gn53q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vn1li")
+}],
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -339,7 +362,7 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -347,6 +370,7 @@ max_fall_speed = 961.0
 max_charge_time = 2.5
 punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
+punch_charge_sparkle = NodePath("Vespro/punch_charge_sparkle")
 punch_reference = NodePath("Punch Reference")
 punch_texture_small = ExtResource("4_366ld")
 punch_texture_medium = ExtResource("3_366ld")
@@ -356,6 +380,8 @@ punch_rotation_max_speed = 20.0
 punch_speed_effect = NodePath("Vespro/punch_speed_effect")
 effect_max_opacity = 0.9
 effect_max_speed = 6.0
+effect_color_medium = Color(1, 0.61960787, 0, 1)
+effect_color_large = Color(1, 0.28627452, 0, 1)
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
 petal_score_value = 250
 
@@ -430,6 +456,15 @@ scale = Vector2(0.28006846, 0.28006843)
 sprite_frames = SubResource("SpriteFrames_amsee")
 frame_progress = 0.6390503
 
+[node name="punch_charge_sparkle" type="AnimatedSprite2D" parent="Vespro"]
+visible = false
+position = Vector2(-10.338463, 5.415385)
+scale = Vector2(0.26461542, 0.2646154)
+sprite_frames = SubResource("SpriteFrames_fvvss")
+frame = 3
+frame_progress = 1.0
+speed_scale = 3.0
+
 [node name="Grind Hook Up" type="Marker2D" parent="." groups=["hook_top"]]
 position = Vector2(0, -172.38348)
 
@@ -446,4 +481,5 @@ libraries = {
 [node name="Punch Reference" type="Node2D" parent="."]
 position = Vector2(41, 5)
 
+[connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
