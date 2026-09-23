@@ -315,6 +315,8 @@ func collect_petal(value: int = 1) -> void:
 
 	_petals = clampi(_petals + max(value, 0), 0, max_petals)
 	petal_collected.emit(_petals)
+	_score += value * petal_score_value
+	score_changed.emit(_score)
 
 func get_petals() -> int:
 	return _petals
@@ -569,6 +571,7 @@ func _update_distance_score() -> void:
 	if distance_moved > 0.0:
 		_score_distance += distance_moved
 		_score += int(distance_moved * distance_score_multiplier)
+		score_changed.emit(_score)
 
 	_last_score_x = global_position.x
 	

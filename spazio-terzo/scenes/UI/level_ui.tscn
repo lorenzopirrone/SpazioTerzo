@@ -1,7 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
-[ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="2_fdlk4"]
 [ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
 [ext_resource type="Texture2D" uid="uid://cmkl60fhm1l8a" path="res://scenes/UI/Brush.png" id="4_01sg8"]
 [ext_resource type="Texture2D" uid="uid://dq2s4n30qnfee" path="res://scenes/UI/Heart.png" id="4_6s4o3"]
@@ -59,6 +58,12 @@
 [ext_resource type="Texture2D" uid="uid://dh776sdbvlncu" path="res://scenes/UI/Lil Explosion Animation/explosion-05.png" id="53_lert1"]
 [ext_resource type="Texture2D" uid="uid://ugl30wwgdush" path="res://scenes/UI/Lil Explosion Animation/explosion-06.png" id="54_mgc3p"]
 [ext_resource type="Texture2D" uid="uid://do8s7yjmoq1sy" path="res://scenes/UI/Front Punch.png" id="56_k0c2n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y8kx"]
+bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
+border_width_left = 12
+border_width_right = 12
+border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_813rm"]
 animations = [{
@@ -299,44 +304,28 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 45.0
-offset_top = -46.0
-offset_right = 45.0
-offset_bottom = -46.0
+offset_left = 4.0
+offset_top = 7.0
+offset_right = 4.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CoinsPanel" type="Panel" parent="UI"]
+[node name="CoinsPanel" type="PanelContainer" parent="UI"]
 layout_mode = 1
-offset_right = 530.0
-offset_bottom = 179.0
+offset_left = -5.0
+offset_top = 54.0
+offset_right = 157.55556
+offset_bottom = 131.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y8kx")
 
 [node name="Coin Count" type="Label" parent="UI/CoinsPanel"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -366.0
-offset_top = 35.0
-offset_right = -28.0
-offset_bottom = 138.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 0.62352943, 0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
 theme_override_fonts/font = ExtResource("1_uu4ov")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 36
 text = "10"
-
-[node name="Coin Icon" type="TextureRect" parent="UI/CoinsPanel"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -507.0
-offset_top = 22.0
-offset_right = -377.0
-offset_bottom = 152.0
-grow_horizontal = 0
-texture = ExtResource("2_fdlk4")
+horizontal_alignment = 1
 
 [node name="CoinChargeBar" type="Control" parent="UI" node_paths=PackedStringArray("fill")]
 layout_mode = 1

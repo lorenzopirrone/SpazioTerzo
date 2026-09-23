@@ -357,6 +357,7 @@ punch_speed_effect = NodePath("Vespro/punch_speed_effect")
 effect_max_opacity = 0.9
 effect_max_speed = 6.0
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
+petal_score_value = 250
 
 [node name="Body" type="Polygon2D" parent="."]
 visible = false
