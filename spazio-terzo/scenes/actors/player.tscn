@@ -479,7 +479,7 @@ libraries = {
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
 
 [node name="Punch Reference" type="Node2D" parent="."]
-position = Vector2(41.67513, 6.630134)
+position = Vector2(42.148712, -4.262229)
 
 [node name="Reference Spalla" type="Node2D" parent="."]
 position = Vector2(-7.5772963, 8.524458)

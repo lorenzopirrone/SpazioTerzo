@@ -236,10 +236,7 @@ func _physics_process(delta: float) -> void:
 		var punch_progress := 1.0 - (_punch_timer / punch_duration)
 		punch_progress = clampf(punch_progress, 0.0, 1.0)
 
-		punch_sprite.global_position = punch_charge_reference.global_position.lerp(
-			punch_reference.global_position,
-			punch_progress
-		)
+
 
 	var punch_progress := 1.0 - (_punch_timer / punch_duration)
 	punch_progress = clampf(punch_progress, 0.0, 1.0)
@@ -440,13 +437,18 @@ func _begin_punch_charge() -> void:
 	if punch_charge_reference:
 		punch_sprite.global_position = punch_charge_reference.global_position
 
+	play_animation(ANIMATION_PUNCH_START)
+
+	if punch_charge_reference:
+		punch_sprite.global_position = punch_charge_reference.global_position
+
 	punch_sprite.visible = true
 	punch_sprite.scale = Vector2.ONE * punch_charge_scale
 	punch_animation_player.play(punch_rotation_animation)
 
 	_update_charge_bar(0.0)
 
-	play_animation(ANIMATION_PUNCH_START)
+
 
 
 
@@ -484,6 +486,10 @@ func _release_punch() -> void:
 
 	# Da qui in poi il pugno è valido.
 	_is_punch_releasing = true
+
+	if punch_reference:
+		punch_sprite.global_position = punch_reference.global_position
+
 	play_animation(ANIMATION_PUNCH_RELEASE)
 
 	var power := clampf(_charge_time / max_charge_time, punch_min_power, 1.0)
