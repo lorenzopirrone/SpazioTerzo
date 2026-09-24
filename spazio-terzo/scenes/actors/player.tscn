@@ -362,7 +362,7 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -372,6 +372,7 @@ punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
 punch_charge_sparkle = NodePath("Vespro/punch_charge_sparkle")
 punch_reference = NodePath("Punch Reference")
+punch_charge_reference = NodePath("Reference Spalla")
 punch_texture_small = ExtResource("4_366ld")
 punch_texture_medium = ExtResource("3_366ld")
 punch_texture_large = ExtResource("6_tiqit")
@@ -428,7 +429,6 @@ scale = Vector2(0.9619614, 0.9619615)
 texture = ExtResource("17_t62v4")
 
 [node name="PunchSprite" type="Sprite2D" parent="Vespro"]
-visible = false
 position = Vector2(-8, 9.846152)
 rotation = -0.6661903
 scale = Vector2(0.86153156, 0.86153156)
@@ -479,7 +479,10 @@ libraries = {
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
 
 [node name="Punch Reference" type="Node2D" parent="."]
-position = Vector2(41, 5)
+position = Vector2(41.67513, 6.630134)
+
+[node name="Reference Spalla" type="Node2D" parent="."]
+position = Vector2(-7.5772963, 8.524458)
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

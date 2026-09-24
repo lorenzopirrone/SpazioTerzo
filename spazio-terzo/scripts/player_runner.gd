@@ -44,6 +44,7 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_sprite: Sprite2D
 @export var punch_charge_sparkle: AnimatedSprite2D
 @export var punch_reference: Node2D
+@export var punch_charge_reference: Node2D
 @export var punch_texture_small: Texture2D
 @export var punch_texture_medium: Texture2D
 @export var punch_texture_large: Texture2D
@@ -231,6 +232,15 @@ func _physics_process(delta: float) -> void:
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
 
+	if punch_reference:
+		var punch_progress := 1.0 - (_punch_timer / punch_duration)
+		punch_progress = clampf(punch_progress, 0.0, 1.0)
+
+		punch_sprite.global_position = punch_charge_reference.global_position.lerp(
+			punch_reference.global_position,
+			punch_progress
+		)
+
 	var punch_progress := 1.0 - (_punch_timer / punch_duration)
 	punch_progress = clampf(punch_progress, 0.0, 1.0)
 
@@ -244,14 +254,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
 
-	if _punch_timer <= 0.0:
+	if _punch_timer <= 0.0 and not _is_charging:
 		_punch_timer = 0.0
 		_set_punch_active(false)
 		punch_finished.emit()
 		punch_sprite.visible = false
 
-	if punch_reference:
-		punch_sprite.global_position = punch_reference.global_position
 
 	_update_damage_flash(delta)
 	move_and_slide()
@@ -429,13 +437,18 @@ func _begin_punch_charge() -> void:
 		punch_charge_sparkle.stop()
 		punch_charge_sparkle.frame = 0
 
-	_update_charge_bar(0.0)
-
-	play_animation(ANIMATION_PUNCH_START)
+	if punch_charge_reference:
+		punch_sprite.global_position = punch_charge_reference.global_position
 
 	punch_sprite.visible = true
 	punch_sprite.scale = Vector2.ONE * punch_charge_scale
 	punch_animation_player.play(punch_rotation_animation)
+
+	_update_charge_bar(0.0)
+
+	play_animation(ANIMATION_PUNCH_START)
+
+
 
 
 
@@ -449,25 +462,35 @@ func _release_punch() -> void:
 		return
 
 	_is_charging = false
-	_is_punch_releasing = true
-
-
 	punch_animation_player.stop()
-
-	
-	play_animation(ANIMATION_PUNCH_RELEASE)
 
 	if punch_speed_effect:
 		punch_speed_effect.stop()
 		punch_speed_effect.visible = false
 		punch_speed_effect.modulate.a = 0.0
 
+	if punch_charge_sparkle:
+		punch_charge_sparkle.visible = false
+		punch_charge_sparkle.stop()
+		punch_charge_sparkle.frame = 0
+
+	# Se la carica è troppo breve, annulliamo il pugno.
+	if _charge_time < min_charge_time:
+		_charge_time = 0.0
+		_update_charge_bar(0.0)
+		_is_punch_releasing = false
+		punch_sprite.visible = false
+		return
+
+	# Da qui in poi il pugno è valido.
+	_is_punch_releasing = true
+	play_animation(ANIMATION_PUNCH_RELEASE)
+
 	var power := clampf(_charge_time / max_charge_time, punch_min_power, 1.0)
 	_update_charge_bar(0.0)
 
-	if _charge_time >= min_charge_time:
-		_start_punch(power)
-	
+	_start_punch(power)
+
 	var charge_progress := _charge_time / max_charge_time
 	punch_sprite.scale = _punch_base_scale * lerpf(1.0, punch_release_max_scale, charge_progress)
 
@@ -484,12 +507,14 @@ func _start_punch(power: float) -> void:
 	punch_collision.position.x = 24.0 + (punch_shape.size.x * 0.5)
 
 	# Il pugno parte dalla posizione normale
-	_punch_start_position = punch_sprite.position
+
 	punch_sprite.visible = true
 
 	_punch_timer = punch_duration
 	_set_punch_active(true)
 	punch_started.emit(power)
+
+	
 
 func _set_punch_active(active: bool) -> void:
 	punch_area.monitoring = active
