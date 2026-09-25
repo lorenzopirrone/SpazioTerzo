@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=59 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://detyokite0gy2" path="res://Sprites/Vespro/Vespro jump/Vespro jump_0005.png" id="15_dferu"]
 [ext_resource type="Texture2D" uid="uid://cb67nvlnm7doi" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0007.png" id="16_dferu"]
 [ext_resource type="Texture2D" uid="uid://d3oqslh5txjoq" path="res://scenes/UI/Lil Explosion Animation/explosion-01.png" id="16_gn53q"]
+[ext_resource type="Texture2D" uid="uid://ydwhw1orl3n4" path="res://Images/Empty.png" id="17_3g275"]
 [ext_resource type="Texture2D" uid="uid://cnoxicvnvbhny" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0006.png" id="17_t62v4"]
 [ext_resource type="Texture2D" uid="uid://dl1kgojiy7n4o" path="res://Sprites/Vespro/Vespro jump/Vespro fall_0008.png" id="18_t62v4"]
 [ext_resource type="Texture2D" uid="uid://c6r0hq8wvr32k" path="res://Sprites/Vespro/Vespro damage/Vespro damage_0001.png" id="19_6a6mx"]
@@ -105,6 +106,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("14_vn1li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3g275")
 }],
 "loop": false,
 "name": &"default",
@@ -429,6 +433,7 @@ scale = Vector2(0.9619614, 0.9619615)
 texture = ExtResource("17_t62v4")
 
 [node name="PunchSprite" type="Sprite2D" parent="Vespro"]
+visible = false
 position = Vector2(-8, 9.846152)
 rotation = -0.6661903
 scale = Vector2(0.86153156, 0.86153156)

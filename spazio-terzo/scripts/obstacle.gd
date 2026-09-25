@@ -23,23 +23,31 @@ extends Area2D
 
 var _destroying: bool = false
 
+@export_group("Score")
+@export var score_value: int = 100
+@export var multiplier_bar_value: float = 15.0
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_hit"):
 		body.take_hit()
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if can_be_punched and area.name == "PunchArea" and not _destroying:
 		_destroying = true
 
+		var player := area.get_parent()
+
+		if player.has_method("add_interaction_score"):
+			player.add_interaction_score(score_value, multiplier_bar_value)
+
 		$CollisionShape2D.set_deferred("disabled", true)
 
 		_play_destroy_effect()
+
 func destroy_obstacle() -> void:
 	# Per ora solo test
 	print("OSTACOLO DISTRUTTO")

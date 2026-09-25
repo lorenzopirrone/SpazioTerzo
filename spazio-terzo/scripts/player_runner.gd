@@ -109,6 +109,14 @@ var _punch_base_scale: Vector2
 @export var distance_score_multiplier: float = 1.0
 @export var petal_score_value: int = 100
 
+@export_group("Score Multiplier")
+## quanto serve per riempire completamente la barra.
+@export var multiplier_bar_max: float = 100.0
+## percentuale inizio barra nuova (40%)
+@export var multiplier_bar_start: float = 0.4
+## quanto velocemente la barra scende col tempo.
+@export var multiplier_decay_speed: float = 10.0
+
 
 @onready var punch_area: Area2D = $PunchArea
 @onready var punch_collision: CollisionShape2D = $PunchArea/CollisionShape2D
@@ -142,6 +150,8 @@ var _score: int = 0
 var _score_distance: float = 0.0
 var _last_score_x: float = 0.0
 var _last_punch_charge_stage: int = -1
+var _multiplier_bar: float = 0.0
+var _score_multiplier: float = 1.0
 
 func _ready() -> void:
 	_rng.randomize()
@@ -152,6 +162,8 @@ func _ready() -> void:
 	_update_damage_flash(0.0)
 	_punch_base_scale = punch_sprite.scale
 	_last_score_x = global_position.x
+
+	_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 
 	if punch_speed_effect:
 		punch_speed_effect.visible = false
@@ -186,6 +198,16 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
+		
+	if _multiplier_bar > 0.0:
+		_multiplier_bar = maxf(
+			_multiplier_bar - multiplier_decay_speed * delta,
+			0.0
+		)
+
+	if _multiplier_bar <= 0.0:
+		_score_multiplier = 1.0
+		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 	
 	if _damage_animation_timer > 0.0:
 		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
@@ -340,8 +362,11 @@ func collect_petal(value: int = 1) -> void:
 
 	_petals = clampi(_petals + max(value, 0), 0, max_petals)
 	petal_collected.emit(_petals)
-	_score += value * petal_score_value
+
+	_score += int(value * petal_score_value * _score_multiplier)
 	score_changed.emit(_score)
+
+	add_multiplier_progress(15.0)
 
 func get_petals() -> int:
 	return _petals
@@ -662,5 +687,20 @@ func get_score() -> int:
 	return _score
 
 
-func _on_punch_charge_sparkle_animation_finished() -> void:
-	punch_charge_sparkle.visible = false
+func add_multiplier_progress(value: float) -> void:
+	
+	_multiplier_bar += value
+	print("MOLTIPLICATORE: %", _multiplier_bar)
+
+	if _multiplier_bar >= multiplier_bar_max:
+		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
+
+		if _score_multiplier < 2.0:
+			_score_multiplier += 0.25
+			print("MOLTIPLICATORE: x", _score_multiplier)
+
+
+func add_interaction_score(value: int, multiplier_progress: float) -> void:
+	_score += int(value * _score_multiplier)
+	score_changed.emit(_score)
+	add_multiplier_progress(multiplier_progress)
