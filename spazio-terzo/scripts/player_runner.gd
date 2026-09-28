@@ -6,6 +6,8 @@ signal punch_started(power: float)
 signal punch_finished
 signal petal_collected(total_petals: int)
 signal score_changed(new_score: int)
+signal multiplier_progress_changed
+signal multiplier_reset
 
 
 const ANIMATION_RUN: StringName = &"Vespro_Run"
@@ -207,6 +209,9 @@ func _physics_process(delta: float) -> void:
 
 	if _multiplier_bar <= 0.0:
 		_score_multiplier = 1.0
+		
+		multiplier_reset.emit()
+		
 		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 	
 	if _damage_animation_timer > 0.0:
@@ -698,7 +703,14 @@ func add_multiplier_progress(value: float) -> void:
 		if _score_multiplier < 2.0:
 			_score_multiplier += 0.25
 			print("MOLTIPLICATORE: x", _score_multiplier)
+	
+	multiplier_progress_changed.emit()
 
+func get_multiplier_bar_progress() -> float:
+	return clampf(_multiplier_bar / multiplier_bar_max, 0.0, 1.0)
+
+func get_score_multiplier() -> float:
+	return _score_multiplier
 
 func add_interaction_score(value: int, multiplier_progress: float) -> void:
 	_score += int(value * _score_multiplier)

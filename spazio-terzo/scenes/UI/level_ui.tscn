@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=66 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://41r74hn2cux2" path="res://Images/Flames/Flames 2.png" id="8_xbgee"]
 [ext_resource type="Texture2D" uid="uid://m510i47r62fr" path="res://scenes/UI/Clock Gif/frame_05_delay-0.25s.png" id="9_4qqu0"]
 [ext_resource type="Texture2D" uid="uid://dj07e4ku1imo0" path="res://Images/Flames/Flames 3.png" id="9_k02l2"]
+[ext_resource type="Script" uid="uid://cyrebr1pnshms" path="res://scenes/UI/multiplier_bar.gd" id="9_lert1"]
 [ext_resource type="Texture2D" uid="uid://d0owq1jxwk4lo" path="res://Images/Flames/Flames 4.png" id="10_fkwso"]
 [ext_resource type="Texture2D" uid="uid://bwcdkt2688jor" path="res://scenes/UI/Clock Gif/frame_06_delay-0.25s.png" id="10_qf0i8"]
 [ext_resource type="Texture2D" uid="uid://c801rg4u4bnui" path="res://scenes/UI/Clock Gif/frame_07_delay-0.25s.png" id="11_4hsr6"]
@@ -511,6 +512,58 @@ expand_mode = 1
 position = Vector2(51, 52.00006)
 scale = Vector2(0.094594836, 0.094594836)
 texture = ExtResource("49_xbgee")
+
+[node name="MultiplierBar" type="Control" parent="UI" node_paths=PackedStringArray("fill", "multiplier_text")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -963.0
+offset_top = 228.0
+offset_right = -543.0
+offset_bottom = 248.0
+grow_horizontal = 2
+script = ExtResource("9_lert1")
+fill = NodePath("Fill")
+multiplier_text = NodePath("MultiplierPanel/Multiplier")
+
+[node name="Flames2" type="AnimatedSprite2D" parent="UI/MultiplierBar"]
+visible = false
+position = Vector2(61.000008, -96)
+rotation = -0.6419771
+scale = Vector2(0.596, 0.596)
+sprite_frames = SubResource("SpriteFrames_nwn7c")
+animation = &"Fire Animation"
+frame_progress = 0.91924316
+flip_h = true
+
+[node name="MultiplierPanel" type="PanelContainer" parent="UI/MultiplierBar"]
+layout_mode = 1
+offset_left = -2.0
+offset_top = -76.0
+offset_right = 160.55556
+offset_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y8kx")
+
+[node name="Multiplier" type="Label" parent="UI/MultiplierBar/MultiplierPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 36
+text = "10"
+horizontal_alignment = 1
+
+[node name="Background" type="ColorRect" parent="UI/MultiplierBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="Fill" type="ColorRect" parent="UI/MultiplierBar"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.9764706, 0.5803922, 0.75686276, 1)
 
 [node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 1

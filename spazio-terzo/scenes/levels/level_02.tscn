@@ -55,10 +55,14 @@ script = ExtResource("4_01hg1")
 [node name="CoinChargeBar" parent="Background/LevelUI/UI" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
 
-[node name="PauseButton" parent="Background/LevelUI/UI" index="2"]
+[node name="MultiplierBar" parent="Background/LevelUI/UI" index="2" node_paths=PackedStringArray("fill", "player")]
+fill = NodePath("Fill")
+player = NodePath("../../../../Player")
+
+[node name="PauseButton" parent="Background/LevelUI/UI" index="3"]
 action_mode = 0
 
-[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="3" node_paths=PackedStringArray("player", "animation_player", "flames")]
+[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="4" node_paths=PackedStringArray("player", "animation_player", "flames")]
 player = NodePath("../../../../Player")
 animation_player = NodePath("../AnimationPlayer")
 flames = NodePath("Flames")
