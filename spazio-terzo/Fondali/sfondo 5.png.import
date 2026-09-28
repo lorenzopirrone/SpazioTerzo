@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg3n1t4e6naat"
-path="res://.godot/imported/Test sfondo rosso.png-c427dacacaf2928b9d9d9e80c2389e52.ctex"
+uid="uid://bsitq7ub0uq2"
+path="res://.godot/imported/sfondo 5.png-eb272ca6015c046149d5b114e415c118.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fondali/Test sfondo rosso.png"
-dest_files=["res://.godot/imported/Test sfondo rosso.png-c427dacacaf2928b9d9d9e80c2389e52.ctex"]
+source_file="res://Fondali/sfondo 5.png"
+dest_files=["res://.godot/imported/sfondo 5.png-eb272ca6015c046149d5b114e415c118.ctex"]
 
 [params]
 
