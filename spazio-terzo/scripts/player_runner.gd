@@ -8,6 +8,7 @@ signal petal_collected(total_petals: int)
 signal score_changed(new_score: int)
 signal multiplier_progress_changed
 signal multiplier_reset
+signal multiplier_changed(new_multiplier: float)
 
 
 const ANIMATION_RUN: StringName = &"Vespro_Run"
@@ -211,6 +212,7 @@ func _physics_process(delta: float) -> void:
 		_score_multiplier = 1.0
 		
 		multiplier_reset.emit()
+		multiplier_changed.emit(_score_multiplier)
 		
 		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 	
@@ -702,6 +704,7 @@ func add_multiplier_progress(value: float) -> void:
 
 		if _score_multiplier < 2.0:
 			_score_multiplier += 0.25
+			multiplier_changed.emit(_score_multiplier)
 			print("MOLTIPLICATORE: x", _score_multiplier)
 	
 	multiplier_progress_changed.emit()
