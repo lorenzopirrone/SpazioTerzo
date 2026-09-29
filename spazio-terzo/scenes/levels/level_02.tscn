@@ -58,39 +58,13 @@ player = NodePath("../../../../Player")
 [node name="MultiplierBar" parent="Background/LevelUI/UI" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
 
-[node name="MultiplierPanel" parent="Background/LevelUI/UI/MultiplierBar" index="0"]
-clip_contents = true
-
-[node name="Pink Flames" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel" index="0"]
-position = Vector2(-1, 122)
-
-[node name="Pink Flames" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel/Pink Flames" index="0"]
-position = Vector2(2.964427, -18.437233)
-frame_progress = 0.8639536
-
-[node name="Pink Flames2" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel/Pink Flames" index="1"]
-position = Vector2(119.565216, -14.925381)
-frame_progress = 0.6264291
-
-[node name="Pink Flames3" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel/Pink Flames" index="2"]
-position = Vector2(85.96838, -15.803344)
-frame_progress = 0.7135877
-
-[node name="Pink Flames5" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel/Pink Flames" index="3"]
-position = Vector2(56.324116, -15.803344)
-frame_progress = 0.41577995
-
-[node name="Pink Flames4" parent="Background/LevelUI/UI/MultiplierBar/MultiplierPanel/Pink Flames" index="4"]
-position = Vector2(36.561264, -17.559269)
-frame_progress = 0.33729476
-
 [node name="Background" parent="Background/LevelUI/UI/MultiplierBar" index="1"]
 offset_left = -2.0
-offset_right = 198.0
+offset_right = 257.0
 
 [node name="Fill" parent="Background/LevelUI/UI/MultiplierBar" index="2"]
 offset_left = -2.0
-offset_right = 198.0
+offset_right = 260.0
 
 [node name="PauseButton" parent="Background/LevelUI/UI" index="3"]
 action_mode = 0
@@ -127,7 +101,7 @@ autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("15_m2jhg")]
 process_mode = 1
-position = Vector2(79.99999, 395)
+position = Vector2(80, 395)
 knockback_distance = 196.0
 knockback_lift_velocity = -260.0
 knockback_duration = 1.0
@@ -209,6 +183,54 @@ position = Vector2(1111, 423)
 
 [node name="CoinA11" parent="." instance=ExtResource("8_coin")]
 position = Vector2(1283, 425)
+
+[node name="CoinA16" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4649, 409)
+
+[node name="CoinA17" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4824, 414)
+
+[node name="CoinA18" parent="." instance=ExtResource("8_coin")]
+position = Vector2(3739, 418)
+
+[node name="CoinA19" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4742, 407)
+
+[node name="CoinA20" parent="." instance=ExtResource("8_coin")]
+position = Vector2(3854, 415)
+
+[node name="CoinA21" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4044, 419)
+
+[node name="CoinA22" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4161, 417)
+
+[node name="CoinA23" parent="." instance=ExtResource("8_coin")]
+position = Vector2(4333, 419)
+
+[node name="CoinA24" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10697, 375)
+
+[node name="CoinA25" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10872, 380)
+
+[node name="CoinA26" parent="." instance=ExtResource("8_coin")]
+position = Vector2(9787, 384)
+
+[node name="CoinA27" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10790, 373)
+
+[node name="CoinA28" parent="." instance=ExtResource("8_coin")]
+position = Vector2(9902, 381)
+
+[node name="CoinA29" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10092, 385)
+
+[node name="CoinA30" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10209, 383)
+
+[node name="CoinA31" parent="." instance=ExtResource("8_coin")]
+position = Vector2(10381, 385)
 
 [node name="CoinB" parent="." instance=ExtResource("8_coin")]
 position = Vector2(3276, 182)

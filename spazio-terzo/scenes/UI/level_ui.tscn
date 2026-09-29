@@ -66,8 +66,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y8kx"]
 bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
-border_width_left = 12
-border_width_right = 12
+border_width_left = 25
+border_width_top = 2
+border_width_right = 25
+border_width_bottom = 2
 border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ic8gt"]
@@ -537,67 +539,105 @@ position = Vector2(51, 52.00006)
 scale = Vector2(0.094594836, 0.094594836)
 texture = ExtResource("49_xbgee")
 
-[node name="MultiplierBar" type="Control" parent="UI" node_paths=PackedStringArray("fill", "multiplier_text")]
+[node name="MultiplierBar" type="Control" parent="UI" node_paths=PackedStringArray("fill", "multiplier_text", "flames")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -963.0
 offset_top = 228.0
-offset_right = -543.0
+offset_right = -703.0
 offset_bottom = 248.0
 grow_horizontal = 2
 script = ExtResource("9_lert1")
 fill = NodePath("Fill")
 multiplier_text = NodePath("MultiplierPanel/Multiplier")
+flames = NodePath("MultiplierPanel/Pink Flames")
+bar_width = 259.0
+scale_x1_25 = 1.0
+scale_x1_5 = 1.0
+scale_x1_75 = 1.0
+scale_x2 = 1.0
+flames_animation_duration = 0.4
 
 [node name="MultiplierPanel" type="PanelContainer" parent="UI/MultiplierBar"]
+self_modulate = Color(0, 0, 0, 1)
+clip_contents = true
 layout_mode = 1
 offset_left = -2.0
 offset_top = -76.0
-offset_right = 160.55556
+offset_right = 258.0
 offset_bottom = 1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6y8kx")
 
 [node name="Pink Flames" type="Node2D" parent="UI/MultiplierBar/MultiplierPanel"]
-position = Vector2(-1, 63)
+position = Vector2(-4, 162)
 scale = Vector2(1.012, 1.139)
 
-[node name="Pink Flames" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+[node name="Pink Flames6" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
 modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
-position = Vector2(23, -15)
+position = Vector2(208.49803, -34.240555)
 scale = Vector2(0.23454545, 0.3)
 sprite_frames = SubResource("SpriteFrames_ic8gt")
-frame_progress = 0.91727746
+autoplay = "default"
+frame_progress = 0.13424917
 
-[node name="Pink Flames2" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+[node name="Pink Flames8" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
 modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
-position = Vector2(179, -15)
+position = Vector2(170.94862, -34.240555)
 scale = Vector2(0.23454545, 0.3)
 sprite_frames = SubResource("SpriteFrames_ic8gt")
-frame_progress = 0.75430167
+autoplay = "default"
+frame_progress = 0.5396313
+
+[node name="Pink Flames7" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
+position = Vector2(244.07115, -34.240555)
+scale = Vector2(0.23454545, 0.3)
+sprite_frames = SubResource("SpriteFrames_ic8gt")
+autoplay = "default"
+frame_progress = 0.7281321
 flip_h = true
 
-[node name="Pink Flames3" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+[node name="Pink Flames9" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
 modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
-position = Vector2(137, -15)
+position = Vector2(107.348816, -34.25482)
 scale = Vector2(0.23454545, 0.3)
 sprite_frames = SubResource("SpriteFrames_ic8gt")
-frame_progress = 0.3265126
+autoplay = "default"
+frame_progress = 0.03660757
 
-[node name="Pink Flames5" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+[node name="Pink Flames10" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
 modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
-position = Vector2(98, -15)
+position = Vector2(69.79941, -34.25482)
 scale = Vector2(0.23454545, 0.3)
 sprite_frames = SubResource("SpriteFrames_ic8gt")
-frame_progress = 0.8747161
+autoplay = "default"
+frame_progress = 0.5396313
 
-[node name="Pink Flames4" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+[node name="Pink Flames12" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
 modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
-position = Vector2(65, -15)
+position = Vector2(37.549408, -34.240566)
 scale = Vector2(0.23454545, 0.3)
 sprite_frames = SubResource("SpriteFrames_ic8gt")
-frame_progress = 0.12379163
+autoplay = "default"
+frame_progress = 0.5396313
+
+[node name="Pink Flames13" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
+position = Vector2(13.833992, -34.240566)
+scale = Vector2(0.23454545, 0.3)
+sprite_frames = SubResource("SpriteFrames_ic8gt")
+autoplay = "default"
+frame_progress = 0.5396313
+flip_h = true
+
+[node name="Pink Flames11" type="AnimatedSprite2D" parent="UI/MultiplierBar/MultiplierPanel/Pink Flames"]
+modulate = Color(0.9764706, 0.5803922, 0.75686276, 1)
+position = Vector2(142.92194, -34.25482)
+scale = Vector2(0.23454545, 0.3)
+sprite_frames = SubResource("SpriteFrames_ic8gt")
+autoplay = "default"
+frame_progress = 0.63048893
 flip_h = true
 
 [node name="Multiplier" type="Label" parent="UI/MultiplierBar/MultiplierPanel"]
@@ -611,13 +651,13 @@ horizontal_alignment = 1
 
 [node name="Background" type="ColorRect" parent="UI/MultiplierBar"]
 layout_mode = 0
-offset_right = 200.0
+offset_right = 259.0
 offset_bottom = 20.0
 color = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
 [node name="Fill" type="ColorRect" parent="UI/MultiplierBar"]
 layout_mode = 0
-offset_right = 200.0
+offset_right = 259.0
 offset_bottom = 20.0
 color = Color(0.9764706, 0.5803922, 0.75686276, 1)
 

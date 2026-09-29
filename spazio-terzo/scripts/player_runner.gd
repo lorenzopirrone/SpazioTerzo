@@ -209,13 +209,8 @@ func _physics_process(delta: float) -> void:
 		)
 
 	if _multiplier_bar <= 0.0:
-		_score_multiplier = 1.0
-		
-		multiplier_reset.emit()
-		multiplier_changed.emit(_score_multiplier)
-		
-		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
-	
+		reset_multiplier()
+
 	if _damage_animation_timer > 0.0:
 		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
 
@@ -311,6 +306,7 @@ func take_hit() -> void:
 	if _dead or _invulnerability_timer > 0.0:
 		return
 
+	reset_multiplier()
 	_end_grind()
 	
 	_is_charging = false
@@ -714,6 +710,15 @@ func get_multiplier_bar_progress() -> float:
 
 func get_score_multiplier() -> float:
 	return _score_multiplier
+
+func reset_multiplier() -> void:
+	_score_multiplier = 1.0
+	_multiplier_bar = multiplier_bar_max * multiplier_bar_start
+
+	multiplier_reset.emit()
+	multiplier_changed.emit(_score_multiplier)
+
+	print("MOLTIPLICATORE RESET: x1")
 
 func add_interaction_score(value: int, multiplier_progress: float) -> void:
 	_score += int(value * _score_multiplier)
