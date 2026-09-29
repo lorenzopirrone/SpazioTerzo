@@ -1,28 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=14 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
-[ext_resource type="PackedScene" path="res://scenes/environment/moving_platform.tscn" id="3_platform"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
-[ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="5_jmes4"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="6_camera"]
-[ext_resource type="PackedScene" uid="uid://baipmrhrbncmd" path="res://scenes/environment/incoming_obstacle.tscn" id="7_incoming"]
-[ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="8_trampoline"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="9_audio"]
 [ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="10_coin"]
-[ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="11_triangle"]
+[ext_resource type="Texture2D" uid="uid://cvs8gsi2ymil8" path="res://Fondali/skybox.png" id="13_3g50r"]
+[ext_resource type="Texture2D" uid="uid://dtnplc6777qho" path="res://Fondali/clouds1.png" id="14_iu1m7"]
+[ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="15_cywot"]
+[ext_resource type="Texture2D" uid="uid://bl48a7tlmtab2" path="res://Fondali/Sfondo 2.png" id="16_vrcmr"]
+[ext_resource type="Texture2D" uid="uid://bu4v7hgef0u6q" path="res://Fondali/Sfondo 4.png" id="17_svp4f"]
+[ext_resource type="Texture2D" uid="uid://dxt0k03sernxv" path="res://Fondali/Sfondo 3.png" id="18_1b0o8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_b"]
-size = Vector2(180, 24)
 
 [node name="Level01" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
 audio_stream = ExtResource("9_audio")
 manual_track_duration_seconds = 160.82
+finish_line_path = NodePath("Livello/FinishLine")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(90, 420)
@@ -36,78 +34,157 @@ target_path = NodePath("../Player")
 horizontal_lookahead = 760.0
 vertical_offset = -84.0
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(21500, 510)
-
-[node name="Visual" type="Polygon2D" parent="Ground"]
-color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 32, -21500, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("RectangleShape2D_ground")
-
-[node name="AirPlatform" parent="." instance=ExtResource("5_jmes4")]
-position = Vector2(530, 390)
-
-[node name="UpperPlatform" type="StaticBody2D" parent="."]
-position = Vector2(980, 335)
-
-[node name="Visual" type="Polygon2D" parent="UpperPlatform"]
-color = Color(0.25, 0.55, 0.74, 1)
-polygon = PackedVector2Array(-90, -12, 90, -12, 82, 12, -82, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
-shape = SubResource("RectangleShape2D_platform_b")
-one_way_collision = true
-one_way_collision_margin = 10.0
-
-[node name="FlyingPlatformA" parent="." instance=ExtResource("3_platform")]
-position = Vector2(780, 300)
-travel = Vector2(0, -70)
-cycle_time = 2.1
-
-[node name="FlyingPlatformB" parent="." instance=ExtResource("3_platform")]
-position = Vector2(1210, 360)
-travel = Vector2(0, -100)
-cycle_time = 2.8
-
-[node name="ObstacleA" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(360, 450)
-
-[node name="ObstacleB" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(705, 450)
-
-[node name="ObstacleC" parent="." instance=ExtResource("2_obstacle")]
-position = Vector2(1070, 275)
-
 [node name="CoinA" parent="." instance=ExtResource("10_coin")]
 position = Vector2(620, 330)
 
 [node name="CoinB" parent="." instance=ExtResource("10_coin")]
 position = Vector2(1140, 290)
 
-[node name="IncomingObstacleA" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(825, 405)
-
-[node name="IncomingObstacle" parent="." instance=ExtResource("7_incoming")]
-position = Vector2(1190, 285)
-alert_duration = 0.9
-obstacle_speed = 620.0
-
-[node name="TrampolineA" parent="." instance=ExtResource("8_trampoline")]
-position = Vector2(1480, 490)
-
-[node name="TrampolineB" parent="." instance=ExtResource("8_trampoline")]
-position = Vector2(2640, 490)
-launch_velocity = -1040.0
-
-[node name="TriangleObstacleA" parent="." instance=ExtResource("11_triangle")]
-position = Vector2(1980, 450)
-
-[node name="FinishLine" parent="." instance=ExtResource("4_finish")]
-position = Vector2(1385, 420)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="AirPlatform2" parent="." instance=ExtResource("5_jmes4")]
-position = Vector2(2973, 214)
+[node name="Livello" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Livello"]
+position = Vector2(21500, 510)
+
+[node name="Visual" type="Polygon2D" parent="Livello/Ground"]
+color = Color(0.19, 0.22, 0.25, 1)
+polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 32, -21500, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Livello/Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="FinishLine" parent="Livello" instance=ExtResource("4_finish")]
+position = Vector2(1385, 420)
+
+[node name="Parallasse" type="Node2D" parent="."]
+position = Vector2(0, 150)
+
+[node name="Skybox" type="Parallax2D" parent="Parallasse"]
+scroll_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(320, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(960, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(1600, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(2240, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(2880, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(3520, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(4160, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Skybox"]
+z_index = -30
+position = Vector2(4800, 166)
+texture = ExtResource("13_3g50r")
+
+[node name="Clouds" type="Parallax2D" parent="Parallasse"]
+scroll_scale = Vector2(0.25, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(320, 166)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(960, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(1600, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(2240, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(2880, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(3520, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(4160, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Clouds"]
+z_index = -29
+position = Vector2(4800, 169)
+texture = ExtResource("14_iu1m7")
+
+[node name="Sfondo" type="Parallax2D" parent="Parallasse"]
+scroll_scale = Vector2(0.55, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(320, 166)
+texture = ExtResource("15_cywot")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(960, 166)
+texture = ExtResource("16_vrcmr")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(1600, 166)
+texture = ExtResource("17_svp4f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(2240, 166)
+texture = ExtResource("16_vrcmr")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(2880, 166)
+texture = ExtResource("18_1b0o8")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(3520, 166)
+texture = ExtResource("15_cywot")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(4160, 166)
+texture = ExtResource("17_svp4f")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(4800, 166)
+texture = ExtResource("16_vrcmr")
