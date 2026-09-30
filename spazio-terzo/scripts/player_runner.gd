@@ -112,8 +112,8 @@ var _punch_base_scale: Vector2
 @export_group("Score")
 @export var distance_score_multiplier: float = 1.0
 @export var petal_score_value: int = 100
-@export var floating_score_text_scene: PackedScene
-@export var score_text_spawn: Node2D
+
+
 
 
 @export_group("Score Multiplier")
@@ -132,7 +132,7 @@ var _punch_base_scale: Vector2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_audio: AudioStreamPlayer = $DamageAudio
 @onready var music_player: AudioStreamPlayer = $"../Guaglio_Theme"
-
+@onready var score_text: Label = $ScoreText
 
 var _charge_time: float = 0.0
 var _is_charging: bool = false
@@ -168,6 +168,7 @@ func _ready() -> void:
 	_update_damage_flash(0.0)
 	_punch_base_scale = punch_sprite.scale
 	_last_score_x = global_position.x
+	score_text.visible = false
 
 	_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 
@@ -177,8 +178,6 @@ func _ready() -> void:
 		punch_speed_effect.modulate.a = 0.0
 
 	play_animation(ANIMATION_RUN)
-
-	_show_floating_score(150)
 
 func play_animation(animation_name: StringName) -> void:
 	if _current_animation == animation_name:
@@ -368,8 +367,12 @@ func collect_petal(value: int = 1) -> void:
 	_petals = clampi(_petals + max(value, 0), 0, max_petals)
 	petal_collected.emit(_petals)
 
-	_score += int(value * petal_score_value * _score_multiplier)
+	var score_gained: int = int(value * petal_score_value * _score_multiplier)
+
+	_score += score_gained
 	score_changed.emit(_score)
+
+	_show_floating_score(score_gained)
 
 	add_multiplier_progress(15.0)
 
@@ -718,32 +721,74 @@ func get_score() -> int:
 	return _score
 
 func _show_floating_score(value: int) -> void:
-	print("FLOATING SCORE: funzione chiamata")
+	var floating_text: Label = score_text.duplicate()
 
-	if floating_score_text_scene == null:
-		print("FLOATING SCORE: scena NULL")
-		return
+	floating_text.text = str(value)
+	floating_text.visible = true
+	floating_text.top_level = true
+	floating_text.z_index = 1000
 
-	if score_text_spawn == null:
-		print("FLOATING SCORE: spawn NULL")
-		return
+	add_child(floating_text)
 
-	var floating_score_text := floating_score_text_scene.instantiate()
+	floating_text.global_position = score_text.global_position
 
-	print("FLOATING SCORE: scena istanziata")
+	# Stato iniziale
+	floating_text.modulate.a = 0.0
+	floating_text.scale = Vector2.ONE * 0.7
 
-	get_tree().current_scene.add_child(floating_score_text)
-	floating_score_text.z_index = 1000
+	# Posizione finale
+	var target_position: Vector2 = floating_text.global_position + Vector2(0.0, -40.0)
 
-	print("FLOATING SCORE: scena aggiunta al livello")
+	# Tween
+	var tween: Tween = create_tween()
 
-	floating_score_text.global_position = global_position
+	# Entrata + pop
+	tween.set_parallel(true)
+	tween.tween_property(
+		floating_text,
+		"modulate:a",
+		1.0,
+		0.1
+	)
+	tween.tween_property(
+		floating_text,
+		"scale",
+		Vector2.ONE * 1.15,
+		0.1
+	)
 
-	print("FLOATING SCORE: posizione impostata")
+	# Movimento verso l'alto
+	tween.tween_property(
+		floating_text,
+		"global_position",
+		target_position,
+		0.7
+	)
 
-	floating_score_text.show_score(value)
+	# Torna alla scala normale
+	tween.set_parallel(false)
+	tween.tween_property(
+		floating_text,
+		"scale",
+		Vector2.ONE,
+		0.1
+	)
 
-	print("FLOATING SCORE: show_score chiamato")
+	# Aspetta prima di scomparire
+	tween.tween_interval(0.4)
+
+	# Fade out
+	tween.tween_property(
+		floating_text,
+		"modulate:a",
+		0.0,
+		0.2
+	)
+
+	# Elimina la copia
+	tween.tween_callback(floating_text.queue_free)
+
+
 
 func add_multiplier_progress(value: float) -> void:
 	_multiplier_bar += value
@@ -777,6 +822,10 @@ func reset_multiplier() -> void:
 
 
 func add_interaction_score(value: int, multiplier_progress: float) -> void:
-	_score += int(value * _score_multiplier)
+	var score_gained: int = int(value * _score_multiplier)
+
+	_score += score_gained
 	score_changed.emit(_score)
+
+	_show_floating_score(score_gained)
 	add_multiplier_progress(multiplier_progress)

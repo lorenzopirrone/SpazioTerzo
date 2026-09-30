@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cjr72fsmtllhm" path="res://Sprites/Vespro/Vespro punch/Punch 1.png" id="6_18oyn"]
 [ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
 [ext_resource type="Texture2D" uid="uid://1054wayx6m6c" path="res://Sprites/Vespro/Vespro punch/Punch 6.png" id="6_tiqit"]
-[ext_resource type="PackedScene" uid="uid://d0eyfkggcds25" path="res://scenes/UI/floating_score_text.tscn" id="7_gn53q"]
 [ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
 [ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png" id="8_0878f"]
 [ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0006.png" id="9_dferu"]
@@ -42,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://di5g38f5qfh4h" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0005.png" id="35_cmlg3"]
 [ext_resource type="Texture2D" uid="uid://cp6y0l41f02vj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0007.png" id="36_gm3fn"]
 [ext_resource type="Texture2D" uid="uid://jjtbcpj2qykj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0008.png" id="37_amsee"]
+[ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="43_fvvss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -367,7 +367,7 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "score_text_spawn") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -390,8 +390,6 @@ effect_color_medium = Color(1, 0.61960787, 0, 1)
 effect_color_large = Color(1, 0.28627452, 0, 1)
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
 petal_score_value = 250
-floating_score_text_scene = ExtResource("7_gn53q")
-score_text_spawn = NodePath("ScoreTextSpawn")
 
 [node name="Body" type="Polygon2D" parent="."]
 visible = false
@@ -492,7 +490,15 @@ position = Vector2(42.148712, -4.262229)
 [node name="Reference Spalla" type="Node2D" parent="."]
 position = Vector2(-7.5772963, 8.524458)
 
-[node name="ScoreTextSpawn" type="Node2D" parent="."]
+[node name="ScoreText" type="Label" parent="."]
+offset_left = -7.5772934
+offset_top = -67.72209
+offset_right = 93.42271
+offset_bottom = -35.72209
+theme_override_fonts/font = ExtResource("43_fvvss")
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

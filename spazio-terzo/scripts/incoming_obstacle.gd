@@ -21,6 +21,10 @@ extends Node2D
 @export var obstacle_speed: float = 620.0
 @export var self_destruct_time: float = 4.0
 
+@export_group("Score")
+@export var score_value: int = 100
+@export var multiplier_bar_value: float = 15.0
+
 const WARNING_RIGHT_MARGIN := 56.0
 const SPAWN_OFFSCREEN_MARGIN := 96.0
 
@@ -117,8 +121,14 @@ func _on_obstacle_body_entered(body: Node2D) -> void:
 func _on_obstacle_area_entered(area: Area2D) -> void:
 	if area.name == "PunchArea" and not _destroying:
 		_destroying = true
+		
+		
+		var player := area.get_parent()
 
 		obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+	if player.has_method("add_interaction_score"):
+		player.add_interaction_score(score_value, multiplier_bar_value)
 
 		_play_destroy_effect()
 
