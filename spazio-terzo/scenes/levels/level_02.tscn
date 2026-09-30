@@ -69,10 +69,14 @@ offset_right = 260.0
 [node name="PauseButton" parent="Background/LevelUI/UI" index="3"]
 action_mode = 0
 
-[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="4" node_paths=PackedStringArray("player", "animation_player", "flames")]
+[node name="PunchUnlocked" parent="Background/LevelUI/UI" index="4" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
-animation_player = NodePath("../AnimationPlayer")
-flames = NodePath("Flames")
+
+[node name="Flames" parent="Background/LevelUI/UI/PunchUnlocked" index="0"]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Front Punch" parent="Background/LevelUI/UI/PunchUnlocked" index="2"]
+scale = Vector2(1e-05, 1e-05)
 
 [node name="QuitButton" parent="Background/LevelUI/UI/PausePanel" index="2"]
 text = "QUIT"

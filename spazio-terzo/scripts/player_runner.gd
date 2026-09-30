@@ -19,6 +19,7 @@ const ANIMATION_PUNCH_START: StringName = &"Punch_Start"
 const ANIMATION_PUNCH_CHARGE: StringName = &"Punch_Charge"
 const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 
+
 @export_group("Movement")
 ## Velocità orizzontale costante con cui il player avanza.
 @export var run_speed: float = 300.0
@@ -53,8 +54,8 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var punch_texture_large: Texture2D
 @export var punch_release_max_scale: float = 1.5
 @export var punch_charge_scale: float = 0.862
-var _punch_base_scale: Vector2
 
+var _punch_base_scale: Vector2
 
 
 @export_group("Punch Rotation")
@@ -111,13 +112,16 @@ var _punch_base_scale: Vector2
 @export_group("Score")
 @export var distance_score_multiplier: float = 1.0
 @export var petal_score_value: int = 100
+@export var floating_score_text_scene: PackedScene
+@export var score_text_spawn: Node2D
+
 
 @export_group("Score Multiplier")
-## quanto serve per riempire completamente la barra.
+## Quanto serve per riempire completamente la barra.
 @export var multiplier_bar_max: float = 100.0
-## percentuale inizio barra nuova (40%)
+## Percentuale inizio barra nuova (40%).
 @export var multiplier_bar_start: float = 0.4
-## quanto velocemente la barra scende col tempo.
+## Quanto velocemente la barra scende col tempo.
 @export var multiplier_decay_speed: float = 10.0
 
 
@@ -128,6 +132,7 @@ var _punch_base_scale: Vector2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_audio: AudioStreamPlayer = $DamageAudio
 @onready var music_player: AudioStreamPlayer = $"../Guaglio_Theme"
+
 
 var _charge_time: float = 0.0
 var _is_charging: bool = false
@@ -142,13 +147,11 @@ var _knockback_timer: float = 0.0
 var _knockback_start_x: float = 0.0
 var _knockback_target_x: float = 0.0
 var _flash_timer: float = 0.0
-var _rng := RandomNumberGenerator.new()
 var _base_modulate: Color = Color.WHITE
 var _grind_active: bool = false
 var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
 var _is_punch_releasing: bool = false
-var _punch_start_position: Vector2
 var _score: int = 0
 var _score_distance: float = 0.0
 var _last_score_x: float = 0.0
@@ -156,8 +159,8 @@ var _last_punch_charge_stage: int = -1
 var _multiplier_bar: float = 0.0
 var _score_multiplier: float = 1.0
 
+
 func _ready() -> void:
-	_rng.randomize()
 	_base_modulate = modulate
 	_petals = clampi(start_petals, 0, max_petals)
 	_set_punch_active(false)
@@ -172,8 +175,10 @@ func _ready() -> void:
 		punch_speed_effect.visible = false
 		punch_speed_effect.stop()
 		punch_speed_effect.modulate.a = 0.0
-	
+
 	play_animation(ANIMATION_RUN)
+
+	_show_floating_score(150)
 
 func play_animation(animation_name: StringName) -> void:
 	if _current_animation == animation_name:
@@ -186,14 +191,15 @@ func play_animation(animation_name: StringName) -> void:
 	animation_player.play(animation_name)
 	_update_animation_speed()
 
+
 func play_damage_sound() -> void:
 	if damage_sounds.is_empty():
 		return
 
 	damage_audio.stream = damage_sounds.pick_random()
 	damage_audio.play()
-	
-	
+
+
 func _process(_delta: float) -> void:
 	_update_animation_speed()
 
@@ -201,7 +207,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
-		
+
 	if _multiplier_bar > 0.0:
 		_multiplier_bar = maxf(
 			_multiplier_bar - multiplier_decay_speed * delta,
@@ -225,11 +231,18 @@ func _physics_process(delta: float) -> void:
 
 	if _knockback_timer > 0.0:
 		_knockback_timer = maxf(_knockback_timer - delta, 0.0)
+
 		if knockback_duration > 0.0:
 			var knockback_progress: float = 1.0 - (_knockback_timer / knockback_duration)
 			knockback_progress = clampf(knockback_progress, 0.0, 1.0)
+
 			var eased_progress: float = 1.0 - pow(1.0 - knockback_progress, 2.0)
-			var desired_x: float = lerpf(_knockback_start_x, _knockback_target_x, eased_progress)
+			var desired_x: float = lerpf(
+				_knockback_start_x,
+				_knockback_target_x,
+				eased_progress
+			)
+
 			velocity.x = (desired_x - global_position.x) / maxf(delta, 0.0001)
 		else:
 			global_position.x = _knockback_target_x
@@ -241,12 +254,17 @@ func _physics_process(delta: float) -> void:
 		_coyote_timer = coyote_time
 	else:
 		_coyote_timer = maxf(_coyote_timer - delta, 0.0)
-		velocity.y = minf(velocity.y + gravity * delta, max_fall_speed)
+		velocity.y = minf(
+			velocity.y + gravity * delta,
+			max_fall_speed
+		)
 
 	if _jump_buffer_timer > 0.0:
 		_jump_buffer_timer -= delta
+
 		if _coyote_timer > 0.0:
 			_jump()
+
 	if _is_charging:
 		_charge_time = minf(_charge_time + delta, max_charge_time)
 		_update_charge_bar(_charge_time / max_charge_time)
@@ -256,40 +274,22 @@ func _physics_process(delta: float) -> void:
 	if _punch_timer > 0.0:
 		_punch_timer -= delta
 
-	if punch_reference:
-		var punch_progress := 1.0 - (_punch_timer / punch_duration)
-		punch_progress = clampf(punch_progress, 0.0, 1.0)
-
-
-
-	var punch_progress := 1.0 - (_punch_timer / punch_duration)
-	punch_progress = clampf(punch_progress, 0.0, 1.0)
-
-	# Scatto rapido in avanti e ritorno
-	var extension_progress: float
-
-	if punch_progress < 0.25:
-		extension_progress = punch_progress / 0.25
-	elif punch_progress < 0.75:
-		extension_progress = 1.0
-	else:
-		extension_progress = 1.0 - ((punch_progress - 0.75) / 0.25)
-
 	if _punch_timer <= 0.0 and not _is_charging:
 		_punch_timer = 0.0
 		_set_punch_active(false)
 		punch_finished.emit()
 		punch_sprite.visible = false
 
-
 	_update_damage_flash(delta)
 	move_and_slide()
 	_update_distance_score()
 	_update_movement_animation()
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _grind_active:
 		return
+
 	if event is InputEventScreenTouch:
 		_handle_screen_touch(event)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -308,11 +308,11 @@ func take_hit() -> void:
 
 	reset_multiplier()
 	_end_grind()
-	
+
 	_is_charging = false
-	_charge_time = 0.
+	_charge_time = 0.0
 	punch_sprite.visible = false
-	
+
 	if punch_charge_sparkle:
 		punch_charge_sparkle.visible = false
 		punch_charge_sparkle.stop()
@@ -321,7 +321,6 @@ func take_hit() -> void:
 		punch_speed_effect.visible = false
 		punch_speed_effect.stop()
 		punch_speed_effect.modulate.a = 0.0
-
 
 	# Perdiamo i petali in base al danno ricevuto.
 	_petals = max(_petals - damage_petals, 0)
@@ -348,7 +347,10 @@ func take_hit() -> void:
 	play_animation(ANIMATION_DAMAGE)
 
 
-func apply_jump_impulse(vertical_velocity: float, horizontal_boost: float = 0.0) -> void:
+func apply_jump_impulse(
+	vertical_velocity: float,
+	horizontal_boost: float = 0.0
+) -> void:
 	if _dead:
 		return
 
@@ -370,6 +372,7 @@ func collect_petal(value: int = 1) -> void:
 	score_changed.emit(_score)
 
 	add_multiplier_progress(15.0)
+
 
 func get_petals() -> int:
 	return _petals
@@ -401,13 +404,18 @@ func is_grinding() -> bool:
 	return _grind_active
 
 
-
 func _update_damage_flash(delta: float) -> void:
 	if _invulnerability_timer > 0.0:
 		_flash_timer += delta
 		var blink_phase := fmod(_flash_timer, invulnerability_flash_interval)
 		var alpha := 1.0 if blink_phase < invulnerability_flash_interval * 0.5 else 0.2
-		modulate = Color(_base_modulate.r, _base_modulate.g, _base_modulate.b, alpha)
+
+		modulate = Color(
+			_base_modulate.r,
+			_base_modulate.g,
+			_base_modulate.b,
+			alpha
+		)
 	else:
 		modulate = _base_modulate
 
@@ -419,9 +427,11 @@ func _handle_screen_touch(event: InputEventScreenTouch) -> void:
 		elif _punch_touch_index == -1:
 			_punch_touch_index = event.index
 			_begin_punch_charge()
+
 	elif event.index == _punch_touch_index:
 		_punch_touch_index = -1
 		_release_punch()
+
 	elif event.position.x >= get_viewport_rect().size.x * punch_screen_split:
 		_release_punch()
 
@@ -476,12 +486,6 @@ func _begin_punch_charge() -> void:
 
 	_update_charge_bar(0.0)
 
-
-
-
-
-
-
 	if punch_speed_effect:
 		punch_speed_effect.visible = true
 		punch_speed_effect.play()
@@ -520,13 +524,23 @@ func _release_punch() -> void:
 
 	play_animation(ANIMATION_PUNCH_RELEASE)
 
-	var power := clampf(_charge_time / max_charge_time, punch_min_power, 1.0)
-	_update_charge_bar(0.0)
+	var power := clampf(
+		_charge_time / max_charge_time,
+		punch_min_power,
+		1.0
+	)
 
+	_update_charge_bar(0.0)
 	_start_punch(power)
 
 	var charge_progress := _charge_time / max_charge_time
-	punch_sprite.scale = _punch_base_scale * lerpf(1.0, punch_release_max_scale, charge_progress)
+
+	punch_sprite.scale = _punch_base_scale * lerpf(
+		1.0,
+		punch_release_max_scale,
+		charge_progress
+	)
+
 
 func _jump() -> void:
 	velocity.y = jump_velocity
@@ -536,19 +550,17 @@ func _jump() -> void:
 
 
 func _start_punch(power: float) -> void:
-	# Portata della hitbox proporzionale alla carica
+	# Portata della hitbox proporzionale alla carica.
 	punch_shape.size.x = punch_reach * power
 	punch_collision.position.x = 24.0 + (punch_shape.size.x * 0.5)
 
-	# Il pugno parte dalla posizione normale
-
+	# Il pugno parte dalla posizione normale.
 	punch_sprite.visible = true
 
 	_punch_timer = punch_duration
 	_set_punch_active(true)
 	punch_started.emit(power)
 
-	
 
 func _set_punch_active(active: bool) -> void:
 	punch_area.monitoring = active
@@ -574,6 +586,7 @@ func _update_movement_animation() -> void:
 			play_animation(ANIMATION_JUMP)
 		else:
 			play_animation(ANIMATION_FALL)
+
 		return
 
 	if is_on_floor():
@@ -583,17 +596,12 @@ func _update_movement_animation() -> void:
 	else:
 		play_animation(ANIMATION_FALL)
 
+
 func _update_animation_speed() -> void:
 	if _current_animation == ANIMATION_RUN:
 		animation_player.speed_scale = run_speed / 300.0
 	else:
 		animation_player.speed_scale = 1.0
-
-
-func _get_animation_length(animation_name: StringName) -> float:
-	if not animation_player.has_animation(animation_name):
-		return 0.0
-	return animation_player.get_animation(animation_name).length
 
 
 func _end_grind() -> void:
@@ -607,6 +615,7 @@ func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
 
 	for child in root.get_children():
 		var found := _find_node_in_group_recursive(child, group_name)
+
 		if found != null:
 			return found
 
@@ -619,23 +628,40 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 	elif anim_name == ANIMATION_PUNCH_START and _is_charging:
 		play_animation(ANIMATION_PUNCH_CHARGE)
+
 	elif anim_name == ANIMATION_PUNCH_RELEASE:
 		_is_punch_releasing = false
 
-func _update_punch_rotation():
+
+func _update_punch_rotation() -> void:
 	var charge_ratio := _charge_time / max_charge_time
 	charge_ratio = clamp(charge_ratio, 0.0, 1.0)
 
-	# Velocità rotazione del pugno
-	var current_speed = lerp(punch_rotation_min_speed, punch_rotation_max_speed, charge_ratio)
+	# Velocità rotazione del pugno.
+	var current_speed : float = lerp(
+		punch_rotation_min_speed,
+		punch_rotation_max_speed,
+		charge_ratio
+	)
+
 	punch_animation_player.speed_scale = current_speed
 
-	# Effetto velocità
+	# Effetto velocità.
 	if punch_speed_effect:
-		punch_speed_effect.speed_scale = lerp(effect_min_speed, effect_max_speed, charge_ratio)
+		punch_speed_effect.speed_scale = lerp(
+			effect_min_speed,
+			effect_max_speed,
+			charge_ratio
+		)
 
-		var alpha = lerp(effect_min_opacity, effect_max_opacity, charge_ratio)
+		var alpha : float = lerp(
+			effect_min_opacity,
+			effect_max_opacity,
+			charge_ratio
+		)
+
 		punch_speed_effect.modulate.a = alpha
+
 
 func _update_punch_texture() -> void:
 	if not punch_sprite:
@@ -676,6 +702,7 @@ func _update_punch_texture() -> void:
 	else:
 		punch_sprite.texture = punch_texture_large
 
+
 func _update_distance_score() -> void:
 	var distance_moved := global_position.x - _last_score_x
 
@@ -685,15 +712,42 @@ func _update_distance_score() -> void:
 		score_changed.emit(_score)
 
 	_last_score_x = global_position.x
-	
+
+
 func get_score() -> int:
 	return _score
 
+func _show_floating_score(value: int) -> void:
+	print("FLOATING SCORE: funzione chiamata")
+
+	if floating_score_text_scene == null:
+		print("FLOATING SCORE: scena NULL")
+		return
+
+	if score_text_spawn == null:
+		print("FLOATING SCORE: spawn NULL")
+		return
+
+	var floating_score_text := floating_score_text_scene.instantiate()
+
+	print("FLOATING SCORE: scena istanziata")
+
+	get_tree().current_scene.add_child(floating_score_text)
+	floating_score_text.z_index = 1000
+
+	print("FLOATING SCORE: scena aggiunta al livello")
+
+	floating_score_text.global_position = global_position
+
+	print("FLOATING SCORE: posizione impostata")
+
+	floating_score_text.show_score(value)
+
+	print("FLOATING SCORE: show_score chiamato")
 
 func add_multiplier_progress(value: float) -> void:
-	
 	_multiplier_bar += value
-	print("MOLTIPLICATORE: %", _multiplier_bar)
+
 
 	if _multiplier_bar >= multiplier_bar_max:
 		_multiplier_bar = multiplier_bar_max * multiplier_bar_start
@@ -701,15 +755,17 @@ func add_multiplier_progress(value: float) -> void:
 		if _score_multiplier < 2.0:
 			_score_multiplier += 0.25
 			multiplier_changed.emit(_score_multiplier)
-			print("MOLTIPLICATORE: x", _score_multiplier)
-	
+
 	multiplier_progress_changed.emit()
+
 
 func get_multiplier_bar_progress() -> float:
 	return clampf(_multiplier_bar / multiplier_bar_max, 0.0, 1.0)
 
+
 func get_score_multiplier() -> float:
 	return _score_multiplier
+
 
 func reset_multiplier() -> void:
 	_score_multiplier = 1.0
@@ -718,7 +774,7 @@ func reset_multiplier() -> void:
 	multiplier_reset.emit()
 	multiplier_changed.emit(_score_multiplier)
 
-	print("MOLTIPLICATORE RESET: x1")
+
 
 func add_interaction_score(value: int, multiplier_progress: float) -> void:
 	_score += int(value * _score_multiplier)

@@ -331,10 +331,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 7.0
-offset_right = 4.0
-offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -359,10 +355,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -218.0
-offset_top = 35.0
-offset_right = 202.0
-offset_bottom = 55.0
+offset_left = -210.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 50.0
 grow_horizontal = 2
 script = ExtResource("3_s88fb")
 fill = NodePath("Fill")
@@ -675,32 +671,44 @@ theme_override_fonts/font = ExtResource("1_uu4ov")
 theme_override_font_sizes/font_size = 24
 text = "II"
 
-[node name="PunchUnlocked" type="Node2D" parent="UI"]
-position = Vector2(0, -46)
+[node name="PunchUnlocked" type="Control" parent="UI" node_paths=PackedStringArray("animation_player", "flames")]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.0
+offset_top = -16.0
+offset_right = -18.0
+offset_bottom = -16.0
+grow_horizontal = 2
 script = ExtResource("52_rinii")
+animation_player = NodePath("../AnimationPlayer")
+flames = NodePath("Flames")
 
 [node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
-position = Vector2(937, 115)
+position = Vector2(0, 73.950005)
 scale = Vector2(0.596, 0.596)
 sprite_frames = SubResource("SpriteFrames_nwn7c")
 animation = &"Fire Animation"
-frame_progress = 0.5969084
+frame_progress = 0.904014
 
 [node name="Explosion" type="Sprite2D" parent="UI/PunchUnlocked"]
-position = Vector2(939, 160)
+position = Vector2(0, 118.950005)
 scale = Vector2(0.6125, 0.6125)
 
 [node name="Front Punch" type="Node2D" parent="UI/PunchUnlocked"]
-position = Vector2(943, 150)
+position = Vector2(0, 108.950005)
 
 [node name="FrontPunch" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-1.666748, 12.333313)
+position = Vector2(0, 12.333313)
 scale = Vector2(0.10857137, 0.10857137)
 texture = ExtResource("56_k0c2n")
 
 [node name="FrontPunch2" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
-position = Vector2(-1.666748, 12.333313)
+position = Vector2(0, 12.333313)
 scale = Vector2(0.09428563, 0.09428563)
 texture = ExtResource("56_k0c2n")
 

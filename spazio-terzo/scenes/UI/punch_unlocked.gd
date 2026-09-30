@@ -1,11 +1,10 @@
-extends Node2D
+extends Control
 
 
 @export_group("References")
 @export var player: PlayerRunner
 @export var animation_player: AnimationPlayer
 @export var flames: AnimatedSprite2D
-@export var Flower: Sprite2D
 
 
 
