@@ -121,14 +121,13 @@ func _on_obstacle_body_entered(body: Node2D) -> void:
 func _on_obstacle_area_entered(area: Area2D) -> void:
 	if area.name == "PunchArea" and not _destroying:
 		_destroying = true
-		
-		
+
 		var player := area.get_parent()
 
 		obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
 
-	if player.has_method("add_interaction_score"):
-		player.add_interaction_score(score_value, multiplier_bar_value)
+		if player.has_method("add_interaction_score"):
+			player.add_interaction_score(score_value, multiplier_bar_value)
 
 		_play_destroy_effect()
 

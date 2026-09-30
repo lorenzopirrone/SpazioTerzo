@@ -17,6 +17,7 @@ effect_duration = 2.0
 effect_scale = 6.0
 effect_distance = 1800.0
 effect_rotation = 480.0
+score_value = 160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.84361494, 10.260612)
