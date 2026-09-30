@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=21 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
@@ -7,11 +7,18 @@
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="9_audio"]
 [ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="10_coin"]
 [ext_resource type="Texture2D" uid="uid://cvs8gsi2ymil8" path="res://Fondali/skybox.png" id="13_3g50r"]
+[ext_resource type="Texture2D" uid="uid://cgcyisl1jubu7" path="res://Fondali/skybox 2.png" id="13_iu1m7"]
+[ext_resource type="Texture2D" uid="uid://bljxidsjws8vc" path="res://Fondali/clouds 2.png" id="14_cywot"]
 [ext_resource type="Texture2D" uid="uid://dtnplc6777qho" path="res://Fondali/clouds1.png" id="14_iu1m7"]
 [ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="15_cywot"]
+[ext_resource type="Texture2D" uid="uid://bsitq7ub0uq2" path="res://Fondali/sfondo 5.png" id="15_vrcmr"]
+[ext_resource type="Texture2D" uid="uid://p0cpx5fv35us" path="res://Fondali/sfondo 6.png" id="16_svp4f"]
 [ext_resource type="Texture2D" uid="uid://bl48a7tlmtab2" path="res://Fondali/Sfondo 2.png" id="16_vrcmr"]
+[ext_resource type="Texture2D" uid="uid://lxhunsejmjcv" path="res://Fondali/sfondo 7.png" id="17_1b0o8"]
 [ext_resource type="Texture2D" uid="uid://bu4v7hgef0u6q" path="res://Fondali/Sfondo 4.png" id="17_svp4f"]
 [ext_resource type="Texture2D" uid="uid://dxt0k03sernxv" path="res://Fondali/Sfondo 3.png" id="18_1b0o8"]
+[ext_resource type="Texture2D" uid="uid://bumxo27lbaw6j" path="res://Fondali/sfondo 8.png" id="18_w4kkx"]
+[ext_resource type="Texture2D" uid="uid://ccxvenkidckne" path="res://Fondali/Sun.png" id="19_mhiu8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
@@ -188,3 +195,146 @@ texture = ExtResource("17_svp4f")
 z_index = -28
 position = Vector2(4800, 166)
 texture = ExtResource("16_vrcmr")
+
+[node name="Parallasse2" type="Node2D" parent="."]
+position = Vector2(0, 150)
+
+[node name="Skybox" type="Parallax2D" parent="Parallasse2"]
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(5120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(320, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(960, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(1600, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(2240, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(2880, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(3520, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(4160, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(4800, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Clouds" type="Parallax2D" parent="Parallasse2"]
+scroll_scale = Vector2(0.25, 0.1)
+scroll_offset = Vector2(5120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(320, 166)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(960, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(1600, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(2240, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(2880, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(3520, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(4160, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(4800, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sfondo" type="Parallax2D" parent="Parallasse2"]
+scroll_scale = Vector2(0.55, 0.2)
+scroll_offset = Vector2(5120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(320, 166)
+texture = ExtResource("15_vrcmr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(960, 166)
+texture = ExtResource("16_svp4f")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(1600, 166)
+texture = ExtResource("17_1b0o8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(2240, 166)
+texture = ExtResource("18_w4kkx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(2880, 166)
+texture = ExtResource("18_w4kkx")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(3520, 166)
+texture = ExtResource("16_svp4f")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(4160, 166)
+texture = ExtResource("17_1b0o8")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(4800, 166)
+texture = ExtResource("15_vrcmr")
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallasse2"]
+scroll_scale = Vector2(0.05, 0.2)
+scroll_offset = Vector2(5510, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Parallax2D"]
+z_index = -30
+texture = ExtResource("19_mhiu8")
