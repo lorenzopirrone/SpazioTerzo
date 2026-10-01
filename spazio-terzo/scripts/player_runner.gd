@@ -381,6 +381,10 @@ func get_petals() -> int:
 	return _petals
 
 
+func get_score_distance() -> float:
+	return _score_distance
+
+
 func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
 
@@ -469,6 +473,8 @@ func _begin_punch_charge() -> void:
 	_is_punch_releasing = false
 	_charge_time = 0.0
 	_last_punch_charge_stage = -1
+	
+	_set_punch_active(false)
 
 	if punch_charge_sparkle:
 		punch_charge_sparkle.visible = false

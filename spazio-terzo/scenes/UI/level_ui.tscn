@@ -689,7 +689,7 @@ flames = NodePath("Flames")
 
 [node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
 position = Vector2(0, 73.950005)
-scale = Vector2(0.596, 0.596)
+scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_nwn7c")
 animation = &"Fire Animation"
 frame_progress = 0.904014
@@ -700,6 +700,7 @@ scale = Vector2(0.6125, 0.6125)
 
 [node name="Front Punch" type="Node2D" parent="UI/PunchUnlocked"]
 position = Vector2(0, 108.950005)
+scale = Vector2(1e-05, 1e-05)
 
 [node name="FrontPunch" type="Sprite2D" parent="UI/PunchUnlocked/Front Punch"]
 modulate = Color(0, 0, 0, 1)
@@ -796,3 +797,120 @@ reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_sfmn4")
 }
+
+[node name="ResultScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+pivot_offset = Vector2(925, 513)
+
+[node name="Dim" type="ColorRect" parent="UI/ResultScreen"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0)
+
+[node name="Panel" type="PanelContainer" parent="UI/ResultScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/ResultScreen/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 23
+text = "LEVEL COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreRow" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+
+[node name="ScoreTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/ScoreRow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 18
+text = "SCORE "
+vertical_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="UI/ResultScreen/Panel/VBox/ScoreRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 18
+text = "123456"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatsRow" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+
+[node name="PetalsColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+layout_mode = 2
+
+[node name="PetalsTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/PetalsColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "PETALS"
+
+[node name="PetalsValue" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/PetalsColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "3"
+horizontal_alignment = 1
+
+[node name="DistanceColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+layout_mode = 2
+
+[node name="DistanceTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "DISTANCE"
+
+[node name="DistanceValue" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "35146"
+horizontal_alignment = 1
+
+[node name="Multiplier" type="Label" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 25
+text = "X1.0"
+horizontal_alignment = 1
+
+[node name="ButtonSpacer" type="Control" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RestartButton" type="Button" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uu4ov")
+text = "QUIT"

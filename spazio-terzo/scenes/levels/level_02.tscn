@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=23 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="2_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="14_n536o"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="17_4dr30"]
+[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="19_01hg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -31,13 +32,21 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(139.5, 137.5)
 
-[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation") groups=["level_root"]]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "petals_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
 script = ExtResource("5_level")
 audio_player_path = NodePath("Guaglio_Theme")
 pause_panel = NodePath("Background/LevelUI/UI/PausePanel")
 guaglio_theme = NodePath("Guaglio_Theme")
 main_menu_scene = "uid://cq12o0u6vf2eu"
 pause_animation = NodePath("Background/LevelUI/UI/PausePanel/AnimatedSprite2D")
+result_screen = NodePath("Background/LevelUI/UI/ResultScreen")
+score_value_label = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/ScoreRow/ScoreValue")
+petals_value_label = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/StatsRow/PetalsColumn/PetalsValue")
+distance_value_label = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn/DistanceValue")
+multiplier_label = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/Multiplier")
+result_title_label = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/Title")
+result_restart_button = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/RestartButton")
+result_quit_button = NodePath("Background/LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/QuitButton")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -72,18 +81,18 @@ action_mode = 0
 [node name="PunchUnlocked" parent="Background/LevelUI/UI" index="4" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
 
-[node name="Flames" parent="Background/LevelUI/UI/PunchUnlocked" index="0"]
-scale = Vector2(1e-05, 1e-05)
-
-[node name="Front Punch" parent="Background/LevelUI/UI/PunchUnlocked" index="2"]
-scale = Vector2(1e-05, 1e-05)
-
 [node name="QuitButton" parent="Background/LevelUI/UI/PausePanel" index="2"]
 text = "QUIT"
 
 [node name="AnimatedSprite2D" parent="Background/LevelUI/UI/PausePanel" index="3"]
 frame = 5
 frame_progress = 0.0
+
+[node name="ResultScreen" parent="Background/LevelUI/UI" index="7"]
+anchors_preset = 15
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)
@@ -298,7 +307,7 @@ position = Vector2(3360, 620)
 rotation = 3.1415927
 
 [node name="FinishLine" parent="." instance=ExtResource("4_finish")]
-position = Vector2(20961, 380)
+position = Vector2(15727, 388)
 
 [node name="AirPlatform2" parent="." instance=ExtResource("12_4hx2o")]
 position = Vector2(3681, 206)
@@ -538,6 +547,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrindRail2/TriggerArea"]
 position = Vector2(-1345.5, -797)
 shape = SubResource("RectangleShape2D_trigger")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_01hg1")]
+position = Vector2(4967, 397)
 
 [connection signal="pressed" from="Background/LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Background/LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]

@@ -28,11 +28,18 @@ signal player_died
 @export var guaglio_theme: AudioStreamPlayer
 @export_file("*.tscn") var main_menu_scene: String
 @export var pause_animation: AnimatedSprite2D
+@export var result_screen: Control
+
+@export_group("Result Screen References")
+@export var score_value_label: Label
+@export var petals_value_label: Label
+@export var distance_value_label: Label
+@export var multiplier_label: Label
+@export var result_title_label: Label
+@export var result_restart_button: Button
+@export var result_quit_button: Button
 
 var player: Node2D
-var _game_over_layer: CanvasLayer
-var _game_over_screen: Control
-var _restart_button: Button
 
 
 func _ready() -> void:
@@ -41,8 +48,12 @@ func _ready() -> void:
 	if player:
 		_apply_player_spawn_point()
 		player.connect("died", _on_player_died)
-	_build_game_over_ui()
 	_setup_audio_sync()
+	if result_restart_button != null:
+		result_restart_button.pressed.connect(_on_restart_button_pressed)
+
+	if result_quit_button != null:
+		result_quit_button.pressed.connect(_on_quit_button_pressed)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -57,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 
 func complete_level() -> void:
 	level_completed.emit()
+	_show_final_score()
 
 func toggle_pause() -> void:
 	get_tree().paused = not get_tree().paused
@@ -79,71 +91,22 @@ func _update_pause_menu() -> void:
 
 func _on_player_died() -> void:
 	player_died.emit()
+
 	get_tree().paused = true
-	_game_over_screen.show()
+
+	if result_screen == null or player == null:
+		return
+
+	result_title_label.text = "GAME OVER"
+	score_value_label.text = str(player.get_score())
+	petals_value_label.text = str(player.get_petals())
+	distance_value_label.text = str(int(player.get_score_distance()))
+	multiplier_label.text = "x" + str(player.get_score_multiplier())
+
+	result_screen.visible = true
 
 
-func _build_game_over_ui() -> void:
-	_game_over_layer = CanvasLayer.new()
-	_game_over_layer.name = "GameOverLayer"
-	_game_over_layer.layer = 20
-	_game_over_layer.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(_game_over_layer)
 
-	_game_over_screen = Control.new()
-	_game_over_screen.name = "GameOverScreen"
-	_game_over_screen.process_mode = Node.PROCESS_MODE_ALWAYS
-	_game_over_screen.visible = false
-	_game_over_screen.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_game_over_screen.mouse_filter = Control.MOUSE_FILTER_STOP
-	_game_over_layer.add_child(_game_over_screen)
-
-	var dim := ColorRect.new()
-	dim.name = "Dim"
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0, 0, 0, 0.72)
-	_game_over_screen.add_child(dim)
-
-	var panel := PanelContainer.new()
-	panel.name = "Panel"
-	panel.anchor_left = 0.5
-	panel.anchor_top = 0.5
-	panel.anchor_right = 0.5
-	panel.anchor_bottom = 0.5
-	panel.offset_left = -180.0
-	panel.offset_top = -130.0
-	panel.offset_right = 180.0
-	panel.offset_bottom = 130.0
-	_game_over_screen.add_child(panel)
-
-	var vbox := VBoxContainer.new()
-	vbox.name = "VBox"
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	vbox.add_theme_constant_override("separation", 14)
-	panel.add_child(vbox)
-
-	var title := Label.new()
-	title.name = "Title"
-	title.text = "GAME OVER"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 36)
-	vbox.add_child(title)
-
-	var message := Label.new()
-	message.name = "Message"
-	message.text = "Hai perso la corsa."
-	message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(message)
-
-	_restart_button = Button.new()
-	_restart_button.name = "RestartButton"
-	_restart_button.text = "Restart"
-	_restart_button.process_mode = Node.PROCESS_MODE_ALWAYS
-	_restart_button.pressed.connect(_on_restart_button_pressed)
-	vbox.add_child(_restart_button)
-
-	if has_node("UI"):
-		_game_over_layer.raise()
 
 
 func _on_restart_button_pressed() -> void:
@@ -206,3 +169,17 @@ func _on_resume_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(main_menu_scene)
+
+
+func _show_final_score() -> void:
+	if result_screen == null or player == null:
+		return
+
+	get_tree().paused = true
+	result_screen.visible = true
+
+	result_title_label.text = "LEVEL COMPLETE"
+	score_value_label.text = str(player.get_score())
+	petals_value_label.text = str(player.get_petals())
+	distance_value_label.text = str(int(player.get_score_distance()))
+	multiplier_label.text = "x" + str(player.get_score_multiplier())
