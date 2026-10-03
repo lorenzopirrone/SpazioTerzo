@@ -471,11 +471,9 @@ frame = 3
 frame_progress = 1.0
 speed_scale = 3.0
 
-[node name="Grind Hook Up" type="Marker2D" parent="." groups=["hook_top"]]
-position = Vector2(0, -172.38348)
-
-[node name="Grind Hook Down" type="Marker2D" parent="." groups=["hook_bottom"]]
-position = Vector2(1.420743, 96.13695)
+[node name="grind_hook" type="Node2D" parent="Vespro" groups=["grind_hook"]]
+position = Vector2(-2.478463e-07, 38.892303)
+scale = Vector2(1.0395428, 1.0395427)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

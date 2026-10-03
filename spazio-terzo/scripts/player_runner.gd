@@ -389,8 +389,8 @@ func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
 
 
-func get_grind_hook(hook_group: StringName) -> Node2D:
-	return _find_node_in_group_recursive(self, hook_group) as Node2D
+func get_grind_hook() -> Node2D:
+	return _find_node_in_group_recursive(self, &"grind_hook") as Node2D
 
 
 func begin_grind() -> void:

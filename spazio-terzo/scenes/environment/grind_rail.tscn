@@ -36,8 +36,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="TriggerArea" type="Area2D" parent="."]
-position = Vector2(440.5, -43)
+position = Vector2(-904, -847)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_trigger")
