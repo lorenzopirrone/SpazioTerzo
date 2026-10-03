@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=22 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
@@ -18,8 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bu4v7hgef0u6q" path="res://Fondali/Sfondo 4.png" id="17_svp4f"]
 [ext_resource type="Texture2D" uid="uid://dxt0k03sernxv" path="res://Fondali/Sfondo 3.png" id="18_1b0o8"]
 [ext_resource type="Texture2D" uid="uid://bumxo27lbaw6j" path="res://Fondali/sfondo 8.png" id="18_w4kkx"]
-[ext_resource type="Texture2D" uid="uid://ccxvenkidckne" path="res://Fondali/Sun.png" id="19_mhiu8"]
-[ext_resource type="Script" uid="uid://l2vab37wd0mh" path="res://scenes/levels/cambio_zona.gd" id="20_cywot"]
+[ext_resource type="Script" uid="uid://bnkh1rh2bi03c" path="res://scripts/cambio_zona.gd" id="20_cywot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
@@ -202,11 +201,11 @@ texture = ExtResource("16_vrcmr")
 
 [node name="Parallasse2" type="Node2D" parent="."]
 visible = false
-position = Vector2(-17, 150)
+position = Vector2(-3191, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(5120, 0)
+scroll_offset = Vector2(2682, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
@@ -250,7 +249,7 @@ texture = ExtResource("13_iu1m7")
 
 [node name="Clouds" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.25, 0.1)
-scroll_offset = Vector2(5120, 0)
+scroll_offset = Vector2(3284, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
@@ -294,7 +293,7 @@ texture = ExtResource("14_cywot")
 
 [node name="Sfondo" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.55, 0.2)
-scroll_offset = Vector2(5120, 0)
+scroll_offset = Vector2(5034, -5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
@@ -336,17 +335,8 @@ z_index = -28
 position = Vector2(4800, 166)
 texture = ExtResource("15_vrcmr")
 
-[node name="Parallax2D" type="Parallax2D" parent="Parallasse2"]
-scroll_scale = Vector2(0.05, 0.2)
-scroll_offset = Vector2(5510, 90)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Parallax2D"]
-z_index = -30
-texture = ExtResource("19_mhiu8")
-
 [node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2")]
 position = Vector2(5089, 370)
-collision_mask = 2
 script = ExtResource("20_cywot")
 parallasse_zona_1 = NodePath("../Parallasse")
 parallasse_zona_2 = NodePath("../Parallasse2")
