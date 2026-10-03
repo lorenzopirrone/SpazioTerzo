@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=23 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
@@ -19,9 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://dxt0k03sernxv" path="res://Fondali/Sfondo 3.png" id="18_1b0o8"]
 [ext_resource type="Texture2D" uid="uid://bumxo27lbaw6j" path="res://Fondali/sfondo 8.png" id="18_w4kkx"]
 [ext_resource type="Texture2D" uid="uid://ccxvenkidckne" path="res://Fondali/Sun.png" id="19_mhiu8"]
+[ext_resource type="Script" uid="uid://l2vab37wd0mh" path="res://scenes/levels/cambio_zona.gd" id="20_cywot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrcmr"]
+size = Vector2(147, 324)
 
 [node name="Level01" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
@@ -197,7 +201,8 @@ position = Vector2(4800, 166)
 texture = ExtResource("16_vrcmr")
 
 [node name="Parallasse2" type="Node2D" parent="."]
-position = Vector2(0, 150)
+visible = false
+position = Vector2(-17, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.05, 0.05)
@@ -338,3 +343,16 @@ scroll_offset = Vector2(5510, 90)
 [node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Parallax2D"]
 z_index = -30
 texture = ExtResource("19_mhiu8")
+
+[node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2")]
+position = Vector2(5089, 370)
+collision_mask = 2
+script = ExtResource("20_cywot")
+parallasse_zona_1 = NodePath("../Parallasse")
+parallasse_zona_2 = NodePath("../Parallasse2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
+position = Vector2(-11.5, -53)
+shape = SubResource("RectangleShape2D_vrcmr")
+
+[connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
