@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=61 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://di5g38f5qfh4h" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0005.png" id="35_cmlg3"]
 [ext_resource type="Texture2D" uid="uid://cp6y0l41f02vj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0007.png" id="36_gm3fn"]
 [ext_resource type="Texture2D" uid="uid://jjtbcpj2qykj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0008.png" id="37_amsee"]
+[ext_resource type="Script" uid="uid://b7p27m6snx6lq" path="res://scripts/wind_effect.gd" id="43_cobgw"]
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="43_fvvss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
@@ -403,12 +404,12 @@ position = Vector2(0.9471615, -1.183953)
 shape = SubResource("CapsuleShape2D_ktjr4")
 
 [node name="PunchArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 4
 monitoring = false
 
 [node name="PunchVisual" type="Polygon2D" parent="PunchArea"]
+visible = false
 color = Color(1, 0.78, 0.22, 0.76)
 polygon = PackedVector2Array(0, -11, 64, -11, 76, 0, 64, 11, 0, 11)
 
@@ -418,10 +419,12 @@ shape = SubResource("RectangleShape2D_punch")
 disabled = true
 
 [node name="ChargeBarBack" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.05, 0.07, 0.09, 0.75)
 polygon = PackedVector2Array(-20, -48, 20, -48, 20, -42, -20, -42)
 
 [node name="ChargeBar" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(-20, 0)
 color = Color(1, 0.78, 0.22, 1)
 polygon = PackedVector2Array(0, -48, 40, -48, 40, -42, 0, -42)
@@ -501,6 +504,11 @@ position = Vector2(15.628174, 28.888443)
 
 [node name="GrindHook Back" type="Node2D" parent="."]
 position = Vector2(-15.628174, 28.888441)
+
+[node name="WindEffect" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(-15.628174, 0)
+script = ExtResource("43_cobgw")
+player = NodePath("..")
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
