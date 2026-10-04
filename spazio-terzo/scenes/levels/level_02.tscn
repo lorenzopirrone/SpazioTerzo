@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=24 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="2_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="15_m2jhg"]
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="17_4dr30"]
 [ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="19_01hg1"]
+[ext_resource type="PackedScene" uid="uid://dtlpgbyhwoeux" path="res://scenes/environment/SpeedTrigger.tscn" id="20_v5pqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_a"]
 size = Vector2(620, 64)
@@ -549,6 +550,9 @@ shape = SubResource("RectangleShape2D_trigger")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_01hg1")]
 position = Vector2(8860, -106)
+
+[node name="SpeedTrigger" parent="." instance=ExtResource("20_v5pqk")]
+position = Vector2(12255, -514)
 
 [connection signal="pressed" from="Background/LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Background/LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]

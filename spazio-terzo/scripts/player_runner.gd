@@ -30,6 +30,9 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 ## Limite massimo della velocità di caduta.
 @export var max_fall_speed: float = 1100.0
 
+@export_group("Grind")
+@export var grind_hook_front: Node2D
+@export var grind_hook_back: Node2D
 
 @export_group("Punch")
 ## Tempo minimo necessario per iniziare a caricare il cazzotto.
@@ -389,8 +392,6 @@ func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
 
 
-func get_grind_hook() -> Node2D:
-	return _find_node_in_group_recursive(self, &"grind_hook") as Node2D
 
 
 func begin_grind() -> void:
@@ -405,7 +406,8 @@ func begin_grind() -> void:
 
 func end_grind() -> void:
 	_grind_active = false
-
+	global_rotation = 0.0
+	print("STOCAZZO")
 
 func is_grinding() -> bool:
 	return _grind_active

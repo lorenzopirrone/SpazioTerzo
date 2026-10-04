@@ -367,11 +367,13 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
 max_fall_speed = 961.0
+grind_hook_front = NodePath("GrindHook Front")
+grind_hook_back = NodePath("GrindHook Back")
 max_charge_time = 2.5
 punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
@@ -471,10 +473,6 @@ frame = 3
 frame_progress = 1.0
 speed_scale = 3.0
 
-[node name="grind_hook" type="Node2D" parent="Vespro" groups=["grind_hook"]]
-position = Vector2(-2.478463e-07, 38.892303)
-scale = Vector2(1.0395428, 1.0395427)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_j3wsw")
@@ -497,6 +495,12 @@ theme_override_fonts/font = ExtResource("43_fvvss")
 text = "1000"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GrindHook Front" type="Node2D" parent="."]
+position = Vector2(15.628174, 28.888443)
+
+[node name="GrindHook Back" type="Node2D" parent="."]
+position = Vector2(-15.628174, 28.888441)
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

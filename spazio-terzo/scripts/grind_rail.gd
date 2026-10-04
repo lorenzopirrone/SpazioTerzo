@@ -73,11 +73,9 @@ func _on_trigger_body_entered(body: Node2D) -> void:
 		return
 
 	_player = player
-	_hook = _resolve_hook(_player)
-	if _hook == null:
-		return
 
-	_hook_offset = _player.to_local(_hook.global_position)
+	if _player.grind_hook_front == null or _player.grind_hook_back == null:
+		return
 	_path_follow.progress = _path.curve.get_closest_offset(_path.to_local(_player.global_position))
 	_player.begin_grind()
 	_grinding = true
@@ -87,9 +85,22 @@ func _on_trigger_body_entered(body: Node2D) -> void:
 func _sync_player_to_path() -> void:
 	if _player == null or _path_follow == null:
 		return
+	if _player.grind_hook_front == null or _player.grind_hook_back == null:
+		return
 
-	_player.global_position = _path_follow.global_position - _hook_offset
+	_player.global_rotation = _path_follow.global_rotation
 
+	var hook_center := (
+	_player.grind_hook_front.global_position
+	+ _player.grind_hook_back.global_position
+) * 0.5
+
+	var center_offset := hook_center - _player.global_position
+
+	_player.global_position = (
+		_path_follow.global_position
+		- center_offset
+)
 
 
 
@@ -122,23 +133,30 @@ func _get_current_grind_speed() -> float:
 
 
 func _stop_grind(launch_jump: bool) -> void:
+	print("STOP GRIND chiamato")
+
 	if not _grinding:
+		print("STOP: _grinding era false")
 		return
 
 	_grinding = false
 
 	if _player == null:
+		print("STOP: _player è NULL")
 		return
+
+	print("STOP: player trovato, launch_jump = ", launch_jump)
 
 	if launch_jump:
 		_player.apply_jump_impulse(_player.jump_velocity)
 	else:
 		_player.end_grind()
 
-	_player = null
-	_hook = null
-	_hook_offset = Vector2.ZERO
+	_player.global_rotation = 0.0
 
 
-func _resolve_hook(player: PlayerRunner) -> Node2D:
-	return player.get_grind_hook()
+func _resolve_hooks(player: PlayerRunner) -> Array[Node2D]:
+	return [
+		player.grind_hook_back,
+		player.grind_hook_front
+	]
