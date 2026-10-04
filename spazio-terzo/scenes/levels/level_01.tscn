@@ -370,6 +370,7 @@ position = Vector2(5089, 370)
 script = ExtResource("20_cywot")
 parallasse_zona_1 = NodePath("../Parallasse")
 parallasse_zona_2 = NodePath("../Parallasse2")
+durata_dissolvenza = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
 position = Vector2(-11.5, -53)
