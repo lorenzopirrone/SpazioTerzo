@@ -68,6 +68,7 @@ shape = SubResource("RectangleShape2D_ground")
 position = Vector2(1385, 420)
 
 [node name="Parallasse" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse"]
@@ -200,7 +201,6 @@ position = Vector2(4800, 166)
 texture = ExtResource("16_vrcmr")
 
 [node name="Parallasse2" type="Node2D" parent="."]
-visible = false
 position = Vector2(-3191, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse2"]
@@ -247,6 +247,21 @@ z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("13_iu1m7")
 
+[node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(5440, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(6080, 166)
+texture = ExtResource("13_iu1m7")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Skybox"]
+z_index = -30
+position = Vector2(6720, 166)
+texture = ExtResource("13_iu1m7")
+
 [node name="Clouds" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.25, 0.1)
 scroll_offset = Vector2(3284, 0)
@@ -289,6 +304,21 @@ texture = ExtResource("14_cywot")
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(5440, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(6080, 169)
+texture = ExtResource("14_cywot")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Clouds"]
+z_index = -29
+position = Vector2(6720, 169)
 texture = ExtResource("14_cywot")
 
 [node name="Sfondo" type="Parallax2D" parent="Parallasse2"]
