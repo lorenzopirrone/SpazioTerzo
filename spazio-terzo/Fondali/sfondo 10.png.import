@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgcyisl1jubu7"
-path="res://.godot/imported/skybox 2.png-7a3d3ce971fdd14c87baef7406b32e53.ctex"
+uid="uid://du3dhoaqcna1r"
+path="res://.godot/imported/sfondo 10.png-1fb7d4da14cc49349b974d73c020a279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fondali/skybox 2.png"
-dest_files=["res://.godot/imported/skybox 2.png-7a3d3ce971fdd14c87baef7406b32e53.ctex"]
+source_file="res://Fondali/sfondo 10.png"
+dest_files=["res://.godot/imported/sfondo 10.png-1fb7d4da14cc49349b974d73c020a279.ctex"]
 
 [params]
 

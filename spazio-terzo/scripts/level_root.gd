@@ -183,3 +183,6 @@ func _show_final_score() -> void:
 	petals_value_label.text = str(player.get_petals())
 	distance_value_label.text = str(int(player.get_score_distance()))
 	multiplier_label.text = "x" + str(player.get_score_multiplier())
+
+func _on_cambio_zona_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
