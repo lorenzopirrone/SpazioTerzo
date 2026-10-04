@@ -509,6 +509,8 @@ position = Vector2(-15.628174, 28.888441)
 position = Vector2(-15.628174, 0)
 script = ExtResource("43_cobgw")
 player = NodePath("..")
+grind_line_length = 101.0
+grind_line_width = 6.5
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

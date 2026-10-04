@@ -43,6 +43,9 @@ extends Node2D
 ## Intervallo tra le linee durante il Grind.
 @export_range(0.01, 1.0, 0.01) var grind_spawn_interval: float = 0.06
 
+## Spessore delle linee di vento durante il Grind.
+@export_range(0.5, 10.0, 0.5) var grind_line_width: float = 3.0
+
 
 @export_group("Normal")
 
@@ -88,7 +91,7 @@ func _spawn_wind_line() -> void:
 
 	var line := Line2D.new()
 
-	line.width = line_width
+	line.width = _get_current_line_width()
 	line.default_color = line_color
 	line.antialiased = true
 	line.top_level = true
@@ -103,12 +106,12 @@ func _animate_wind_line(line: Line2D) -> void:
 	var tween := create_tween()
 
 	line.position = Vector2.ZERO
-	line.rotation = rotation
+	line.rotation = player.global_rotation
 
 	line.add_point(Vector2.ZERO)
 	line.add_point(Vector2.ZERO)
 
-	var direction := Vector2.LEFT.rotated(rotation)
+	var direction := Vector2.LEFT.rotated(player.global_rotation)
 
 	var random_offset := Vector2(
 		randf_range(-spread, spread),
@@ -146,6 +149,11 @@ func _get_current_line_length() -> float:
 
 	return normal_line_length
 
+func _get_current_line_width() -> float:
+	if _is_grinding:
+		return grind_line_width
+
+	return line_width
 
 func _finish_wind_line(line: Line2D) -> void:
 	line.queue_free()
