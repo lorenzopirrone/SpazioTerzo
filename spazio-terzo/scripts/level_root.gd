@@ -72,6 +72,7 @@ func complete_level() -> void:
 
 func toggle_pause() -> void:
 	get_tree().paused = not get_tree().paused
+	print("PAUSA: ", get_tree().paused)
 
 	if get_tree().paused:
 		guaglio_theme.stream_paused = true
