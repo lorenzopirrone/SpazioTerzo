@@ -73,12 +73,6 @@ player = NodePath("../../../Player")
 [node name="PunchUnlocked" parent="LevelUI/UI" index="4" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
 
-[node name="Flames" parent="LevelUI/UI/PunchUnlocked" index="0"]
-scale = Vector2(1e-05, 1e-05)
-
-[node name="Front Punch" parent="LevelUI/UI/PunchUnlocked" index="2"]
-scale = Vector2(1e-05, 1e-05)
-
 [node name="ResultScreen" parent="LevelUI/UI" index="7"]
 offset_bottom = 0.0
 grow_horizontal = 2
@@ -98,7 +92,7 @@ texture = ExtResource("11_y2pi4")
 
 [node name="Player" parent="." instance=ExtResource("3_512oa")]
 process_mode = 1
-position = Vector2(152, 664)
+position = Vector2(30, 667)
 jump_velocity = -800.0
 
 [node name="RunnerCamera" type="Camera2D" parent="."]

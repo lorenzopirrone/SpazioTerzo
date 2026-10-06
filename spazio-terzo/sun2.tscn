@@ -1,0 +1,161 @@
+[gd_scene load_steps=8 format=3 uid="uid://cig67icdog2gn"]
+
+[ext_resource type="Texture2D" uid="uid://b3wsqeeubs7lt" path="res://Images/White Flames/White Flames 1.png" id="1_4ta6b"]
+[ext_resource type="Texture2D" uid="uid://btx6cnlghs5km" path="res://Images/White Flames/White Flames 2.png" id="2_uv0vu"]
+[ext_resource type="Texture2D" uid="uid://cbpxcslosrq5j" path="res://Images/White Flames/White Flames 4.png" id="3_bj1ob"]
+[ext_resource type="Texture2D" uid="uid://ccxvenkidckne" path="res://Fondali/Sun.png" id="4_sht6i"]
+[ext_resource type="Texture2D" uid="uid://du0oxgsgtu88f" path="res://UI/Lil Explosion Animation/explosion-02.png" id="5_stmlj"]
+[ext_resource type="Texture2D" uid="uid://nlqyvsjbxppd" path="res://UI/Lil Explosion Animation/explosion-04.png" id="6_ya8vq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlmd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4ta6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uv0vu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bj1ob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sun" type="Node2D"]
+metadata/_edit_vertical_guides_ = [841.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(840.00006, 292)
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.3350933
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(886.00006, 322.00003)
+rotation = 0.5235988
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.9656035
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(936.99994, 359.00003)
+rotation = 1.0471976
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.15309876
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(965.00006, 421)
+rotation = 1.5707964
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.70982
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(965.0001, 507)
+rotation = 2.0943952
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.86211926
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(923.00006, 586)
+rotation = 2.6179938
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.20574518
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(837.00006, 608)
+rotation = 3.1415927
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.40919542
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(775.00006, 579.00006)
+rotation = 3.6651914
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.58047044
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(722, 539)
+rotation = 4.1887903
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.7165389
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(688, 464.00003)
+rotation = 4.712389
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.79965526
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(720, 393.00003)
+rotation = 5.2359877
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.4469372
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(764, 333.00003)
+rotation = 5.7595863
+scale = Vector2(0.5181818, 0.5181818)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.9487317
+speed_scale = 0.5
+
+[node name="Sun" type="Sprite2D" parent="."]
+position = Vector2(838, 465)
+texture = ExtResource("4_sht6i")
+
+[node name="Explosion02" type="Sprite2D" parent="."]
+position = Vector2(835, 467)
+scale = Vector2(1.19375, 1.19375)
+texture = ExtResource("5_stmlj")
+
+[node name="Explosion04" type="Sprite2D" parent="."]
+position = Vector2(834, 460)
+scale = Vector2(0.7687499, 0.7687499)
+texture = ExtResource("6_ya8vq")
