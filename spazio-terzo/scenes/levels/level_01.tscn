@@ -30,7 +30,7 @@
 [ext_resource type="Script" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
-size = Vector2(46246, 64)
+size = Vector2(48640, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrcmr"]
 size = Vector2(147, 324)
@@ -69,10 +69,10 @@ position = Vector2(21500, 510)
 
 [node name="Visual" type="Polygon2D" parent="Livello/Ground"]
 color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-21500, -32, 24746, -32, 24746, 33, 21500, 32, -21500, 32)
+polygon = PackedVector2Array(-21500, -32, 27140, -30, 27140, 34, 21500, 32, -21500, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Livello/Ground"]
-position = Vector2(1623, 0)
+position = Vector2(2820, 0)
 shape = SubResource("RectangleShape2D_ground")
 
 [node name="FinishLine" parent="Livello" instance=ExtResource("4_finish")]
