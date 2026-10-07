@@ -30,7 +30,7 @@
 [ext_resource type="Script" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
-size = Vector2(43000, 64)
+size = Vector2(46246, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrcmr"]
 size = Vector2(147, 324)
@@ -46,12 +46,13 @@ position = Vector2(90, 420)
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+zoom = Vector2(1.15, 1.15)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 script = ExtResource("6_camera")
 target_path = NodePath("../Player")
-horizontal_lookahead = 760.0
-vertical_offset = -84.0
+horizontal_lookahead = 600.0
+vertical_offset = -200.0
 
 [node name="CoinA" parent="." instance=ExtResource("10_coin")]
 position = Vector2(620, 330)
@@ -68,16 +69,16 @@ position = Vector2(21500, 510)
 
 [node name="Visual" type="Polygon2D" parent="Livello/Ground"]
 color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 32, -21500, 32)
+polygon = PackedVector2Array(-21500, -32, 24746, -32, 24746, 33, 21500, 32, -21500, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Livello/Ground"]
+position = Vector2(1623, 0)
 shape = SubResource("RectangleShape2D_ground")
 
 [node name="FinishLine" parent="Livello" instance=ExtResource("4_finish")]
 position = Vector2(1385, 420)
 
 [node name="Parallasse" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse"]
@@ -456,6 +457,7 @@ position = Vector2(6720, 166)
 texture = ExtResource("15_vrcmr")
 
 [node name="Parallasse3" type="Node2D" parent="."]
+visible = false
 position = Vector2(-768, 150)
 
 [node name="Skybox" type="Parallax2D" parent="Parallasse3"]
