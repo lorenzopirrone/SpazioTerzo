@@ -1,10 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvhlov55u1dw7"]
+[gd_scene load_steps=35 format=3 uid="uid://dvhlov55u1dw7"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_070ac"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_bd3lf"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="3_512oa"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_bd3lf"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="4_0bl5x"]
+[ext_resource type="PackedScene" uid="uid://cey650jrnywvk" path="res://Fondali/sun_controller.tscn" id="4_xvgfp"]
 [ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="5_olbg8"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="6_xvgfp"]
 [ext_resource type="Texture2D" uid="uid://cvs8gsi2ymil8" path="res://Fondali/skybox.png" id="7_taphx"]
@@ -28,11 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://bkdi8xoi6dfgi" path="res://Fondali/sfondo 11.png" id="25_j3ijk"]
 [ext_resource type="Texture2D" uid="uid://cao7lku3ggekk" path="res://Fondali/sfondo 12.png" id="26_lxx7m"]
 [ext_resource type="Script" uid="uid://bnkh1rh2bi03c" path="res://scripts/cambio_zona.gd" id="27_epb7g"]
-[ext_resource type="Script" uid="uid://c3lbrwoxycmhg" path="res://scripts/cambio_zona2.gd" id="28_j6p3m"]
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="29_olbg8"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="30_512oa"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="32_xvgfp"]
-[ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="33_xvgfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
@@ -78,7 +77,11 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SunController" parent="LevelUI" instance=ExtResource("4_xvgfp")]
+default_move_duration = 1.0
+
 [node name="Palazzi interagibili" type="Node2D" parent="."]
+visible = false
 
 [node name="Sfondo3" type="Sprite2D" parent="Palazzi interagibili"]
 position = Vector2(905, 85)
@@ -944,37 +947,40 @@ position = Vector2(6720, 166)
 texture = ExtResource("24_x7pui")
 metadata/_edit_lock_ = true
 
-[node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2")]
+[node name="Trampoline" parent="." instance=ExtResource("29_olbg8")]
+position = Vector2(3394, 33.99997)
+rotation = 0.4836948
+launch_velocity = -1506.0
+horizontal_boost = 800.0
+
+[node name="Trampoline2" parent="." instance=ExtResource("29_olbg8")]
+position = Vector2(2654, 725)
+launch_velocity = -800.0
+horizontal_boost = 50000.0
+
+[node name="CambioZona3" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
+position = Vector2(6316, 740)
+script = ExtResource("27_epb7g")
+parallasse_zona_1 = NodePath("../Fondale/Parallasse2")
+parallasse_zona_2 = NodePath("../Fondale/Parallasse3")
+durata_dissolvenza = 0.5
+sun_controller = NodePath("../LevelUI/SunController")
+sun_stop_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona3"]
+position = Vector2(0, -453)
+shape = SubResource("RectangleShape2D_vrcmr")
+
+[node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
 position = Vector2(5089, 370)
 script = ExtResource("27_epb7g")
 parallasse_zona_1 = NodePath("../Fondale/Parallasse")
 parallasse_zona_2 = NodePath("../Fondale/Parallasse2")
 durata_dissolvenza = 0.5
+sun_controller = NodePath("../LevelUI/SunController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
 position = Vector2(-11.5, -197)
-shape = SubResource("RectangleShape2D_vrcmr")
-
-[node name="Trampoline" parent="CambioZona" instance=ExtResource("29_olbg8")]
-position = Vector2(-1695, -336.00003)
-rotation = 0.48369482
-launch_velocity = -1506.0
-horizontal_boost = 800.0
-
-[node name="Trampoline2" parent="CambioZona" instance=ExtResource("29_olbg8")]
-position = Vector2(-2435, 355)
-launch_velocity = -800.0
-horizontal_boost = 50000.0
-
-[node name="CambioZona2" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_2", "parallasse_zona_3")]
-position = Vector2(5089, 370)
-script = ExtResource("28_j6p3m")
-parallasse_zona_2 = NodePath("../Fondale/Parallasse2")
-parallasse_zona_3 = NodePath("../Fondale/Parallasse3")
-durata_dissolvenza = 0.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona2"]
-position = Vector2(5273, -25)
 shape = SubResource("RectangleShape2D_vrcmr")
 
 [node name="AirPlatform" parent="." instance=ExtResource("30_512oa")]
@@ -1002,14 +1008,11 @@ position = Vector2(934, 384)
 [node name="GrindRail" parent="." instance=ExtResource("32_xvgfp")]
 position = Vector2(4844, 475)
 
-[node name="IncomingObstacle" parent="." instance=ExtResource("33_xvgfp")]
-position = Vector2(1926, 655)
-
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="body_entered" from="CambioZona3" to="CambioZona3" method="_on_body_entered"]
 [connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
-[connection signal="body_entered" from="CambioZona2" to="CambioZona2" method="_on_body_entered"]
 
 [editable path="LevelUI"]
