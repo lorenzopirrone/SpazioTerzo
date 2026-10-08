@@ -25,12 +25,18 @@ extends Node2D
 @export var score_value: int = 100
 @export var multiplier_bar_value: float = 15.0
 
+@export_group("Warning")
+@export var warning_visual: Node2D
+@export var warning_audio: AudioStreamPlayer
+@export var warning_animation: AnimationPlayer
+
 const WARNING_RIGHT_MARGIN := 56.0
 const SPAWN_OFFSCREEN_MARGIN := 96.0
 
 @onready var trigger_box: Area2D = $TriggerBox
 @onready var warning: Label = $Warning
 @onready var obstacle: Area2D = $Obstacle
+
 
 var _lane_y: float = 0.0
 var _camera: Camera2D
@@ -44,6 +50,8 @@ func _ready() -> void:
 	_camera = get_viewport().get_camera_2d()
 
 	warning.hide()
+	if warning_visual != null:
+		warning_visual.hide()
 	obstacle.hide()
 	obstacle.monitoring = false
 	obstacle.body_entered.connect(_on_obstacle_body_entered)
@@ -83,8 +91,17 @@ func _start_alert() -> void:
 	_alert_timer = maxf(alert_duration, 0.0)
 	global_position.y = _lane_y
 	_update_warning_position()
+
 	warning.show()
 
+	if warning_visual != null:
+		warning_visual.show()
+
+	if warning_animation != null:
+		warning_animation.play("NOME_ANIMAZIONE")
+
+	if warning_audio != null:
+		warning_audio.play()
 
 func _launch_obstacle() -> void:
 	var spawn_x := _get_spawn_x()
@@ -92,6 +109,8 @@ func _launch_obstacle() -> void:
 	obstacle.show()
 	obstacle.monitoring = true
 	warning.hide()
+	if warning_visual != null:
+		warning_visual.hide()
 	_state = &"moving"
 	_life_timer = maxf(self_destruct_time, 0.0)
 

@@ -6,6 +6,10 @@ extends Node2D
 @export var sun2: Node2D
 @export var sun3: Node2D
 @export var ellipse_center: Node2D
+@export var player: Node2D
+
+@export_group("Follow")
+@export_range(0.0, 1.0, 0.01) var horizontal_follow: float = 1.0
 
 @export_group("Ellipse")
 @export var radius_x: float = 500.0
@@ -26,6 +30,8 @@ var _movement_duration: float = 1.0
 var _movement_elapsed: float = 0.0
 var _moving: bool = false
 var _active_sun: int = 0
+var _sun_start_x: float = 0.0
+var _player_start_x: float = 0.0
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -37,12 +43,17 @@ func _ready() -> void:
 
 	set_active_sun(0)
 	_update_sun_position(_current_angle)
+	_sun_start_x = ellipse_center.global_position.x
+	if player != null:
+		_player_start_x = player.global_position.x
 
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		queue_redraw()
 		return
+	
+	_update_sun_position(_current_angle)
 
 	if not _moving:
 		return
@@ -117,9 +128,21 @@ func _update_sun_position(angle_degrees: float) -> void:
 
 	var angle := deg_to_rad(angle_degrees)
 
-	active_sun.global_position = ellipse_center.global_position + Vector2(
+	var ellipse_position := ellipse_center.global_position + Vector2(
 		cos(angle) * radius_x,
 		sin(angle) * radius_y
+		)
+
+	var follow_offset_x := 0.0
+
+	if player != null:
+		follow_offset_x = (
+			player.global_position.x - _player_start_x
+		) * horizontal_follow
+
+	active_sun.global_position = Vector2(
+		ellipse_position.x + follow_offset_x,
+		ellipse_position.y
 	)
 
 func set_active_sun(sun_index: int) -> void:
