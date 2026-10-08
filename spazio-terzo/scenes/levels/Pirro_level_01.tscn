@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvhlov55u1dw7"]
+[gd_scene load_steps=36 format=3 uid="uid://dvhlov55u1dw7"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_070ac"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_bd3lf"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="29_olbg8"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="30_512oa"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="32_xvgfp"]
+[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="33_xvgfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
@@ -79,6 +80,7 @@ grow_vertical = 2
 
 [node name="SunController" parent="LevelUI" instance=ExtResource("4_xvgfp")]
 default_move_duration = 1.0
+sun_fade_duration = 0.3
 
 [node name="Palazzi interagibili" type="Node2D" parent="."]
 visible = false
@@ -198,372 +200,214 @@ position = Vector2(1385, 420)
 
 [node name="Fondale" type="Node2D" parent="."]
 
-[node name="Parallasse" type="Node2D" parent="Fondale"]
-position = Vector2(0, 67)
-metadata/_edit_lock_ = true
-
-[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse"]
-scroll_scale = Vector2(0.05, 0.05)
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(320, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(960, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(1600, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(2240, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(2880, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(3520, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(4160, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/Skybox"]
-z_index = -30
-position = Vector2(4800, 166)
-texture = ExtResource("7_taphx")
-metadata/_edit_lock_ = true
-
-[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse"]
-scroll_scale = Vector2(0.25, 0.1)
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(320, 166)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(960, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(1600, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(2240, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(2880, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(3520, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(4160, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/Clouds"]
-z_index = -29
-position = Vector2(4800, 169)
-texture = ExtResource("8_i21ix")
-metadata/_edit_lock_ = true
-
-[node name="Sfondo" type="Parallax2D" parent="Fondale/Parallasse"]
-scroll_scale = Vector2(0.55, 0.2)
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(320, 166)
-texture = ExtResource("9_vnyks")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(960, 166)
-texture = ExtResource("10_ysklq")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(1600, 166)
-texture = ExtResource("11_y2pi4")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(2240, 166)
-texture = ExtResource("10_ysklq")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(2880, 166)
-texture = ExtResource("12_acl08")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(3520, 166)
-texture = ExtResource("9_vnyks")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(4160, 166)
-texture = ExtResource("11_y2pi4")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
-z_index = -28
-position = Vector2(4800, 166)
-texture = ExtResource("10_ysklq")
-metadata/_edit_lock_ = true
-
 [node name="Parallasse2" type="Node2D" parent="Fondale"]
-visible = false
 position = Vector2(-3191, 150)
-metadata/_edit_lock_ = true
 
-[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse2"]
+[node name="SKYBOX 2" type="Node2D" parent="Fondale/Parallasse2"]
+
+[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse2/SKYBOX 2"]
 scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(2682, 0)
+scroll_offset = Vector2(2682, 71)
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(320, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse2/Skybox"]
+[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
 texture = ExtResource("13_4rvme")
 metadata/_edit_lock_ = true
 
-[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse2"]
+[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse2/SKYBOX 2"]
+visible = false
 scroll_scale = Vector2(0.25, 0.1)
-scroll_offset = Vector2(3284, 0)
+scroll_offset = Vector2(3284, 71)
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(320, 166)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(960, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(1600, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(2240, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(2880, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(3520, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(4160, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(5440, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(6080, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(6720, 169)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(7360, 170)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(8000, 170)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(8640, 170)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(9280, 170)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse2/Clouds"]
+[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse2/SKYBOX 2/Clouds"]
 z_index = -29
 position = Vector2(9920, 170)
 texture = ExtResource("14_ioay4")
 metadata/_edit_lock_ = true
 
 [node name="Sfondo" type="Parallax2D" parent="Fondale/Parallasse2"]
+visible = false
 scroll_scale = Vector2(0.55, 0.2)
 scroll_offset = Vector2(5034, -5)
 
@@ -651,214 +495,376 @@ position = Vector2(6720, 166)
 texture = ExtResource("15_2mv7a")
 metadata/_edit_lock_ = true
 
-[node name="Parallasse3" type="Node2D" parent="Fondale"]
-visible = false
-position = Vector2(-768, 150)
-metadata/_edit_lock_ = true
+[node name="Parallasse" type="Node2D" parent="Fondale"]
+position = Vector2(0, 221)
 
-[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse3"]
+[node name="SKYBOX 1" type="Node2D" parent="Fondale/Parallasse"]
+
+[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse/SKYBOX 1"]
 scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(768, 0)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(320, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(960, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(1600, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(2240, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(2880, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(3520, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(4160, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Skybox"]
+z_index = -30
+position = Vector2(4800, 166)
+texture = ExtResource("7_taphx")
+metadata/_edit_lock_ = true
+
+[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse/SKYBOX 1"]
+scroll_scale = Vector2(0.25, 0.1)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(320, 166)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(960, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(1600, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(2240, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(2880, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(3520, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(4160, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/SKYBOX 1/Clouds"]
+z_index = -29
+position = Vector2(4800, 169)
+texture = ExtResource("8_i21ix")
+metadata/_edit_lock_ = true
+
+[node name="Sfondo" type="Parallax2D" parent="Fondale/Parallasse"]
+visible = false
+scroll_scale = Vector2(0.55, 0.2)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(320, 166)
+texture = ExtResource("9_vnyks")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(960, 166)
+texture = ExtResource("10_ysklq")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(1600, 166)
+texture = ExtResource("11_y2pi4")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(2240, 166)
+texture = ExtResource("10_ysklq")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(2880, 166)
+texture = ExtResource("12_acl08")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(3520, 166)
+texture = ExtResource("9_vnyks")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(4160, 166)
+texture = ExtResource("11_y2pi4")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse/Sfondo"]
+z_index = -28
+position = Vector2(4800, 166)
+texture = ExtResource("10_ysklq")
+metadata/_edit_lock_ = true
+
+[node name="Parallasse3" type="Node2D" parent="Fondale"]
+position = Vector2(-768, 150)
+
+[node name="SKYBOX 3" type="Node2D" parent="Fondale/Parallasse3"]
+visible = false
+
+[node name="Skybox" type="Parallax2D" parent="Fondale/Parallasse3/SKYBOX 3"]
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(768, 71)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(320, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
 texture = ExtResource("20_qw1f5")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse3/Skybox"]
+[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
 texture = ExtResource("19_yo5is")
 metadata/_edit_lock_ = true
 
-[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse3"]
+[node name="Clouds" type="Parallax2D" parent="Fondale/Parallasse3/SKYBOX 3"]
 scroll_scale = Vector2(0.25, 0.1)
-scroll_offset = Vector2(3284, 0)
-metadata/_edit_lock_ = true
+scroll_offset = Vector2(3284, 71)
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(320, 166)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D2" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(960, 169)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D3" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(1600, 169)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D4" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(2240, 169)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D5" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(2880, 169)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D6" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(3520, 169)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D7" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(4160, 169)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D8" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D9" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(5440, 169)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D10" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(6080, 169)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D11" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(6720, 169)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D12" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(7360, 170)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D13" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(8000, 170)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D14" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(8640, 170)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D15" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(9280, 170)
 texture = ExtResource("22_60ndk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse3/Clouds"]
+[node name="Sprite2D16" type="Sprite2D" parent="Fondale/Parallasse3/SKYBOX 3/Clouds"]
 z_index = -29
 position = Vector2(9920, 170)
 texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
 [node name="Sfondo" type="Parallax2D" parent="Fondale/Parallasse3"]
+visible = false
 scroll_scale = Vector2(0.55, 0.2)
 scroll_offset = Vector2(5034, -5)
 metadata/_edit_lock_ = true
@@ -958,30 +964,38 @@ position = Vector2(2654, 725)
 launch_velocity = -800.0
 horizontal_boost = 50000.0
 
-[node name="CambioZona3" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
-position = Vector2(6316, 740)
+[node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
+position = Vector2(5504, 85)
 script = ExtResource("27_epb7g")
-parallasse_zona_1 = NodePath("../Fondale/Parallasse2")
-parallasse_zona_2 = NodePath("../Fondale/Parallasse3")
-durata_dissolvenza = 0.5
+parallasse_zona_1 = NodePath("../Fondale/Parallasse/SKYBOX 1")
+parallasse_zona_2 = NodePath("../Fondale/Parallasse2/SKYBOX 2")
+durata_dissolvenza = 5.0
+durata_transizione = 5.0
+distanza_ascensore = 640.0
 sun_controller = NodePath("../LevelUI/SunController")
+active_sun = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
+position = Vector2(9.5, 1)
+shape = SubResource("RectangleShape2D_vrcmr")
+metadata/_edit_lock_ = true
+
+[node name="CambioZona3" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
+position = Vector2(8470, 104)
+script = ExtResource("27_epb7g")
+parallasse_zona_1 = NodePath("../Fondale/Parallasse2/SKYBOX 2")
+parallasse_zona_2 = NodePath("../Fondale/Parallasse3/SKYBOX 3")
+durata_dissolvenza = 5.0
+durata_transizione = 5.0
+distanza_ascensore = 640.0
+sun_controller = NodePath("../LevelUI/SunController")
+active_sun = 2
 sun_stop_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona3"]
-position = Vector2(0, -453)
+position = Vector2(7, 6)
 shape = SubResource("RectangleShape2D_vrcmr")
-
-[node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
-position = Vector2(5089, 370)
-script = ExtResource("27_epb7g")
-parallasse_zona_1 = NodePath("../Fondale/Parallasse")
-parallasse_zona_2 = NodePath("../Fondale/Parallasse2")
-durata_dissolvenza = 0.5
-sun_controller = NodePath("../LevelUI/SunController")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
-position = Vector2(-11.5, -197)
-shape = SubResource("RectangleShape2D_vrcmr")
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform" parent="." instance=ExtResource("30_512oa")]
 position = Vector2(657, 583)
@@ -1008,11 +1022,14 @@ position = Vector2(934, 384)
 [node name="GrindRail" parent="." instance=ExtResource("32_xvgfp")]
 position = Vector2(4844, 475)
 
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("33_xvgfp")]
+position = Vector2(3332, 596)
+
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="body_entered" from="CambioZona3" to="CambioZona3" method="_on_body_entered"]
 [connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
+[connection signal="body_entered" from="CambioZona3" to="CambioZona3" method="_on_body_entered"]
 
 [editable path="LevelUI"]

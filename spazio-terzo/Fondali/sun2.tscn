@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cig67icdog2gn"]
+[gd_scene load_steps=12 format=3 uid="uid://cig67icdog2gn"]
 
 [ext_resource type="Texture2D" uid="uid://b3wsqeeubs7lt" path="res://Images/White Flames/White Flames 1.png" id="1_4ta6b"]
 [ext_resource type="Texture2D" uid="uid://btx6cnlghs5km" path="res://Images/White Flames/White Flames 2.png" id="2_uv0vu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ccxvenkidckne" path="res://Fondali/Sun.png" id="4_sht6i"]
 [ext_resource type="Texture2D" uid="uid://du0oxgsgtu88f" path="res://UI/Lil Explosion Animation/explosion-02.png" id="5_stmlj"]
 [ext_resource type="Texture2D" uid="uid://nlqyvsjbxppd" path="res://UI/Lil Explosion Animation/explosion-04.png" id="6_ya8vq"]
+[ext_resource type="Texture2D" uid="uid://cp2o8wcas157s" path="res://Images/clock-icon-clipart-design-illustration-free-png.png" id="7_5f6u7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xlmd2"]
 animations = [{
@@ -24,6 +25,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_uv0vu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion04:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_4ta6b"]
 resource_name = "Sun2 Animation"
 length = 4.0
@@ -41,21 +57,6 @@ tracks/0/keys = {
 "values": [0.0, 6.283185307179586]
 }
 
-[sub_resource type="Animation" id="Animation_uv0vu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Explosion04:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bj1ob"]
 _data = {
 &"RESET": SubResource("Animation_uv0vu"),
@@ -63,149 +64,264 @@ _data = {
 }
 
 [node name="Sun" type="Node2D"]
-metadata/_edit_vertical_guides_ = [841.0]
+metadata/_edit_vertical_guides_ = [822.0]
+metadata/_edit_horizontal_guides_ = [-1018.0]
 
-[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="."]
+[node name="Yellow Flames" type="Node2D" parent="."]
+scale = Vector2(1.2, 1.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Yellow Flames"]
 modulate = Color(1, 0.8352941, 0, 1)
-position = Vector2(936.99994, 359.00003)
-rotation = 1.0471976
-scale = Vector2(0.6852118, 0.6852118)
-sprite_frames = SubResource("SpriteFrames_xlmd2")
-autoplay = "default"
-frame_progress = 0.15309876
-speed_scale = 0.5
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(840.00006, 292)
-scale = Vector2(0.5181818, 0.5181818)
+position = Vector2(2.9999962, -101.00006)
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.3350933
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(886.00006, 322.00003)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(53.999985, -86.99997)
 rotation = 0.5235988
-scale = Vector2(0.5181818, 0.5181818)
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.9656035
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(936.99994, 359.00003)
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(93, -49.000008)
 rotation = 1.0471976
-scale = Vector2(0.5181818, 0.5181818)
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
-frame_progress = 0.15309876
+frame_progress = 0.8593792
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(965.00006, 421)
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(106.00003, 3.0000002)
 rotation = 1.5707964
-scale = Vector2(0.5181818, 0.5181818)
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.70982
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(965.0001, 507)
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(92.000046, 56.000046)
 rotation = 2.0943952
-scale = Vector2(0.5181818, 0.5181818)
+scale = Vector2(0.7300001, 0.7300001)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.86211926
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(923.00006, 586)
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(55.000046, 93.000046)
 rotation = 2.6179938
-scale = Vector2(0.5181818, 0.5181818)
+scale = Vector2(0.7300001, 0.7300001)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.20574518
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(837.00006, 608)
-rotation = 3.1415927
-scale = Vector2(0.5181818, 0.5181818)
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(3, 109.00006)
+rotation = -3.1415925
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.40919542
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(775.00006, 579.00006)
-rotation = 3.6651914
-scale = Vector2(0.5181818, 0.5181818)
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(-49.000015, 93.00003)
+rotation = -2.6179938
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.58047044
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(722, 539)
-rotation = 4.1887903
-scale = Vector2(0.5181818, 0.5181818)
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(-87, 55)
+rotation = -2.094395
+scale = Vector2(0.72999996, 0.72999996)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.7165389
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(688, 464.00003)
-rotation = 4.712389
-scale = Vector2(0.5181818, 0.5181818)
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(-102.00003, 3)
+rotation = -1.5707964
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.79965526
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(720, 393.00003)
-rotation = 5.2359877
-scale = Vector2(0.5181818, 0.5181818)
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(-90.00003, -50)
+rotation = -1.0471976
+scale = Vector2(0.72999996, 0.72999996)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.4469372
 speed_scale = 0.5
 
-[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Yellow Flames"]
+modulate = Color(1, 0.8352941, 0, 1)
+position = Vector2(-49, -87)
+rotation = -0.52359897
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.9487317
+speed_scale = 0.5
+
+[node name="Orange Flames" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orange Flames"]
 modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
-position = Vector2(764, 333.00003)
-rotation = 5.7595863
-scale = Vector2(0.5181818, 0.5181818)
+position = Vector2(2.9999962, -101.00006)
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.3350933
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(53.999985, -86.99997)
+rotation = 0.5235988
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.9656035
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(93, -49.000008)
+rotation = 1.0471976
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.8593792
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(106.00003, 3.0000002)
+rotation = 1.5707964
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.70982
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(92.000046, 56.000046)
+rotation = 2.0943952
+scale = Vector2(0.7300001, 0.7300001)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.86211926
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(55.000046, 93.000046)
+rotation = 2.6179938
+scale = Vector2(0.7300001, 0.7300001)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.20574518
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(3, 109.00006)
+rotation = -3.1415925
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.40919542
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(-49.000015, 93.00003)
+rotation = -2.6179938
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.58047044
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(-87, 55)
+rotation = -2.094395
+scale = Vector2(0.72999996, 0.72999996)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.7165389
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(-102.00003, 3)
+rotation = -1.5707964
+scale = Vector2(0.73, 0.73)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.79965526
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(-90.00003, -50)
+rotation = -1.0471976
+scale = Vector2(0.72999996, 0.72999996)
+sprite_frames = SubResource("SpriteFrames_xlmd2")
+autoplay = "default"
+frame_progress = 0.4469372
+speed_scale = 0.5
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Orange Flames"]
+modulate = Color(0.91764706, 0.43529412, 0.1764706, 1)
+position = Vector2(-49, -87)
+rotation = -0.52359897
+scale = Vector2(0.73, 0.73)
 sprite_frames = SubResource("SpriteFrames_xlmd2")
 autoplay = "default"
 frame_progress = 0.9487317
 speed_scale = 0.5
 
 [node name="Sun" type="Sprite2D" parent="."]
-position = Vector2(838, 465)
+position = Vector2(2, 5)
 texture = ExtResource("4_sht6i")
 
 [node name="Explosion02" type="Sprite2D" parent="."]
-position = Vector2(835, 467)
+position = Vector2(1.9999996, 9.999998)
 scale = Vector2(1.19375, 1.19375)
 texture = ExtResource("5_stmlj")
 
 [node name="Explosion04" type="Sprite2D" parent="."]
-position = Vector2(834, 460)
-scale = Vector2(0.7687499, 0.7687499)
+position = Vector2(6, -6)
+scale = Vector2(0.7687499, 0.76875)
 texture = ExtResource("6_ya8vq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -214,3 +330,9 @@ libraries = {
 }
 autoplay = "Sun2 Animation"
 speed_scale = 0.3
+
+[node name="ClockIconClipartDesignIllustrationFreePng" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, 3)
+scale = Vector2(0.26530612, 0.2653061)
+texture = ExtResource("7_5f6u7")

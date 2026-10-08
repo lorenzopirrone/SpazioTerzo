@@ -16,6 +16,8 @@ extends Node2D
 @export var end_angle: float = 330.0
 @export var stop_angles: Array[float] = [240.0, 270.0, 300.0]
 @export var default_move_duration: float = 1.0
+@export_group("Sun Transition")
+@export_range(0.0, 2.0, 0.05) var sun_fade_duration: float = 0.3
 
 var _current_angle: float = 210.0
 var _target_angle: float = 210.0
@@ -121,18 +123,57 @@ func _update_sun_position(angle_degrees: float) -> void:
 	)
 
 func set_active_sun(sun_index: int) -> void:
-	_active_sun = clampi(sun_index, 0, 2)
+	sun_index = clampi(sun_index, 0, 2)
 
-	if sun1 != null:
-		sun1.visible = _active_sun == 0
+	var old_sun: Node2D = null
+	var new_sun: Node2D = null
 
-	if sun2 != null:
-		sun2.visible = _active_sun == 1
+	match _active_sun:
+		0:
+			old_sun = sun1
+		1:
+			old_sun = sun2
+		2:
+			old_sun = sun3
 
-	if sun3 != null:
-		sun3.visible = _active_sun == 2
+	match sun_index:
+		0:
+			new_sun = sun1
+		1:
+			new_sun = sun2
+		2:
+			new_sun = sun3
+
+	_active_sun = sun_index
+
+	if new_sun == null:
+		return
 
 	_update_sun_position(_current_angle)
+
+	if old_sun == new_sun:
+		return
+
+	if old_sun != null:
+		var old_tween := create_tween()
+		old_tween.tween_property(
+			old_sun,
+			"modulate:a",
+			0.0,
+			sun_fade_duration
+		)
+
+	if new_sun != null:
+		new_sun.visible = true
+		new_sun.modulate.a = 0.0
+
+		var new_tween := create_tween()
+		new_tween.tween_property(
+			new_sun,
+			"modulate:a",
+			1.0,
+			sun_fade_duration
+		)
 
 
 func _draw() -> void:
