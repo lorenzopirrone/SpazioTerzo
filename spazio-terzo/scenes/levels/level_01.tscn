@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://du3dhoaqcna1r" path="res://Fondali/sfondo 10.png" id="24_stkom"]
 [ext_resource type="Texture2D" uid="uid://bkdi8xoi6dfgi" path="res://Fondali/sfondo 11.png" id="25_5t8rk"]
 [ext_resource type="Texture2D" uid="uid://cao7lku3ggekk" path="res://Fondali/sfondo 12.png" id="26_cag23"]
-[ext_resource type="Script" uid="uid://c3lbrwoxycmhg" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
+[ext_resource type="Script" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
 [ext_resource type="Texture2D" uid="uid://dw8sra5fpwn2q" path="res://scenes/levels/Screenshot 2026-10-07 191355.png" id="29_qy4h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
@@ -726,8 +726,8 @@ position = Vector2(5273, -25)
 shape = SubResource("RectangleShape2D_vrcmr")
 
 [node name="Screenshot20261007191355" type="Sprite2D" parent="."]
-position = Vector2(23126, 299)
-scale = Vector2(20.10218, 7.8333335)
+position = Vector2(24327.5, 2248.0002)
+scale = Vector2(21.240608, 7.8333335)
 texture = ExtResource("29_qy4h0")
 
 [connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
