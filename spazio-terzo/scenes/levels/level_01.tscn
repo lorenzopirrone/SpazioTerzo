@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=32 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
@@ -20,14 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://bumxo27lbaw6j" path="res://Fondali/sfondo 8.png" id="18_w4kkx"]
 [ext_resource type="Texture2D" uid="uid://bksd3hw20b2id" path="res://Fondali/Skybox 3.png" id="19_uujh0"]
 [ext_resource type="Texture2D" uid="uid://ddjpe7fhgvwbp" path="res://Fondali/Skybox 4.png" id="20_3t34l"]
-[ext_resource type="Script" path="res://scripts/cambio_zona.gd" id="20_cywot"]
+[ext_resource type="Script" uid="uid://bnkh1rh2bi03c" path="res://scripts/cambio_zona.gd" id="20_cywot"]
 [ext_resource type="Texture2D" uid="uid://dqtmo5i0x46po" path="res://Fondali/clouds 3.png" id="21_qy4h0"]
 [ext_resource type="Texture2D" uid="uid://ba2h78jevm7rr" path="res://Fondali/clouds 4.png" id="22_e5bmj"]
 [ext_resource type="Texture2D" uid="uid://b64k0se3te2cw" path="res://Fondali/sfondo 9.png" id="23_iqf6e"]
 [ext_resource type="Texture2D" uid="uid://du3dhoaqcna1r" path="res://Fondali/sfondo 10.png" id="24_stkom"]
 [ext_resource type="Texture2D" uid="uid://bkdi8xoi6dfgi" path="res://Fondali/sfondo 11.png" id="25_5t8rk"]
 [ext_resource type="Texture2D" uid="uid://cao7lku3ggekk" path="res://Fondali/sfondo 12.png" id="26_cag23"]
-[ext_resource type="Script" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
+[ext_resource type="Script" uid="uid://c3lbrwoxycmhg" path="res://scripts/cambio_zona2.gd" id="28_3t34l"]
+[ext_resource type="Texture2D" uid="uid://dw8sra5fpwn2q" path="res://scenes/levels/Screenshot 2026-10-07 191355.png" id="29_qy4h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(48640, 64)
@@ -723,6 +724,11 @@ durata_dissolvenza = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona2"]
 position = Vector2(5273, -25)
 shape = SubResource("RectangleShape2D_vrcmr")
+
+[node name="Screenshot20261007191355" type="Sprite2D" parent="."]
+position = Vector2(23126, 299)
+scale = Vector2(20.10218, 7.8333335)
+texture = ExtResource("29_qy4h0")
 
 [connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
 [connection signal="body_entered" from="CambioZona2" to="CambioZona2" method="_on_body_entered"]
