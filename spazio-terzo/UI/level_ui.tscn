@@ -1,6 +1,7 @@
-[gd_scene load_steps=71 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=72 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
+[ext_resource type="Script" uid="uid://1etaugm5ef2s" path="res://scripts/coins_panel.gd" id="1_yyras"]
 [ext_resource type="Script" uid="uid://dclu52wjg8210" path="res://scripts/coin_charge_bar.gd" id="3_s88fb"]
 [ext_resource type="Texture2D" uid="uid://cmkl60fhm1l8a" path="res://UI/Brush.png" id="4_01sg8"]
 [ext_resource type="Texture2D" uid="uid://dq2s4n30qnfee" path="res://UI/Heart.png" id="4_6s4o3"]
@@ -341,6 +342,7 @@ offset_top = 54.0
 offset_right = 157.55556
 offset_bottom = 131.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6y8kx")
+script = ExtResource("1_yyras")
 
 [node name="Coin Count" type="Label" parent="UI/CoinsPanel"]
 layout_mode = 2
@@ -804,6 +806,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(925, 513)
 
 [node name="Dim" type="ColorRect" parent="UI/ResultScreen"]

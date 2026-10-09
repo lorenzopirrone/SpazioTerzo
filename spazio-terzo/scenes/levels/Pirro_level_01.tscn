@@ -61,6 +61,10 @@ result_quit_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/B
 [node name="UI" parent="LevelUI" index="0"]
 metadata/_edit_lock_ = true
 
+[node name="CoinsPanel" parent="LevelUI/UI" index="0" node_paths=PackedStringArray("player", "score_count")]
+player = NodePath("../../../Player")
+score_count = NodePath("Coin Count")
+
 [node name="CoinChargeBar" parent="LevelUI/UI" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
 
@@ -74,8 +78,6 @@ player = NodePath("../../../Player")
 
 [node name="ResultScreen" parent="LevelUI/UI" index="7"]
 offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Palazzi interagibili" type="Node2D" parent="."]
 visible = false
@@ -605,6 +607,7 @@ texture = ExtResource("21_kvubm")
 metadata/_edit_lock_ = true
 
 [node name="SKYBOX 1" type="Node2D" parent="Fondale"]
+visible = false
 position = Vector2(0, 221)
 
 [node name="Skybox" type="Parallax2D" parent="Fondale/SKYBOX 1"]
@@ -716,7 +719,6 @@ z_index = -27
 position = Vector2(-75, -17)
 player = NodePath("../../Player")
 default_move_duration = 1.0
-sun_fade_duration = 0.3
 
 [node name="Sfondo 1" type="Parallax2D" parent="Fondale"]
 scroll_scale = Vector2(0.55, 0.2)
@@ -763,9 +765,8 @@ position = Vector2(4800, 166)
 texture = ExtResource("10_ysklq")
 
 [node name="Sfondo 2" type="Parallax2D" parent="Fondale"]
-visible = false
 scroll_scale = Vector2(0.55, 0.2)
-scroll_offset = Vector2(5034, -5)
+scroll_offset = Vector2(5779, 257)
 
 [node name="Sprite2D" type="Sprite2D" parent="Fondale/Sfondo 2"]
 z_index = -26
@@ -838,9 +839,8 @@ position = Vector2(6720, 166)
 texture = ExtResource("15_2mv7a")
 
 [node name="Sfondo 3" type="Parallax2D" parent="Fondale"]
-visible = false
 scroll_scale = Vector2(0.55, 0.2)
-scroll_offset = Vector2(5034, -5)
+scroll_offset = Vector2(15652, 264)
 
 [node name="Sprite2D" type="Sprite2D" parent="Fondale/Sfondo 3"]
 z_index = -26
@@ -919,12 +919,12 @@ launch_velocity = -1506.0
 horizontal_boost = 800.0
 
 [node name="Trampoline2" parent="." instance=ExtResource("29_olbg8")]
-position = Vector2(2654, 725)
-launch_velocity = -800.0
+position = Vector2(3201, 729)
+launch_velocity = -1500.0
 horizontal_boost = 50000.0
 
 [node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
-position = Vector2(5504, 85)
+position = Vector2(5363, 85)
 script = ExtResource("27_epb7g")
 parallasse_zona_1 = NodePath("../Fondale/SKYBOX 1")
 parallasse_zona_2 = NodePath("../Fondale/SKYBOX 2")
@@ -940,7 +940,7 @@ shape = SubResource("RectangleShape2D_vrcmr")
 metadata/_edit_lock_ = true
 
 [node name="CambioZona3" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2", "sun_controller")]
-position = Vector2(8470, 104)
+position = Vector2(15209, 115)
 script = ExtResource("27_epb7g")
 parallasse_zona_1 = NodePath("../Fondale/SKYBOX 2")
 parallasse_zona_2 = NodePath("../Fondale/SKYBOX 3")

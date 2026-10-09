@@ -33,6 +33,7 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export_group("Grind")
 @export var grind_hook_front: Node2D
 @export var grind_hook_back: Node2D
+@export var grind_visual: Sprite2D
 
 @export_group("Punch")
 ## Tempo minimo necessario per iniziare a caricare il cazzotto.
@@ -172,6 +173,8 @@ func _ready() -> void:
 	_punch_base_scale = punch_sprite.scale
 	_last_score_x = global_position.x
 	score_text.visible = false
+	if grind_visual != null:
+		grind_visual.visible = false
 
 	_multiplier_bar = multiplier_bar_max * multiplier_bar_start
 
@@ -402,11 +405,15 @@ func begin_grind() -> void:
 	velocity = Vector2.ZERO
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
+	if grind_visual != null:
+		grind_visual.visible = true
 
 
 func end_grind() -> void:
 	_grind_active = false
 	global_rotation = 0.0
+	if grind_visual != null:
+		grind_visual.visible = false
 	print("STOCAZZO")
 
 func is_grinding() -> bool:
@@ -558,6 +565,8 @@ func _jump() -> void:
 	play_animation(ANIMATION_JUMP)
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
+	if grind_visual != null:
+		grind_visual.visible = false
 
 
 func _start_punch(power: float) -> void:
@@ -618,6 +627,7 @@ func _update_animation_speed() -> void:
 func _end_grind() -> void:
 	if _grind_active:
 		_grind_active = false
+
 
 
 func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=62 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cjr72fsmtllhm" path="res://Sprites/Vespro/Vespro punch/Punch 1.png" id="6_18oyn"]
 [ext_resource type="Texture2D" uid="uid://c46l0r5hm4wbp" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0003.png" id="6_nmlhc"]
 [ext_resource type="Texture2D" uid="uid://1054wayx6m6c" path="res://Sprites/Vespro/Vespro punch/Punch 6.png" id="6_tiqit"]
+[ext_resource type="Texture2D" uid="uid://c66ja05jtcx0m" path="res://Images/Skate.png" id="7_cobgw"]
 [ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
 [ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png" id="8_0878f"]
 [ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0006.png" id="9_dferu"]
@@ -368,13 +369,14 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
 max_fall_speed = 961.0
 grind_hook_front = NodePath("GrindHook Front")
 grind_hook_back = NodePath("GrindHook Back")
+grind_visual = NodePath("Skate")
 max_charge_time = 2.5
 punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
@@ -393,6 +395,13 @@ effect_color_medium = Color(1, 0.61960787, 0, 1)
 effect_color_large = Color(1, 0.28627452, 0, 1)
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
 petal_score_value = 250
+
+[node name="Skate" type="Sprite2D" parent="."]
+z_index = 7
+z_as_relative = false
+position = Vector2(0, 34.09783)
+scale = Vector2(0.11723084, 0.11723084)
+texture = ExtResource("7_cobgw")
 
 [node name="Body" type="Polygon2D" parent="."]
 visible = false

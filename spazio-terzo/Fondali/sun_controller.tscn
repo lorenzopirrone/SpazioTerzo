@@ -16,10 +16,10 @@ radius_y = 467.0
 start_angle = 180.0
 stop_angles = Array[float]([270.0, 300.0])
 default_move_duration = 5.0
-sun_fade_duration = null
 
 [node name="Sun" type="Sprite2D" parent="."]
 position = Vector2(-646, 559)
+scale = Vector2(1.8832685, 1.8832685)
 texture = ExtResource("2_1yvvo")
 
 [node name="EllipseCenter" type="Node2D" parent="."]
