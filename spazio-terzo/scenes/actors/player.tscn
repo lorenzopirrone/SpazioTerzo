@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=64 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -44,6 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://jjtbcpj2qykj" path="res://Sprites/Vespro/Vespro punch/Vespro punch_0008.png" id="37_amsee"]
 [ext_resource type="Script" uid="uid://b7p27m6snx6lq" path="res://scripts/wind_effect.gd" id="43_cobgw"]
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="43_fvvss"]
+[ext_resource type="AudioStream" uid="uid://bovervh7i5wdy" path="res://Audio/Jump.mp3" id="45_r251j"]
+[ext_resource type="AudioStream" uid="uid://bpv6fk2jtoe4m" path="res://Audio/Punch.mp3" id="46_spmms"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjr4"]
 radius = 13.260269
@@ -369,7 +371,7 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "jump_audio", "release_audio") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -394,14 +396,22 @@ effect_max_speed = 6.0
 effect_color_medium = Color(1, 0.61960787, 0, 1)
 effect_color_large = Color(1, 0.28627452, 0, 1)
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
+jump_audio = NodePath("JumpAudio")
+release_audio = NodePath("ReleaseAudio")
 petal_score_value = 250
 
 [node name="Skate" type="Sprite2D" parent="."]
 z_index = 7
 z_as_relative = false
-position = Vector2(0, 34.09783)
-scale = Vector2(0.11723084, 0.11723084)
+position = Vector2(0, 34.097828)
+scale = Vector2(0.11723083, 0.11723083)
 texture = ExtResource("7_cobgw")
+
+[node name="GrindSparkReference" type="Marker2D" parent="."]
+position = Vector2(-19.890404, 33.624252)
+
+[node name="SparkParticles" type="GPUParticles2D" parent="GrindSparkReference"]
+emitting = false
 
 [node name="Body" type="Polygon2D" parent="."]
 visible = false
@@ -491,6 +501,7 @@ libraries = {
 }
 
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -0.712
 
 [node name="Punch Reference" type="Node2D" parent="."]
 position = Vector2(42.148712, -4.262229)
@@ -520,6 +531,12 @@ script = ExtResource("43_cobgw")
 player = NodePath("..")
 grind_line_length = 101.0
 grind_line_width = 6.5
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_r251j")
+
+[node name="ReleaseAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("46_spmms")
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://co8cx6u2i0ivx"]
+[gd_scene load_steps=22 format=3 uid="uid://co8cx6u2i0ivx"]
 
 [ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="2_m2jhg"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="2_obstacle"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_4dr30"]
-[ext_resource type="Script" uid="uid://1etaugm5ef2s" path="res://scripts/coins_panel.gd" id="3_dscar"]
 [ext_resource type="Script" uid="uid://kfs4yffrjulw" path="res://scripts/coin_count.gd" id="4_01hg1"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="4_finish"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
@@ -54,7 +53,6 @@ layer = -10
 [node name="LevelUI" parent="Background" instance=ExtResource("3_4dr30")]
 
 [node name="CoinsPanel" parent="Background/LevelUI/UI" index="0" node_paths=PackedStringArray("player", "score_count")]
-script = ExtResource("3_dscar")
 player = NodePath("../../../../Player")
 score_count = NodePath("Coin Count")
 
@@ -90,8 +88,6 @@ frame_progress = 0.0
 
 [node name="ResultScreen" parent="Background/LevelUI/UI" index="7"]
 offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TestSfondoRosso" type="Sprite2D" parent="Background"]
 position = Vector2(946, 343)

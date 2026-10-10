@@ -42,6 +42,12 @@ func _activate_punch_unlock() -> void:
 
 	if animation_player != null:
 		animation_player.play("Explosion animation")
+	play_punch_unlocked_audio()
+
+func play_punch_unlocked_audio() -> void:
+	$PowerUpAudio.play()
+	await $PowerUpAudio.finished
+	$ExplosionAudio.play()
 
 
 func _deactivate_punch_unlock() -> void:

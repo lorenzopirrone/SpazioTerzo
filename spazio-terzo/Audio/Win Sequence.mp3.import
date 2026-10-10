@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cew2versrd3sm"
+path="res://.godot/imported/Win Sequence.mp3-831abe0a5e182d95a9fe4051768016c5.mp3str"
+
+[deps]
+
+source_file="res://Audio/Win Sequence.mp3"
+dest_files=["res://.godot/imported/Win Sequence.mp3-831abe0a5e182d95a9fe4051768016c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

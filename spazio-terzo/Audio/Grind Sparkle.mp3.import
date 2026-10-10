@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do8qnspubas2s"
+path="res://.godot/imported/Grind Sparkle.mp3-10775e0d3cb1a0709b04c944fecd6e48.mp3str"
+
+[deps]
+
+source_file="res://Audio/Grind Sparkle.mp3"
+dest_files=["res://.godot/imported/Grind Sparkle.mp3-10775e0d3cb1a0709b04c944fecd6e48.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

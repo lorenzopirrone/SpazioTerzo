@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=74 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Script" uid="uid://1etaugm5ef2s" path="res://scripts/coins_panel.gd" id="1_yyras"]
@@ -29,7 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://cbpxcslosrq5j" path="res://Images/White Flames/White Flames 4.png" id="13_k5edn"]
 [ext_resource type="Texture2D" uid="uid://dsy0dagujxybv" path="res://UI/Clock Gif/frame_10_delay-0.25s.png" id="14_fkwso"]
 [ext_resource type="Texture2D" uid="uid://cl4lqejwxc8k4" path="res://UI/Clock Gif/frame_11_delay-0.25s.png" id="15_nwn7c"]
+[ext_resource type="AudioStream" uid="uid://b5080kydpqc13" path="res://Audio/Power-Up.mp3" id="16_1tqyi"]
 [ext_resource type="Texture2D" uid="uid://dxicxd3o8kaf8" path="res://UI/Clock Gif/frame_12_delay-0.25s.png" id="16_v2p2b"]
+[ext_resource type="AudioStream" uid="uid://df3f8w2jtce7w" path="res://Audio/Power-up explosion.mp3" id="17_ha47x"]
 [ext_resource type="Texture2D" uid="uid://ocruu8fhd6yn" path="res://UI/Clock Gif/frame_13_delay-0.25s.png" id="17_pn5rm"]
 [ext_resource type="Texture2D" uid="uid://r461i5c8injh" path="res://UI/Clock Gif/frame_14_delay-0.25s.png" id="18_jd6kr"]
 [ext_resource type="Texture2D" uid="uid://ct7s7xpknu6f2" path="res://UI/Clock Gif/frame_15_delay-0.25s.png" id="19_k0c2n"]
@@ -687,6 +689,12 @@ grow_horizontal = 2
 script = ExtResource("52_rinii")
 animation_player = NodePath("../AnimationPlayer")
 flames = NodePath("Flames")
+
+[node name="PowerUpAudio" type="AudioStreamPlayer" parent="UI/PunchUnlocked"]
+stream = ExtResource("16_1tqyi")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="UI/PunchUnlocked"]
+stream = ExtResource("17_ha47x")
 
 [node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
 position = Vector2(0, 73.950005)

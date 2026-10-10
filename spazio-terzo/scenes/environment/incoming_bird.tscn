@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqhf2dcsqaqkf"]
+[gd_scene load_steps=10 format=3 uid="uid://dqhf2dcsqaqkf"]
 
 [ext_resource type="Script" uid="uid://dpm3f1kwdubms" path="res://scripts/incoming_obstacle.gd" id="1_dibi5"]
 [ext_resource type="Texture2D" uid="uid://o0bgypuo7la3" path="res://Images/Animals/Green birds 1.png" id="2_ui0jo"]
 [ext_resource type="Texture2D" uid="uid://dfrqps4pew1ep" path="res://Images/Animals/Green Bird 2.png" id="3_khkq2"]
+[ext_resource type="AudioStream" uid="uid://cbxotndn8ow0f" path="res://Audio/Allert.mp3" id="4_khkq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(160, 150)
@@ -102,3 +103,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_gjjq3")
 }
 autoplay = "Bird animation"
+
+[node name="AlertAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_khkq2")

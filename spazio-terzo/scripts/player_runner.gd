@@ -109,8 +109,10 @@ var _punch_base_scale: Vector2
 @export var knockback_duration: float = 0.32
 
 
-@export_group("Damage Audio")
+@export_group("Audio")
 @export var damage_sounds: Array[AudioStream] = []
+@export var jump_audio: AudioStreamPlayer
+@export var release_audio: AudioStreamPlayer
 
 
 @export_group("Score")
@@ -541,6 +543,9 @@ func _release_punch() -> void:
 		punch_sprite.global_position = punch_reference.global_position
 
 	play_animation(ANIMATION_PUNCH_RELEASE)
+	
+	if release_audio != null:
+		release_audio.play()
 
 	var power := clampf(
 		_charge_time / max_charge_time,
@@ -567,6 +572,9 @@ func _jump() -> void:
 	_jump_buffer_timer = 0.0
 	if grind_visual != null:
 		grind_visual.visible = false
+	
+	if jump_audio != null:
+		jump_audio.play()
 
 
 func _start_punch(power: float) -> void:

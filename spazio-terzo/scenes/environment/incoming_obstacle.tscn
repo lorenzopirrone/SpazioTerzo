@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://baipmrhrbncmd"]
+[gd_scene load_steps=10 format=3 uid="uid://baipmrhrbncmd"]
 
 [ext_resource type="Script" uid="uid://dpm3f1kwdubms" path="res://scripts/incoming_obstacle.gd" id="1_incoming"]
 [ext_resource type="Texture2D" uid="uid://db3ynft781ot0" path="res://Images/Star.png" id="2_6egfl"]
 [ext_resource type="Texture2D" uid="uid://btdfoq6nb7qn1" path="res://Images/Exclemation-Alert.png" id="3_ri0qj"]
+[ext_resource type="AudioStream" uid="uid://cbxotndn8ow0f" path="res://Audio/Allert.mp3" id="4_ri0qj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(160, 150)
@@ -104,3 +105,6 @@ shape = SubResource("CapsuleShape2D_missile")
 libraries = {
 &"": SubResource("AnimationLibrary_3qbey")
 }
+
+[node name="AlertAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ri0qj")

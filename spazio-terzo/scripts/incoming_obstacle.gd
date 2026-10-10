@@ -102,6 +102,8 @@ func _start_alert() -> void:
 
 	if warning_audio != null:
 		warning_audio.play()
+		
+	$AlertAudio.play()
 
 func _launch_obstacle() -> void:
 	var spawn_x := _get_spawn_x()
