@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=49 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
@@ -42,12 +42,18 @@
 [ext_resource type="Texture2D" uid="uid://dcne276g8dii1" path="res://Fondali/road 6.png" id="34_3xboy"]
 [ext_resource type="Texture2D" uid="uid://c2nw7bkgul4n0" path="res://Fondali/sfondo 15.png" id="36_yl48f"]
 [ext_resource type="Texture2D" uid="uid://7d7m0hsyworm" path="res://Fondali/road 7.png" id="37_i652i"]
+[ext_resource type="Texture2D" uid="uid://drnrffkskyt63" path="res://Piattaforme/Change test.png" id="43_6gto5"]
+[ext_resource type="Texture2D" uid="uid://3jhyuhmu17pt" path="res://Piattaforme/Change test 2.png" id="44_qcx6o"]
+[ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="45_pff7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrcmr"]
-size = Vector2(147, 324)
+size = Vector2(147, 902.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga44r"]
+size = Vector2(808, 368)
 
 [node name="Level01" type="Node2D" groups=["level_root"]]
 script = ExtResource("5_level")
@@ -2757,7 +2763,7 @@ parallasse_zona_2 = NodePath("../Parallasse2")
 durata_dissolvenza = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioZona"]
-position = Vector2(13823, -49)
+position = Vector2(13823, -252.5)
 shape = SubResource("RectangleShape2D_vrcmr")
 
 [node name="CambioSpeed" type="Area2D" parent="."]
@@ -2765,7 +2771,7 @@ position = Vector2(5089, 370)
 script = ExtResource("28_e5bmj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CambioSpeed"]
-position = Vector2(13823, -49)
+position = Vector2(13823, -134.75)
 shape = SubResource("RectangleShape2D_vrcmr")
 
 [node name="CambioZona2" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_2", "parallasse_zona_3")]
@@ -2794,6 +2800,31 @@ visible = false
 position = Vector2(24327.5, 2248.0002)
 scale = Vector2(21.240608, 7.8333335)
 texture = ExtResource("29_qy4h0")
+
+[node name="Change test" type="StaticBody2D" parent="."]
+position = Vector2(18944, 296)
+
+[node name="ChangeTest" type="Sprite2D" parent="Change test"]
+position = Vector2(-304, -136)
+texture = ExtResource("43_6gto5")
+
+[node name="ChangeTest2" type="Sprite2D" parent="Change test"]
+position = Vector2(328, -136)
+texture = ExtResource("44_qcx6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Change test"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_ga44r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Change test"]
+position = Vector2(8, -512)
+shape = SubResource("RectangleShape2D_ga44r")
+
+[node name="Trampoline" parent="Change test" instance=ExtResource("45_pff7q")]
+position = Vector2(-624, 184)
+rotation = 0.06431911
+launch_velocity = -1159.0
+horizontal_boost = 10.0
 
 [connection signal="body_entered" from="CambioZona" to="CambioZona" method="_on_body_entered"]
 [connection signal="body_entered" from="CambioSpeed" to="CambioSpeed" method="_on_body_entered"]
