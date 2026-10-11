@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=37 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="9_audio"]
 [ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="10_coin"]
 [ext_resource type="Texture2D" uid="uid://cb623s0e7p1xg" path="res://Fondali/Road.png" id="12_qy4h0"]
-[ext_resource type="Texture2D" uid="uid://cgcyisl1jubu7" path="res://Fondali/skybox 2.png" id="13_iu1m7"]
+[ext_resource type="Texture2D" uid="uid://cs3q7klfm5ute" path="res://Fondali/skybox 2 variant.png" id="13_5t8rk"]
 [ext_resource type="Texture2D" uid="uid://bljxidsjws8vc" path="res://Fondali/clouds 2.png" id="14_cywot"]
 [ext_resource type="Texture2D" uid="uid://du1k25y78lyxo" path="res://Fondali/Sfondo 1.png" id="15_cywot"]
 [ext_resource type="Texture2D" uid="uid://bsitq7ub0uq2" path="res://Fondali/sfondo 5.png" id="15_vrcmr"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bu4v7hgef0u6q" path="res://Fondali/Sfondo 4.png" id="17_svp4f"]
 [ext_resource type="Texture2D" uid="uid://dxt0k03sernxv" path="res://Fondali/Sfondo 3.png" id="18_1b0o8"]
 [ext_resource type="Texture2D" uid="uid://bumxo27lbaw6j" path="res://Fondali/sfondo 8.png" id="18_w4kkx"]
+[ext_resource type="Texture2D" uid="uid://c43ju0ey23j8x" path="res://Fondali/Road 2.png" id="19_cag23"]
 [ext_resource type="Texture2D" uid="uid://bksd3hw20b2id" path="res://Fondali/Skybox 3.png" id="19_uujh0"]
 [ext_resource type="Texture2D" uid="uid://ddjpe7fhgvwbp" path="res://Fondali/Skybox 4.png" id="20_3t34l"]
 [ext_resource type="Script" uid="uid://bnkh1rh2bi03c" path="res://scripts/cambio_zona.gd" id="20_cywot"]
@@ -723,327 +724,327 @@ scroll_offset = Vector2(2682, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(320, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(10560, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(11200, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(11840, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(12480, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(13120, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(13760, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(14400, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(15040, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(15680, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(16320, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(16960, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(17600, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(18240, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(18880, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(19520, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(20160, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(20800, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(21440, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(22080, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(22720, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(23360, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(24000, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(24640, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(25280, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(25920, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(26560, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(27200, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(27840, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(28480, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(29120, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(29760, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(30400, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(31040, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(31680, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(32320, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(32960, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(33600, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D54" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(34240, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D55" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(34880, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D56" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(35520, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(36160, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(36800, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(37440, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(38080, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(38720, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D62" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(39360, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D63" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(40000, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D64" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(40640, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(41280, 171)
-texture = ExtResource("13_iu1m7")
+texture = ExtResource("13_5t8rk")
 
 [node name="Clouds" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.25, 0.1)
@@ -1742,6 +1743,371 @@ texture = ExtResource("17_1b0o8")
 z_index = -28
 position = Vector2(39349, 171)
 texture = ExtResource("15_vrcmr")
+
+[node name="Sprite2D72" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(317, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D73" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(957, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D74" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(1597, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D75" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(2237, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D76" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(2877, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D77" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(3517, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D78" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(7357, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D79" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(7997, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D80" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(8637, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D143" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(9029, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D144" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(10069, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D81" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(9562, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D82" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(4157, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D83" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(4797, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D84" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(5437, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D85" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(6077, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D86" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(6717, 807)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D87" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(10557, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D88" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(11197, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D89" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(11837, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D90" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(12477, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D91" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(13117, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D92" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(13757, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D93" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(17597, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D94" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(18237, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D95" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(18877, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D96" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(14397, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D97" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(15037, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D98" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(15677, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D99" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(16317, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D100" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(16957, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D101" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(18237, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D102" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(18877, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D103" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(19517, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D104" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(20157, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D105" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(20797, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D106" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(21437, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D107" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(25277, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D108" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(25917, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D109" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(26557, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D110" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(22077, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D111" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(22717, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D112" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(23357, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D113" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(23997, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D114" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(24637, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D115" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(25917, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D116" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(26557, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D117" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(27197, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D118" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(27837, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D119" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(28477, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D120" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(29117, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D121" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(32957, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D122" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(33597, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D123" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(34237, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D124" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(34866, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D125" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(35506, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D126" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(36146, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D127" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(29757, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D128" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(30397, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D129" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(31037, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D130" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(31677, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D131" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(32317, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D132" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(39986, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D133" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(40626, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D134" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(41266, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D135" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(41895, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D136" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(42535, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D137" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(43175, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D138" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(36786, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D139" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(37426, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D140" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(38066, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D141" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(38706, 812)
+texture = ExtResource("19_cag23")
+
+[node name="Sprite2D142" type="Sprite2D" parent="Parallasse2/Sfondo"]
+z_index = -28
+position = Vector2(39346, 812)
+texture = ExtResource("19_cag23")
 
 [node name="Parallasse3" type="Node2D" parent="."]
 visible = false
