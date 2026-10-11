@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=45 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="5_level"]
@@ -34,7 +34,14 @@
 [ext_resource type="Script" uid="uid://c3ggw5mfng0u8" path="res://scripts/SpeedTrigger.gd" id="28_e5bmj"]
 [ext_resource type="Texture2D" uid="uid://dw8sra5fpwn2q" path="res://scenes/levels/Screenshot 2026-10-07 191355.png" id="29_qy4h0"]
 [ext_resource type="Texture2D" uid="uid://c2t2gc0rkcjjc" path="res://Fondali/road 3.png" id="30_3pila"]
+[ext_resource type="Texture2D" uid="uid://cjciw43pghnb" path="res://Fondali/sfondo 13.png" id="30_154ug"]
 [ext_resource type="Script" uid="uid://bowu0e7asm0wl" path="res://scripts/SpeedTrigger2.gd" id="30_iqf6e"]
+[ext_resource type="Texture2D" uid="uid://cp7h6pxk0uy1" path="res://Fondali/road 4.png" id="32_2y4a5"]
+[ext_resource type="Texture2D" uid="uid://b1gtbj3lw512y" path="res://Fondali/sfondo 13 variant.png" id="32_3xboy"]
+[ext_resource type="Texture2D" uid="uid://cq0adloknxlhv" path="res://Fondali/sfondo 14.png" id="33_yj8ph"]
+[ext_resource type="Texture2D" uid="uid://dcne276g8dii1" path="res://Fondali/road 6.png" id="34_3xboy"]
+[ext_resource type="Texture2D" uid="uid://c2nw7bkgul4n0" path="res://Fondali/sfondo 15.png" id="36_yl48f"]
+[ext_resource type="Texture2D" uid="uid://7d7m0hsyworm" path="res://Fondali/road 7.png" id="37_i652i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -81,7 +88,7 @@ shape = SubResource("RectangleShape2D_ground")
 [node name="Visual" type="Polygon2D" parent="Livello/Ground"]
 z_index = 1
 color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-21500, -32, 21500, -32, 21500, 210, 4, 210, -21500, 210)
+polygon = PackedVector2Array(-21500, -32, 46180, -30, 46180, 210, 4, 210, -21500, 210)
 
 [node name="Parallasse" type="Node2D" parent="."]
 position = Vector2(0, 150)
@@ -2474,42 +2481,47 @@ texture = ExtResource("24_stkom")
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(28958, 167)
+position = Vector2(28950, 167)
 texture = ExtResource("24_stkom")
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(29598, 167)
+position = Vector2(29590, 167)
 texture = ExtResource("25_5t8rk")
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(30238, 167)
+position = Vector2(30230, 167)
 texture = ExtResource("26_cag23")
+
+[node name="Sprite2D73" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(30870, 168)
+texture = ExtResource("30_154ug")
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(25758, 167)
+position = Vector2(25750, 167)
 texture = ExtResource("23_iqf6e")
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(26398, 167)
+position = Vector2(26390, 167)
 texture = ExtResource("24_stkom")
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(27038, 167)
+position = Vector2(27030, 167)
 texture = ExtResource("25_5t8rk")
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(27678, 167)
+position = Vector2(27670, 167)
 texture = ExtResource("26_cag23")
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(28318, 167)
+position = Vector2(28310, 167)
 texture = ExtResource("24_stkom")
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse3/Sfondo"]
@@ -2654,42 +2666,87 @@ texture = ExtResource("30_3pila")
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(28958, 800)
+position = Vector2(28950, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D66" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(29598, 800)
+position = Vector2(29590, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D67" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(30238, 800)
+position = Vector2(30230, 800)
 texture = ExtResource("30_3pila")
+
+[node name="Sprite2D74" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(30870, 800)
+texture = ExtResource("30_3pila")
+
+[node name="Sprite2D75" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(31510, 168)
+texture = ExtResource("32_3xboy")
+
+[node name="Sprite2D76" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(31510, 800)
+texture = ExtResource("32_2y4a5")
+
+[node name="Sprite2D77" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(32150, 168)
+texture = ExtResource("33_yj8ph")
+
+[node name="Sprite2D78" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(32150, 800)
+texture = ExtResource("34_3xboy")
+
+[node name="Sprite2D79" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(32790, 168)
+texture = ExtResource("36_yl48f")
+
+[node name="Sprite2D80" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(32790, 800)
+texture = ExtResource("37_i652i")
+
+[node name="Sprite2D81" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(33430, 168)
+texture = ExtResource("36_yl48f")
+
+[node name="Sprite2D82" type="Sprite2D" parent="Parallasse3/Sfondo"]
+z_index = -28
+position = Vector2(33430, 800)
+texture = ExtResource("37_i652i")
 
 [node name="Sprite2D68" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(25758, 800)
+position = Vector2(25750, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D69" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(26398, 800)
+position = Vector2(26390, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D70" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(27038, 800)
+position = Vector2(27030, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D71" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(27678, 800)
+position = Vector2(27670, 800)
 texture = ExtResource("30_3pila")
 
 [node name="Sprite2D72" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
-position = Vector2(28318, 800)
+position = Vector2(28310, 800)
 texture = ExtResource("30_3pila")
 
 [node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2")]
