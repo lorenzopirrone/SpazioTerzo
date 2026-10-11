@@ -34,6 +34,8 @@ const ANIMATION_PUNCH_RELEASE: StringName = &"Punch_Release"
 @export var grind_hook_front: Node2D
 @export var grind_hook_back: Node2D
 @export var grind_visual: Sprite2D
+@export var grind_spark_particles: GPUParticles2D
+@export var grind_audio: AudioStreamPlayer
 
 @export_group("Punch")
 ## Tempo minimo necessario per iniziare a caricare il cazzotto.
@@ -129,6 +131,8 @@ var _punch_base_scale: Vector2
 @export var multiplier_bar_start: float = 0.4
 ## Quanto velocemente la barra scende col tempo.
 @export var multiplier_decay_speed: float = 10.0
+## Velocità di caricamento della barra mentre il player è sul grind.
+@export var grind_multiplier_progress_per_second: float = 15.0
 
 
 @onready var punch_area: Area2D = $PunchArea
@@ -234,6 +238,8 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		_update_damage_flash(delta)
 		move_and_slide()
+		_update_distance_score()
+		add_multiplier_progress(grind_multiplier_progress_per_second * delta)
 		return
 
 	if _knockback_timer > 0.0:
@@ -401,7 +407,9 @@ func is_knockback_active() -> bool:
 
 func begin_grind() -> void:
 	if _dead:
-		return
+		return 
+	if grind_spark_particles != null:
+		grind_spark_particles.emitting = true
 
 	_grind_active = true
 	velocity = Vector2.ZERO
@@ -409,6 +417,8 @@ func begin_grind() -> void:
 	_jump_buffer_timer = 0.0
 	if grind_visual != null:
 		grind_visual.visible = true
+	if grind_audio != null and not grind_audio.playing:
+		grind_audio.play()
 
 
 func end_grind() -> void:
@@ -417,6 +427,12 @@ func end_grind() -> void:
 	if grind_visual != null:
 		grind_visual.visible = false
 	print("STOCAZZO")
+	
+	if grind_spark_particles != null:
+		grind_spark_particles.emitting = false
+	
+	if grind_audio != null:
+		grind_audio.stop()
 
 func is_grinding() -> bool:
 	return _grind_active
@@ -636,7 +652,14 @@ func _end_grind() -> void:
 	if _grind_active:
 		_grind_active = false
 
+	if grind_spark_particles != null:
+		grind_spark_particles.emitting = false
 
+	if grind_visual != null:
+		grind_visual.visible = false
+	
+	if grind_audio != null:
+		grind_audio.stop()
 
 func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
 	if root.is_in_group(group_name):

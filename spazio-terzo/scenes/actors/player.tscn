@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=67 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -47,6 +47,7 @@
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="43_fvvss"]
 [ext_resource type="AudioStream" uid="uid://bovervh7i5wdy" path="res://Audio/Jump.mp3" id="45_r251j"]
 [ext_resource type="AudioStream" uid="uid://bpv6fk2jtoe4m" path="res://Audio/Punch.mp3" id="46_spmms"]
+[ext_resource type="AudioStream" uid="uid://do8qnspubas2s" path="res://Audio/Grind Sparkle.mp3" id="48_r8eyy"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r251j"]
 particle_flag_disable_z = true
@@ -55,7 +56,7 @@ angle_max = 360.00003
 direction = Vector3(0, -1, 0)
 angular_velocity_min = -360.0
 angular_velocity_max = 359.99997
-gravity = Vector3(0, 250, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 1.1999999
 
@@ -383,7 +384,7 @@ _data = {
 &"Vespro_Run": SubResource("Animation_afsss")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "jump_audio", "release_audio") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "grind_spark_particles", "grind_audio", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "jump_audio", "release_audio") groups=["player"]]
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -391,6 +392,8 @@ max_fall_speed = 961.0
 grind_hook_front = NodePath("GrindHook Front")
 grind_hook_back = NodePath("GrindHook Back")
 grind_visual = NodePath("Skate")
+grind_spark_particles = NodePath("GrindSparkReference/SparkParticles")
+grind_audio = NodePath("GrindAudio")
 max_charge_time = 2.5
 punch_duration = 0.7
 punch_sprite = NodePath("Vespro/PunchSprite")
@@ -553,6 +556,10 @@ stream = ExtResource("45_r251j")
 
 [node name="ReleaseAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("46_spmms")
+
+[node name="GrindAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_r8eyy")
+parameters/looping = true
 
 [connection signal="animation_finished" from="Vespro/punch_charge_sparkle" to="." method="_on_punch_charge_sparkle_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
