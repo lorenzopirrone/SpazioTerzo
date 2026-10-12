@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://don5k7i7c20xk"]
+
+[ext_resource type="AudioStream" uid="uid://cew2versrd3sm" path="res://Audio/Win Sequence.mp3" id="1_xwvux"]
+
+[node name="VictoryAudio" type="AudioStreamPlayer"]
+stream = ExtResource("1_xwvux")

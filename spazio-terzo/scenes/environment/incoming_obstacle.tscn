@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://baipmrhrbncmd"]
+[gd_scene load_steps=11 format=3 uid="uid://baipmrhrbncmd"]
 
 [ext_resource type="Script" uid="uid://dpm3f1kwdubms" path="res://scripts/incoming_obstacle.gd" id="1_incoming"]
 [ext_resource type="Texture2D" uid="uid://db3ynft781ot0" path="res://Images/Star.png" id="2_6egfl"]
 [ext_resource type="Texture2D" uid="uid://btdfoq6nb7qn1" path="res://Images/Exclemation-Alert.png" id="3_ri0qj"]
 [ext_resource type="AudioStream" uid="uid://cbxotndn8ow0f" path="res://Audio/Allert.mp3" id="4_ri0qj"]
+[ext_resource type="AudioStream" uid="uid://yq81ysjns6nb" path="res://Audio/Punch Impact.mp3" id="5_3qbey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(160, 150)
@@ -21,10 +22,10 @@ tracks/0/path = NodePath("Warning2:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.36666667, 0.5, 0.6666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ri0qj"]
@@ -48,11 +49,12 @@ _data = {
 &"RESET": SubResource("Animation_ri0qj")
 }
 
-[node name="IncomingObstacle" type="Node2D"]
+[node name="IncomingObstacle" type="Node2D" node_paths=PackedStringArray("impact_audio")]
 process_mode = 1
 script = ExtResource("1_incoming")
 alert_duration = 1.0
 obstacle_speed = 1800.0
+impact_audio = NodePath("ImpactAudio")
 
 [node name="TriggerBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -108,3 +110,6 @@ libraries = {
 
 [node name="AlertAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ri0qj")
+
+[node name="ImpactAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3qbey")

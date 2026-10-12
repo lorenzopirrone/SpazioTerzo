@@ -30,6 +30,11 @@ extends Node2D
 @export var warning_audio: AudioStreamPlayer
 @export var warning_animation: AnimationPlayer
 
+
+@export_group("Audio")
+@export var impact_audio: AudioStreamPlayer
+
+
 const WARNING_RIGHT_MARGIN := 56.0
 const SPAWN_OFFSCREEN_MARGIN := 96.0
 
@@ -98,7 +103,7 @@ func _start_alert() -> void:
 		warning_visual.show()
 
 	if warning_animation != null:
-		warning_animation.play("NOME_ANIMAZIONE")
+		warning_animation.play("Obstacle_Warning")
 
 	if warning_audio != null:
 		warning_audio.play()
@@ -117,6 +122,7 @@ func _launch_obstacle() -> void:
 	_life_timer = maxf(self_destruct_time, 0.0)
 
 
+
 func _update_warning_position() -> void:
 	var warning_x := global_position.x
 	var warning_y := _lane_y
@@ -125,7 +131,12 @@ func _update_warning_position() -> void:
 		var half_width := get_viewport_rect().size.x * 0.5 / _camera.zoom.x
 		warning_x = _camera.get_screen_center_position().x + half_width - WARNING_RIGHT_MARGIN
 
-	warning.global_position = Vector2(warning_x, warning_y)
+	var warning_position := Vector2(warning_x, warning_y)
+
+	warning.global_position = warning_position
+
+	if warning_visual != null:
+		warning_visual.global_position = warning_position
 
 
 func _get_spawn_x() -> float:
@@ -142,6 +153,8 @@ func _on_obstacle_body_entered(body: Node2D) -> void:
 func _on_obstacle_area_entered(area: Area2D) -> void:
 	if area.name == "PunchArea" and not _destroying:
 		_destroying = true
+		if impact_audio != null:
+			impact_audio.play()
 
 		var player := area.get_parent()
 
@@ -149,6 +162,8 @@ func _on_obstacle_area_entered(area: Area2D) -> void:
 
 		if player.has_method("add_interaction_score"):
 			player.add_interaction_score(score_value, multiplier_bar_value)
+	
+
 
 		_play_destroy_effect()
 

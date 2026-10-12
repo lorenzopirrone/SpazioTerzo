@@ -27,6 +27,11 @@ var _destroying: bool = false
 @export var score_value: int = 100
 @export var multiplier_bar_value: float = 15.0
 
+
+@export_group("Audio")
+@export var impact_audio: AudioStreamPlayer
+
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
@@ -45,6 +50,9 @@ func _on_area_entered(area: Area2D) -> void:
 			player.add_interaction_score(score_value, multiplier_bar_value)
 
 		$CollisionShape2D.set_deferred("disabled", true)
+		
+	if impact_audio != null:
+		impact_audio.play()
 
 		_play_destroy_effect()
 
