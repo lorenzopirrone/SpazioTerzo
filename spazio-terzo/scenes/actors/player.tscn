@@ -385,6 +385,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "grind_spark_particles", "grind_audio", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "jump_audio", "release_audio") groups=["player"]]
+process_mode = 1
 scale = Vector2(2.111571, 2.111571)
 script = ExtResource("1_player")
 jump_velocity = -700.0
@@ -410,6 +411,9 @@ effect_max_opacity = 0.9
 effect_max_speed = 6.0
 effect_color_medium = Color(1, 0.61960787, 0, 1)
 effect_color_large = Color(1, 0.28627452, 0, 1)
+knockback_distance = 196.0
+knockback_lift_velocity = -260.0
+knockback_duration = 1.0
 damage_sounds = Array[AudioStream]([ExtResource("2_ds2sr"), ExtResource("3_6xqls")])
 jump_audio = NodePath("JumpAudio")
 release_audio = NodePath("ReleaseAudio")

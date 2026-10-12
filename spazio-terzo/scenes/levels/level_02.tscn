@@ -550,6 +550,7 @@ position = Vector2(12255, -514)
 [node name="VictoryAudio" parent="." instance=ExtResource("19_v5pqk")]
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("20_m2te4")]
+visible = false
 position = Vector2(6083, -510)
 
 [connection signal="pressed" from="Background/LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
