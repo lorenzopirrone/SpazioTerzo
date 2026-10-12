@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvhlov55u1dw7"]
+[gd_scene load_steps=36 format=3 uid="uid://dvhlov55u1dw7"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_070ac"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_bd3lf"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="29_olbg8"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="30_512oa"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="32_xvgfp"]
+[ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="33_xvgfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(43000, 64)
@@ -980,6 +981,9 @@ position = Vector2(934, 384)
 
 [node name="GrindRail" parent="." instance=ExtResource("32_xvgfp")]
 position = Vector2(4844, 475)
+
+[node name="Obstacle" parent="." instance=ExtResource("33_xvgfp")]
+position = Vector2(2117, 644)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
