@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://t1q3aok2dr2g"]
+[gd_scene load_steps=6 format=3 uid="uid://t1q3aok2dr2g"]
 
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="1_grind"]
+[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="2_70nkv"]
 
 [sub_resource type="Curve2D" id="Curve2D_f4ir7"]
 _data = {
@@ -10,6 +11,22 @@ point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(139.5, 137.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3gojw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(40, 6, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -10, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 1.1999999
 
 [node name="GrindRail" type="Node2D"]
 script = ExtResource("1_grind")
@@ -42,3 +59,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_trigger")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-907, -846)
+texture = ExtResource("2_70nkv")
+lifetime = 0.35000000000000003
+process_material = SubResource("ParticleProcessMaterial_3gojw")
