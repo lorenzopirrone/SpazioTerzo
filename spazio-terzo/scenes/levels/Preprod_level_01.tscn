@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=57 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_p4iai"]
@@ -45,13 +45,14 @@
 [ext_resource type="Script" uid="uid://bowu0e7asm0wl" path="res://scripts/SpeedTrigger2.gd" id="41_88ooj"]
 [ext_resource type="Texture2D" uid="uid://drnrffkskyt63" path="res://Piattaforme/Change test.png" id="43_ee8wl"]
 [ext_resource type="Texture2D" uid="uid://3jhyuhmu17pt" path="res://Piattaforme/Change test 2.png" id="44_wq2pb"]
-[ext_resource type="PackedScene" path="res://scenes/environment/trampoline.tscn" id="45_n34q1"]
+[ext_resource type="PackedScene" uid="uid://c1ddar41rcegu" path="res://scenes/environment/trampoline.tscn" id="45_n34q1"]
 [ext_resource type="PackedScene" uid="uid://cagg6a6kfc4um" path="res://scenes/environment/obstacle.tscn" id="47_hld05"]
 [ext_resource type="PackedScene" uid="uid://cl7n7xy4bprl6" path="res://scenes/environment/triangle_obstacle.tscn" id="48_jfxjt"]
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="49_f3d2k"]
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="50_irwa4"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="52_2tss3"]
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="53_1srhj"]
+[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="53_hld05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -79,6 +80,9 @@ result_restart_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpace
 result_quit_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/QuitButton")
 
 [node name="LevelUI" parent="." instance=ExtResource("3_p4iai")]
+
+[node name="UI" parent="LevelUI" index="0"]
+metadata/_edit_lock_ = true
 
 [node name="CoinsPanel" parent="LevelUI/UI" index="0" node_paths=PackedStringArray("player", "score_count")]
 player = NodePath("../../../Player")
@@ -140,146 +144,175 @@ scroll_scale = Vector2(0.05, 0.05)
 z_index = -30
 position = Vector2(320, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(10560, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(11200, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(11840, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(12480, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(13120, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(13760, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(14400, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(15040, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(15680, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(16320, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(16960, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(17600, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse/Skybox"]
 z_index = -30
 position = Vector2(18240, 166)
 texture = ExtResource("6_oi5o0")
+metadata/_edit_lock_ = true
 
 [node name="Clouds" type="Parallax2D" parent="Parallasse"]
 scroll_scale = Vector2(0.25, 0.1)
@@ -288,186 +321,223 @@ scroll_scale = Vector2(0.25, 0.1)
 z_index = -29
 position = Vector2(320, 166)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(960, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(1600, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(2240, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(2880, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(3520, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(4160, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(5440, 170)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(6080, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(6720, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(7360, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(8000, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(8640, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(9280, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(9920, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(5440, 169)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(6080, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(6720, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(7360, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(8000, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(8640, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(9280, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(9920, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(10560, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(11200, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(11840, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(12480, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(13120, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(13760, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(14400, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(15040, 173)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(15680, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(16320, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(16960, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(17600, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse/Clouds"]
 z_index = -29
 position = Vector2(18240, 172)
 texture = ExtResource("7_t2r67")
+metadata/_edit_lock_ = true
 
 [node name="Sfondo" type="Parallax2D" parent="Parallasse"]
 scroll_scale = Vector2(0.55, 0.2)
@@ -476,291 +546,349 @@ scroll_scale = Vector2(0.55, 0.2)
 z_index = -28
 position = Vector2(320, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(960, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(1600, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(2240, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(2880, 166)
 texture = ExtResource("11_f3d2k")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(3520, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(4160, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(4800, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(320, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(960, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(1600, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(2240, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(2880, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(3520, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(4160, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(4800, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(5440, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(6080, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(6720, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(7360, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(8000, 166)
 texture = ExtResource("11_f3d2k")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(8640, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(9280, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(9920, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(5440, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(6080, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(6720, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(7360, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(8000, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(8640, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(9280, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(9920, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(10560, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(11200, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(11840, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(12480, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(13120, 166)
 texture = ExtResource("11_f3d2k")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(13760, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(14400, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(15040, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(10560, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(11200, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(11840, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(12480, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(13120, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(13760, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(14400, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(15040, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(15680, 166)
 texture = ExtResource("8_ggavj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(16320, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(16960, 166)
 texture = ExtResource("10_jfxjt")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(17600, 166)
 texture = ExtResource("9_hld05")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(18240, 166)
 texture = ExtResource("11_f3d2k")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(15680, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(16320, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(16960, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(17600, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse/Sfondo"]
 z_index = -28
 position = Vector2(18240, 806)
 texture = ExtResource("12_irwa4")
+metadata/_edit_lock_ = true
 
 [node name="Parallasse2" type="Node2D" parent="."]
 visible = false
@@ -774,326 +902,391 @@ scroll_offset = Vector2(2682, 0)
 z_index = -30
 position = Vector2(320, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(10560, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(11200, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(11840, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(12480, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(13120, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(13760, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(14400, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(15040, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(15680, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(16320, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(16960, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(17600, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(18240, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(18880, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(19520, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(20160, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(20800, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(21440, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(22080, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(22720, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(23360, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(24000, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(24640, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(25280, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(25920, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(26560, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(27200, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(27840, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(28480, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(29120, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(29760, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(30400, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(31040, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(31680, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(32320, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(32960, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(33600, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D54" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(34240, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D55" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(34880, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D56" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(35520, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(36160, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(36800, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(37440, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(38080, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(38720, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D62" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(39360, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D63" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(40000, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D64" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(40640, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse2/Skybox"]
 z_index = -30
 position = Vector2(41280, 171)
 texture = ExtResource("13_e0vh6")
+metadata/_edit_lock_ = true
 
 [node name="Clouds" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.25, 0.1)
@@ -1103,336 +1296,403 @@ scroll_offset = Vector2(3284, 0)
 z_index = -29
 position = Vector2(320, 166)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(960, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(1600, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(2240, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(2880, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(3520, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(4160, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(5440, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(6080, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(6720, 169)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(7360, 170)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(8000, 170)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(8640, 170)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(9280, 170)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(9920, 170)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(10560, 171)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(11200, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(11840, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(12480, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(13120, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(13760, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(14400, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(15040, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(15680, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(16320, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(16960, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(17600, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(18240, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(18880, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(19520, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(20160, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(20160, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(20800, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(21440, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(22080, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(22720, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(23360, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(24000, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(24640, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(25280, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(25920, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(26560, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(27200, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(27840, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(27840, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(27840, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(28480, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(29120, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(29760, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(30400, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(31040, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(31680, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D54" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(32320, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D55" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(32960, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D56" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(33600, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(34240, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(34880, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(35520, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(36160, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(36800, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D62" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(37440, 174)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D63" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(38080, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D64" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(38720, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(39360, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D66" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(40000, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D67" type="Sprite2D" parent="Parallasse2/Clouds"]
 z_index = -29
 position = Vector2(40640, 175)
 texture = ExtResource("14_2tss3")
+metadata/_edit_lock_ = true
 
 [node name="Sfondo" type="Parallax2D" parent="Parallasse2"]
 scroll_scale = Vector2(0.55, 0.2)
@@ -1442,721 +1702,865 @@ scroll_offset = Vector2(5034, -5)
 z_index = -28
 position = Vector2(320, 166)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(960, 166)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(1600, 166)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(2240, 166)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(2880, 166)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(3520, 166)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(7360, 166)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(8000, 166)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(8640, 166)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(9565, 166)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(4160, 166)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(4800, 166)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(5440, 166)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(6080, 166)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(6720, 166)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(10560, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(11200, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(11840, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(12480, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(13120, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(13760, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(17600, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18240, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18880, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(14400, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(15040, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(15680, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(16320, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(16960, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18240, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18880, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(19520, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(20160, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(20800, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(21440, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25280, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25920, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(26560, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(22080, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(22720, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(23360, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(24000, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(24640, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25920, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(26560, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(27200, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(27840, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(28480, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(29120, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(32960, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(33600, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(34240, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(34869, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(35509, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(36149, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(29760, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(30400, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D54" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(31040, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D55" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(31680, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D56" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(32320, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(39989, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D62" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(40629, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D63" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(41269, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D64" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(41898, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(42538, 171)
 texture = ExtResource("18_uoqi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D66" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(43178, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D67" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(36789, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D68" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(37429, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D69" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(38069, 171)
 texture = ExtResource("16_ve1ud")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D70" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(38709, 171)
 texture = ExtResource("17_60r77")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D71" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(39349, 171)
 texture = ExtResource("15_1srhj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D72" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(317, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D73" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(957, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D74" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(1597, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D75" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(2237, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D76" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(2877, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D77" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(3517, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D78" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(7357, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D79" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(7997, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D80" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(8637, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D143" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(9029, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D144" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(10069, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D81" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(9562, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D82" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(4157, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D83" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(4797, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D84" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(5437, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D85" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(6077, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D86" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(6717, 807)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D87" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(10557, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D88" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(11197, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D89" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(11837, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D90" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(12477, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D91" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(13117, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D92" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(13757, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D93" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(17597, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D94" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18237, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D95" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18877, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D96" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(14397, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D97" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(15037, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D98" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(15677, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D99" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(16317, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D100" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(16957, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D101" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18237, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D102" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(18877, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D103" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(19517, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D104" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(20157, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D105" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(20797, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D106" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(21437, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D107" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25277, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D108" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25917, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D109" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(26557, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D110" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(22077, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D111" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(22717, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D112" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(23357, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D113" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(23997, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D114" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(24637, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D115" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(25917, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D116" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(26557, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D117" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(27197, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D118" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(27837, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D119" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(28477, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D120" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(29117, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D121" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(32957, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D122" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(33597, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D123" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(34237, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D124" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(34866, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D125" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(35506, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D126" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(36146, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D127" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(29757, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D128" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(30397, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D129" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(31037, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D130" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(31677, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D131" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(32317, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D132" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(39986, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D133" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(40626, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D134" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(41266, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D135" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(41895, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D136" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(42535, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D137" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(43175, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D138" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(36786, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D139" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(37426, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D140" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(38066, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D141" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(38706, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D142" type="Sprite2D" parent="Parallasse2/Sfondo"]
 z_index = -28
 position = Vector2(39346, 812)
 texture = ExtResource("19_wq023")
+metadata/_edit_lock_ = true
 
 [node name="Parallasse3" type="Node2D" parent="."]
 visible = false
@@ -2170,81 +2574,97 @@ scroll_offset = Vector2(768, 0)
 z_index = -30
 position = Vector2(320, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(960, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(1600, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(2240, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(2880, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(3520, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(4160, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(4800, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(5440, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(6080, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(6720, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(7360, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(8000, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(8640, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(9280, 166)
 texture = ExtResource("21_fm42f")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse3/Skybox"]
 z_index = -30
 position = Vector2(9920, 166)
 texture = ExtResource("20_3xi3c")
+metadata/_edit_lock_ = true
 
 [node name="Clouds" type="Parallax2D" parent="Parallasse3"]
 scroll_scale = Vector2(0.25, 0.1)
@@ -2254,126 +2674,151 @@ scroll_offset = Vector2(3284, 0)
 z_index = -29
 position = Vector2(320, 166)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(960, 169)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(1600, 169)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(2240, 169)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(2880, 169)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(3520, 169)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(4160, 169)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(4800, 169)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(5440, 169)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(6080, 169)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(6720, 169)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(7360, 170)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(8000, 170)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(8640, 170)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(9280, 170)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(9920, 170)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(10560, 170)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(11200, 170)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(11840, 171)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(12480, 171)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(13120, 171)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(13760, 171)
 texture = ExtResource("23_du073")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(14400, 171)
 texture = ExtResource("22_cvwoh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(15036, 171)
 texture = ExtResource("24_s3mql")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse3/Clouds"]
 z_index = -29
 position = Vector2(15676, 171)
 texture = ExtResource("25_m7nyc")
+metadata/_edit_lock_ = true
 
 [node name="Sfondo" type="Parallax2D" parent="Parallasse3"]
 scroll_scale = Vector2(0.55, 0.2)
@@ -2383,411 +2828,493 @@ scroll_offset = Vector2(5034, -5)
 z_index = -28
 position = Vector2(320, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(960, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(1600, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(2240, 166)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(2880, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(3520, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(7360, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(8000, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(8640, 166)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(4160, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(4800, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(5440, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(6080, 166)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(6720, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(16790, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(17430, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(18070, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(18710, 166)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(19350, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(19990, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(23830, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(24470, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(25110, 167)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(20630, 166)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(21270, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(21910, 166)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(22550, 166)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(23190, 166)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(28950, 167)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(29590, 167)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(30230, 167)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D73" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(30870, 168)
 texture = ExtResource("30_7wae2")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(25750, 167)
 texture = ExtResource("26_b2yi8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(26390, 167)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(27030, 167)
 texture = ExtResource("28_8pg3s")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(27670, 167)
 texture = ExtResource("29_qff07")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(28310, 167)
 texture = ExtResource("27_5kj40")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(320, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(960, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(1600, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(2240, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(2880, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(3520, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(7360, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(8000, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(8640, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(4160, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(4800, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(5440, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(6080, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(6720, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(16790, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(17430, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(18070, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D54" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(18710, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D55" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(19350, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D56" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(19990, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(23830, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(24470, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(25110, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(20630, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(21270, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D62" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(21910, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D63" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(22550, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D64" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(23190, 799)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D65" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(28950, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D66" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(29590, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D67" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(30230, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D74" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(30870, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D75" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(31510, 168)
 texture = ExtResource("32_k4jid")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D76" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(31510, 800)
 texture = ExtResource("33_v75r3")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D77" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(32150, 168)
 texture = ExtResource("34_iqush")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D78" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(32150, 800)
 texture = ExtResource("35_mqo2i")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D79" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(32790, 168)
 texture = ExtResource("36_f38vw")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D80" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(32790, 800)
 texture = ExtResource("37_e6i1j")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D81" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(33430, 168)
 texture = ExtResource("36_f38vw")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D82" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(33430, 800)
 texture = ExtResource("37_e6i1j")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D68" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(25750, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D69" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(26390, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D70" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(27030, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D71" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(27670, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D72" type="Sprite2D" parent="Parallasse3/Sfondo"]
 z_index = -28
 position = Vector2(28310, 800)
 texture = ExtResource("31_k1b11")
+metadata/_edit_lock_ = true
 
 [node name="CambioZona" type="Area2D" parent="." node_paths=PackedStringArray("parallasse_zona_1", "parallasse_zona_2")]
 position = Vector2(5089, 370)
@@ -2851,104 +3378,9 @@ shape = SubResource("RectangleShape2D_ga44r")
 [node name="FinishLine" parent="." instance=ExtResource("49_f3d2k")]
 position = Vector2(67549, 387)
 
-[node name="Misuratore salti" parent="." instance=ExtResource("50_irwa4")]
-position = Vector2(8219, -67)
-rotation = -0.59206307
-scale = Vector2(0.9180634, 1.0502119)
-
 [node name="Parte 1" type="Node2D" parent="."]
 
 [node name="Coin pt1" type="Node2D" parent="Parte 1"]
-
-[node name="Coin28" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14604, -640)
-
-[node name="Coin" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12278, -492)
-
-[node name="Coin2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12296, -419)
-
-[node name="Coin3" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12325, -343)
-
-[node name="Coin4" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12359, -248)
-
-[node name="Coin5" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12400, -173)
-
-[node name="Coin6" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12461, -97)
-
-[node name="Coin7" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12525, -36)
-
-[node name="Coin8" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12603, 33)
-
-[node name="Coin9" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12669, 103)
-
-[node name="Coin10" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12764, 137)
-
-[node name="Coin11" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12856, 173)
-
-[node name="Coin12" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12955, 218)
-
-[node name="Coin13" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13081, 247)
-
-[node name="Coin14" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13216, 271)
-
-[node name="Coin15" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13401, 312)
-
-[node name="Coin16" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13543, 284)
-
-[node name="Coin17" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13678, 262)
-
-[node name="Coin18" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13806, 252)
-
-[node name="Coin19" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13934, 193)
-
-[node name="Coin20" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14071, 137)
-
-[node name="Coin21" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14168, 100)
-
-[node name="Coin22" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14257, 32)
-
-[node name="Coin23" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14407, -129)
-
-[node name="Coin24" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14341, -29)
-
-[node name="Coin25" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14580, -378)
-
-[node name="Coin26" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14524, -268)
-
-[node name="Coin27" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14469, -214)
-
-[node name="Coin29" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14608, -541)
-
-[node name="Coin30" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14602, -440)
 
 [node name="CoinA2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1599, 415)
@@ -2961,21 +3393,6 @@ position = Vector2(689, 424)
 
 [node name="CoinA5" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(2217, 432)
-
-[node name="CoinA6" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(528, 426)
-
-[node name="CoinA12" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(528, 426)
-
-[node name="CoinA13" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(528, 426)
-
-[node name="CoinA14" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(528, 426)
-
-[node name="CoinA15" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(528, 426)
 
 [node name="CoinA7" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1692, 413)
@@ -3044,13 +3461,130 @@ position = Vector2(10209, 383)
 position = Vector2(10381, 385)
 
 [node name="CoinB2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(3276, 182)
+position = Vector2(2872, 264)
 
-[node name="CoinA" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(620, 330)
+[node name="Coin" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(5232, -64)
 
-[node name="CoinB" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(1140, 290)
+[node name="Coin2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(5304, -64)
+
+[node name="Coin3" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(5384, -64)
+
+[node name="Coin9" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(4872, -248)
+
+[node name="Coin10" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(4952, -248)
+
+[node name="Coin18" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7856, -488)
+
+[node name="Coin19" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7936, -488)
+
+[node name="Coin20" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(8672, -144)
+
+[node name="Coin21" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(8784, -144)
+
+[node name="Coin24" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(8896, -144)
+
+[node name="Coin25" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9008, -144)
+
+[node name="Coin22" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9120, -144)
+
+[node name="Coin23" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9224, -144)
+
+[node name="Coin26" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9312, -144)
+
+[node name="Coin27" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9424, -144)
+
+[node name="Coin28" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9536, -144)
+
+[node name="Coin29" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9648, -144)
+
+[node name="Coin30" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9760, -144)
+
+[node name="Coin31" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9864, -144)
+
+[node name="Coin34" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6712, 280)
+
+[node name="Coin35" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6824, 280)
+
+[node name="Coin36" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6936, 280)
+
+[node name="Coin37" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7040, 280)
+
+[node name="Coin38" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7128, 280)
+
+[node name="Coin39" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7240, 280)
+
+[node name="Coin40" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7352, 280)
+
+[node name="Coin41" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7464, 280)
+
+[node name="Coin11" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(3240, 192)
+
+[node name="Coin12" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(3320, 192)
+
+[node name="Coin13" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(4032, 16)
+
+[node name="Coin14" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(4112, 16)
+
+[node name="Coin4" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(5624, -56)
+
+[node name="Coin5" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(5688, -64)
+
+[node name="Coin6" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6136, -392)
+
+[node name="Coin7" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6248, -392)
+
+[node name="Coin8" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6368, -392)
+
+[node name="Coin32" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6581, -395)
+
+[node name="Coin33" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(6701, -395)
+
+[node name="Coin15" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7208, -400)
+
+[node name="Coin16" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7320, -400)
+
+[node name="Coin17" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(7440, -400)
 
 [node name="Obstacle pt1" type="Node2D" parent="Parte 1"]
 
@@ -3079,52 +3613,52 @@ position = Vector2(1999, 452)
 position = Vector2(2045, 450)
 
 [node name="TriangleObstacleA2" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(6769, 452)
+position = Vector2(6769, 451)
 
 [node name="TriangleObstacleB3" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(6815, 450)
+position = Vector2(6815, 451)
 
 [node name="TriangleObstacleA3" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(6872, 452)
+position = Vector2(6872, 451)
 
 [node name="TriangleObstacleB4" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(6918, 450)
+position = Vector2(6918, 451)
 
 [node name="TriangleObstacleA4" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(6969, 449)
+position = Vector2(6969, 451)
 
 [node name="TriangleObstacleB5" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7015, 447)
+position = Vector2(7015, 451)
 
 [node name="TriangleObstacleA5" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7072, 449)
+position = Vector2(7072, 451)
 
 [node name="TriangleObstacleB6" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7118, 447)
+position = Vector2(7118, 451)
 
 [node name="TriangleObstacleA6" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7117, 449)
+position = Vector2(7117, 451)
 
 [node name="TriangleObstacleB7" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7163, 447)
+position = Vector2(7163, 451)
 
 [node name="TriangleObstacleA7" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7220, 449)
+position = Vector2(7220, 451)
 
 [node name="TriangleObstacleB8" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7266, 447)
+position = Vector2(7266, 451)
 
 [node name="TriangleObstacleA8" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7317, 446)
+position = Vector2(7317, 451)
 
 [node name="TriangleObstacleB9" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7363, 444)
+position = Vector2(7363, 451)
 
 [node name="TriangleObstacleA9" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7420, 446)
+position = Vector2(7420, 451)
 
 [node name="TriangleObstacleB10" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
-position = Vector2(7466, 444)
+position = Vector2(7466, 451)
 
 [node name="TriangleObstacleB2" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(3360, 620)
@@ -3140,7 +3674,19 @@ position = Vector2(9172, 414)
 position = Vector2(11671, 399)
 
 [node name="IncomingObstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
-position = Vector2(6932, -413)
+position = Vector2(9144, -168)
+metadata/_edit_lock_ = true
+
+[node name="IncomingObstacle5" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
+position = Vector2(9680, -176)
+metadata/_edit_lock_ = true
+
+[node name="Incoming_bird" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
+position = Vector2(6969, -420)
+metadata/_edit_lock_ = true
+
+[node name="Incoming_bird2" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
+position = Vector2(7334, 254)
 
 [node name="Platform pt1" type="Node2D" parent="Parte 1"]
 
@@ -3152,9 +3698,6 @@ position = Vector2(5301, -308)
 
 [node name="AirPlatform6" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(5704, -308)
-
-[node name="AirPlatform12" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
-position = Vector2(7879, -397)
 
 [node name="AirPlatform17" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(11615, -15)
@@ -3169,14 +3712,15 @@ position = Vector2(10816, 215)
 position = Vector2(10452, 318)
 
 [node name="AirPlatform13" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
-position = Vector2(8285, -526)
+position = Vector2(7912, -424)
+scale = Vector2(2.04, 1)
 
 [node name="AirPlatform7" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(6762, -337)
 scale = Vector2(6.173986, 1)
 
 [node name="AirPlatform16" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
-position = Vector2(9332, 0)
+position = Vector2(9332, -83)
 scale = Vector2(6.173986, 1)
 
 [node name="AirPlatform14" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
@@ -3221,22 +3765,18 @@ launch_velocity = -1159.0
 horizontal_boost = 10.0
 
 [node name="Trampoline3" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
-position = Vector2(8358, -537.99994)
+position = Vector2(8112.0005, -439.99997)
 rotation = 0.06431911
-launch_velocity = -1159.0
-horizontal_boost = 10.0
+launch_velocity = -999.0
+horizontal_boost = 200.0
 
 [node name="Trampoline4" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
-position = Vector2(7889, 188.99988)
-rotation = 0.27069393
-launch_velocity = -1500.0
-horizontal_boost = 10.0
+position = Vector2(7884.0005, 172.00003)
+rotation = 0.06431911
+launch_velocity = -1394.0
 
-[node name="Trampoline5" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
-position = Vector2(11697, -18)
-rotation = 0.27069393
-launch_velocity = -1500.0
-horizontal_boost = 10.0
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("53_hld05")]
+position = Vector2(4927, 382)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]

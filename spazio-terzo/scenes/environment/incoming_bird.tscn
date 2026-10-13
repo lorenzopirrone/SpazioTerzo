@@ -99,7 +99,7 @@ _data = {
 &"RESET": SubResource("Animation_ri0qj")
 }
 
-[node name="IncomingObstacle" type="Node2D" node_paths=PackedStringArray("warning_visual", "warning_audio", "warning_animation", "impact_audio")]
+[node name="Incoming_bird" type="Node2D" node_paths=PackedStringArray("warning_visual", "warning_audio", "warning_animation", "impact_audio")]
 process_mode = 1
 script = ExtResource("1_dibi5")
 alert_duration = 1.0

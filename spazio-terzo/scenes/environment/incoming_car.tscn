@@ -49,7 +49,7 @@ _data = {
 &"RESET": SubResource("Animation_ri0qj")
 }
 
-[node name="IncomingObstacle" type="Node2D" node_paths=PackedStringArray("parts", "warning_visual", "warning_audio", "warning_animation", "impact_audio")]
+[node name="Incoming_car" type="Node2D" node_paths=PackedStringArray("parts", "warning_visual", "warning_audio", "warning_animation", "impact_audio")]
 process_mode = 1
 script = ExtResource("1_mmw3t")
 parts = [NodePath("Obstacle/Sprite2D")]
