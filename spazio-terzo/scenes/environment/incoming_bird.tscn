@@ -150,6 +150,7 @@ autoplay = "Bird animation"
 
 [node name="AlertAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_khkq2")
+volume_db = -10.0
 
 [node name="ImpactAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ohkdk")

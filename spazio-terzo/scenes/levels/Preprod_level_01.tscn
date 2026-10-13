@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=58 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_p4iai"]
@@ -54,7 +54,6 @@
 [ext_resource type="PackedScene" uid="uid://bw0hd5tw0ocy" path="res://scenes/environment/turn_black.tscn" id="51_e0vh6"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="52_2tss3"]
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="53_1srhj"]
-[ext_resource type="PackedScene" path="res://scenes/environment/player_spawn_point.tscn" id="55_f3d2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -120,6 +119,7 @@ position = Vector2(1140, 290)
 
 [node name="Guaglio_Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_p4iai")
+volume_db = -10.0
 autoplay = true
 
 [node name="VictoryAudio" parent="." instance=ExtResource("7_jfxjt")]
@@ -2869,9 +2869,6 @@ scale = Vector2(2.691084, 1.0582329)
 launch_velocity = -1159.0
 horizontal_boost = 10.0
 
-[node name="PlayerSpawnPoint" parent="Change test" instance=ExtResource("55_f3d2k")]
-position = Vector2(-1125, 69)
-
 [node name="ObstacleA" parent="." instance=ExtResource("47_hld05")]
 position = Vector2(1450, 420)
 
@@ -3045,7 +3042,7 @@ position = Vector2(3360, 620)
 rotation = 3.1415927
 
 [node name="FinishLine" parent="." instance=ExtResource("49_f3d2k")]
-position = Vector2(15727, 388)
+position = Vector2(67549, 387)
 
 [node name="AirPlatform2" parent="." instance=ExtResource("50_irwa4")]
 position = Vector2(3681, 206)

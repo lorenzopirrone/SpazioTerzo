@@ -692,9 +692,11 @@ flames = NodePath("Flames")
 
 [node name="PowerUpAudio" type="AudioStreamPlayer" parent="UI/PunchUnlocked"]
 stream = ExtResource("16_1tqyi")
+volume_db = -7.0
 
 [node name="ExplosionAudio" type="AudioStreamPlayer" parent="UI/PunchUnlocked"]
 stream = ExtResource("17_ha47x")
+volume_db = -10.0
 
 [node name="Flames" type="AnimatedSprite2D" parent="UI/PunchUnlocked"]
 position = Vector2(0, 73.950005)
