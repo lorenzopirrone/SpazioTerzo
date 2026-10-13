@@ -155,6 +155,8 @@ var _petals: int = 0
 var _invulnerability_timer: float = 0.0
 var _knockback_timer: float = 0.0
 var _knockback_start_x: float = 0.0
+var _trampoline_boost_timer: float = 0.0
+var _trampoline_boost_speed: float = 0.0
 var _knockback_target_x: float = 0.0
 var _flash_timer: float = 0.0
 var _base_modulate: Color = Color.WHITE
@@ -261,7 +263,14 @@ func _physics_process(delta: float) -> void:
 			global_position.x = _knockback_target_x
 			velocity.x = 0.0
 	else:
-		velocity.x = run_speed
+		if _trampoline_boost_timer > 0.0:
+			_trampoline_boost_timer = maxf(
+				_trampoline_boost_timer - delta,
+				0.0
+			)
+			velocity.x = maxf(run_speed, _trampoline_boost_speed)
+		else:
+			velocity.x = run_speed
 
 	if is_on_floor():
 		_coyote_timer = coyote_time
@@ -369,7 +378,13 @@ func apply_jump_impulse(
 
 	_end_grind()
 	velocity.y = vertical_velocity
+
+	if horizontal_boost > 0.0:
+		_trampoline_boost_speed = run_speed + horizontal_boost
+		_trampoline_boost_timer = 0.8
+
 	velocity.x = maxf(velocity.x, run_speed + horizontal_boost)
+
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
 

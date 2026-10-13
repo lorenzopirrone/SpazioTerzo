@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c1ddar41rcegu"]
 
-[ext_resource type="Script" path="res://scripts/trampoline.gd" id="1_trampoline"]
-[ext_resource type="Script" path="res://scripts/trampoline_trajectory_preview.gd" id="2_preview"]
+[ext_resource type="Script" uid="uid://xdhxmkvseg2l" path="res://scripts/trampoline.gd" id="1_trampoline"]
+[ext_resource type="Script" uid="uid://bvaqqcvmgsj6g" path="res://scripts/trampoline_trajectory_preview.gd" id="2_preview"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(86, 22)
@@ -10,7 +10,6 @@ size = Vector2(86, 22)
 size = Vector2(92, 18)
 
 [node name="Trampoline" type="Area2D"]
-collision_mask = 1
 script = ExtResource("1_trampoline")
 
 [node name="Visual" type="Polygon2D" parent="."]
@@ -26,8 +25,6 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_trigger")
 
 [node name="SolidBase" type="StaticBody2D" parent="."]
-collision_layer = 1
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBase"]
 position = Vector2(0, 5)
