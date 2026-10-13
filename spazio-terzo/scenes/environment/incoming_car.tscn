@@ -51,6 +51,7 @@ _data = {
 
 [node name="Incoming_car" type="Node2D" node_paths=PackedStringArray("parts", "warning_visual", "warning_audio", "warning_animation", "impact_audio")]
 process_mode = 1
+z_index = 7
 script = ExtResource("1_mmw3t")
 parts = [NodePath("Obstacle/Sprite2D")]
 alert_duration = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=65 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_p4iai"]
@@ -56,6 +56,8 @@
 [ext_resource type="Texture2D" uid="uid://cq1nnv6alkfbw" path="res://Piattaforme/Bridge 1.png" id="53_irwa4"]
 [ext_resource type="Texture2D" uid="uid://cxb6asjmtb5a7" path="res://Piattaforme/Bridge 2.png" id="54_e0vh6"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="55_2tss3"]
+[ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="57_2tss3"]
+[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="58_1srhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -65,6 +67,31 @@ size = Vector2(147, 902.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga44r"]
 size = Vector2(808, 368)
+
+[sub_resource type="Curve2D" id="Curve2D_ve1ud"]
+_data = {
+"points": PackedVector2Array(-112.97521, -3.7355375, 112.97521, 3.7355375, -904, -827, -66.11569, 6.6115704, 66.11569, -6.6115704, -575, -863, -78.51239, 3.305785, 78.51239, -3.305785, -301, -839, 0, 0, 0, 0, -77, -850)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(139.5, 137.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3gojw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(40, 6, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -10, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 1.1999999
 
 [node name="Level01" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "petals_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
 script = ExtResource("1_xcnqg")
@@ -127,15 +154,18 @@ autoplay = true
 
 [node name="Ground" type="StaticBody2D" parent="Livello"]
 position = Vector2(21500, 510)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Livello/Ground"]
 position = Vector2(12340, 0)
 shape = SubResource("RectangleShape2D_ground")
+metadata/_edit_lock_ = true
 
 [node name="Visual" type="Polygon2D" parent="Livello/Ground"]
 z_index = 1
 color = Color(0.19, 0.22, 0.25, 1)
 polygon = PackedVector2Array(-21500, -32, 46180, -30, 46180, 210, 4, 210, -21500, 210)
+metadata/_edit_lock_ = true
 
 [node name="Parallasse" type="Node2D" parent="."]
 position = Vector2(0, 150)
@@ -3387,387 +3417,630 @@ position = Vector2(67549, 387)
 
 [node name="CoinA2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1599, 415)
+metadata/_edit_lock_ = true
 
 [node name="CoinA3" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1774, 420)
+metadata/_edit_lock_ = true
 
 [node name="CoinA4" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(689, 424)
+metadata/_edit_lock_ = true
 
 [node name="CoinA5" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(2217, 432)
+metadata/_edit_lock_ = true
 
 [node name="CoinA7" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1692, 413)
+metadata/_edit_lock_ = true
 
 [node name="CoinA8" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(804, 421)
+metadata/_edit_lock_ = true
 
 [node name="CoinA9" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(2276, 433)
+metadata/_edit_lock_ = true
 
 [node name="CoinA10" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(994, 425)
+metadata/_edit_lock_ = true
 
 [node name="CoinA11" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1111, 423)
+metadata/_edit_lock_ = true
 
 [node name="CoinA16" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(1283, 425)
+metadata/_edit_lock_ = true
 
 [node name="CoinA17" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4649, 409)
+metadata/_edit_lock_ = true
 
 [node name="CoinA18" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4824, 414)
+metadata/_edit_lock_ = true
 
 [node name="CoinA19" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(3739, 418)
+metadata/_edit_lock_ = true
 
 [node name="CoinA20" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4742, 407)
+metadata/_edit_lock_ = true
 
 [node name="CoinA21" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(3854, 415)
+metadata/_edit_lock_ = true
 
 [node name="CoinA22" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4044, 419)
+metadata/_edit_lock_ = true
 
 [node name="CoinA23" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4161, 417)
+metadata/_edit_lock_ = true
 
 [node name="CoinA24" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4333, 419)
+metadata/_edit_lock_ = true
 
 [node name="CoinA25" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10697, 375)
+metadata/_edit_lock_ = true
 
 [node name="CoinA26" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10872, 380)
+metadata/_edit_lock_ = true
 
 [node name="CoinA27" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9758, 313)
+metadata/_edit_lock_ = true
 
 [node name="CoinA28" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10790, 373)
+metadata/_edit_lock_ = true
 
 [node name="CoinA29" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9879, 398)
+metadata/_edit_lock_ = true
 
 [node name="CoinA33" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9617, 409)
+metadata/_edit_lock_ = true
 
 [node name="CoinA30" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10092, 385)
+metadata/_edit_lock_ = true
 
 [node name="CoinA31" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10209, 383)
+metadata/_edit_lock_ = true
 
 [node name="CoinA32" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10381, 385)
+metadata/_edit_lock_ = true
 
 [node name="CoinB2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(2872, 264)
+metadata/_edit_lock_ = true
 
 [node name="Coin" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(5232, -64)
+metadata/_edit_lock_ = true
 
 [node name="Coin2" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(5304, -64)
+metadata/_edit_lock_ = true
 
 [node name="Coin3" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(5384, -64)
+metadata/_edit_lock_ = true
 
 [node name="Coin9" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4872, -248)
+metadata/_edit_lock_ = true
 
 [node name="Coin10" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4952, -248)
+metadata/_edit_lock_ = true
 
 [node name="Coin18" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7856, -488)
+metadata/_edit_lock_ = true
 
 [node name="Coin19" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7936, -488)
+metadata/_edit_lock_ = true
 
 [node name="Coin20" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(8672, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin21" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(8784, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin24" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(8896, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin25" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9008, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin22" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9120, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin23" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9224, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin26" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9312, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin27" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9424, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin28" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9536, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin29" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9648, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin30" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9760, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin31" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(9864, -144)
+metadata/_edit_lock_ = true
 
 [node name="Coin34" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6712, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin35" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6824, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin36" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6936, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin37" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7040, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin38" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7128, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin39" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7240, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin40" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7352, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin41" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7464, 280)
+metadata/_edit_lock_ = true
 
 [node name="Coin11" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(3240, 192)
+metadata/_edit_lock_ = true
 
 [node name="Coin12" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(3320, 192)
+metadata/_edit_lock_ = true
 
 [node name="Coin13" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4032, 16)
+metadata/_edit_lock_ = true
 
 [node name="Coin14" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(4112, 16)
+metadata/_edit_lock_ = true
 
 [node name="Coin4" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(5624, -56)
+metadata/_edit_lock_ = true
 
 [node name="Coin5" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(5688, -64)
+metadata/_edit_lock_ = true
 
 [node name="Coin6" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6136, -392)
+metadata/_edit_lock_ = true
 
 [node name="Coin7" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6248, -392)
+metadata/_edit_lock_ = true
 
 [node name="Coin8" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6368, -392)
+metadata/_edit_lock_ = true
 
 [node name="Coin32" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6581, -395)
+metadata/_edit_lock_ = true
 
 [node name="Coin33" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(6701, -395)
+metadata/_edit_lock_ = true
 
 [node name="Coin15" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7208, -400)
+metadata/_edit_lock_ = true
 
 [node name="Coin16" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7320, -400)
+metadata/_edit_lock_ = true
 
 [node name="Coin17" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7440, -400)
+metadata/_edit_lock_ = true
 
 [node name="Coin42" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(15128, -769)
+position = Vector2(15109, -755)
+metadata/_edit_lock_ = true
 
 [node name="Coin43" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12802, -621)
+position = Vector2(12820, -439)
+metadata/_edit_lock_ = true
 
 [node name="Coin44" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12820, -548)
+position = Vector2(12854, -341)
+metadata/_edit_lock_ = true
 
 [node name="Coin45" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12849, -472)
+position = Vector2(12914, -256)
+metadata/_edit_lock_ = true
 
 [node name="Coin46" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12883, -377)
+position = Vector2(12955, -191)
+metadata/_edit_lock_ = true
 
 [node name="Coin47" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12924, -302)
+position = Vector2(13017, -121)
+metadata/_edit_lock_ = true
 
 [node name="Coin48" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(12985, -226)
+position = Vector2(13078, -54)
+metadata/_edit_lock_ = true
 
 [node name="Coin49" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13049, -165)
+position = Vector2(13165, 16)
+metadata/_edit_lock_ = true
 
 [node name="Coin50" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13127, -96)
+position = Vector2(13263, 74)
+metadata/_edit_lock_ = true
 
 [node name="Coin51" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13193, -26)
+position = Vector2(13358, 106)
+metadata/_edit_lock_ = true
 
 [node name="Coin52" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13288, 8)
+position = Vector2(13474, 137)
+metadata/_edit_lock_ = true
 
 [node name="Coin53" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13380, 44)
+position = Vector2(13584, 165)
+metadata/_edit_lock_ = true
 
 [node name="Coin54" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13479, 89)
+position = Vector2(13686, 183)
+metadata/_edit_lock_ = true
 
 [node name="Coin55" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13605, 118)
+position = Vector2(13782, 189)
+metadata/_edit_lock_ = true
 
 [node name="Coin56" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13740, 142)
+position = Vector2(13878, 191)
+metadata/_edit_lock_ = true
 
 [node name="Coin57" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(13925, 183)
+position = Vector2(14006, 193)
+metadata/_edit_lock_ = true
 
 [node name="Coin58" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14067, 155)
+position = Vector2(14134, 185)
+metadata/_edit_lock_ = true
 
 [node name="Coin59" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14202, 133)
+position = Vector2(14237, 172)
+metadata/_edit_lock_ = true
 
 [node name="Coin60" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14330, 123)
+position = Vector2(14346, 160)
+metadata/_edit_lock_ = true
 
 [node name="Coin61" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14458, 64)
+position = Vector2(14453, 131)
+metadata/_edit_lock_ = true
 
 [node name="Coin62" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14595, 8)
+position = Vector2(14549, 99)
+metadata/_edit_lock_ = true
 
 [node name="Coin63" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14692, -29)
+position = Vector2(14645, 64)
+metadata/_edit_lock_ = true
 
 [node name="Coin64" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14781, -97)
+position = Vector2(14742, 4)
+metadata/_edit_lock_ = true
 
 [node name="Coin65" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14931, -258)
+position = Vector2(14919, -148)
+metadata/_edit_lock_ = true
 
 [node name="Coin66" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14865, -158)
+position = Vector2(14840, -66)
+metadata/_edit_lock_ = true
 
 [node name="Coin67" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(15104, -507)
+position = Vector2(15065, -417)
+metadata/_edit_lock_ = true
 
 [node name="Coin68" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(15048, -397)
+position = Vector2(15033, -322)
+metadata/_edit_lock_ = true
 
 [node name="Coin69" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(14993, -343)
+position = Vector2(14981, -229)
+metadata/_edit_lock_ = true
 
 [node name="Coin70" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(15132, -670)
+position = Vector2(15099, -635)
+metadata/_edit_lock_ = true
 
 [node name="Coin71" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(15126, -569)
+position = Vector2(15091, -524)
+metadata/_edit_lock_ = true
+
+[node name="Coin72" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(17586, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin73" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15798, 430)
+metadata/_edit_lock_ = true
+
+[node name="Coin84" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15904, 432)
+metadata/_edit_lock_ = true
+
+[node name="Coin79" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(16175, 371)
+metadata/_edit_lock_ = true
+
+[node name="Coin80" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(16110, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin81" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(16021, 430)
+metadata/_edit_lock_ = true
+
+[node name="Coin82" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15736, 378)
+metadata/_edit_lock_ = true
+
+[node name="Coin83" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15668, 351)
+metadata/_edit_lock_ = true
+
+[node name="Coin74" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(17685, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin75" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(17773, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin76" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(18012, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin77" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(17933, 423)
+metadata/_edit_lock_ = true
+
+[node name="Coin78" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(17856, 423)
+metadata/_edit_lock_ = true
 
 [node name="Obstacle pt1" type="Node2D" parent="Parte 1"]
 
 [node name="ObstacleA" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(1450, 420)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleB" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(2401, 413)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC2" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(4466, 418)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC3" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(6335, 417)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC4" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(7881, 426)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleD" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
 position = Vector2(3348, 415)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(1999, 452)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(2045, 450)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA2" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(6769, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB3" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(6815, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA3" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(6872, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB4" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(6918, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA4" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(6969, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB5" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7015, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA5" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7072, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB6" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7118, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA6" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7117, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB7" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7163, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA7" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7220, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB8" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7266, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA8" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7317, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB9" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7363, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleA9" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7420, 451)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB10" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(7466, 451)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA10" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16217, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB11" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16263, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA11" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16320, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB12" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16366, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA12" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16417, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB13" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16463, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA13" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16520, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB14" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16566, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA14" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16565, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB15" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16611, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA15" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16668, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB16" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16714, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA16" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16765, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB17" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16811, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleA17" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16868, 450)
+metadata/_edit_lock_ = true
+
+[node name="TriangleObstacleB18" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
+position = Vector2(16914, 450)
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacleB2" parent="Parte 1/Obstacle pt1" instance=ExtResource("48_jfxjt")]
 position = Vector2(3360, 620)
 rotation = -3.1415925
+metadata/_edit_lock_ = true
 
 [node name="IncomingObstacle" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
 position = Vector2(5702, 402)
+metadata/_edit_lock_ = true
 
 [node name="IncomingObstacle3" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
 position = Vector2(9172, 414)
+metadata/_edit_lock_ = true
 
 [node name="IncomingObstacle4" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
 position = Vector2(11671, 399)
+metadata/_edit_lock_ = true
 
 [node name="IncomingObstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
 position = Vector2(9144, -168)
@@ -3789,94 +4062,133 @@ metadata/_edit_lock_ = true
 position = Vector2(11550, 24)
 metadata/_edit_lock_ = true
 
+[node name="Incoming_bird4" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
+z_index = 7
+position = Vector2(17974, 288)
+metadata/_edit_lock_ = true
+
 [node name="Incoming_car" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
 position = Vector2(13333, 297)
+metadata/_edit_lock_ = true
 
 [node name="Incoming_car2" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
 position = Vector2(14323, 297)
+metadata/_edit_lock_ = true
 
 [node name="Incoming_car3" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
-position = Vector2(16883, 409)
+position = Vector2(18186, 404)
+metadata/_edit_lock_ = true
+
+[node name="Obstacle" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
+position = Vector2(9773, 415)
+metadata/_edit_lock_ = true
+
+[node name="Obstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
+position = Vector2(15680, 424)
+metadata/_edit_lock_ = true
 
 [node name="Platform pt1" type="Node2D" parent="Parte 1"]
 
 [node name="AirPlatform2" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(3681, 206)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform5" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(5301, -308)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform6" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(5704, -308)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform17" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(12109, -24)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform18" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(11440, 108)
 scale = Vector2(3.88, 1)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform21" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(13944, 464)
 scale = Vector2(9.84, 1.9599988)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform23" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(13963, 396)
 scale = Vector2(9.84, 1.9599988)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform19" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(10752, 222)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform22" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(12688, 430.9995)
 rotation = -0.43633232
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform24" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(15239, 432.00043)
 rotation = 0.43633232
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform20" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(10363, 327)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform13" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(7912, -424)
 scale = Vector2(2.04, 1)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform7" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(6762, -337)
 scale = Vector2(6.173986, 1)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform16" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(9332, -83)
 scale = Vector2(6.173986, 1)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform14" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(7100, 345.00003)
 scale = Vector2(3.3986397, 1.4592623)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform3" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(4063, 77)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform8" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(4477, -54)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform9" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(4903, -183)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform10" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(5301, 6)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform11" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(5708, 4)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(3262, 256)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform4" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(2888, 331)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform15" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(7805, 189.99994)
+metadata/_edit_lock_ = true
 
 [node name="Trampoline" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
 position = Vector2(18441, 479)
@@ -3884,31 +4196,37 @@ rotation = -0.004550308
 scale = Vector2(2.691084, 1.0582329)
 launch_velocity = -1159.0
 horizontal_boost = 10.0
+metadata/_edit_lock_ = true
 
 [node name="Trampoline2" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
 position = Vector2(5782, -10)
 rotation = 0.06431911
 launch_velocity = -1159.0
 horizontal_boost = 10.0
+metadata/_edit_lock_ = true
 
 [node name="Trampoline3" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
 position = Vector2(8112.0005, -439.99997)
 rotation = 0.06431911
 launch_velocity = -999.0
 horizontal_boost = 200.0
+metadata/_edit_lock_ = true
 
 [node name="Trampoline4" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
 position = Vector2(7884.0005, 172.00003)
 rotation = 0.06431911
 launch_velocity = -1394.0
+metadata/_edit_lock_ = true
 
 [node name="Trampoline5" parent="Parte 1/Platform pt1" instance=ExtResource("45_n34q1")]
 position = Vector2(12195, -32)
 rotation = 0.06431911
 launch_velocity = -1394.0
 horizontal_boost = 200.0
+metadata/_edit_lock_ = true
 
 [node name="Bridge" type="Node2D" parent="Parte 1"]
+metadata/_edit_lock_ = true
 
 [node name="Bridge1" type="Sprite2D" parent="Parte 1/Bridge"]
 position = Vector2(12795, -146)
@@ -3925,18 +4243,198 @@ metadata/_edit_lock_ = true
 [node name="GrindRail" parent="Parte 1/Bridge" instance=ExtResource("55_2tss3")]
 position = Vector2(13673, 65.00001)
 scale = Vector2(1.0014085, 0.8485901)
+metadata/_edit_lock_ = true
+
+[node name="GrindRail" type="Node2D" parent="Parte 1"]
+position = Vector2(16689, 310)
+script = ExtResource("57_2tss3")
+path_path = NodePath("Path")
+path_follow_path = NodePath("Path/PathFollow")
+trigger_path = NodePath("TriggerArea")
+visual_line_path = NodePath("VisualLine")
+metadata/_edit_lock_ = true
+
+[node name="Path" type="Path2D" parent="Parte 1/GrindRail"]
+position = Vector2(486, 875)
+curve = SubResource("Curve2D_ve1ud")
+metadata/_edit_lock_ = true
+
+[node name="PathFollow" type="PathFollow2D" parent="Parte 1/GrindRail/Path"]
+position = Vector2(-904, -827)
+rotation = 0.033053037
+loop = false
+
+[node name="VisualLine" type="Line2D" parent="Parte 1/GrindRail"]
+position = Vector2(-424, 46)
+points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
+width = 12.0
+default_color = Color(0.97, 0.79, 0.23, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TriggerArea" type="Area2D" parent="Parte 1/GrindRail"]
+position = Vector2(-395, 2)
+scale = Vector2(0.64, 0.64)
+collision_layer = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parte 1/GrindRail/TriggerArea"]
+position = Vector2(5, -4)
+shape = SubResource("RectangleShape2D_trigger")
+metadata/_edit_lock_ = true
+
+[node name="SparkParticles" type="GPUParticles2D" parent="Parte 1/GrindRail"]
+position = Vector2(-421, 29)
+texture = ExtResource("58_1srhj")
+lifetime = 0.35000000000000003
+process_material = SubResource("ParticleProcessMaterial_3gojw")
+metadata/_edit_lock_ = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("53_hld05")]
-position = Vector2(8011, 334)
+position = Vector2(18561, 32)
 
-[node name="Obstacle" parent="." instance=ExtResource("47_hld05")]
-position = Vector2(9773, 415)
+[node name="Parte 2" type="Node2D" parent="."]
 
-[node name="Obstacle2" parent="." instance=ExtResource("47_hld05")]
-position = Vector2(15680, 424)
+[node name="Platform pt2" type="Node2D" parent="Parte 2"]
+position = Vector2(17543, -13)
 
-[node name="Obstacle3" parent="." instance=ExtResource("47_hld05")]
-position = Vector2(16222, 424)
+[node name="AirPlatform2" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(3681, 206)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform5" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(5301, -308)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform6" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(5704, -308)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform17" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(12109, -24)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform18" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(11440, 108)
+scale = Vector2(3.88, 1)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform21" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(13944, 464)
+scale = Vector2(9.84, 1.9599988)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform23" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(13963, 396)
+scale = Vector2(9.84, 1.9599988)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform19" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(10752, 222)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform22" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(12688, 430.9995)
+rotation = -0.43633232
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform24" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(15239, 432.00043)
+rotation = 0.43633232
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform20" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(10363, 327)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform13" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(7912, -424)
+scale = Vector2(2.04, 1)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform7" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(6762, -337)
+scale = Vector2(6.173986, 1)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform16" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(9332, -83)
+scale = Vector2(6.173986, 1)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform14" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(7100, 345.00003)
+scale = Vector2(3.3986397, 1.4592623)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform3" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(4063, 77)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform8" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(4477, -54)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform9" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(4903, -183)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform10" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(5301, 6)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform11" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(5708, 4)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(3262, 256)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform4" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(2888, 331)
+metadata/_edit_lock_ = true
+
+[node name="AirPlatform15" parent="Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
+position = Vector2(7805, 189.99994)
+metadata/_edit_lock_ = true
+
+[node name="Trampoline" parent="Parte 2/Platform pt2" instance=ExtResource("45_n34q1")]
+position = Vector2(18441, 479)
+rotation = -0.004550308
+scale = Vector2(2.691084, 1.0582329)
+launch_velocity = -1159.0
+horizontal_boost = 10.0
+metadata/_edit_lock_ = true
+
+[node name="Trampoline2" parent="Parte 2/Platform pt2" instance=ExtResource("45_n34q1")]
+position = Vector2(5782, -10)
+rotation = 0.06431911
+launch_velocity = -1159.0
+horizontal_boost = 10.0
+metadata/_edit_lock_ = true
+
+[node name="Trampoline3" parent="Parte 2/Platform pt2" instance=ExtResource("45_n34q1")]
+position = Vector2(8112.0005, -439.99997)
+rotation = 0.06431911
+launch_velocity = -999.0
+horizontal_boost = 200.0
+metadata/_edit_lock_ = true
+
+[node name="Trampoline4" parent="Parte 2/Platform pt2" instance=ExtResource("45_n34q1")]
+position = Vector2(7884.0005, 172.00003)
+rotation = 0.06431911
+launch_velocity = -1394.0
+metadata/_edit_lock_ = true
+
+[node name="Trampoline5" parent="Parte 2/Platform pt2" instance=ExtResource("45_n34q1")]
+position = Vector2(12195, -32)
+rotation = 0.06431911
+launch_velocity = -1394.0
+horizontal_boost = 200.0
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
