@@ -3446,13 +3446,16 @@ position = Vector2(10697, 375)
 position = Vector2(10872, 380)
 
 [node name="CoinA27" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(9787, 384)
+position = Vector2(9758, 313)
 
 [node name="CoinA28" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10790, 373)
 
 [node name="CoinA29" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
-position = Vector2(9902, 381)
+position = Vector2(9879, 398)
+
+[node name="CoinA33" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(9617, 409)
 
 [node name="CoinA30" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(10092, 385)
@@ -3589,6 +3592,96 @@ position = Vector2(7320, -400)
 [node name="Coin17" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
 position = Vector2(7440, -400)
 
+[node name="Coin42" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15128, -769)
+
+[node name="Coin43" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12802, -621)
+
+[node name="Coin44" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12820, -548)
+
+[node name="Coin45" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12849, -472)
+
+[node name="Coin46" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12883, -377)
+
+[node name="Coin47" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12924, -302)
+
+[node name="Coin48" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(12985, -226)
+
+[node name="Coin49" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13049, -165)
+
+[node name="Coin50" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13127, -96)
+
+[node name="Coin51" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13193, -26)
+
+[node name="Coin52" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13288, 8)
+
+[node name="Coin53" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13380, 44)
+
+[node name="Coin54" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13479, 89)
+
+[node name="Coin55" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13605, 118)
+
+[node name="Coin56" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13740, 142)
+
+[node name="Coin57" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(13925, 183)
+
+[node name="Coin58" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14067, 155)
+
+[node name="Coin59" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14202, 133)
+
+[node name="Coin60" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14330, 123)
+
+[node name="Coin61" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14458, 64)
+
+[node name="Coin62" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14595, 8)
+
+[node name="Coin63" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14692, -29)
+
+[node name="Coin64" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14781, -97)
+
+[node name="Coin65" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14931, -258)
+
+[node name="Coin66" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14865, -158)
+
+[node name="Coin67" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15104, -507)
+
+[node name="Coin68" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15048, -397)
+
+[node name="Coin69" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(14993, -343)
+
+[node name="Coin70" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15132, -670)
+
+[node name="Coin71" parent="Parte 1/Coin pt1" instance=ExtResource("5_jju80")]
+position = Vector2(15126, -569)
+
 [node name="Obstacle pt1" type="Node2D" parent="Parte 1"]
 
 [node name="ObstacleA" parent="Parte 1/Obstacle pt1" instance=ExtResource("47_hld05")]
@@ -3693,8 +3786,17 @@ position = Vector2(7334, 254)
 metadata/_edit_lock_ = true
 
 [node name="Incoming_bird3" parent="Parte 1/Obstacle pt1" instance=ExtResource("53_1srhj")]
-position = Vector2(11681, 26)
+position = Vector2(11550, 24)
 metadata/_edit_lock_ = true
+
+[node name="Incoming_car" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
+position = Vector2(13333, 297)
+
+[node name="Incoming_car2" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
+position = Vector2(14323, 297)
+
+[node name="Incoming_car3" parent="Parte 1/Obstacle pt1" instance=ExtResource("52_2tss3")]
+position = Vector2(16883, 409)
 
 [node name="Platform pt1" type="Node2D" parent="Parte 1"]
 
@@ -3712,7 +3814,7 @@ position = Vector2(12109, -24)
 
 [node name="AirPlatform18" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(11440, 108)
-scale = Vector2(3.2800002, 1)
+scale = Vector2(3.88, 1)
 
 [node name="AirPlatform21" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(13944, 464)
@@ -3723,7 +3825,7 @@ position = Vector2(13963, 396)
 scale = Vector2(9.84, 1.9599988)
 
 [node name="AirPlatform19" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
-position = Vector2(10816, 215)
+position = Vector2(10752, 222)
 
 [node name="AirPlatform22" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(12688, 430.9995)
@@ -3734,7 +3836,7 @@ position = Vector2(15239, 432.00043)
 rotation = 0.43633232
 
 [node name="AirPlatform20" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
-position = Vector2(10452, 318)
+position = Vector2(10363, 327)
 
 [node name="AirPlatform13" parent="Parte 1/Platform pt1" instance=ExtResource("50_irwa4")]
 position = Vector2(7912, -424)
@@ -3825,13 +3927,16 @@ position = Vector2(13673, 65.00001)
 scale = Vector2(1.0014085, 0.8485901)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("53_hld05")]
-position = Vector2(9596, 391)
+position = Vector2(8011, 334)
 
-[node name="Incoming_car" parent="." instance=ExtResource("52_2tss3")]
-position = Vector2(13333, 297)
+[node name="Obstacle" parent="." instance=ExtResource("47_hld05")]
+position = Vector2(9773, 415)
 
-[node name="Incoming_car2" parent="." instance=ExtResource("52_2tss3")]
-position = Vector2(14323, 297)
+[node name="Obstacle2" parent="." instance=ExtResource("47_hld05")]
+position = Vector2(15680, 424)
+
+[node name="Obstacle3" parent="." instance=ExtResource("47_hld05")]
+position = Vector2(16222, 424)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
