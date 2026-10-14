@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://barjihjcmwu86"]
 
-[ext_resource type="Script" path="res://scripts/player_spawn_point.gd" id="1_spawn"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_icon"]
+[ext_resource type="Script" uid="uid://cbwltpftune40" path="res://scripts/player_spawn_point.gd" id="1_spawn"]
+[ext_resource type="Texture2D" uid="uid://do1l1cxrlegec" path="res://icon.svg" id="2_icon"]
+[ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="3_g0iif"]
 
 [node name="PlayerSpawnPoint" type="Node2D" groups=["player_spawn_point"]]
 script = ExtResource("1_spawn")
@@ -10,3 +11,73 @@ script = ExtResource("1_spawn")
 modulate = Color(1, 0.89, 0.31, 0.95)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("2_icon")
+
+[node name="Coin" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin2" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin3" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin4" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin5" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin6" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin7" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin8" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin9" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin11" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin12" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin13" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin14" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)
+
+[node name="Coin10" parent="." instance=ExtResource("3_g0iif")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -5)
+scale = Vector2(3.5458333, 3.5458333)

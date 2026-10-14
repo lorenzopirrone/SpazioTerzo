@@ -60,8 +60,8 @@ collision_layer = 0
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="SparkParticles" type="GPUParticles2D" parent="."]
-position = Vector2(-907, -846)
+[node name="SparkParticles" type="GPUParticles2D" parent="TriggerArea"]
+position = Vector2(-3, 1)
 texture = ExtResource("2_70nkv")
 lifetime = 0.35000000000000003
 process_material = SubResource("ParticleProcessMaterial_3gojw")
