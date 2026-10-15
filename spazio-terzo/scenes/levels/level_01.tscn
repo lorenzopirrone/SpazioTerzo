@@ -3504,7 +3504,6 @@ position = Vector2(17856, 423)
 metadata/_edit_lock_ = true
 
 [node name="Obstacle pt1" type="Node2D" parent="Parte 1"]
-metadata/_edit_group_ = true
 
 [node name="ObstacleA" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(1450, 420)
@@ -3680,8 +3679,7 @@ position = Vector2(9172, 414)
 metadata/_edit_lock_ = true
 
 [node name="IncomingObstacle4" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
-position = Vector2(11671, 399)
-metadata/_edit_lock_ = true
+position = Vector2(11274, 406)
 
 [node name="IncomingObstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("43_syaoa")]
 position = Vector2(9144, -168)
@@ -3703,22 +3701,14 @@ metadata/_edit_lock_ = true
 position = Vector2(11550, 24)
 metadata/_edit_lock_ = true
 
-[node name="Incoming_bird4" parent="Parte 1/Obstacle pt1" instance=ExtResource("43_syaoa")]
-z_index = 7
-position = Vector2(17974, 288)
-metadata/_edit_lock_ = true
-
 [node name="Incoming_car" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
-position = Vector2(13333, 297)
-metadata/_edit_lock_ = true
+position = Vector2(13099, 296)
 
 [node name="Incoming_car2" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
-position = Vector2(14323, 297)
-metadata/_edit_lock_ = true
+position = Vector2(14022, 300)
 
 [node name="Incoming_car3" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
-position = Vector2(18186, 404)
-metadata/_edit_lock_ = true
+position = Vector2(17674, 407)
 
 [node name="Obstacle" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(9773, 415)
@@ -3886,6 +3876,7 @@ metadata/_edit_lock_ = true
 z_index = -1
 position = Vector2(13673, 65.00001)
 scale = Vector2(1.0014085, 0.8485901)
+speed_multiplier = 1.34
 metadata/_edit_lock_ = true
 
 [node name="GrindRail" type="Node2D" parent="Parte 1"]
