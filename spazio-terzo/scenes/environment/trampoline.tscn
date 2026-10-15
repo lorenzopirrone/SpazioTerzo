@@ -10,6 +10,8 @@ size = Vector2(86, 22)
 size = Vector2(92, 18)
 
 [node name="Trampoline" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_trampoline")
 
 [node name="Visual" type="Polygon2D" parent="."]

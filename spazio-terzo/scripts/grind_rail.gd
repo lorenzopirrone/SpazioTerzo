@@ -25,6 +25,7 @@ func _ready() -> void:
 	_path_follow = get_node_or_null(path_follow_path) as PathFollow2D
 	_trigger = get_node_or_null(trigger_path) as Area2D
 	_visual_line = get_node_or_null(visual_line_path) as Line2D
+	_visual_line.visible = true
 
 	if _path_follow:
 		_path_follow.loop = false
