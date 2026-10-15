@@ -387,6 +387,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("grind_hook_front", "grind_hook_back", "grind_visual", "grind_spark_particles", "grind_audio", "punch_sprite", "punch_charge_sparkle", "punch_reference", "punch_charge_reference", "punch_animation_player", "punch_speed_effect", "jump_audio", "release_audio") groups=["player"]]
 process_mode = 1
 scale = Vector2(2.111571, 2.111571)
+collision_layer = 9
 script = ExtResource("1_player")
 jump_velocity = -700.0
 max_fall_speed = 961.0
