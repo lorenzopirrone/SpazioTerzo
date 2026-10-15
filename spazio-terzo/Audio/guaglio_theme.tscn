@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cimqjxi0vnys8"]
+
+[ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="1_uan1n"]
+
+[node name="Guaglio_Theme" type="AudioStreamPlayer"]
+stream = ExtResource("1_uan1n")
+volume_db = -10.0
+autoplay = true
