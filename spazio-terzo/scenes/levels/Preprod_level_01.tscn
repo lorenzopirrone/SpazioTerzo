@@ -4427,12 +4427,11 @@ process_material = SubResource("ParticleProcessMaterial_3gojw")
 metadata/_edit_lock_ = true
 
 [node name="Parte 2" type="Node2D" parent="COMPOSIZIONE LIVELLO"]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="Platform pt2" type="Node2D" parent="COMPOSIZIONE LIVELLO/Parte 2"]
 position = Vector2(17543, -13)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform" parent="COMPOSIZIONE LIVELLO/Parte 2/Platform pt2" instance=ExtResource("50_irwa4")]
 position = Vector2(3335, 338)
@@ -5255,6 +5254,7 @@ launch_velocity = -1100.0
 
 [node name="Obstacle pt2" type="Node2D" parent="COMPOSIZIONE LIVELLO/Parte 2"]
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="TriangleObstacle" parent="COMPOSIZIONE LIVELLO/Parte 2/Obstacle pt2" instance=ExtResource("48_jfxjt")]
 position = Vector2(23736, 456)
@@ -5901,6 +5901,11 @@ position = Vector2(41609, 261)
 scale = Vector2(1.72, 1)
 texture = ExtResource("60_60r77")
 flip_h = true
+
+[node name="Coin pt2" type="Node2D" parent="COMPOSIZIONE LIVELLO/Parte 2"]
+
+[node name="Coin" parent="COMPOSIZIONE LIVELLO/Parte 2/Coin pt2" instance=ExtResource("5_jju80")]
+position = Vector2(20260, 351)
 
 [node name="Parte 3" type="Node2D" parent="COMPOSIZIONE LIVELLO"]
 
