@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=80 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
 [ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_p4iai"]
@@ -52,7 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://x845oada28xc" path="res://scenes/environment/air_platform.tscn" id="50_irwa4"]
 [ext_resource type="PackedScene" uid="uid://5ey307hc48k6" path="res://scenes/environment/incoming_car.tscn" id="52_2tss3"]
 [ext_resource type="PackedScene" uid="uid://dqhf2dcsqaqkf" path="res://scenes/environment/incoming_bird.tscn" id="53_1srhj"]
-[ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="53_hld05"]
 [ext_resource type="Texture2D" uid="uid://cq1nnv6alkfbw" path="res://Piattaforme/Bridge 1.png" id="53_irwa4"]
 [ext_resource type="Texture2D" uid="uid://cxb6asjmtb5a7" path="res://Piattaforme/Bridge 2.png" id="54_e0vh6"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="55_2tss3"]
@@ -214,7 +213,6 @@ player = NodePath("../../../Player")
 [node name="Player" parent="." instance=ExtResource("3_jdrfy")]
 position = Vector2(90, 420)
 collision_layer = 9
-run_speed = 600.0
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -6791,9 +6789,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COMPOSIZIONE LIVELLO/Parte 3/Grind pt3/GrindRail25/TriggerArea"]
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_ve1ud")
-
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("53_hld05")]
-position = Vector2(61163, 367)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
