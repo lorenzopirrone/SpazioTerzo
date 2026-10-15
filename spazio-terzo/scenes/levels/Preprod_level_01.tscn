@@ -5907,22 +5907,22 @@ flip_h = true
 [node name="Obstacle pt3" type="Node2D" parent="COMPOSIZIONE LIVELLO/Parte 3"]
 
 [node name="TriangleObstacle149" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(52838, 451)
+position = Vector2(52618, 451)
 
 [node name="TriangleObstacle150" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(52894, 451)
+position = Vector2(52674, 451)
 
 [node name="TriangleObstacle151" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(52950, 451)
+position = Vector2(52730, 451)
 
 [node name="TriangleObstacle152" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(53006, 451)
+position = Vector2(52786, 451)
 
 [node name="TriangleObstacle153" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(53068, 451)
+position = Vector2(52848, 451)
 
 [node name="TriangleObstacle154" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
-position = Vector2(53124, 451)
+position = Vector2(52904, 451)
 
 [node name="TriangleObstacle130" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("48_jfxjt")]
 position = Vector2(56426, 450)
@@ -6276,22 +6276,52 @@ scale = Vector2(1, 2.12)
 position = Vector2(56836, -101)
 
 [node name="Incoming_bird15" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
-position = Vector2(58826, -132)
+position = Vector2(58847, -132)
 
 [node name="Incoming_bird16" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
 position = Vector2(58352, -10)
 
 [node name="Incoming_bird17" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
-position = Vector2(59300, -29)
+position = Vector2(59339, -29)
 
 [node name="Incoming_bird18" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
-position = Vector2(59772, 16)
+position = Vector2(59902, -29)
 
 [node name="Incoming_bird19" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
-position = Vector2(60242, -137)
+position = Vector2(60465, -140)
 
 [node name="Incoming_bird20" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
-position = Vector2(60680, -39)
+position = Vector2(61013, -23)
+
+[node name="Incoming_bird21" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(62945, 286)
+
+[node name="Incoming_bird22" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(63025, 286)
+
+[node name="Incoming_bird23" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(63103, 286)
+
+[node name="Incoming_bird24" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(63181, 286)
+
+[node name="Incoming_bird25" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(63253, 286)
+
+[node name="Incoming_bird26" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("53_1srhj")]
+position = Vector2(63327, 284)
+
+[node name="Timber_Obstacle" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("60_ve1ud")]
+position = Vector2(57726, 3)
+
+[node name="Incoming_car" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("52_2tss3")]
+position = Vector2(53924, 407)
+
+[node name="Incoming_car2" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("52_2tss3")]
+position = Vector2(64065, 406)
+
+[node name="Incoming_car3" parent="COMPOSIZIONE LIVELLO/Parte 3/Obstacle pt3" instance=ExtResource("52_2tss3")]
+position = Vector2(64310, 406)
 
 [node name="Platform pt3" type="Node2D" parent="COMPOSIZIONE LIVELLO/Parte 3"]
 
@@ -6304,8 +6334,8 @@ position = Vector2(54817, 308)
 scale = Vector2(2.52, 1)
 
 [node name="AirPlatform30" parent="COMPOSIZIONE LIVELLO/Parte 3/Platform pt3" instance=ExtResource("50_irwa4")]
-position = Vector2(58525.996, 63)
-scale = Vector2(18.5861, 1.251264)
+position = Vector2(58832, 63.000004)
+scale = Vector2(21.2661, 1.251264)
 
 [node name="AirPlatform31" parent="COMPOSIZIONE LIVELLO/Parte 3/Platform pt3" instance=ExtResource("50_irwa4")]
 position = Vector2(59354, -695.9999)
@@ -6313,7 +6343,8 @@ scale = Vector2(5.7060995, 1.251264)
 
 [node name="Trampoline6" parent="COMPOSIZIONE LIVELLO/Parte 3/Platform pt3" instance=ExtResource("45_n34q1")]
 position = Vector2(57753, 41)
-launch_velocity = -1100.0
+launch_velocity = -1600.0
+horizontal_boost = 300.0
 
 [node name="Trampoline7" parent="COMPOSIZIONE LIVELLO/Parte 3/Platform pt3" instance=ExtResource("45_n34q1")]
 position = Vector2(55071, 287)
@@ -6756,14 +6787,8 @@ collision_layer = 0
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_ve1ud")
 
-[node name="Timber_Obstacle" parent="." instance=ExtResource("60_ve1ud")]
-position = Vector2(57726, 3)
-
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("53_hld05")]
-position = Vector2(51831, 223)
-
-[node name="Incoming_car" parent="." instance=ExtResource("52_2tss3")]
-position = Vector2(53434, 401)
+position = Vector2(61163, 367)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
