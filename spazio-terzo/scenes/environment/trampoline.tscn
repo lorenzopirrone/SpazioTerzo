@@ -44,6 +44,7 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_trigger")
 
 [node name="SolidBase" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBase"]
 position = Vector2(0, 5)
