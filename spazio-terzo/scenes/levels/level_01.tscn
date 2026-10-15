@@ -3050,7 +3050,6 @@ metadata/_edit_lock_ = true
 position = Vector2(67629, 405)
 
 [node name="Parte 1" type="Node2D" parent="."]
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Coin pt1" type="Node2D" parent="Parte 1"]
@@ -3730,7 +3729,6 @@ position = Vector2(15680, 424)
 metadata/_edit_lock_ = true
 
 [node name="Platform pt1" type="Node2D" parent="Parte 1"]
-metadata/_edit_group_ = true
 
 [node name="AirPlatform2" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 position = Vector2(3681, 206)
@@ -3834,12 +3832,11 @@ position = Vector2(7805, 189.99994)
 metadata/_edit_lock_ = true
 
 [node name="Trampoline" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
-position = Vector2(18441, 479)
+position = Vector2(18264, 480)
 rotation = -0.004550308
 scale = Vector2(2.691084, 1.0582329)
 launch_velocity = -1159.0
 horizontal_boost = 10.0
-metadata/_edit_lock_ = true
 
 [node name="Trampoline2" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
 position = Vector2(5782, -10)
@@ -3939,12 +3936,14 @@ process_material = SubResource("ParticleProcessMaterial_bfhwr")
 metadata/_edit_lock_ = true
 
 [node name="Gru" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(3904, -200)
 scale = Vector2(2.1875, 2.1875)
 texture = ExtResource("65_bfhwr")
 
 [node name="Container" type="Sprite2D" parent="."]
-position = Vector2(4488, 8)
+position = Vector2(4483, -9)
+scale = Vector2(0.7718743, 0.7718743)
 texture = ExtResource("66_wkxe6")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
