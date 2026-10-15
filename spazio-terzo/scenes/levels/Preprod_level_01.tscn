@@ -1,11 +1,11 @@
 [gd_scene load_steps=80 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
-[ext_resource type="AudioStream" uid="uid://coldwvtult51i" path="res://Audio/guaglio_demo_16bit.wav" id="2_p4iai"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="3_jdrfy"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_p4iai"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="4_jyapm"]
 [ext_resource type="PackedScene" uid="uid://c6mn6lxk4o2aj" path="res://scenes/environment/coin.tscn" id="5_jju80"]
+[ext_resource type="PackedScene" uid="uid://cimqjxi0vnys8" path="res://Audio/guaglio_theme.tscn" id="5_uoqi8"]
 [ext_resource type="Texture2D" uid="uid://c4k3ubg2scei" path="res://Fondali/skybox 1.png" id="6_oi5o0"]
 [ext_resource type="PackedScene" uid="uid://don5k7i7c20xk" path="res://Audio/victory_audio.tscn" id="7_jfxjt"]
 [ext_resource type="Texture2D" uid="uid://dboj1sx17nhus" path="res://Fondali/clouds1 variant.png" id="7_t2r67"]
@@ -227,10 +227,7 @@ target_path = NodePath("../Player")
 horizontal_lookahead = 600.0
 vertical_offset = -200.0
 
-[node name="Guaglio_Theme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_p4iai")
-volume_db = -10.0
-autoplay = true
+[node name="Guaglio_Theme" parent="." instance=ExtResource("5_uoqi8")]
 
 [node name="VictoryAudio" parent="." instance=ExtResource("7_jfxjt")]
 
