@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=79 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -66,6 +66,12 @@
 [ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="64_305q2"]
 [ext_resource type="Texture2D" uid="uid://chb3i06qrhttb" path="res://Piattaforme/Gru.png" id="65_bfhwr"]
 [ext_resource type="Texture2D" uid="uid://bjg64poourjqi" path="res://Piattaforme/Container.png" id="66_wkxe6"]
+[ext_resource type="Texture2D" uid="uid://d4k6j8cvowjfv" path="res://Piattaforme/Lampione.png" id="67_wkxe6"]
+[ext_resource type="Texture2D" uid="uid://h4pfyes3mxwu" path="res://Piattaforme/Gru2.png" id="68_70c2i"]
+[ext_resource type="Texture2D" uid="uid://ck04g6c267e83" path="res://Piattaforme/piattaforma 1.png" id="69_rggf0"]
+[ext_resource type="Texture2D" uid="uid://dhivu31qw7cn4" path="res://Piattaforme/piattaforma 0.png" id="70_aj0m2"]
+[ext_resource type="Texture2D" uid="uid://bkne5fqgnpek8" path="res://Piattaforme/Soppalco.png" id="71_aj0m2"]
+[ext_resource type="Texture2D" uid="uid://dqbhx1fetaxei" path="res://Piattaforme/Piattaforma S.png" id="72_atgsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -2921,6 +2927,8 @@ texture = ExtResource("29_qy4h0")
 [node name="Trampoline3" parent="." instance=ExtResource("45_pff7q")]
 position = Vector2(47816, 471.99963)
 rotation = 0.335013
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -1400.0
 horizontal_boost = 500.0
 
@@ -3053,7 +3061,6 @@ position = Vector2(67629, 405)
 metadata/_edit_lock_ = true
 
 [node name="Coin pt1" type="Node2D" parent="Parte 1"]
-metadata/_edit_group_ = true
 
 [node name="CoinA2" parent="Parte 1/Coin pt1" instance=ExtResource("10_coin")]
 position = Vector2(1599, 415)
@@ -3082,6 +3089,9 @@ metadata/_edit_lock_ = true
 [node name="CoinA9" parent="Parte 1/Coin pt1" instance=ExtResource("10_coin")]
 position = Vector2(2276, 433)
 metadata/_edit_lock_ = true
+
+[node name="CoinA12" parent="Parte 1/Coin pt1" instance=ExtResource("10_coin")]
+position = Vector2(2876, 435)
 
 [node name="CoinA10" parent="Parte 1/Coin pt1" instance=ExtResource("10_coin")]
 position = Vector2(994, 425)
@@ -3810,10 +3820,12 @@ position = Vector2(5708, 4)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(3262, 256)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform4" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(2888, 331)
 metadata/_edit_lock_ = true
 
@@ -3825,12 +3837,16 @@ metadata/_edit_lock_ = true
 position = Vector2(18264, 480)
 rotation = -0.004550308
 scale = Vector2(2.691084, 1.0582329)
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -1159.0
 horizontal_boost = 10.0
 
 [node name="Trampoline2" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
 position = Vector2(5782, -10)
 rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -1159.0
 horizontal_boost = 10.0
 metadata/_edit_lock_ = true
@@ -3838,6 +3854,8 @@ metadata/_edit_lock_ = true
 [node name="Trampoline3" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
 position = Vector2(8112.0005, -439.99997)
 rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -999.0
 horizontal_boost = 200.0
 metadata/_edit_lock_ = true
@@ -3845,12 +3863,16 @@ metadata/_edit_lock_ = true
 [node name="Trampoline4" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
 position = Vector2(7884.0005, 172.00003)
 rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -1394.0
 metadata/_edit_lock_ = true
 
 [node name="Trampoline5" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
 position = Vector2(12195, -32)
 rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
 launch_velocity = -1394.0
 horizontal_boost = 200.0
 metadata/_edit_lock_ = true
@@ -3873,7 +3895,7 @@ texture = ExtResource("46_syaoa")
 metadata/_edit_lock_ = true
 
 [node name="GrindRail" parent="Parte 1/Bridge" instance=ExtResource("59_3jppf")]
-z_index = -1
+z_index = -2
 position = Vector2(13673, 65.00001)
 scale = Vector2(1.0014085, 0.8485901)
 speed_multiplier = 1.34
@@ -3936,6 +3958,77 @@ texture = ExtResource("65_bfhwr")
 position = Vector2(4483, -9)
 scale = Vector2(0.7718743, 0.7718743)
 texture = ExtResource("66_wkxe6")
+
+[node name="Container2" type="Sprite2D" parent="."]
+position = Vector2(4908, -138)
+scale = Vector2(0.7718743, 0.7718743)
+texture = ExtResource("66_wkxe6")
+
+[node name="Lampione" type="Sprite2D" parent="."]
+position = Vector2(3699.0002, 238.00002)
+scale = Vector2(1.5203125, 1.5203125)
+texture = ExtResource("67_wkxe6")
+
+[node name="Lampione2" type="Sprite2D" parent="."]
+position = Vector2(4081, 108.00001)
+scale = Vector2(1.5203125, 1.5203125)
+texture = ExtResource("67_wkxe6")
+
+[node name="Gru2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(5457, -278)
+scale = Vector2(2.0734375, 2.4242187)
+texture = ExtResource("68_70c2i")
+
+[node name="Piattaforma1" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(3087, 10)
+scale = Vector2(1.53125, 1.53125)
+texture = ExtResource("69_rggf0")
+
+[node name="Piattaforma0" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2897, 287)
+scale = Vector2(1.3062499, 1.3017578)
+texture = ExtResource("70_aj0m2")
+
+[node name="Piattaforma3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(3271, 212)
+scale = Vector2(1.3062499, 1.3017578)
+texture = ExtResource("70_aj0m2")
+
+[node name="Soppalco" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(5317, 27.875015)
+scale = Vector2(1.365625, 1.4027343)
+texture = ExtResource("71_aj0m2")
+
+[node name="PiattaformaS" type="Sprite2D" parent="."]
+position = Vector2(5309.4688, 14.468796)
+scale = Vector2(0.8860354, 0.87666)
+texture = ExtResource("72_atgsg")
+
+[node name="PiattaformaS2" type="Sprite2D" parent="."]
+position = Vector2(5309.0005, -299)
+scale = Vector2(0.8860354, 0.87666)
+texture = ExtResource("72_atgsg")
+
+[node name="Soppalco2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(5720, 26.406204)
+scale = Vector2(1.365625, 1.4027343)
+texture = ExtResource("71_aj0m2")
+
+[node name="PiattaformaS3" type="Sprite2D" parent="."]
+position = Vector2(5715.9688, 12.999985)
+scale = Vector2(0.8969729, 0.87666)
+texture = ExtResource("72_atgsg")
+
+[node name="PiattaformaS4" type="Sprite2D" parent="."]
+position = Vector2(5712.0005, -300.4688)
+scale = Vector2(0.8860354, 0.87666)
+texture = ExtResource("72_atgsg")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
