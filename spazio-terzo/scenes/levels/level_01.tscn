@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=88 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -78,7 +78,9 @@
 [ext_resource type="Texture2D" uid="uid://c2xs3v7xocygq" path="res://Piattaforme/Barup.png" id="76_b4uvt"]
 [ext_resource type="Texture2D" uid="uid://dyo2wbc4igcex" path="res://Piattaforme/Bar2up.png" id="77_mh2fl"]
 [ext_resource type="Texture2D" uid="uid://bh3aqp2gvso0j" path="res://Piattaforme/Bar3up.png" id="78_ul7wl"]
+[ext_resource type="Texture2D" uid="uid://oy02ajrjcswr" path="res://Piattaforme/Edificio.png" id="79_66qyd"]
 [ext_resource type="Texture2D" uid="uid://b0cagofxagaee" path="res://Piattaforme/Cartellone.png" id="79_ul7wl"]
+[ext_resource type="Texture2D" uid="uid://l1smiw2dowyb" path="res://Piattaforme/tunnel.png" id="81_7oxed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -3532,8 +3534,7 @@ position = Vector2(7219, 420)
 position = Vector2(7467, 420)
 
 [node name="ObstacleC4" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
-position = Vector2(7881, 426)
-metadata/_edit_lock_ = true
+position = Vector2(8211, 419)
 
 [node name="ObstacleD" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(3348, 415)
@@ -3653,10 +3654,6 @@ position = Vector2(14022, 300)
 [node name="Incoming_car3" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
 position = Vector2(17674, 407)
 
-[node name="Obstacle" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
-position = Vector2(9773, 415)
-metadata/_edit_lock_ = true
-
 [node name="Obstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(15680, 424)
 metadata/_edit_lock_ = true
@@ -3713,6 +3710,7 @@ position = Vector2(10363, 327)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform13" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -2
 position = Vector2(7912, -424)
 scale = Vector2(2.04, 1)
 metadata/_edit_lock_ = true
@@ -3721,6 +3719,7 @@ metadata/_edit_lock_ = true
 z_index = -1
 position = Vector2(6748.235, -371)
 scale = Vector2(6.509, 1)
+metadata/_edit_lock_ = true
 
 [node name="AirPlatform16" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 position = Vector2(9332, -83)
@@ -3764,7 +3763,8 @@ position = Vector2(2888, 331)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform15" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
-position = Vector2(7756, 257.9999)
+z_index = -1
+position = Vector2(7801, 258)
 metadata/_edit_lock_ = true
 
 [node name="Trampoline" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
@@ -4020,11 +4020,31 @@ scale = Vector2(0.9921874, 1)
 texture = ExtResource("78_ul7wl")
 metadata/_edit_lock_ = true
 
+[node name="Edificio" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -2
+position = Vector2(7911.9375, -128.50029)
+scale = Vector2(0.77832, 0.95234406)
+texture = ExtResource("79_66qyd")
+metadata/_edit_lock_ = true
+
 [node name="Cartellone" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(6736, -612)
 scale = Vector2(2.2976553, 2.2976553)
 texture = ExtResource("79_ul7wl")
+
+[node name="Piattaforma0" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(7809, 224)
+scale = Vector2(1.2890632, 1)
+texture = ExtResource("70_aj0m2")
+
+[node name="Tunnel" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(9330, 227)
+scale = Vector2(1.1593748, 1)
+texture = ExtResource("81_7oxed")
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
