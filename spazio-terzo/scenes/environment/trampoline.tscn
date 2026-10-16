@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xdhxmkvseg2l" path="res://scripts/trampoline.gd" id="1_trampoline"]
 [ext_resource type="Script" uid="uid://bvaqqcvmgsj6g" path="res://scripts/trampoline_trajectory_preview.gd" id="2_preview"]
-[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="3_8ghkn"]
+[ext_resource type="Texture2D" uid="uid://b17hc62aghopr" path="res://Images/Jump particle.png" id="3_8ghkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(86, 22)

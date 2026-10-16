@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://t1q3aok2dr2g"]
 
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="1_grind"]
-[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="2_70nkv"]
+[ext_resource type="Texture2D" uid="uid://bgm0h3nlvj247" path="res://Images/Skate particle.png" id="2_70nkv"]
 
 [sub_resource type="Curve2D" id="Curve2D_f4ir7"]
 _data = {
