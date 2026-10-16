@@ -3655,6 +3655,9 @@ position = Vector2(14022, 300)
 [node name="Incoming_car3" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
 position = Vector2(17674, 407)
 
+[node name="Incoming_car4" parent="Parte 1/Obstacle pt1" instance=ExtResource("59_501ou")]
+position = Vector2(9214, 416)
+
 [node name="Obstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(15680, 424)
 metadata/_edit_lock_ = true
@@ -4046,9 +4049,6 @@ position = Vector2(9330, 227)
 scale = Vector2(1.1593748, 1)
 texture = ExtResource("81_7oxed")
 metadata/_edit_lock_ = true
-
-[node name="Incoming_car" parent="." instance=ExtResource("59_501ou")]
-position = Vector2(9214, 416)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
