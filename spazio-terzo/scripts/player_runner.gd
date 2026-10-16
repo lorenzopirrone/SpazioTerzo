@@ -155,6 +155,7 @@ var _petals: int = 0
 var _invulnerability_timer: float = 0.0
 var _knockback_timer: float = 0.0
 var _knockback_start_x: float = 0.0
+var _music_waiting_for_return: bool = false
 var _trampoline_boost_timer: float = 0.0
 var _trampoline_boost_speed: float = 0.0
 var _knockback_target_x: float = 0.0
@@ -304,6 +305,9 @@ func _physics_process(delta: float) -> void:
 
 	_update_damage_flash(delta)
 	move_and_slide()
+	if _music_waiting_for_return and _knockback_timer <= 0.0 and global_position.x >= _knockback_start_x:
+		_music_waiting_for_return = false
+		music_player.stream_paused = false
 	_update_distance_score()
 	_update_movement_animation()
 
@@ -359,6 +363,7 @@ func take_hit() -> void:
 	_knockback_timer = knockback_duration
 	_damage_animation_timer = knockback_duration
 	_knockback_start_x = global_position.x
+	_music_waiting_for_return = true
 	_knockback_target_x = _knockback_start_x - knockback_distance
 	_flash_timer = 0.0
 	velocity.x = 0.0
@@ -690,10 +695,7 @@ func _find_node_in_group_recursive(root: Node, group_name: StringName) -> Node:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == ANIMATION_DAMAGE:
-		music_player.stream_paused = false
-
-	elif anim_name == ANIMATION_PUNCH_START and _is_charging:
+	if anim_name == ANIMATION_PUNCH_START and _is_charging:
 		play_animation(ANIMATION_PUNCH_CHARGE)
 
 	elif anim_name == ANIMATION_PUNCH_RELEASE:
