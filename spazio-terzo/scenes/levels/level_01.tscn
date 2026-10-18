@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=90 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -82,6 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://oy02ajrjcswr" path="res://Piattaforme/Edificio.png" id="79_66qyd"]
 [ext_resource type="Texture2D" uid="uid://b0cagofxagaee" path="res://Piattaforme/Cartellone.png" id="79_ul7wl"]
 [ext_resource type="Texture2D" uid="uid://l1smiw2dowyb" path="res://Piattaforme/tunnel.png" id="81_7oxed"]
+[ext_resource type="Texture2D" uid="uid://tpl063w42lsh" path="res://Piattaforme/TunnelOut.png" id="83_01ysu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -3068,7 +3069,6 @@ metadata/_edit_lock_ = true
 position = Vector2(67629, 405)
 
 [node name="Parte 1" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="Coin pt1" type="Node2D" parent="Parte 1"]
 
@@ -3527,15 +3527,19 @@ metadata/_edit_lock_ = true
 
 [node name="ObstacleC3" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(6766, 421)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC5" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(7219, 420)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC6" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(7467, 420)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleC4" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
-position = Vector2(8211, 419)
+position = Vector2(8100, 421)
+metadata/_edit_lock_ = true
 
 [node name="ObstacleD" parent="Parte 1/Obstacle pt1" instance=ExtResource("40_mq8rv")]
 position = Vector2(3348, 415)
@@ -3685,6 +3689,11 @@ position = Vector2(11440, 108)
 scale = Vector2(3.88, 1)
 metadata/_edit_lock_ = true
 
+[node name="AirPlatform25" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+position = Vector2(11440, -500)
+scale = Vector2(3.88, 1)
+metadata/_edit_lock_ = true
+
 [node name="AirPlatform21" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 position = Vector2(13944, 464)
 scale = Vector2(9.84, 1.9599988)
@@ -3696,6 +3705,7 @@ scale = Vector2(9.84, 1.9599988)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform19" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(10752, 222)
 metadata/_edit_lock_ = true
 
@@ -3710,7 +3720,9 @@ rotation = 0.43633232
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform20" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
-position = Vector2(10363, 327)
+z_index = -1
+position = Vector2(10390, 329)
+scale = Vector2(0.76, 1)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform13" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
@@ -3814,6 +3826,30 @@ collision_mask = 1
 launch_velocity = -1394.0
 horizontal_boost = 200.0
 metadata/_edit_lock_ = true
+
+[node name="Trampoline6" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
+position = Vector2(10304.999, -236.00006)
+rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
+launch_velocity = -700.0
+horizontal_boost = 50.0
+
+[node name="Trampoline7" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
+position = Vector2(10523, -369.00006)
+rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
+launch_velocity = -700.0
+horizontal_boost = 50.0
+
+[node name="Trampoline8" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
+position = Vector2(10733, -494.00018)
+rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
+launch_velocity = -700.0
+horizontal_boost = 50.0
 
 [node name="Bridge" type="Node2D" parent="Parte 1"]
 metadata/_edit_lock_ = true
@@ -4031,23 +4067,43 @@ scale = Vector2(0.77832, 0.95234406)
 texture = ExtResource("79_66qyd")
 metadata/_edit_lock_ = true
 
-[node name="Cartellone" type="Sprite2D" parent="."]
+[node name="Lampione3" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -1
+position = Vector2(10770, 254)
+scale = Vector2(1.5149506, 1.5638889)
+texture = ExtResource("67_wkxe6")
+metadata/_edit_lock_ = true
+
+[node name="Cartellone" type="Sprite2D" parent="Parte 1/Area cittadina"]
 z_index = -2
 position = Vector2(6736, -612)
 scale = Vector2(2.2976553, 2.2976553)
 texture = ExtResource("79_ul7wl")
+metadata/_edit_lock_ = true
 
-[node name="Piattaforma0" type="Sprite2D" parent="."]
+[node name="Piattaforma1" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -1
+position = Vector2(10397, 292)
+texture = ExtResource("70_aj0m2")
+
+[node name="Piattaforma0" type="Sprite2D" parent="Parte 1/Area cittadina"]
 z_index = -1
 position = Vector2(7809, 224)
 scale = Vector2(1.2890632, 1)
 texture = ExtResource("70_aj0m2")
+metadata/_edit_lock_ = true
 
-[node name="Tunnel" type="Sprite2D" parent="."]
+[node name="Tunnel" type="Sprite2D" parent="Parte 1/Area cittadina"]
 z_index = -2
 position = Vector2(9330, 227)
 scale = Vector2(1.1593748, 1)
 texture = ExtResource("81_7oxed")
+metadata/_edit_lock_ = true
+
+[node name="TunnelOut" type="Sprite2D" parent="Parte 1/Area cittadina"]
+position = Vector2(9332, 223)
+scale = Vector2(1.1586592, 1)
+texture = ExtResource("83_01ysu")
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
