@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=95 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -83,6 +83,11 @@
 [ext_resource type="Texture2D" uid="uid://b0cagofxagaee" path="res://Piattaforme/Cartellone.png" id="79_ul7wl"]
 [ext_resource type="Texture2D" uid="uid://l1smiw2dowyb" path="res://Piattaforme/tunnel.png" id="81_7oxed"]
 [ext_resource type="Texture2D" uid="uid://tpl063w42lsh" path="res://Piattaforme/TunnelOut.png" id="83_01ysu"]
+[ext_resource type="Texture2D" uid="uid://b6yav5hqiacne" path="res://Piattaforme/pilone.png" id="84_nxmup"]
+[ext_resource type="Texture2D" uid="uid://qhnayghqxwgw" path="res://Piattaforme/Dirigibile.png" id="85_fs8dh"]
+[ext_resource type="Texture2D" uid="uid://brj00qjqk6x45" path="res://Piattaforme/antenne.png" id="86_1xd6r"]
+[ext_resource type="Texture2D" uid="uid://dpywbkwmfj2eh" path="res://Piattaforme/palazzo up.png" id="86_x1e68"]
+[ext_resource type="Texture2D" uid="uid://byqemdxgsopg4" path="res://Piattaforme/palazzo down.png" id="87_1xd6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -3650,6 +3655,9 @@ position = Vector2(7332, 348)
 position = Vector2(11550, 24)
 metadata/_edit_lock_ = true
 
+[node name="Incoming_bird4" parent="Parte 1/Obstacle pt1" instance=ExtResource("43_syaoa")]
+position = Vector2(11853, -658)
+
 [node name="Incoming_car" parent="Parte 1/Obstacle pt1" instance=ExtResource("42_xkw5e")]
 position = Vector2(13099, 296)
 
@@ -3681,20 +3689,23 @@ position = Vector2(5704, -308)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform17" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(12109, -24)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform18" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
-position = Vector2(11440, 108)
+z_index = -1
+position = Vector2(11435, 30)
 scale = Vector2(3.88, 1)
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform25" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
-position = Vector2(11440, -500)
+z_index = -1
+position = Vector2(11435, -578)
 scale = Vector2(3.88, 1)
-metadata/_edit_lock_ = true
 
 [node name="AirPlatform21" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(13944, 464)
 scale = Vector2(9.84, 1.9599988)
 metadata/_edit_lock_ = true
@@ -3706,8 +3717,7 @@ metadata/_edit_lock_ = true
 
 [node name="AirPlatform19" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 z_index = -1
-position = Vector2(10752, 222)
-metadata/_edit_lock_ = true
+position = Vector2(10750, 176)
 
 [node name="AirPlatform22" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 position = Vector2(12688, 430.9995)
@@ -3849,6 +3859,22 @@ rotation = 0.06431911
 collision_layer = 1
 collision_mask = 1
 launch_velocity = -700.0
+horizontal_boost = 50.0
+
+[node name="Trampoline9" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
+position = Vector2(12219.001, -621)
+rotation = 0.06431911
+collision_layer = 1
+collision_mask = 1
+launch_velocity = -2000.0
+horizontal_boost = 50.0
+
+[node name="Trampoline10" parent="Parte 1/Platform pt1" instance=ExtResource("45_pff7q")]
+position = Vector2(12499, -1710)
+rotation = -3.5220745
+collision_layer = 1
+collision_mask = 1
+launch_velocity = 1000.0
 horizontal_boost = 50.0
 
 [node name="Bridge" type="Node2D" parent="Parte 1"]
@@ -4069,7 +4095,14 @@ metadata/_edit_lock_ = true
 
 [node name="Lampione3" type="Sprite2D" parent="Parte 1/Area cittadina"]
 z_index = -1
-position = Vector2(10770, 254)
+position = Vector2(10769, 209)
+scale = Vector2(1.5149506, 1.5638889)
+texture = ExtResource("67_wkxe6")
+metadata/_edit_lock_ = true
+
+[node name="Lampione4" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -1
+position = Vector2(12128, 11)
 scale = Vector2(1.5149506, 1.5638889)
 texture = ExtResource("67_wkxe6")
 metadata/_edit_lock_ = true
@@ -4085,12 +4118,61 @@ metadata/_edit_lock_ = true
 z_index = -1
 position = Vector2(10397, 292)
 texture = ExtResource("70_aj0m2")
+metadata/_edit_lock_ = true
 
 [node name="Piattaforma0" type="Sprite2D" parent="Parte 1/Area cittadina"]
 z_index = -1
 position = Vector2(7809, 224)
 scale = Vector2(1.2890632, 1)
 texture = ExtResource("70_aj0m2")
+metadata/_edit_lock_ = true
+
+[node name="Pilone" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -2
+position = Vector2(10316, -628)
+scale = Vector2(1, 2.7609377)
+texture = ExtResource("84_nxmup")
+metadata/_edit_lock_ = true
+
+[node name="Pilone2" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -2
+position = Vector2(10535, -707.62494)
+scale = Vector2(1, 2.488672)
+texture = ExtResource("84_nxmup")
+metadata/_edit_lock_ = true
+
+[node name="Pilone3" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -2
+position = Vector2(10747, -792.4062)
+scale = Vector2(1, 2.1956055)
+texture = ExtResource("84_nxmup")
+metadata/_edit_lock_ = true
+
+[node name="Dirigibile" type="Sprite2D" parent="Parte 1/Area cittadina"]
+position = Vector2(10490, -1277)
+scale = Vector2(2.4828117, 2.4828117)
+texture = ExtResource("85_fs8dh")
+metadata/_edit_lock_ = true
+
+[node name="PalazzoUp" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -1
+position = Vector2(11433.5, -285)
+scale = Vector2(1.4765625, 0.95)
+texture = ExtResource("86_x1e68")
+metadata/_edit_lock_ = true
+
+[node name="PalazzoDown" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -1
+position = Vector2(11432.5, 256.5)
+scale = Vector2(1.4609375, 0.7421875)
+texture = ExtResource("87_1xd6r")
+metadata/_edit_lock_ = true
+
+[node name="Antenne" type="Sprite2D" parent="Parte 1/Area cittadina"]
+z_index = -2
+position = Vector2(11405, -898.99994)
+scale = Vector2(0.9859361, 0.9859361)
+texture = ExtResource("86_1xd6r")
 metadata/_edit_lock_ = true
 
 [node name="Tunnel" type="Sprite2D" parent="Parte 1/Area cittadina"]
