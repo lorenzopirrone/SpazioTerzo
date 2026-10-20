@@ -154,6 +154,7 @@ var _dead: bool = false
 var _petals: int = 0
 var _invulnerability_timer: float = 0.0
 var _knockback_timer: float = 0.0
+var _triangle_obstacles: Array[Area2D] = []
 var _knockback_start_x: float = 0.0
 var _music_waiting_for_return: bool = false
 var _trampoline_boost_timer: float = 0.0
@@ -235,7 +236,11 @@ func _physics_process(delta: float) -> void:
 		_damage_animation_timer = maxf(_damage_animation_timer - delta, 0.0)
 
 	if _invulnerability_timer > 0.0:
-		_invulnerability_timer = maxf(_invulnerability_timer - delta, 0.0)
+		if _triangle_obstacles.is_empty():
+			_invulnerability_timer = maxf(
+					_invulnerability_timer - delta,
+				0.0
+			)
 
 	if _grind_active:
 		velocity = Vector2.ZERO
@@ -422,7 +427,15 @@ func get_score_distance() -> float:
 func is_knockback_active() -> bool:
 	return _knockback_timer > 0.0
 
+func enter_triangle_obstacle(obstacle: Area2D) -> void:
+	if not _triangle_obstacles.has(obstacle):
+		_triangle_obstacles.append(obstacle)
 
+	_invulnerability_timer = maxf(_invulnerability_timer, invulnerability_time)
+	_flash_timer = 0.0
+
+func exit_triangle_obstacle(obstacle: Area2D) -> void:
+	_triangle_obstacles.erase(obstacle)
 
 
 func begin_grind() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=96 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -88,6 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://brj00qjqk6x45" path="res://Piattaforme/antenne.png" id="86_1xd6r"]
 [ext_resource type="Texture2D" uid="uid://dpywbkwmfj2eh" path="res://Piattaforme/palazzo up.png" id="86_x1e68"]
 [ext_resource type="Texture2D" uid="uid://byqemdxgsopg4" path="res://Piattaforme/palazzo down.png" id="87_1xd6r"]
+[ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="89_214s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -4187,6 +4188,9 @@ position = Vector2(9332, 223)
 scale = Vector2(1.1586592, 1)
 texture = ExtResource("83_01ysu")
 metadata/_edit_lock_ = true
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("89_214s8")]
+position = Vector2(3573, 380)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]

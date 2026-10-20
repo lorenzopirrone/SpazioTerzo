@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=81 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="3_jdrfy"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="60_60r77"]
 [ext_resource type="PackedScene" uid="uid://bx5j7fpbsc16v" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
 [ext_resource type="Texture2D" uid="uid://g6jujn4rx1pm" path="res://Piattaforme/Flora 1.png" id="61_uoqi8"]
+[ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="62_uoqi8"]
 [ext_resource type="Texture2D" uid="uid://dw247rpisisgl" path="res://Piattaforme/Flora 2.png" id="62_wq023"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
@@ -212,7 +213,6 @@ player = NodePath("../../../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_jdrfy")]
 position = Vector2(90, 420)
-collision_layer = 9
 
 [node name="RunnerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -6786,6 +6786,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COMPOSIZIONE LIVELLO/Parte 3/Grind pt3/GrindRail25/TriggerArea"]
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_ve1ud")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("62_uoqi8")]
+position = Vector2(23178, 324)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
