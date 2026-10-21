@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://w5iwgdah8olg"]
+
+[ext_resource type="Script" uid="uid://ecrn4h3mq522" path="res://scripts/obstacle.gd" id="1_k473p"]
+[ext_resource type="AudioStream" uid="uid://yq81ysjns6nb" path="res://Audio/Punch Impact.mp3" id="2_hm2a7"]
+[ext_resource type="Texture2D" uid="uid://c8c2vxqbha57m" path="res://Piattaforme/special bin3.png" id="3_07yjb"]
+[ext_resource type="Texture2D" uid="uid://effdfd8jsxyf" path="res://Piattaforme/special bin1.png" id="4_4uccu"]
+[ext_resource type="Texture2D" uid="uid://21sy6ywun0oy" path="res://Piattaforme/special bin2.png" id="5_df3c1"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_r1dr6"]
+points = PackedVector2Array(-26.156387, 28.500002, -19.656387, 12.5, -6.1563864, 16.5, -0.6563854, 57.500008, -30.15639, 57.500008)
+
+[node name="Timber_Obstacle" type="Node2D"]
+light_mask = 4
+visibility_layer = 3
+
+[node name="Obstacle" type="Area2D" parent="." node_paths=PackedStringArray("parts", "impact_audio")]
+position = Vector2(0, 1)
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_k473p")
+parts = [NodePath("Specialbin3"), NodePath("Specialbin2"), NodePath("Specialbin1")]
+effect_duration = 2.0
+effect_scale = 6.0
+effect_distance = 1800.0
+effect_rotation = 480.0
+score_value = 500
+multiplier_bar_value = 20.0
+impact_audio = NodePath("ImpactAudio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(14.656385, -41)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("ConvexPolygonShape2D_r1dr6")
+
+[node name="Visual" type="Polygon2D" parent="Obstacle"]
+visible = false
+color = Color(0.92, 0.16, 0.18, 1)
+polygon = PackedVector2Array(-15.5, 17, -12.5, -12, -5.5, -29, 8.5, -25.5, 14, 17, 0, 17)
+
+[node name="ImpactAudio" type="AudioStreamPlayer" parent="Obstacle"]
+stream = ExtResource("2_hm2a7")
+
+[node name="Specialbin3" type="Sprite2D" parent="Obstacle"]
+position = Vector2(-1, -19.5)
+scale = Vector2(0.09703295, 0.09851647)
+texture = ExtResource("3_07yjb")
+
+[node name="Specialbin1" type="Sprite2D" parent="Obstacle"]
+position = Vector2(-3.5, -20.624992)
+scale = Vector2(0.1132813, 0.1167969)
+texture = ExtResource("4_4uccu")
+
+[node name="Specialbin2" type="Sprite2D" parent="Obstacle"]
+position = Vector2(2.4999995, -20.5)
+scale = Vector2(0.11591798, 0.11591798)
+texture = ExtResource("5_df3c1")
