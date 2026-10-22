@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1yyukxhcejiv"]
+
+[ext_resource type="Script" uid="uid://ecrn4h3mq522" path="res://scripts/obstacle.gd" id="1_nmp0c"]
+[ext_resource type="Texture2D" uid="uid://bpfhx7cxuror1" path="res://Piattaforme/Wall pt1.png" id="2_nmp0c"]
+[ext_resource type="Texture2D" uid="uid://dwf5byge68mf0" path="res://Piattaforme/Wall pt2.png" id="3_tm0w7"]
+[ext_resource type="AudioStream" uid="uid://yq81ysjns6nb" path="res://Audio/Punch Impact.mp3" id="4_im7ho"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_r1dr6"]
+points = PackedVector2Array(-32.156387, -116.76063, 43.34362, -116.76063, 43.84362, 1.2393885, 43.84362, 18.239391, -32.156387, 18.239391)
+
+[node name="Obstacle" type="Area2D" node_paths=PackedStringArray("parts", "impact_audio")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_nmp0c")
+parts = [NodePath("Wall pt1"), NodePath("Wall pt2")]
+effect_duration = 2.0
+effect_scale = 6.0
+effect_distance = 1800.0
+effect_rotation = 480.0
+score_value = 160
+impact_audio = NodePath("ImpactAudio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.84361494, 10.260612)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("ConvexPolygonShape2D_r1dr6")
+
+[node name="Visual" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(5.000001, -38.5)
+scale = Vector2(1.7857144, 2.3275862)
+color = Color(0.92, 0.16, 0.18, 1)
+polygon = PackedVector2Array(-21, 29, -21, -29.644447, -1.1200004, -29.42963, 21.559998, -29.644447, 21, 29)
+
+[node name="Wall pt1" type="Sprite2D" parent="."]
+position = Vector2(-4.000004, -55.999996)
+scale = Vector2(0.26417795, 0.26417795)
+texture = ExtResource("2_nmp0c")
+
+[node name="Wall pt2" type="Sprite2D" parent="."]
+position = Vector2(2.5, -56)
+scale = Vector2(0.26390502, 0.26390502)
+texture = ExtResource("3_tm0w7")
+
+[node name="ImpactAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_im7ho")

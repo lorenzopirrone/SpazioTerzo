@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvtck5ubywuus"
-path="res://.godot/imported/spark_arcade.png-8ef53dfe0d5d46a8064ed896616c9eaa.ctex"
+uid="uid://t1v3i46xdbmu"
+path="res://.godot/imported/Wall pt1.png-2e4cc585774cec9362bfd97b86a9fccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spark_arcade.png"
-dest_files=["res://.godot/imported/spark_arcade.png-8ef53dfe0d5d46a8064ed896616c9eaa.ctex"]
+source_file="res://scenes/environment/Wall pt1.png"
+dest_files=["res://.godot/imported/Wall pt1.png-2e4cc585774cec9362bfd97b86a9fccc.ctex"]
 
 [params]
 
