@@ -341,7 +341,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if _dead or _grind_active:
+	if _dead:
 		return
 
 	if event is InputEventScreenTouch:
@@ -530,7 +530,11 @@ func _handle_unified_press(pressed: bool, touch_index: int) -> void:
 		if _press_started_on_punch and _is_charging:
 			_release_punch()
 		elif not _press_started_on_punch:
-			_buffer_jump()
+			if _grind_active:
+				_end_grind()
+				_jump()
+			else: 
+				_buffer_jump()
 
 		_press_duration = 0.0
 		_press_started_on_punch = false
