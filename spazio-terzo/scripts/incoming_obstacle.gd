@@ -17,6 +17,7 @@ extends Node2D
 @export var effect_rotation: float = 180.0
 
 @export var can_be_punched: bool = true
+@export var survives_player_collision: bool = true
 @export var alert_duration: float = 0.85
 @export var obstacle_speed: float = 620.0
 @export var self_destruct_time: float = 4.0
@@ -145,27 +146,45 @@ func _get_spawn_x() -> float:
 		return _camera.get_screen_center_position().x + half_width + SPAWN_OFFSCREEN_MARGIN
 	return global_position.x + SPAWN_OFFSCREEN_MARGIN
 
+
 func _on_obstacle_body_entered(body: Node2D) -> void:
-	if body.has_method("take_hit"):
-		body.take_hit()
+	if not body.has_method("take_hit"):
+		return
+
+	body.take_hit()
+
+	if survives_player_collision:
+		return
+
+	_destroying = true
+	obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
+	_play_destroy_effect()
+
 
 
 func _on_obstacle_area_entered(area: Area2D) -> void:
-	if area.name == "PunchArea" and not _destroying:
-		_destroying = true
-		if impact_audio != null:
-			impact_audio.play()
+	if area.name != "PunchArea":
+		return
 
-		var player := area.get_parent()
+	if _destroying:
+		return
 
-		obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
+	if not can_be_punched:
+		return
 
-		if player.has_method("add_interaction_score"):
-			player.add_interaction_score(score_value, multiplier_bar_value)
-	
+	_destroying = true
 
+	if impact_audio != null:
+		impact_audio.play()
 
-		_play_destroy_effect()
+	var player := area.get_parent()
+
+	obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+	if player.has_method("add_interaction_score"):
+		player.add_interaction_score(score_value, multiplier_bar_value)
+
+	_play_destroy_effect()
 
 
 func _play_destroy_effect() -> void:

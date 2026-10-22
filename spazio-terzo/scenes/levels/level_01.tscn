@@ -5839,7 +5839,7 @@ scale = Vector2(1.037059, 1.0098693)
 texture = ExtResource("98_sk8kv")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
-position = Vector2(15186, 248)
+position = Vector2(12144, 312)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
