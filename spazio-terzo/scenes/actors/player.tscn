@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c66ja05jtcx0m" path="res://Images/Skate.png" id="7_cobgw"]
 [ext_resource type="Texture2D" uid="uid://dgafwfewh2lnh" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0004.png" id="7_h5w3c"]
 [ext_resource type="Texture2D" uid="uid://cmvkmeoh156ei" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0005.png" id="8_0878f"]
-[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="8_spmms"]
+[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="8_spmms"]
 [ext_resource type="Texture2D" uid="uid://b8pj5rq7ncx2p" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0006.png" id="9_dferu"]
 [ext_resource type="Texture2D" uid="uid://dfxslj5imd5c5" path="res://Sprites/Vespro/Vespro Run/Vespro Run_0007.png" id="10_t62v4"]
 [ext_resource type="Texture2D" uid="uid://cgttqaupp85vq" path="res://Sprites/Vespro/Vespro punch/White Circle 2.png" id="10_w2xlt"]

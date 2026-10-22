@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvtck5ubywuus"
-path="res://.godot/imported/spark_arcade.png-8ef53dfe0d5d46a8064ed896616c9eaa.ctex"
+path="res://.godot/imported/spark_arcade.png-a721fde1cc7f3257b8cb163e92f47df2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spark_arcade.png"
-dest_files=["res://.godot/imported/spark_arcade.png-8ef53dfe0d5d46a8064ed896616c9eaa.ctex"]
+source_file="res://Images/spark_arcade.png"
+dest_files=["res://.godot/imported/spark_arcade.png-a721fde1cc7f3257b8cb163e92f47df2.ctex"]
 
 [params]
 

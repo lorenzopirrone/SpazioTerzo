@@ -56,9 +56,9 @@
 [ext_resource type="Texture2D" uid="uid://cxb6asjmtb5a7" path="res://Piattaforme/Bridge 2.png" id="54_e0vh6"]
 [ext_resource type="PackedScene" uid="uid://t1q3aok2dr2g" path="res://scenes/environment/grind_rail.tscn" id="55_2tss3"]
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="57_2tss3"]
-[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://spark_arcade.png" id="58_1srhj"]
+[ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="58_1srhj"]
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="60_60r77"]
-[ext_resource type="PackedScene" uid="uid://bx5j7fpbsc16v" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
+[ext_resource type="PackedScene" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
 [ext_resource type="Texture2D" uid="uid://g6jujn4rx1pm" path="res://Piattaforme/Flora 1.png" id="61_uoqi8"]
 [ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="62_uoqi8"]
 [ext_resource type="Texture2D" uid="uid://dw247rpisisgl" path="res://Piattaforme/Flora 2.png" id="62_wq023"]
@@ -176,7 +176,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Level01" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "petals_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "petals_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
 script = ExtResource("1_xcnqg")
 auto_place_finish_line = false
 audio_player_path = NodePath("Guaglio_Theme")
