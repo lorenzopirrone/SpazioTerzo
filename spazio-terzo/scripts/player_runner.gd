@@ -147,6 +147,15 @@ var _punch_base_scale: Vector2
 var _charge_time: float = 0.0
 var _is_charging: bool = false
 var _punch_timer: float = 0.0
+
+var _press_duration: float = 0.0
+var _press_active: bool = false
+var _press_started_on_punch: bool = false
+
+@export_group("Touch Controls")
+## Tempo di pressione necessario per iniziare a caricare il pugno.
+@export var punch_hold_threshold: float = 0.18
+
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 var _punch_touch_index: int = -1
@@ -293,8 +302,21 @@ func _physics_process(delta: float) -> void:
 		if _coyote_timer > 0.0:
 			_jump()
 
+
+
+	if _press_active and not _press_started_on_punch:
+		_press_duration += delta
+
+	if _press_active \
+	and not _press_started_on_punch \
+	and _press_duration >= punch_hold_threshold \
+	and _petals >= punch_unlock_petals:
+		_press_started_on_punch = true
+		_begin_punch_charge()
+
 	if _is_charging:
 		_charge_time = minf(_charge_time + delta, max_charge_time)
+		print("CHARGING: ", _is_charging, " | Carica: ", _charge_time)
 		_update_charge_bar(_charge_time / max_charge_time)
 		_update_punch_rotation()
 		_update_punch_texture()
@@ -317,20 +339,18 @@ func _physics_process(delta: float) -> void:
 	_update_movement_animation()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _grind_active:
+
+func _input(event: InputEvent) -> void:
+	if _dead or _grind_active:
 		return
 
 	if event is InputEventScreenTouch:
-		_handle_screen_touch(event)
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		_handle_mouse_button(event)
-	elif event.is_action_pressed("runner_jump"):
-		_buffer_jump()
-	elif event.is_action_pressed("runner_punch"):
-		_begin_punch_charge()
-	elif event.is_action_released("runner_punch"):
-		_release_punch()
+		_handle_unified_press(event.pressed, event.index)
+
+	elif event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT:
+		_handle_unified_press(event.pressed, -1)
+
 
 
 func take_hit() -> void:
@@ -487,32 +507,35 @@ func _update_damage_flash(delta: float) -> void:
 		modulate = _base_modulate
 
 
-func _handle_screen_touch(event: InputEventScreenTouch) -> void:
-	if event.pressed:
-		if event.position.x < get_viewport_rect().size.x * punch_screen_split:
-			_buffer_jump()
-		elif _punch_touch_index == -1:
-			_punch_touch_index = event.index
-			_begin_punch_charge()
 
-	elif event.index == _punch_touch_index:
-		_punch_touch_index = -1
-		_release_punch()
+func _handle_unified_press(pressed: bool, touch_index: int) -> void:
+	if pressed:
+		if _press_active:
+			return
 
-	elif event.position.x >= get_viewport_rect().size.x * punch_screen_split:
-		_release_punch()
+		_press_active = true
+		_press_duration = 0.0
+		_press_started_on_punch = false
+		_punch_touch_index = touch_index
 
-
-func _handle_mouse_button(event: InputEventMouseButton) -> void:
-	if event.position.x < get_viewport_rect().size.x * punch_screen_split:
-		if event.pressed:
-			_buffer_jump()
 	else:
-		if event.pressed:
-			_punch_touch_index = -1
-			_begin_punch_charge()
-		else:
+		if not _press_active:
+			return
+
+		if touch_index != _punch_touch_index:
+			return
+
+		_press_active = false
+
+		if _press_started_on_punch and _is_charging:
 			_release_punch()
+		elif not _press_started_on_punch:
+			_buffer_jump()
+
+		_press_duration = 0.0
+		_press_started_on_punch = false
+		_punch_touch_index = -1
+
 
 
 func _buffer_jump() -> void:
