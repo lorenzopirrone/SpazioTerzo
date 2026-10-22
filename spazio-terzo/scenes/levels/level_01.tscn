@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=100 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/finish_line.tscn" id="61_uyhfn"]
 [ext_resource type="Texture2D" uid="uid://bgm0h3nlvj247" path="res://Images/Skate particle.png" id="64_aj0m2"]
 [ext_resource type="Texture2D" uid="uid://chb3i06qrhttb" path="res://Piattaforme/Gru.png" id="65_bfhwr"]
+[ext_resource type="Texture2D" uid="uid://creqypdu2jwdj" path="res://Piattaforme/Bridge support.png" id="66_55aew"]
 [ext_resource type="Texture2D" uid="uid://bjg64poourjqi" path="res://Piattaforme/Container.png" id="66_wkxe6"]
 [ext_resource type="Texture2D" uid="uid://d4k6j8cvowjfv" path="res://Piattaforme/Lampione.png" id="67_wkxe6"]
 [ext_resource type="Texture2D" uid="uid://h4pfyes3mxwu" path="res://Piattaforme/Gru2.png" id="68_70c2i"]
@@ -3746,6 +3747,14 @@ metadata/_edit_lock_ = true
 position = Vector2(18440, 48)
 metadata/_edit_lock_ = true
 
+[node name="Specialbin_Obstacle" parent="Parte 1/Obstacle pt1" instance=ExtResource("92_15x52")]
+position = Vector2(7208, 448)
+scale = Vector2(1.04, 1.04)
+
+[node name="Specialbin_Obstacle2" parent="Parte 1/Obstacle pt1" instance=ExtResource("92_15x52")]
+position = Vector2(15448, -56)
+scale = Vector2(1.04, 1.04)
+
 [node name="Platform pt1" type="Node2D" parent="Parte 1"]
 
 [node name="AirPlatform2" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
@@ -3972,6 +3981,10 @@ position = Vector2(13673, 65.00001)
 scale = Vector2(1.0014085, 0.8485901)
 speed_multiplier = 1.34
 metadata/_edit_lock_ = true
+
+[node name="BridgeSupport" type="Sprite2D" parent="Parte 1/Bridge"]
+position = Vector2(15448, -115)
+texture = ExtResource("66_55aew")
 
 [node name="GrindRail" type="Node2D" parent="Parte 1"]
 position = Vector2(16689, 310)
@@ -4279,14 +4292,6 @@ texture = ExtResource("91_15x52")
 z_index = -1
 position = Vector2(16992, 240)
 texture = ExtResource("91_15x52")
-
-[node name="Specialbin_Obstacle" parent="." instance=ExtResource("92_15x52")]
-position = Vector2(7208, 448)
-scale = Vector2(1.04, 1.04)
-
-[node name="Specialbin_Obstacle2" parent="." instance=ExtResource("92_15x52")]
-position = Vector2(15448, -56)
-scale = Vector2(1.04, 1.04)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
