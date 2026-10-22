@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=112 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -96,6 +96,8 @@
 [ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="94_wvjwn"]
 [ext_resource type="PackedScene" path="res://scenes/environment/timber_obstacle.tscn" id="95_7yedq"]
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="96_uaxf7"]
+[ext_resource type="Texture2D" uid="uid://bc1ifbq2q4fsh" path="res://Piattaforme/Strada ponte.png" id="97_uaxf7"]
+[ext_resource type="Texture2D" uid="uid://dye8fa4drwbi4" path="res://Piattaforme/strada ponte su.png" id="98_sk8kv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -3837,16 +3839,9 @@ z_index = -1
 position = Vector2(11435, -578)
 scale = Vector2(3.88, 1)
 
-[node name="AirPlatform21" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
-z_index = -1
-position = Vector2(13944, 464)
-scale = Vector2(9.84, 1.9599988)
-metadata/_edit_lock_ = true
-
 [node name="AirPlatform23" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 position = Vector2(13963, 396)
-scale = Vector2(9.84, 1.9599988)
-metadata/_edit_lock_ = true
+scale = Vector2(9.84, 1.48)
 
 [node name="AirPlatform19" parent="Parte 1/Platform pt1" instance=ExtResource("44_uvhx5")]
 z_index = -1
@@ -5825,6 +5820,22 @@ flip_h = true
 
 [node name="Coin" parent="Parte 2/Coin pt2" instance=ExtResource("10_coin")]
 position = Vector2(20260, 351)
+
+[node name="StradaPonte" type="Sprite2D" parent="."]
+position = Vector2(13963.999, 301.49997)
+scale = Vector2(1.2286465, 0.5515624)
+texture = ExtResource("97_uaxf7")
+
+[node name="StradaPonteSu" type="Sprite2D" parent="."]
+position = Vector2(12655, 197)
+scale = Vector2(1.046875, 1)
+texture = ExtResource("98_sk8kv")
+
+[node name="StradaPonteSu2" type="Sprite2D" parent="."]
+position = Vector2(15070, 614.00073)
+rotation = 4.0631266
+scale = Vector2(1.037059, 1.0098693)
+texture = ExtResource("98_sk8kv")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
