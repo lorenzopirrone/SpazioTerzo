@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=117 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -102,6 +102,7 @@
 [ext_resource type="Texture2D" uid="uid://30stpikmxbyn" path="res://Piattaforme/Fabbrica interno.png" id="100_4tq4f"]
 [ext_resource type="Texture2D" uid="uid://dwgga52lrtybi" path="res://Piattaforme/fabbrica tetti.png" id="101_i88pp"]
 [ext_resource type="Texture2D" uid="uid://yvxt3kcid4xm" path="res://Piattaforme/fabbrica tetti V.png" id="102_yiiuh"]
+[ext_resource type="Texture2D" uid="uid://banurep5xmhaq" path="res://Piattaforme/Pilone corrente.png" id="103_i88pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -249,6 +250,7 @@ horizontal_lookahead = 600.0
 vertical_offset = -200.0
 
 [node name="Parallasse" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 150)
 metadata/_edit_lock_ = true
 
@@ -969,7 +971,6 @@ texture = ExtResource("12_qy4h0")
 metadata/_edit_lock_ = true
 
 [node name="Parallasse2" type="Node2D" parent="."]
-visible = false
 position = Vector2(-3191, 150)
 metadata/_edit_lock_ = true
 
@@ -4463,6 +4464,7 @@ position = Vector2(6929, 389)
 scale = Vector2(6.48, 1)
 
 [node name="AirPlatform2" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+z_index = -1
 position = Vector2(3737, 189)
 
 [node name="Trampoline" parent="Parte 2/Platform pt2" instance=ExtResource("45_pff7q")]
@@ -5898,6 +5900,18 @@ texture = ExtResource("102_yiiuh")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
 position = Vector2(12144, 312)
+
+[node name="PiloneCorrente" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(22187.5, 194)
+scale = Vector2(1.0390625, 0.959375)
+texture = ExtResource("103_i88pp")
+
+[node name="Lampione" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(21298, 206)
+scale = Vector2(1.5031265, 1.453125)
+texture = ExtResource("67_wkxe6")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
