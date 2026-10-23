@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://1egy1wdcp633"]
+[gd_scene load_steps=66 format=3 uid="uid://1egy1wdcp633"]
 
 [ext_resource type="Script" uid="uid://7hgijrt4gtdy" path="res://scripts/player_runner.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://r38xmd52sinj" path="res://Audio/Disco Scratch 1.wav" id="2_ds2sr"]
@@ -87,8 +87,6 @@ tracks/0/keys = {
 _data = {
 &"Punch Rotation": SubResource("Animation_366ld")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18oyn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_amsee"]
 animations = [{
@@ -493,15 +491,6 @@ offset = Vector2(9.999996, -9.536743e-07)
 libraries = {
 &"": SubResource("AnimationLibrary_8pjo5")
 }
-
-[node name="PunchArea" type="Area2D" parent="Vespro"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vespro/PunchArea"]
-position = Vector2(-10.8307705, 7.3846154)
-rotation = -0.66619027
-scale = Vector2(0.8028848, 0.8028848)
-shape = SubResource("CapsuleShape2D_18oyn")
 
 [node name="punch_speed_effect" type="AnimatedSprite2D" parent="Vespro"]
 visible = false

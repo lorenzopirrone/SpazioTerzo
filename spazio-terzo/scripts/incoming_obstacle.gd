@@ -147,38 +147,44 @@ func _get_spawn_x() -> float:
 	return global_position.x + SPAWN_OFFSCREEN_MARGIN
 
 
+
 func _on_obstacle_body_entered(body: Node2D) -> void:
 	if not body.has_method("take_hit"):
 		return
 
+	# La collisione infligge sempre danno al player.
 	body.take_hit()
 
+	# Se attivo, l'ostacolo sopravvive all'impatto.
 	if survives_player_collision:
 		return
 
+	# Se disattivo, l'ostacolo viene distrutto.
 	_destroying = true
 	obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
 	_play_destroy_effect()
 
 
 
+
 func _on_obstacle_area_entered(area: Area2D) -> void:
+	print("AREA ENTRATA: ", area.name)
+
 	if area.name != "PunchArea":
 		return
 
+	print("DISTRUZIONE RICHIESTA DAL PUGNO")
+
 	if _destroying:
 		return
-
 	if not can_be_punched:
 		return
 
 	_destroying = true
-
 	if impact_audio != null:
 		impact_audio.play()
 
 	var player := area.get_parent()
-
 	obstacle.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 	if player.has_method("add_interaction_score"):

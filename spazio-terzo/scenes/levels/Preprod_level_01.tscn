@@ -58,7 +58,7 @@
 [ext_resource type="Script" uid="uid://dfs0loo12mskb" path="res://scripts/grind_rail.gd" id="57_2tss3"]
 [ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="58_1srhj"]
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="60_60r77"]
-[ext_resource type="PackedScene" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
+[ext_resource type="PackedScene" uid="uid://bx5j7fpbsc16v" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
 [ext_resource type="Texture2D" uid="uid://g6jujn4rx1pm" path="res://Piattaforme/Flora 1.png" id="61_uoqi8"]
 [ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="62_uoqi8"]
 [ext_resource type="Texture2D" uid="uid://dw247rpisisgl" path="res://Piattaforme/Flora 2.png" id="62_wq023"]
@@ -6788,7 +6788,7 @@ position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_ve1ud")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("62_uoqi8")]
-position = Vector2(375, 334)
+position = Vector2(9459, 384)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
