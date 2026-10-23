@@ -176,6 +176,7 @@ var _current_animation: StringName = &""
 var _damage_animation_timer: float = 0.0
 var _is_punch_releasing: bool = false
 var _score: int = 0
+var _coins_collected: int = 0
 var _score_distance: float = 0.0
 var _last_score_x: float = 0.0
 var _last_punch_charge_stage: int = -1
@@ -825,6 +826,13 @@ func _update_distance_score() -> void:
 
 func get_score() -> int:
 	return _score
+
+func register_coin() -> void:
+	_coins_collected += 1
+
+
+func get_coins_collected() -> int:
+	return _coins_collected
 
 func _show_floating_score(value: int) -> void:
 	var floating_text: Label = score_text.duplicate()

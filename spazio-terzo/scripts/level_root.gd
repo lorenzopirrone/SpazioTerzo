@@ -32,7 +32,7 @@ signal player_died
 
 @export_group("Result Screen References")
 @export var score_value_label: Label
-@export var petals_value_label: Label
+@export var coins_value_label: Label
 @export var distance_value_label: Label
 @export var multiplier_label: Label
 @export var result_title_label: Label
@@ -100,7 +100,7 @@ func _on_player_died() -> void:
 
 	result_title_label.text = "GAME OVER"
 	score_value_label.text = str(player.get_score())
-	petals_value_label.text = str(player.get_petals())
+	coins_value_label.text = str(player.get_coins_collected())
 	distance_value_label.text = str(int(player.get_score_distance()))
 	multiplier_label.text = "x" + str(player.get_score_multiplier())
 
@@ -181,7 +181,7 @@ func _show_final_score() -> void:
 
 	result_title_label.text = "LEVEL COMPLETE"
 	score_value_label.text = str(player.get_score())
-	petals_value_label.text = str(player.get_petals())
+	coins_value_label.text = str(player.get_coins_collected())
 	distance_value_label.text = str(int(player.get_score_distance()))
 	multiplier_label.text = "x" + str(player.get_score_multiplier())
 	$VictoryAudio.play()

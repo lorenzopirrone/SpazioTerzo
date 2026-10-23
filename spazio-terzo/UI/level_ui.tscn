@@ -875,15 +875,15 @@ vertical_alignment = 1
 [node name="StatsRow" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox"]
 layout_mode = 2
 
-[node name="PetalsColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+[node name="CoinColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
 layout_mode = 2
 
-[node name="PetalsTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/PetalsColumn"]
+[node name="CoinTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/CoinColumn"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uu4ov")
-text = "PETALS"
+text = "COIN:"
 
-[node name="PetalsValue" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/PetalsColumn"]
+[node name="CoinValue" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/CoinColumn"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uu4ov")
 text = "3"

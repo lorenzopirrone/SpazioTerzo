@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	position.y = _base_y + sin(_time * bob_speed) * bob_amount
 
 
+
 func _on_body_entered(body: Node2D) -> void:
 	if _dropped:
 		return
@@ -49,12 +50,16 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("collect_petal"):
 		body.collect_petal(value)
 
+		if body.has_method("register_coin"):
+			body.register_coin()
+
 		$Sprite2D.hide()
 		$CollisionShape2D.set_deferred("disabled", true)
 		$AudioStreamPlayer.play()
 
 		await $AudioStreamPlayer.finished
 		queue_free()
+
 
 
 func begin_drop(initial_velocity: Vector2, lifetime: float = drop_lifetime) -> void:
