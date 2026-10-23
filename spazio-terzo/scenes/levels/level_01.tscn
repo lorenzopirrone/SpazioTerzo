@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=116 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -94,11 +94,14 @@
 [ext_resource type="Texture2D" uid="uid://b7xmv7wviot4" path="res://Piattaforme/Gridbar.png" id="91_15x52"]
 [ext_resource type="PackedScene" uid="uid://w5iwgdah8olg" path="res://scenes/environment/specialbin_obstacle.tscn" id="92_15x52"]
 [ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="94_wvjwn"]
-[ext_resource type="PackedScene" uid="uid://bx5j7fpbsc16v" path="res://scenes/environment/timber_obstacle.tscn" id="95_7yedq"]
+[ext_resource type="PackedScene" path="res://scenes/environment/timber_obstacle.tscn" id="95_7yedq"]
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="96_uaxf7"]
 [ext_resource type="Texture2D" uid="uid://bc1ifbq2q4fsh" path="res://Piattaforme/Strada ponte.png" id="97_uaxf7"]
 [ext_resource type="Texture2D" uid="uid://dye8fa4drwbi4" path="res://Piattaforme/strada ponte su.png" id="98_sk8kv"]
 [ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="99_sk8kv"]
+[ext_resource type="Texture2D" uid="uid://30stpikmxbyn" path="res://Piattaforme/Fabbrica interno.png" id="100_4tq4f"]
+[ext_resource type="Texture2D" uid="uid://dwgga52lrtybi" path="res://Piattaforme/fabbrica tetti.png" id="101_i88pp"]
+[ext_resource type="Texture2D" uid="uid://yvxt3kcid4xm" path="res://Piattaforme/fabbrica tetti V.png" id="102_yiiuh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -4034,6 +4037,22 @@ metadata/_edit_lock_ = true
 position = Vector2(15448, -115)
 texture = ExtResource("66_55aew")
 
+[node name="StradaPonte" type="Sprite2D" parent="Parte 1/Bridge"]
+position = Vector2(13963.999, 301.49997)
+scale = Vector2(1.2286465, 0.5515624)
+texture = ExtResource("97_uaxf7")
+
+[node name="StradaPonteSu" type="Sprite2D" parent="Parte 1/Bridge"]
+position = Vector2(12655, 197)
+scale = Vector2(1.046875, 1)
+texture = ExtResource("98_sk8kv")
+
+[node name="StradaPonteSu2" type="Sprite2D" parent="Parte 1/Bridge"]
+position = Vector2(15070, 614.00073)
+rotation = -2.2200587
+scale = Vector2(1.037059, 1.0098693)
+texture = ExtResource("98_sk8kv")
+
 [node name="GrindRail" type="Node2D" parent="Parte 1"]
 position = Vector2(16689, 310)
 script = ExtResource("60_yfn7s")
@@ -4345,7 +4364,6 @@ texture = ExtResource("91_15x52")
 
 [node name="Platform pt2" type="Node2D" parent="Parte 2"]
 position = Vector2(17543, -13)
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="AirPlatform" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4483,7 +4501,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4523,7 +4541,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4563,7 +4581,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4603,7 +4621,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4644,7 +4662,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4685,7 +4703,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4726,7 +4744,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -4741,7 +4759,7 @@ position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_p2rwu")
 
 [node name="GrindRail10" type="Node2D" parent="Parte 2/Platform pt2"]
-position = Vector2(8830, -562)
+position = Vector2(8990, -640)
 script = ExtResource("60_yfn7s")
 path_path = NodePath("Path")
 path_follow_path = NodePath("Path/PathFollow")
@@ -4767,7 +4785,7 @@ loop = false
 position = Vector2(-84, 122)
 points = PackedVector2Array(0, 0, 135, -1, 293, -20, 473, -57, 680, -86, 881, -40)
 width = 12.0
-default_color = Color(0.97, 0.79, 0.23, 1)
+default_color = Color(9.62615e-07, 0.7522778, 0.8593052, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -5822,21 +5840,61 @@ flip_h = true
 [node name="Coin" parent="Parte 2/Coin pt2" instance=ExtResource("10_coin")]
 position = Vector2(20260, 351)
 
-[node name="StradaPonte" type="Sprite2D" parent="."]
-position = Vector2(13963.999, 301.49997)
-scale = Vector2(1.2286465, 0.5515624)
-texture = ExtResource("97_uaxf7")
+[node name="Fabbrica" type="Node2D" parent="Parte 2"]
 
-[node name="StradaPonteSu" type="Sprite2D" parent="."]
-position = Vector2(12655, 197)
-scale = Vector2(1.046875, 1)
-texture = ExtResource("98_sk8kv")
+[node name="FabbricaInterno" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -2
+position = Vector2(24477, 144.25002)
+scale = Vector2(1, 1.0507814)
+texture = ExtResource("100_4tq4f")
 
-[node name="StradaPonteSu2" type="Sprite2D" parent="."]
-position = Vector2(15070, 614.00073)
-rotation = 4.0631266
-scale = Vector2(1.037059, 1.0098693)
-texture = ExtResource("98_sk8kv")
+[node name="FabbricaTetti" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(22956, -340)
+scale = Vector2(1.2437493, 0.49375)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTetti2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(23751.5, -662.00006)
+scale = Vector2(1.2578132, 1.5)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTetti3" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(24300.25, -433)
+scale = Vector2(0.8523481, 0.784375)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTetti5" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(25271.123, -433.00003)
+scale = Vector2(0.7339849, 0.784375)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTetti6" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(25968.063, -446.5)
+scale = Vector2(0.627928, 0.8265624)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTetti4" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(24812.125, -747.00006)
+scale = Vector2(0.7496127, 1.7656249)
+texture = ExtResource("101_i88pp")
+
+[node name="FabbricaTettiV" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(25637, -285)
+scale = Vector2(0.42187425, 0.321875)
+texture = ExtResource("102_yiiuh")
+
+[node name="FabbricaTettiV2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(26473, -366)
+scale = Vector2(0.9499998, 0.575)
+texture = ExtResource("102_yiiuh")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
 position = Vector2(12144, 312)
