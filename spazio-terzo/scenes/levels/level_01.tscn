@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=121 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -103,6 +103,10 @@
 [ext_resource type="Texture2D" uid="uid://dwgga52lrtybi" path="res://Piattaforme/fabbrica tetti.png" id="101_i88pp"]
 [ext_resource type="Texture2D" uid="uid://yvxt3kcid4xm" path="res://Piattaforme/fabbrica tetti V.png" id="102_yiiuh"]
 [ext_resource type="Texture2D" uid="uid://banurep5xmhaq" path="res://Piattaforme/Pilone corrente.png" id="103_i88pp"]
+[ext_resource type="Texture2D" uid="uid://cbdu0be0roith" path="res://Piattaforme/piattaforma fabbrica.png" id="103_yiiuh"]
+[ext_resource type="Texture2D" uid="uid://dhxyjhna4b2g3" path="res://Piattaforme/dettagli tetto fabbrica.png" id="105_fvud7"]
+[ext_resource type="Texture2D" uid="uid://r53xiypg3jmw" path="res://Piattaforme/camino.png" id="106_gvuas"]
+[ext_resource type="Texture2D" uid="uid://dujpwh1qfffak" path="res://Images/Monete/Cherry petal.png" id="107_gvuas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -231,7 +235,7 @@ shape = SubResource("RectangleShape2D_ground")
 [node name="Visual" type="Polygon2D" parent="Livello/Ground"]
 z_index = 1
 color = Color(0.19, 0.22, 0.25, 1)
-polygon = PackedVector2Array(-21500, -32, 46180, -30, 46180, 210, 4, 210, -21500, 210)
+polygon = PackedVector2Array(-21500, -32, 46180, -30, 46196, 1055, 33, 1073, -21525, 1057)
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(90, 420)
@@ -250,7 +254,6 @@ horizontal_lookahead = 600.0
 vertical_offset = -200.0
 
 [node name="Parallasse" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, 150)
 metadata/_edit_lock_ = true
 
@@ -971,6 +974,7 @@ texture = ExtResource("12_qy4h0")
 metadata/_edit_lock_ = true
 
 [node name="Parallasse2" type="Node2D" parent="."]
+visible = false
 position = Vector2(-3191, 150)
 metadata/_edit_lock_ = true
 
@@ -4451,6 +4455,10 @@ scale = Vector2(3.9060993, 1.251264)
 position = Vector2(10753, -11)
 scale = Vector2(3.9060993, 1.251264)
 
+[node name="AirPlatform28" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(10753, -500)
+scale = Vector2(3.9060993, 1.251264)
+
 [node name="AirPlatform13" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(13629, 280.00003)
 scale = Vector2(4.3060994, 1.251264)
@@ -4471,6 +4479,11 @@ position = Vector2(3737, 189)
 position = Vector2(3817, 173)
 launch_velocity = -1141.0
 horizontal_boost = 250.0
+
+[node name="Trampoline5" parent="Parte 2/Platform pt2" instance=ExtResource("45_pff7q")]
+position = Vector2(9554, -249)
+launch_velocity = -1300.0
+horizontal_boost = 100.0
 
 [node name="Trampoline2" parent="Parte 2/Platform pt2" instance=ExtResource("45_pff7q")]
 position = Vector2(5025, 493)
@@ -5188,7 +5201,6 @@ position = Vector2(17074, 133)
 launch_velocity = -1100.0
 
 [node name="Obstacle pt2" type="Node2D" parent="Parte 2"]
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="TriangleObstacle" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
@@ -5687,7 +5699,7 @@ position = Vector2(34274, 64)
 position = Vector2(27120, 80)
 
 [node name="Incoming_bird5" parent="Parte 2/Obstacle pt2" instance=ExtResource("43_syaoa")]
-position = Vector2(27840, 288)
+position = Vector2(28536, -605)
 
 [node name="Incoming_car" parent="Parte 2/Obstacle pt2" instance=ExtResource("42_xkw5e")]
 position = Vector2(21832, 408)
@@ -5898,20 +5910,109 @@ position = Vector2(26473, -366)
 scale = Vector2(0.9499998, 0.575)
 texture = ExtResource("102_yiiuh")
 
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
-position = Vector2(12144, 312)
-
-[node name="PiloneCorrente" type="Sprite2D" parent="."]
+[node name="PiloneCorrente" type="Sprite2D" parent="Parte 2/Fabbrica"]
 z_index = -1
 position = Vector2(22187.5, 194)
 scale = Vector2(1.0390625, 0.959375)
 texture = ExtResource("103_i88pp")
 
-[node name="Lampione" type="Sprite2D" parent="."]
+[node name="Soppalco2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(22929, 492)
+scale = Vector2(1.015625, 1)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco3" type="Sprite2D" parent="Parte 2/Fabbrica"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(23353, 409)
+scale = Vector2(1.015625, 1)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco4" type="Sprite2D" parent="Parte 2/Fabbrica"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(25640, 330.5)
+scale = Vector2(1.0187492, 1.0078125)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco5" type="Sprite2D" parent="Parte 2/Fabbrica"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(25872.5, 580.5)
+scale = Vector2(1.0296841, 1.0203125)
+texture = ExtResource("71_aj0m2")
+
+[node name="PiattaformaFabbrica" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(24457, 277)
+scale = Vector2(1.2505294, 1.15)
+texture = ExtResource("103_yiiuh")
+
+[node name="PiattaformaFabbrica2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(24470, 573)
+scale = Vector2(1.2505294, 1.15)
+texture = ExtResource("103_yiiuh")
+
+[node name="Lampione" type="Sprite2D" parent="Parte 2/Fabbrica"]
 z_index = -1
 position = Vector2(21298, 206)
 scale = Vector2(1.5031265, 1.453125)
 texture = ExtResource("67_wkxe6")
+
+[node name="Lampione2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+position = Vector2(27470, 90)
+scale = Vector2(1.6898451, 1.453125)
+texture = ExtResource("67_wkxe6")
+
+[node name="Soppalco" type="Sprite2D" parent="Parte 2/Fabbrica"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(20887, 583)
+scale = Vector2(1.015625, 1)
+texture = ExtResource("71_aj0m2")
+
+[node name="PiattaformaFabbrica3" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -1
+position = Vector2(26662, 303)
+scale = Vector2(0.7453124, 0.7453124)
+texture = ExtResource("103_yiiuh")
+
+[node name="DettagliTettoFabbrica" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -3
+position = Vector2(23082, -549)
+texture = ExtResource("105_fvud7")
+
+[node name="DettagliTettoFabbrica2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -3
+position = Vector2(26076, -487)
+texture = ExtResource("105_fvud7")
+
+[node name="Camino" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -3
+position = Vector2(23781, -658)
+texture = ExtResource("106_gvuas")
+
+[node name="Camino2" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -3
+position = Vector2(24813, -749)
+texture = ExtResource("106_gvuas")
+
+[node name="Camino3" type="Sprite2D" parent="Parte 2/Fabbrica"]
+z_index = -3
+position = Vector2(25344, -358)
+texture = ExtResource("106_gvuas")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
+position = Vector2(80, 360)
+
+[node name="Pilone" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(27124, 40.49998)
+scale = Vector2(2.1421876, 1.0203124)
+texture = ExtResource("84_nxmup")
+
+[node name="CherryPetal" type="Sprite2D" parent="."]
+position = Vector2(12474.001, -1588)
+scale = Vector2(0.4984375, 0.4984375)
+texture = ExtResource("107_gvuas")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
