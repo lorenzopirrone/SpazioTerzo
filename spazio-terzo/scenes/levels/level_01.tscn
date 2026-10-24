@@ -6118,20 +6118,44 @@ position = Vector2(32974, 517)
 scale = Vector2(1.1351538, 1.0203125)
 texture = ExtResource("71_aj0m2")
 
-[node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
-position = Vector2(18643, -15)
+[node name="Soppalco9" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -1
+position = Vector2(31996, -337.62497)
+scale = Vector2(1.1351538, 2.5292966)
+texture = ExtResource("71_aj0m2")
 
-[node name="TorreNucleare2" type="Sprite2D" parent="."]
+[node name="Soppalco10" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -1
+position = Vector2(32433, -417)
+scale = Vector2(1.1351538, 2.8443356)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco11" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -1
+position = Vector2(32908.004, -495)
+scale = Vector2(1.1351538, 3.100293)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco12" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -4
+position = Vector2(33358, -583)
+scale = Vector2(1.1351538, 3.3876464)
+texture = ExtResource("71_aj0m2")
+
+[node name="TorreNucleare2" type="Sprite2D" parent="Parte 2/Nucleare"]
 z_index = -2
 position = Vector2(33992.004, -1038)
 scale = Vector2(2.1390607, 1.9153225)
 texture = ExtResource("112_nrwx0")
 
-[node name="TorreNucleareGiu" type="Sprite2D" parent="."]
+[node name="TorreNucleareGiu" type="Sprite2D" parent="Parte 2/Nucleare"]
 z_index = -2
 position = Vector2(33994, -873.04694)
 scale = Vector2(2.5546875, 2.1789563)
 texture = ExtResource("113_an4wj")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
+position = Vector2(18643, -15)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
