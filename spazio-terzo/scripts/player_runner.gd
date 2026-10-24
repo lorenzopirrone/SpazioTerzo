@@ -178,6 +178,7 @@ var _is_punch_releasing: bool = false
 var _score: int = 0
 var _coins_collected: int = 0
 var _score_distance: float = 0.0
+var _super_petals_collected: Array[int] = []
 var _last_score_x: float = 0.0
 var _last_punch_charge_stage: int = -1
 var _multiplier_bar: float = 0.0
@@ -826,6 +827,19 @@ func _update_distance_score() -> void:
 
 func get_score() -> int:
 	return _score
+
+func register_super_petal(petal_id: int) -> void:
+	if petal_id < 1 or petal_id > 3:
+		return
+
+	if _super_petals_collected.has(petal_id):
+		return
+
+	_super_petals_collected.append(petal_id)
+
+
+func has_super_petal(petal_id: int) -> bool:
+	return _super_petals_collected.has(petal_id)
 
 func register_coin() -> void:
 	_coins_collected += 1
