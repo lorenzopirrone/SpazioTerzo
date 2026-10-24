@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cufmmbluqupct"]
+
+[ext_resource type="Script" uid="uid://7ar6hutosilw" path="res://super_petal.gd" id="1_2l5c5"]
+[ext_resource type="Texture2D" uid="uid://csa5lyvldoxq0" path="res://Images/Monete/Cherry petal cutted.png" id="2_ywwjg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_segp4"]
+radius = 14.0
+height = 28.0
+
+[node name="SuperPetal" type="Node2D" node_paths=PackedStringArray("detection_area")]
+script = ExtResource("1_2l5c5")
+detection_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_segp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.15384616, 0.15384616)
+texture = ExtResource("2_ywwjg")

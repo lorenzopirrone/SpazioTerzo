@@ -39,6 +39,14 @@ signal player_died
 @export var result_restart_button: Button
 @export var result_quit_button: Button
 
+@export_group("Super Petal Result References")
+@export var super_petal_slot_1: TextureRect
+@export var super_petal_slot_2: TextureRect
+@export var super_petal_slot_3: TextureRect
+
+@export var super_petal_empty_texture: Texture2D
+@export var super_petal_collected_texture: Texture2D
+
 var player: Node2D
 
 
@@ -106,7 +114,7 @@ func _on_player_died() -> void:
 
 	result_screen.visible = true
 
-
+	_update_super_petal_icons()
 
 
 
@@ -185,6 +193,26 @@ func _show_final_score() -> void:
 	distance_value_label.text = str(int(player.get_score_distance()))
 	multiplier_label.text = "x" + str(player.get_score_multiplier())
 	$VictoryAudio.play()
+	_update_super_petal_icons()
+
+func _update_super_petal_icons() -> void:
+	var slots: Array[TextureRect] = [
+		super_petal_slot_1,
+		super_petal_slot_2,
+		super_petal_slot_3
+	]
+
+	for i in range(slots.size()):
+		var slot := slots[i]
+		if slot == null:
+			continue
+
+		var petal_id := i + 1
+
+		if player.has_super_petal(petal_id):
+			slot.texture = super_petal_collected_texture
+		else:
+			slot.texture = super_petal_empty_texture
 
 func _on_cambio_zona_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.

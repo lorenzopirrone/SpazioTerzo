@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://c7hny0fa21jaq"]
+[gd_scene load_steps=81 format=3 uid="uid://c7hny0fa21jaq"]
 
 [ext_resource type="FontFile" uid="uid://b5yh15243snda" path="res://Font/PIXELMANIA.TTF" id="1_uu4ov"]
 [ext_resource type="Script" uid="uid://1etaugm5ef2s" path="res://scripts/coins_panel.gd" id="1_yyras"]
@@ -66,6 +66,12 @@
 [ext_resource type="Texture2D" uid="uid://dh776sdbvlncu" path="res://UI/Lil Explosion Animation/explosion-05.png" id="53_lert1"]
 [ext_resource type="Texture2D" uid="uid://ugl30wwgdush" path="res://UI/Lil Explosion Animation/explosion-06.png" id="54_mgc3p"]
 [ext_resource type="Texture2D" uid="uid://do8s7yjmoq1sy" path="res://UI/Front Punch.png" id="56_k0c2n"]
+[ext_resource type="Texture2D" uid="uid://chu1tykg707ko" path="res://Images/Monete/Moneta 1.png" id="67_dleng"]
+[ext_resource type="Texture2D" uid="uid://dgxnrrc5iq4u2" path="res://Images/Monete/Moneta 2.png" id="68_vhint"]
+[ext_resource type="Texture2D" uid="uid://3dddliyhjv0u" path="res://Images/Monete/Moneta 3.png" id="69_ilad6"]
+[ext_resource type="Texture2D" uid="uid://csi6jeukpaihc" path="res://Images/Monete/Moneta 4.png" id="70_07qll"]
+[ext_resource type="Texture2D" uid="uid://djxj6yyen5d43" path="res://Images/Monete/Moneta 5.png" id="71_554o0"]
+[ext_resource type="Texture2D" uid="uid://c567cp5uikbuq" path="res://Images/Monete/Cherry petal EMPTY.png" id="72_30nyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y8kx"]
 bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
@@ -327,7 +333,31 @@ _data = {
 &"RESET": SubResource("Animation_dwhdk")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mehie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_dleng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_vhint")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ilad6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_07qll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_554o0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="LevelUI" type="CanvasLayer"]
+metadata/_edit_horizontal_guides_ = [-311.0]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -837,7 +867,7 @@ anchor_bottom = 0.5
 offset_left = -250.0
 offset_top = -200.0
 offset_right = 250.0
-offset_bottom = 200.0
+offset_bottom = 271.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -876,6 +906,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="CoinColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+layout_direction = 2
 layout_mode = 2
 
 [node name="CoinTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/CoinColumn"]
@@ -889,8 +920,18 @@ theme_override_fonts/font = ExtResource("1_uu4ov")
 text = "3"
 horizontal_alignment = 1
 
+[node name="TextureRect" type="AnimatedSprite2D" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+position = Vector2(107, 15.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mehie")
+autoplay = "default"
+frame_progress = 0.29043108
+
 [node name="DistanceColumn" type="VBoxContainer" parent="UI/ResultScreen/Panel/VBox/StatsRow"]
+layout_direction = 3
 layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
 
 [node name="DistanceTitle" type="Label" parent="UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn"]
 layout_mode = 2
@@ -910,21 +951,56 @@ theme_override_font_sizes/font_size = 25
 text = "X1.0"
 horizontal_alignment = 1
 
-[node name="ButtonSpacer" type="Control" parent="UI/ResultScreen/Panel/VBox"]
+[node name="SuperPetalsTitle" type="Label" parent="UI/ResultScreen/Panel/VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uu4ov")
+theme_override_font_sizes/font_size = 23
+text = "SUPER PETALS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RestartButton" type="Button" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons"]
+[node name="SuperPetals" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox"]
 layout_mode = 2
+alignment = 1
+
+[node name="Super Petal slot 1" type="TextureRect" parent="UI/ResultScreen/Panel/VBox/SuperPetals"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("72_30nyl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Super Petal slot 2" type="TextureRect" parent="UI/ResultScreen/Panel/VBox/SuperPetals"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("72_30nyl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Super Petal slot 3" type="TextureRect" parent="UI/ResultScreen/Panel/VBox/SuperPetals"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("72_30nyl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Buttons" type="HBoxContainer" parent="UI/ResultScreen/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/ResultScreen/Panel/VBox/Buttons"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("1_uu4ov")
 text = "RESTART"
 
-[node name="QuitButton" type="Button" parent="UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons"]
+[node name="QuitButton" type="Button" parent="UI/ResultScreen/Panel/VBox/Buttons"]
+layout_direction = 3
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_uu4ov")
 text = "QUIT"
+alignment = 2
