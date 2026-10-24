@@ -1,6 +1,8 @@
-[gd_scene load_steps=80 format=3 uid="uid://pdlew8a52frl"]
+[gd_scene load_steps=84 format=3 uid="uid://pdlew8a52frl"]
 
 [ext_resource type="Script" uid="uid://bmdaxe4v554mg" path="res://scripts/level_root.gd" id="1_xcnqg"]
+[ext_resource type="Texture2D" uid="uid://c567cp5uikbuq" path="res://Images/Monete/Cherry petal EMPTY.png" id="2_wq023"]
+[ext_resource type="Texture2D" uid="uid://csa5lyvldoxq0" path="res://Images/Monete/Cherry petal cutted.png" id="3_3xi3c"]
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="3_jdrfy"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_p4iai"]
 [ext_resource type="Script" uid="uid://dct11fo22cgaa" path="res://scripts/runner_camera.gd" id="4_jyapm"]
@@ -61,6 +63,8 @@
 [ext_resource type="PackedScene" uid="uid://bx5j7fpbsc16v" path="res://scenes/environment/timber_obstacle.tscn" id="60_ve1ud"]
 [ext_resource type="Texture2D" uid="uid://g6jujn4rx1pm" path="res://Piattaforme/Flora 1.png" id="61_uoqi8"]
 [ext_resource type="Texture2D" uid="uid://dw247rpisisgl" path="res://Piattaforme/Flora 2.png" id="62_wq023"]
+[ext_resource type="PackedScene" uid="uid://cufmmbluqupct" path="res://scenes/environment/super_petal.tscn" id="64_3xi3c"]
+[ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="65_fm42f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -175,7 +179,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "coins_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "coins_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button", "super_petal_slot_1", "super_petal_slot_2", "super_petal_slot_3") groups=["level_root"]]
 script = ExtResource("1_xcnqg")
 auto_place_finish_line = false
 audio_player_path = NodePath("Guaglio_Theme")
@@ -188,8 +192,13 @@ coins_value_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/StatsRow/CoinCo
 distance_value_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn/DistanceValue")
 multiplier_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Multiplier")
 result_title_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Title")
-result_restart_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/RestartButton")
-result_quit_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/QuitButton")
+result_restart_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Buttons/RestartButton")
+result_quit_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Buttons/QuitButton")
+super_petal_slot_1 = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/SuperPetals/Super Petal slot 1")
+super_petal_slot_2 = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/SuperPetals/Super Petal slot 2")
+super_petal_slot_3 = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/SuperPetals/Super Petal slot 3")
+super_petal_empty_texture = ExtResource("2_wq023")
+super_petal_collected_texture = ExtResource("3_3xi3c")
 metadata/_edit_horizontal_guides_ = [375.0]
 
 [node name="LevelUI" parent="." instance=ExtResource("3_p4iai")]
@@ -6785,6 +6794,25 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COMPOSIZIONE LIVELLO/Parte 3/Grind pt3/GrindRail25/TriggerArea"]
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_ve1ud")
+
+[node name="SUPER PETALS" type="Node2D" parent="."]
+
+[node name="SuperPetal" parent="." instance=ExtResource("64_3xi3c")]
+position = Vector2(9480, 438)
+scale = Vector2(3, 3)
+
+[node name="SuperPetal2" parent="." instance=ExtResource("64_3xi3c")]
+position = Vector2(10370, 273)
+scale = Vector2(3, 3)
+petal_id = 2
+
+[node name="SuperPetal3" parent="." instance=ExtResource("64_3xi3c")]
+position = Vector2(11302, 42)
+scale = Vector2(3, 3)
+petal_id = 3
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("65_fm42f")]
+position = Vector2(8215, 333)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
