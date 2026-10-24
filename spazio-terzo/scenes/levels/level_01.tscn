@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=126 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -106,7 +106,6 @@
 [ext_resource type="Texture2D" uid="uid://cbdu0be0roith" path="res://Piattaforme/piattaforma fabbrica.png" id="103_yiiuh"]
 [ext_resource type="Texture2D" uid="uid://dhxyjhna4b2g3" path="res://Piattaforme/dettagli tetto fabbrica.png" id="105_fvud7"]
 [ext_resource type="Texture2D" uid="uid://r53xiypg3jmw" path="res://Piattaforme/camino.png" id="106_gvuas"]
-[ext_resource type="Texture2D" uid="uid://dujpwh1qfffak" path="res://Images/Monete/Cherry petal.png" id="107_gvuas"]
 [ext_resource type="Texture2D" uid="uid://c05d17hvg6ki6" path="res://Piattaforme/Acciaieria.png" id="108_k5lb8"]
 [ext_resource type="Texture2D" uid="uid://djxyp1l6u24kc" path="res://Piattaforme/Urban.png" id="109_larxi"]
 [ext_resource type="Texture2D" uid="uid://buwcdipg5ev16" path="res://Piattaforme/Urban 3.png" id="109_ni0pw"]
@@ -4709,7 +4708,8 @@ lifetime = 0.35000000000000003
 process_material = SubResource("ParticleProcessMaterial_sk8kv")
 
 [node name="Path" type="Path2D" parent="Parte 2/Platform pt2/GrindRail5"]
-position = Vector2(184, 32)
+position = Vector2(167.33, 32)
+scale = Vector2(1.165, 1)
 curve = SubResource("Curve2D_4tq4f")
 
 [node name="PathFollow" type="PathFollow2D" parent="Parte 2/Platform pt2/GrindRail5/Path"]
@@ -6120,11 +6120,6 @@ texture = ExtResource("71_aj0m2")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
 position = Vector2(18643, -15)
-
-[node name="CherryPetal" type="Sprite2D" parent="."]
-position = Vector2(12474.001, -1588)
-scale = Vector2(0.4984375, 0.4984375)
-texture = ExtResource("107_gvuas")
 
 [node name="TorreNucleare2" type="Sprite2D" parent="."]
 z_index = -2
