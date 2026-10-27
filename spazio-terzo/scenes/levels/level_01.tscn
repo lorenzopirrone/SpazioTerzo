@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=131 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -114,6 +114,8 @@
 [ext_resource type="Texture2D" uid="uid://s7fa8rfqnsyv" path="res://Images/Smokeparticles.png" id="111_ni0pw"]
 [ext_resource type="Texture2D" uid="uid://dktfis3qxg2my" path="res://Piattaforme/Torre nucleare.png" id="112_nrwx0"]
 [ext_resource type="Texture2D" uid="uid://b2dorgupyp5n7" path="res://Piattaforme/Torre nucleare giu.png" id="113_an4wj"]
+[ext_resource type="Texture2D" uid="uid://dw1np41w3kd87" path="res://Piattaforme/Legneria.png" id="115_hyda0"]
+[ext_resource type="Texture2D" uid="uid://d3rb3j04477aj" path="res://Piattaforme/Soppalco 2.png" id="116_8hd2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(67680, 64)
@@ -4408,21 +4410,13 @@ position = Vector2(8089, 85)
 position = Vector2(8321, 333)
 
 [node name="AirPlatform12" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(21190, 273)
+position = Vector2(20941.25, 262.18744)
 
 [node name="AirPlatform19" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(21548, 181)
+position = Vector2(21299.25, 170.18744)
 
 [node name="AirPlatform22" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(26097, 261)
-scale = Vector2(1.16, 1)
-
-[node name="AirPlatform24" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(27457, 365)
-scale = Vector2(1.16, 1)
-
-[node name="AirPlatform25" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(27905, 253)
+position = Vector2(26063.277, 275.18744)
 scale = Vector2(1.16, 1)
 
 [node name="AirPlatform26" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4434,17 +4428,14 @@ position = Vector2(27977, -75)
 scale = Vector2(1.16, 1)
 
 [node name="AirPlatform23" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(26793, 157)
+position = Vector2(26793, 147.84)
 scale = Vector2(3.2000782, 1)
 
 [node name="AirPlatform20" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(21913, 101)
-
-[node name="AirPlatform44" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(22497, 57)
+position = Vector2(21664.25, 90.18744)
 
 [node name="AirPlatform21" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(22319, -1037)
+position = Vector2(22003, -82)
 rotation = 1.5707964
 
 [node name="AirPlatform10" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4501,7 +4492,7 @@ position = Vector2(16448.525, -1580)
 scale = Vector2(3.03, 1)
 
 [node name="AirPlatform18" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(20823, 367)
+position = Vector2(20574.25, 356.18744)
 scale = Vector2(1.12, 1)
 
 [node name="AirPlatform14" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -5491,19 +5482,19 @@ position = Vector2(34324, 448)
 position = Vector2(34382, 450)
 
 [node name="TriangleObstacle126" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39824, -541)
+position = Vector2(39508, -13)
 rotation = -1.5707964
 
 [node name="TriangleObstacle127" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39824, -591)
+position = Vector2(39508, -63)
 rotation = -1.5707964
 
 [node name="TriangleObstacle128" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39824, -649)
+position = Vector2(39508, -121)
 rotation = -1.5707964
 
 [node name="TriangleObstacle129" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39824, -704)
+position = Vector2(39508, -176)
 rotation = -1.5707964
 
 [node name="TriangleObstacle95" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
@@ -5642,7 +5633,7 @@ position = Vector2(41850, -156)
 rotation = -0.7853982
 
 [node name="TriangleObstacle122" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(41864.004, -202.99805)
+position = Vector2(41889.004, -194)
 rotation = -0.7853982
 
 [node name="TriangleObstacle22" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
@@ -5754,9 +5745,6 @@ position = Vector2(26622, 94)
 [node name="Obstacle4" parent="Parte 2/Obstacle pt2" instance=ExtResource("40_mq8rv")]
 position = Vector2(29826, 406)
 
-[node name="Obstacle6" parent="Parte 2/Obstacle pt2" instance=ExtResource("40_mq8rv")]
-position = Vector2(44336, 72)
-
 [node name="Obstacle5" parent="Parte 2/Obstacle pt2" instance=ExtResource("40_mq8rv")]
 position = Vector2(30697, 416.00003)
 
@@ -5806,7 +5794,10 @@ position = Vector2(26848, 408)
 position = Vector2(31321, 404.00003)
 
 [node name="Incoming_car4" parent="Parte 2/Obstacle pt2" instance=ExtResource("42_xkw5e")]
-position = Vector2(38900, 405)
+position = Vector2(38651.25, 394.18744)
+
+[node name="Incoming_car7" parent="Parte 2/Obstacle pt2" instance=ExtResource("42_xkw5e")]
+position = Vector2(36280, 405)
 
 [node name="Incoming_car5" parent="Parte 2/Obstacle pt2" instance=ExtResource("42_xkw5e")]
 position = Vector2(45416, 400)
@@ -5814,28 +5805,24 @@ position = Vector2(45416, 400)
 [node name="Incoming_car6" parent="Parte 2/Obstacle pt2" instance=ExtResource("42_xkw5e")]
 position = Vector2(46208, 400)
 
-[node name="Timber_Obstacle" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
-position = Vector2(36048, 437)
-scale = Vector2(1.4434212, 1.4434212)
-
 [node name="Timber_Obstacle4" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
 position = Vector2(31575.998, 205)
 scale = Vector2(1.4434212, 1.4434212)
 
-[node name="Timber_Obstacle2" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
-position = Vector2(37225, 437)
-scale = Vector2(1.4434212, 1.4434212)
-
 [node name="Timber_Obstacle3" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
-position = Vector2(37720, 437)
+position = Vector2(37840, 437)
 scale = Vector2(1.4434212, 1.4434212)
 
 [node name="Timber_Obstacle5" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
-position = Vector2(39640, 437)
+position = Vector2(40086, 428.99997)
 scale = Vector2(1.4434212, 1.4434212)
 
 [node name="Timber_Obstacle6" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
 position = Vector2(44335.996, 437)
+scale = Vector2(1.4434212, 1.4434212)
+
+[node name="Timber_Obstacle7" parent="Parte 2/Obstacle pt2" instance=ExtResource("95_7yedq")]
+position = Vector2(44536.996, 72)
 scale = Vector2(1.4434212, 1.4434212)
 
 [node name="Coin pt2" type="Node2D" parent="Parte 2"]
@@ -5979,10 +5966,34 @@ z_index = -3
 position = Vector2(23781, -658)
 texture = ExtResource("106_gvuas")
 
+[node name="SparkParticles3" type="GPUParticles2D" parent="Parte 2/Fabbrica/Camino"]
+modulate = Color(0.8695508, 0.8783878, 0.8848413, 1)
+light_mask = 0
+z_index = -2
+position = Vector2(0, -284)
+amount = 10
+texture = ExtResource("111_ni0pw")
+lifetime = 1.6700000000000002
+speed_scale = 0.65
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ni0pw")
+
 [node name="Camino2" type="Sprite2D" parent="Parte 2/Fabbrica"]
 z_index = -3
 position = Vector2(24813, -749)
 texture = ExtResource("106_gvuas")
+
+[node name="SparkParticles2" type="GPUParticles2D" parent="Parte 2/Fabbrica/Camino2"]
+modulate = Color(0.8695508, 0.8783878, 0.8848413, 1)
+light_mask = 0
+z_index = -2
+position = Vector2(2, -288)
+amount = 10
+texture = ExtResource("111_ni0pw")
+lifetime = 1.6700000000000002
+speed_scale = 0.65
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ni0pw")
 
 [node name="Camino3" type="Sprite2D" parent="Parte 2/Fabbrica"]
 z_index = -3
@@ -6129,25 +6140,43 @@ texture = ExtResource("97_nrwx0")
 
 [node name="Soppalco15" type="Sprite2D" parent="Parte 2/Legno"]
 z_index = -1
-position = Vector2(38376, 652)
+position = Vector2(38127.25, 641.18744)
 scale = Vector2(1.1351538, 1.1224607)
 texture = ExtResource("71_aj0m2")
 
 [node name="Soppalco16" type="Sprite2D" parent="Parte 2/Legno"]
 z_index = -1
-position = Vector2(38743, 557)
+position = Vector2(38494.25, 546.18744)
 scale = Vector2(1.0017629, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco19" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(43617.28, 561.18744)
+scale = Vector2(1.1602571, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco20" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(45082.004, 322)
+scale = Vector2(1.1602571, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco21" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(45530.004, 209)
+scale = Vector2(1.1602571, 1.1224607)
 texture = ExtResource("71_aj0m2")
 
 [node name="Soppalco17" type="Sprite2D" parent="Parte 2/Legno"]
 z_index = -1
-position = Vector2(39100, 466)
+position = Vector2(38851.25, 455.18744)
 scale = Vector2(1.0017629, 1.1224607)
 texture = ExtResource("71_aj0m2")
 
 [node name="Soppalco18" type="Sprite2D" parent="Parte 2/Legno"]
 z_index = -1
-position = Vector2(39465, 386)
+position = Vector2(39216.25, 375.18744)
 scale = Vector2(1.0017629, 1.1224607)
 texture = ExtResource("71_aj0m2")
 
@@ -6176,13 +6205,53 @@ position = Vector2(42437, 311.99997)
 scale = Vector2(1, 0.79387754)
 texture = ExtResource("96_uaxf7")
 
-[node name="Timber4" type="Sprite2D" parent="."]
-position = Vector2(42375, -15)
-scale = Vector2(1, 0.79387754)
-texture = ExtResource("96_uaxf7")
+[node name="Legneria" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(41754, -752)
+scale = Vector2(2.0040324, 2.0040324)
+texture = ExtResource("115_hyda0")
 
-[node name="Obstacle" parent="." instance=ExtResource("60_42icc")]
-position = Vector2(39801, -9)
+[node name="Pilone" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(39558, 339)
+scale = Vector2(1, 1.125)
+texture = ExtResource("84_nxmup")
+
+[node name="Soppalco2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(40918, 491)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("116_8hd2p")
+
+[node name="Soppalco3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(41226, 334)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("116_8hd2p")
+
+[node name="Soppalco4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(41551, 170)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("116_8hd2p")
+
+[node name="Soppalco5" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(41823, 52)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("116_8hd2p")
+
+[node name="Soppalco6" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(42072, -86)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("116_8hd2p")
+
+[node name="TunnelOut" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0, 1)
+position = Vector2(44337.004, 299.00003)
+scale = Vector2(0.59296805, 0.5546875)
+texture = ExtResource("83_01ysu")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
