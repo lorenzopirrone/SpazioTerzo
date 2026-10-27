@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cq12o0u6vf2eu"]
+[gd_scene load_steps=129 format=3 uid="uid://cq12o0u6vf2eu"]
 
 [ext_resource type="PackedScene" uid="uid://1egy1wdcp633" path="res://scenes/actors/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://c7hny0fa21jaq" path="res://UI/level_ui.tscn" id="3_3jppf"]
@@ -96,6 +96,7 @@
 [ext_resource type="Texture2D" uid="uid://cvtck5ubywuus" path="res://Images/spark_arcade.png" id="94_wvjwn"]
 [ext_resource type="PackedScene" path="res://scenes/environment/timber_obstacle.tscn" id="95_7yedq"]
 [ext_resource type="Texture2D" uid="uid://6uodqi6ft55f" path="res://Images/Timber 2.png" id="96_uaxf7"]
+[ext_resource type="Texture2D" uid="uid://hm2x35wbnq6q" path="res://Piattaforme/Urban 4.png" id="97_nrwx0"]
 [ext_resource type="Texture2D" uid="uid://bc1ifbq2q4fsh" path="res://Piattaforme/Strada ponte.png" id="97_uaxf7"]
 [ext_resource type="Texture2D" uid="uid://dye8fa4drwbi4" path="res://Piattaforme/strada ponte su.png" id="98_sk8kv"]
 [ext_resource type="PackedScene" uid="uid://barjihjcmwu86" path="res://scenes/environment/player_spawn_point.tscn" id="99_sk8kv"]
@@ -110,6 +111,7 @@
 [ext_resource type="Texture2D" uid="uid://djxyp1l6u24kc" path="res://Piattaforme/Urban.png" id="109_larxi"]
 [ext_resource type="Texture2D" uid="uid://buwcdipg5ev16" path="res://Piattaforme/Urban 3.png" id="109_ni0pw"]
 [ext_resource type="Texture2D" uid="uid://bvcs25huhc1j" path="res://Piattaforme/Urban 2.png" id="110_7d4m7"]
+[ext_resource type="Texture2D" uid="uid://s7fa8rfqnsyv" path="res://Images/Smokeparticles.png" id="111_ni0pw"]
 [ext_resource type="Texture2D" uid="uid://dktfis3qxg2my" path="res://Piattaforme/Torre nucleare.png" id="112_nrwx0"]
 [ext_resource type="Texture2D" uid="uid://b2dorgupyp5n7" path="res://Piattaforme/Torre nucleare giu.png" id="113_an4wj"]
 
@@ -196,7 +198,23 @@ _data = {
 }
 point_count = 4
 
-[node name="Level01" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "distance_value_label", "multiplier_label", "result_title_label", "result_restart_button", "result_quit_button") groups=["level_root"]]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ni0pw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(40, 6, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = -86.399994
+direction = Vector3(0, -10, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 1.1999999
+
+[node name="Level01" type="Node2D" node_paths=PackedStringArray("pause_panel", "guaglio_theme", "pause_animation", "result_screen", "score_value_label", "distance_value_label", "multiplier_label", "result_title_label") groups=["level_root"]]
 script = ExtResource("5_level")
 audio_stream = ExtResource("9_audio")
 manual_track_duration_seconds = 160.82
@@ -209,8 +227,6 @@ score_value_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ScoreRow/ScoreV
 distance_value_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/StatsRow/DistanceColumn/DistanceValue")
 multiplier_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Multiplier")
 result_title_label = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/Title")
-result_restart_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/RestartButton")
-result_quit_button = NodePath("LevelUI/UI/ResultScreen/Panel/VBox/ButtonSpacer/Buttons/QuitButton")
 
 [node name="LevelUI" parent="." instance=ExtResource("3_3jppf")]
 
@@ -4424,8 +4440,11 @@ scale = Vector2(3.2000782, 1)
 [node name="AirPlatform20" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(21913, 101)
 
+[node name="AirPlatform44" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(22497, 57)
+
 [node name="AirPlatform21" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
-position = Vector2(22323, -154)
+position = Vector2(22319, -1037)
 rotation = 1.5707964
 
 [node name="AirPlatform10" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4434,6 +4453,22 @@ scale = Vector2(1.12, 1)
 
 [node name="AirPlatform15" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(15421.002, 266)
+scale = Vector2(1.12, 1)
+
+[node name="AirPlatform40" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(17735.002, -49)
+scale = Vector2(1.12, 1)
+
+[node name="AirPlatform41" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(17735.002, -49)
+scale = Vector2(1.12, 1)
+
+[node name="AirPlatform42" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(18211.002, -203)
+scale = Vector2(1.12, 1)
+
+[node name="AirPlatform43" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(18693.002, -364)
 scale = Vector2(1.12, 1)
 
 [node name="AirPlatform17" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4454,6 +4489,10 @@ scale = Vector2(1.12, 1)
 
 [node name="AirPlatform35" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(15804, -1445)
+scale = Vector2(1.12, 1)
+
+[node name="AirPlatform37" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+position = Vector2(17334, -1427)
 scale = Vector2(1.12, 1)
 
 [node name="AirPlatform36" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
@@ -4508,6 +4547,16 @@ scale = Vector2(4.3060994, 1.251264)
 [node name="AirPlatform16" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(16448, 155)
 scale = Vector2(5.7060995, 1.251264)
+
+[node name="AirPlatform38" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+z_index = -2
+position = Vector2(18374.998, -1354)
+scale = Vector2(4.196, 1.251)
+
+[node name="AirPlatform39" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
+z_index = -2
+position = Vector2(19344.998, -461.00003)
+scale = Vector2(3.746, 1.251)
 
 [node name="AirPlatform5" parent="Parte 2/Platform pt2" instance=ExtResource("44_uvhx5")]
 position = Vector2(6929, 389)
@@ -5442,19 +5491,19 @@ position = Vector2(34324, 448)
 position = Vector2(34382, 450)
 
 [node name="TriangleObstacle126" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39825, -87)
+position = Vector2(39824, -541)
 rotation = -1.5707964
 
 [node name="TriangleObstacle127" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39825, -137)
+position = Vector2(39824, -591)
 rotation = -1.5707964
 
 [node name="TriangleObstacle128" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39825, -195)
+position = Vector2(39824, -649)
 rotation = -1.5707964
 
 [node name="TriangleObstacle129" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
-position = Vector2(39825, -250)
+position = Vector2(39824, -704)
 rotation = -1.5707964
 
 [node name="TriangleObstacle95" parent="Parte 2/Obstacle pt2" instance=ExtResource("41_xwjd6")]
@@ -5789,112 +5838,6 @@ scale = Vector2(1.4434212, 1.4434212)
 position = Vector2(44335.996, 437)
 scale = Vector2(1.4434212, 1.4434212)
 
-[node name="Montagna di legno2" type="Node2D" parent="Parte 2"]
-z_index = -1
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="Timber4" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41736.8, 268)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber2" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41957.8, 266)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber5" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41617.8, -161)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber8" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41404.8, -153)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber3" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41467.8, 267)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber6" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41556.8, 260)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber7" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41328.8, 262)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber9" type="Sprite2D" parent="Parte 2/Montagna di legno2"]
-position = Vector2(41101.8, 261)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Montagna di legno" type="Node2D" parent="Parte 2"]
-z_index = -1
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="Timber4" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(42244, 268)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber2" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(42465, 266)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber5" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(42125, -161)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber8" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(41912, -153)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber3" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(41975, 267)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber6" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(42064, 260)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber7" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(41836, 262)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
-[node name="Timber9" type="Sprite2D" parent="Parte 2/Montagna di legno"]
-position = Vector2(41609, 261)
-scale = Vector2(1.72, 1)
-texture = ExtResource("96_uaxf7")
-flip_h = true
-
 [node name="Coin pt2" type="Node2D" parent="Parte 2"]
 
 [node name="Coin" parent="Parte 2/Coin pt2" instance=ExtResource("10_coin")]
@@ -6118,6 +6061,12 @@ position = Vector2(32974, 517)
 scale = Vector2(1.1351538, 1.0203125)
 texture = ExtResource("71_aj0m2")
 
+[node name="Soppalco14" type="Sprite2D" parent="Parte 2/Nucleare"]
+modulate = Color(0.399, 0.41474998, 0.42, 1)
+position = Vector2(35289, 207)
+scale = Vector2(1.1351538, 1.0203125)
+texture = ExtResource("71_aj0m2")
+
 [node name="Soppalco9" type="Sprite2D" parent="Parte 2/Nucleare"]
 z_index = -1
 position = Vector2(31996, -337.62497)
@@ -6134,6 +6083,12 @@ texture = ExtResource("71_aj0m2")
 z_index = -1
 position = Vector2(32908.004, -495)
 scale = Vector2(1.1351538, 3.100293)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco13" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -2
+position = Vector2(34887, -581.5118)
+scale = Vector2(1.1351538, 3.3265994)
 texture = ExtResource("71_aj0m2")
 
 [node name="Soppalco12" type="Sprite2D" parent="Parte 2/Nucleare"]
@@ -6154,8 +6109,80 @@ position = Vector2(33994, -873.04694)
 scale = Vector2(2.5546875, 2.1789563)
 texture = ExtResource("113_an4wj")
 
+[node name="SparkParticles" type="GPUParticles2D" parent="Parte 2/Nucleare/TorreNucleareGiu"]
+modulate = Color(0.8695508, 0.8783878, 0.8848413, 1)
+light_mask = 0
+z_index = -2
+position = Vector2(-3.914373, -328.11725)
+amount = 20
+texture = ExtResource("111_ni0pw")
+lifetime = 1.6700000000000002
+process_material = SubResource("ParticleProcessMaterial_ni0pw")
+
+[node name="Urban4" type="Sprite2D" parent="Parte 2/Nucleare"]
+z_index = -2
+position = Vector2(36378, -420)
+scale = Vector2(1.5556451, 1.5556451)
+texture = ExtResource("97_nrwx0")
+
+[node name="Legno" type="Node2D" parent="Parte 2"]
+
+[node name="Soppalco15" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(38376, 652)
+scale = Vector2(1.1351538, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco16" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(38743, 557)
+scale = Vector2(1.0017629, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco17" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(39100, 466)
+scale = Vector2(1.0017629, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
+[node name="Soppalco18" type="Sprite2D" parent="Parte 2/Legno"]
+z_index = -1
+position = Vector2(39465, 386)
+scale = Vector2(1.0017629, 1.1224607)
+texture = ExtResource("71_aj0m2")
+
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("99_sk8kv")]
-position = Vector2(18643, -15)
+position = Vector2(18674, -25)
+
+[node name="Piattaforma0" type="Sprite2D" parent="."]
+self_modulate = Color(0.41960785, 1, 1, 1)
+position = Vector2(35763.875, -260)
+scale = Vector2(1.4566393, 1.3859375)
+texture = ExtResource("70_aj0m2")
+
+[node name="Piattaforma1" type="Sprite2D" parent="."]
+self_modulate = Color(0.41960785, 1, 1, 1)
+position = Vector2(36246, -423)
+scale = Vector2(1.4566393, 1.3859375)
+texture = ExtResource("70_aj0m2")
+
+[node name="Timber2" type="Sprite2D" parent="."]
+position = Vector2(42038, 309)
+scale = Vector2(1, 0.79387754)
+texture = ExtResource("96_uaxf7")
+
+[node name="Timber3" type="Sprite2D" parent="."]
+position = Vector2(42437, 311.99997)
+scale = Vector2(1, 0.79387754)
+texture = ExtResource("96_uaxf7")
+
+[node name="Timber4" type="Sprite2D" parent="."]
+position = Vector2(42375, -15)
+scale = Vector2(1, 0.79387754)
+texture = ExtResource("96_uaxf7")
+
+[node name="Obstacle" parent="." instance=ExtResource("60_42icc")]
+position = Vector2(39801, -9)
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
