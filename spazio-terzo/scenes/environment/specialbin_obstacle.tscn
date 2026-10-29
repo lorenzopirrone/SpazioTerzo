@@ -1,13 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://w5iwgdah8olg"]
+[gd_scene load_steps=9 format=3 uid="uid://w5iwgdah8olg"]
 
 [ext_resource type="Script" uid="uid://ecrn4h3mq522" path="res://scripts/obstacle.gd" id="1_k473p"]
 [ext_resource type="AudioStream" uid="uid://yq81ysjns6nb" path="res://Audio/Punch Impact.mp3" id="2_hm2a7"]
 [ext_resource type="Texture2D" uid="uid://c8c2vxqbha57m" path="res://Piattaforme/special bin3.png" id="3_07yjb"]
 [ext_resource type="Texture2D" uid="uid://effdfd8jsxyf" path="res://Piattaforme/special bin1.png" id="4_4uccu"]
 [ext_resource type="Texture2D" uid="uid://21sy6ywun0oy" path="res://Piattaforme/special bin2.png" id="5_df3c1"]
+[ext_resource type="Texture2D" uid="uid://b17hc62aghopr" path="res://Images/Jump particle.png" id="6_4uccu"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_r1dr6"]
 points = PackedVector2Array(-26.156387, 28.500002, -19.656387, 12.5, -6.1563864, 16.5, -0.6563854, 57.500008, -30.15639, 57.500008)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_df3c1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(40, 6, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = -86.399994
+direction = Vector3(0, -10, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 1.1999999
 
 [node name="Timber_Obstacle" type="Node2D"]
 light_mask = 4
@@ -55,3 +72,14 @@ texture = ExtResource("4_4uccu")
 position = Vector2(2.4999995, -20.5)
 scale = Vector2(0.11591798, 0.11591798)
 texture = ExtResource("5_df3c1")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.5294118, 1, 1)
+light_mask = 0
+visibility_layer = 512
+position = Vector2(-4, 30)
+scale = Vector2(0.6, 0.6)
+amount = 5
+texture = ExtResource("6_4uccu")
+lifetime = 1.1
+process_material = SubResource("ParticleProcessMaterial_df3c1")

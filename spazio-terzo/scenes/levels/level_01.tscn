@@ -7561,7 +7561,6 @@ scale = Vector2(2.109375, 1.6085938)
 texture = ExtResource("119_3spv5")
 
 [node name="Corrente2" type="Sprite2D" parent="Parte 3/Megatunnel"]
-visible = false
 z_index = -2
 position = Vector2(62646.996, -179)
 scale = Vector2(2.109375, 1.6085938)
