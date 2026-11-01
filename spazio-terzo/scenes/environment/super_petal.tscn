@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cufmmbluqupct"]
 
-[ext_resource type="Script" uid="uid://7ar6hutosilw" path="res://super_petal.gd" id="1_2l5c5"]
+[ext_resource type="Script" uid="uid://7ar6hutosilw" path="res://scripts/super_petal.gd" id="1_2l5c5"]
 [ext_resource type="Texture2D" uid="uid://csa5lyvldoxq0" path="res://Images/Monete/Cherry petal cutted.png" id="2_ywwjg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_segp4"]

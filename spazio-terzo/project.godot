@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SpazioTerzo"
-run/main_scene="res://scenes/levels/level_02.tscn"
+run/main_scene="uid://dr8l2hb2pb2fh"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,3 +37,4 @@ runner_punch={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
