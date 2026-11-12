@@ -2676,6 +2676,21 @@ z_index = -29
 position = Vector2(15676, 171)
 texture = ExtResource("24_cag23")
 
+[node name="Sprite2D26" type="Sprite2D" parent="Parallasse3/Clouds" unique_id=837089740]
+z_index = -29
+position = Vector2(16315, 171)
+texture = ExtResource("24_cag23")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Parallasse3/Clouds" unique_id=921518012]
+z_index = -29
+position = Vector2(16955, 171)
+texture = ExtResource("24_cag23")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Parallasse3/Clouds" unique_id=573036607]
+z_index = -29
+position = Vector2(17595, 171)
+texture = ExtResource("24_cag23")
+
 [node name="Sfondo" type="Parallax2D" parent="Parallasse3" unique_id=2146325543]
 scroll_scale = Vector2(0.55, 0.2)
 scroll_offset = Vector2(5034, -5)
@@ -3093,6 +3108,16 @@ texture = ExtResource("36_yl48f")
 [node name="Sprite2D88" type="Sprite2D" parent="Parallasse3/Sfondo" unique_id=1966417809]
 z_index = -28
 position = Vector2(35350, 800)
+texture = ExtResource("37_i652i")
+
+[node name="Sprite2D89" type="Sprite2D" parent="Parallasse3/Sfondo" unique_id=1796206436]
+z_index = -28
+position = Vector2(35990, 168)
+texture = ExtResource("36_yl48f")
+
+[node name="Sprite2D90" type="Sprite2D" parent="Parallasse3/Sfondo" unique_id=19757363]
+z_index = -28
+position = Vector2(35990, 800)
 texture = ExtResource("37_i652i")
 
 [node name="Sprite2D68" type="Sprite2D" parent="Parallasse3/Sfondo" unique_id=617131589]
@@ -7865,18 +7890,6 @@ petal_id = 3
 
 [node name="FinishLine" parent="." unique_id=808998678 instance=ExtResource("61_uyhfn")]
 position = Vector2(67549, 387)
-
-[node name="Sea" type="Sprite2D" parent="." unique_id=1283829672]
-position = Vector2(18832, 321)
-texture = ExtResource("24_cag23")
-
-[node name="Sea2" type="Sprite2D" parent="." unique_id=489095060]
-position = Vector2(19471, 321)
-texture = ExtResource("24_cag23")
-
-[node name="Sea3" type="Sprite2D" parent="." unique_id=1414209593]
-position = Vector2(20110, 321)
-texture = ExtResource("24_cag23")
 
 [connection signal="pressed" from="LevelUI/UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/UI/PausePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
